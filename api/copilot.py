@@ -386,26 +386,36 @@ def key_source():
     return "user" if _REQUEST_KEY.get() else ("server" if server_key_configured() else None)
 
 
-def check_key(key):
-    """Validate a user key with a no-cost Models API call. Returns (valid, message); never includes the key."""
+def make_client(timeout, max_retries, user_key=None):
+    """Anthropic client bound to exactly one principal.
+    With a user key: that key only — credentials are pinned explicitly and any bearer token cleared, so the
+    server's ANTHROPIC_API_KEY / ANTHROPIC_AUTH_TOKEN can never be mixed in (the SDK already skips environment
+    credentials when api_key is passed; this keeps it true if that behaviour ever changes).
+    Without a user key: the server's environment credentials."""
     import anthropic
-    client = anthropic.Anthropic(api_key=key, timeout=15.0, max_retries=0)
+    if user_key:
+        client = anthropic.Anthropic(api_key=user_key, timeout=timeout, max_retries=max_retries)
+        client.api_key, client.auth_token = user_key, None
+        return client
+    return anthropic.Anthropic(timeout=timeout, max_retries=max_retries)
+
+
+def check_key(key):
+    """Validate a user key with a no-cost Models API call. Returns (valid, message); never includes the key.
+    The message is deliberately generic (accepted / not accepted) so the endpoint is not a detailed key oracle."""
+    import anthropic
+    client = make_client(15.0, 0, user_key=key)
     try:
-        info = client.models.retrieve(MODEL_ID)
-        return True, f"Key accepted; model {info.id} is available."
-    except anthropic.AuthenticationError:
-        return False, "Anthropic rejected this key (authentication failed)."
-    except (anthropic.PermissionDeniedError, anthropic.NotFoundError):
-        return False, f"The key is valid but has no access to {MODEL_ID}."
-    except anthropic.APIConnectionError:
-        return False, "Could not reach the Anthropic API from this server."
-    except anthropic.APIStatusError as e:
-        return False, f"Anthropic API error (HTTP {e.status_code})."
+        client.models.retrieve(MODEL_ID)
+        return True, "Key accepted."
+    except (anthropic.AuthenticationError, anthropic.PermissionDeniedError, anthropic.NotFoundError):
+        return False, "Key not accepted."
+    except (anthropic.APIConnectionError, anthropic.APIStatusError):
+        return False, "The key could not be checked right now; try again later."
 
 
 def call_llm(question, pack):
-    import anthropic
-    client = anthropic.Anthropic(api_key=_REQUEST_KEY.get() or None, timeout=TIMEOUT_S, max_retries=1)
+    client = make_client(TIMEOUT_S, 1, user_key=_REQUEST_KEY.get())
     ev = "\n\n".join(f"[{i['evidence_id']}] ({i['kind']}) {i['title']}\n{i['text']}" for i in pack.items)
     resp = client.beta.messages.parse(
         model=MODEL_ID, max_tokens=8000,
@@ -452,7 +462,8 @@ def ask(con, question, scenario_id=None, use_llm=True, twin=None):
                              related, evidence, t0, model={"id": MODEL_ID, "effort": EFFORT, "key": key_source()}, risk_q=risk_q)
             notice = "The language model could not support an answer from the evidence; showing the deterministic answer."
         except Exception as e:  # deterministic fallback on any API/validation failure
-            notice = f"Copilot language model unavailable ({type(e).__name__}); showing the deterministic, validated answer."
+            notice = ("Your API key could not be used; showing the deterministic, validated answer." if _REQUEST_KEY.get()
+                      else f"Copilot language model unavailable ({type(e).__name__}); showing the deterministic, validated answer.")
     elif use_llm and not llm_available():
         notice = "Language model not configured on this server; answer built deterministically from the database."
     summary, claims, lim, gaps_ = det
@@ -493,7 +504,8 @@ def ask_twin(con, question, twin, use_llm, t0):
                              model={"id": MODEL_ID, "effort": EFFORT, "key": key_source()}, risk_q=risk_q)
             notice = "The language model could not support an answer from the evidence; showing the deterministic answer."
         except Exception as e:
-            notice = f"Copilot language model unavailable ({type(e).__name__}); showing the deterministic, validated answer."
+            notice = ("Your API key could not be used; showing the deterministic, validated answer." if _REQUEST_KEY.get()
+                      else f"Copilot language model unavailable ({type(e).__name__}); showing the deterministic, validated answer.")
     elif use_llm:
         notice = "Language model not configured on this server; answer built deterministically from the scenario, the database and the physics models."
     summary, claims, lim, gaps_ = copilot_twin.answer(con, intent, pack, twin, ev, question)

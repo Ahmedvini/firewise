@@ -13,3 +13,11 @@ import pytest  # noqa: E402
 def _isolated_state_db(tmp_path, monkeypatch):
     """Every test gets its own user-state store (scenarios, conversations, answer cache)."""
     monkeypatch.setenv("FIREWISE_STATE_DB", str(tmp_path / "state.sqlite"))
+
+
+@pytest.fixture(autouse=True)
+def _reset_rate_limits():
+    from api import ratelimit
+    ratelimit.reset()
+    yield
+    ratelimit.reset()

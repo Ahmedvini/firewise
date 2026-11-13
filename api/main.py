@@ -8,10 +8,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import copilot, models, services
+from . import copilot, models, ratelimit, services
 from .db import connect, db_available
 from .twin.routes import router as twin_router
-from .conversations import ask_cached, router as conversations_router
+from .conversations import WS_RE, ask_cached, router as conversations_router
 
 app = FastAPI(title="FIREWISE API", version="1.0.0",
               description="Evidence-grounded access to NASA PSI combustion investigations, plus the FIREWISE Digital Twin (/api/twin). The scientific database is read-only; user scenarios live in a separate state store.")
@@ -27,7 +27,7 @@ def err(status, code, message, details=None):
 
 @app.exception_handler(HTTPException)
 async def http_exc(_: Request, exc: HTTPException):
-    code = {404: "not_found", 400: "invalid_parameter", 503: "unavailable"}.get(exc.status_code, "error")
+    code = {404: "not_found", 400: "invalid_parameter", 429: "rate_limited", 503: "unavailable"}.get(exc.status_code, "error")
     return err(exc.status_code, code, str(exc.detail))
 
 
@@ -196,10 +196,16 @@ def user_key(value):
     return value
 
 
+USER_KEY_ASK_LIMIT = (30, 60.0)      # Copilot requests carrying a user key: 30 per minute per client
+KEY_CHECK_LIMIT = (10, 600.0)        # key checks: 10 per 10 minutes per client, and 5 per 10 minutes per workspace
+
+
 @app.post("/api/ask", response_model=models.AskResponse)
-def ask(req: models.AskRequest, x_anthropic_key: Optional[str] = Header(None, alias="X-Anthropic-Key")):
+def ask(req: models.AskRequest, request: Request, x_anthropic_key: Optional[str] = Header(None, alias="X-Anthropic-Key")):
     need_db()
     key = user_key(x_anthropic_key)
+    if key and not ratelimit.allow("ask-user-key", ratelimit.client_id(request), *USER_KEY_ASK_LIMIT):
+        raise HTTPException(429, "Too many Copilot requests with a personal key; wait a minute and try again")
     with connect() as con, copilot.request_key(key):
         twin = req.twin.model_dump() if req.twin else None
         try:
@@ -209,11 +215,20 @@ def ask(req: models.AskRequest, x_anthropic_key: Optional[str] = Header(None, al
 
 
 @app.post("/api/copilot/key/check", response_model=models.KeyCheck)
-def key_check(x_anthropic_key: Optional[str] = Header(None, alias="X-Anthropic-Key")):
-    """Test a user's own key with a no-cost Models API call. The key is not stored."""
+def key_check(request: Request, x_anthropic_key: Optional[str] = Header(None, alias="X-Anthropic-Key"),
+              x_workspace: Optional[str] = Header(None, alias="X-Workspace")):
+    """Test a user's own key with a no-cost Models API call. The key is not stored.
+    Abuse controls: a workspace key is required, calls are rate-limited per client and per workspace, and the
+    result is only accepted / not accepted (no reason), so this is not a useful bulk key-validation oracle."""
     key = user_key(x_anthropic_key)
     if not key:
         raise HTTPException(400, "Send the key in the X-Anthropic-Key header")
+    if not x_workspace or not WS_RE.fullmatch(x_workspace):
+        raise HTTPException(400, "X-Workspace is required")
+    n, window = KEY_CHECK_LIMIT
+    if not (ratelimit.allow("key-check-ip", ratelimit.client_id(request), n, window)
+            and ratelimit.allow("key-check-ws", x_workspace, n // 2, window)):
+        raise HTTPException(429, "Too many key checks; try again in a few minutes")
     valid, message = copilot.check_key(key)
     return {"valid": valid, "message": message, "model": copilot.MODEL_ID}
 

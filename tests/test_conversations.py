@@ -103,8 +103,55 @@ def test_user_api_key_is_request_scoped_and_never_exposed(monkeypatch):
     assert h["copilot_configured"] is False and h["user_keys_accepted"] is True
 
 
-def test_key_check_endpoint(monkeypatch):
-    monkeypatch.setattr(copilot, "check_key", lambda k: (True, "Key accepted; model claude-opus-5-5 is available."))
-    r = c.post("/api/copilot/key/check", headers={"X-Anthropic-Key": "sk-ant-test-" + "Y" * 40})
-    assert r.status_code == 200 and r.json()["valid"] is True and "Y" * 10 not in r.text
+def test_key_check_requires_workspace_is_rate_limited_and_generic(monkeypatch):
+    calls = []
+    monkeypatch.setattr(copilot, "check_key", lambda k: (calls.append(k), (True, "Key accepted."))[1])
+    key = {"X-Anthropic-Key": "sk-ant-test-" + "Y" * 40}
+    assert c.post("/api/copilot/key/check", headers=key).status_code == 400                 # workspace required
     assert c.post("/api/copilot/key/check").status_code == 400
+    ok = [c.post("/api/copilot/key/check", headers={**key, **WS}) for _ in range(5)]
+    assert all(r.status_code == 200 and r.json()["valid"] for r in ok) and "Y" * 10 not in ok[0].text
+    r = c.post("/api/copilot/key/check", headers={**key, **WS})                             # 6th in 10 min: per-workspace limit
+    assert r.status_code == 429 and r.json()["error"]["code"] == "rate_limited"
+    others = [c.post("/api/copilot/key/check", headers={**key, "X-Workspace": f"ws-{i}-" + "q" * 32}) for i in range(5)]
+    assert [x.status_code for x in others] == [200, 200, 200, 200, 429]                      # per-client limit (10)
+    assert len(calls) == 9
+
+
+def test_check_key_messages_are_generic(monkeypatch):
+    import anthropic
+    import httpx
+
+    class Models:
+        def __init__(self, exc): self.exc = exc
+        def retrieve(self, model_id): raise self.exc
+
+    req = httpx.Request("GET", "https://api.anthropic.com/v1/models/x")
+    for exc, msg in ((anthropic.AuthenticationError("no", response=httpx.Response(401, request=req), body=None), "Key not accepted."),
+                     (anthropic.PermissionDeniedError("no", response=httpx.Response(403, request=req), body=None), "Key not accepted."),
+                     (anthropic.NotFoundError("no", response=httpx.Response(404, request=req), body=None), "Key not accepted.")):
+        fake = type("C", (), {"models": Models(exc)})()
+        monkeypatch.setattr(copilot, "make_client", lambda *a, **k: fake)
+        assert copilot.check_key("sk-ant-x" + "1" * 30) == (False, msg)
+
+
+def test_user_key_client_never_mixes_server_credentials(monkeypatch):
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-SERVERKEY" + "s" * 30)
+    monkeypatch.setenv("ANTHROPIC_AUTH_TOKEN", "server-bearer-TOKEN")
+    user = "sk-ant-USERKEY" + "u" * 30
+    cl = copilot.make_client(5.0, 0, user_key=user)
+    hdrs = cl.auth_headers
+    assert cl.api_key == user and cl.auth_token is None
+    assert "SERVERKEY" not in str(hdrs) and "TOKEN" not in str(hdrs) and user in str(hdrs)
+    srv = copilot.make_client(5.0, 0)                                                        # no user key -> server credentials
+    assert srv.api_key and "SERVERKEY" in srv.api_key
+
+
+def test_user_key_requests_are_rate_limited(monkeypatch):
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.setattr(copilot, "call_llm", lambda q, p: (_ for _ in ()).throw(RuntimeError("down")))
+    h = {"X-Anthropic-Key": "sk-ant-test-" + "R" * 40}
+    codes = [c.post("/api/ask", json={"question": "Is there partial-gravity data in PSI?"}, headers=h).status_code for _ in range(31)]
+    assert codes[:30] == [200] * 30 and codes[30] == 429
+    r = c.post("/api/ask", json={"question": "Is there partial-gravity data in PSI?"})        # no key: not limited
+    assert r.status_code == 200

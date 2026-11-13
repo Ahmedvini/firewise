@@ -100,7 +100,7 @@ const withKey = (options = {}) => {
   const k = userKey.get();
   return k ? { ...options, headers: { ...(options.headers || {}), "X-Anthropic-Key": k } } : options;
 };
-export const checkKey = (key) => request("/api/copilot/key/check", { method: "POST", headers: { "X-Anthropic-Key": key } });
+export const checkKey = (key) => request("/api/copilot/key/check", ws({ method: "POST", headers: { "X-Anthropic-Key": key } }));
 
 // ------------------------------------------------------------ Digital Twin
 export const twin = {
