@@ -1,30 +1,44 @@
 import { useState, useRef, useEffect } from "react";
 import { Send } from "lucide-react";
-import SampleBanner from "../components/SampleBanner.jsx";
 import Header from "../components/Header.jsx";
-import { SUGGESTED_QUESTIONS } from "../data/sampleData.js";
-import { askQuestion } from "../services/api.js";
+import SampleBanner from "../components/SampleBanner.jsx";
+import { EvidenceLink } from "../components/Evidence.jsx";
+import { TierTag } from "../components/Tags.jsx";
+import { SUGGESTED_QUESTIONS } from "../data/constants.js";
+import { askQuestion, useApi } from "../services/api.js";
+import { evidenceKind } from "../utils/format.js";
 
-// Sections the real answer will fill once the backend is connected
-const ANSWER_SECTIONS = ["Answer", "Key findings", "Supporting NASA experiments", "Source documents and citations", "Related questions"];
+const MODE_LABEL = {
+  llm_validated: "Language-model answer, validated against cited evidence",
+  deterministic: "Deterministic answer computed from the database",
+  evidence_only: "Evidence list only (no validated prose)",
+};
 
-export default function AIAssistant() {
+export default function AIAssistant({ onOpenExperiment }) {
   const [messages, setMessages] = useState([{ role: "system", kind: "welcome" }]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const endRef = useRef(null);
+  const { data: health } = useApi("/api/health");
 
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, [messages, loading]);
 
-  const send = async () => {
-    const question = input.trim();
-    if (!question || loading) return;
+  // Deep link: #/assistant?q=... asks the question on load (shareable demo answers)
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.hash.split("?")[1] || "").get("q");
+    if (q) send(q);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const send = async (text) => {
+    const question = (text ?? input).trim();
+    if (question.length < 3 || loading) return;
     setMessages((m) => [...m, { role: "user", text: question }]);
     setInput("");
     setLoading(true);
     try {
       const result = await askQuestion(question);
-      setMessages((m) => [...m, { role: "system", kind: result.status === "ok" ? "answer" : "not_connected", question, result }]);
+      setMessages((m) => [...m, { role: "system", kind: "answer", question, result }]);
     } catch (error) {
       setMessages((m) => [...m, { role: "system", kind: "error", text: error.message }]);
     } finally {
@@ -34,25 +48,28 @@ export default function AIAssistant() {
 
   return (
     <>
-      <SampleBanner />
-      <Header sample={false} title="AI Research Assistant"
-        description="Ask questions about microgravity combustion research. Answers will be grounded in retrieved NASA documents once the RAG backend is connected." />
+      <SampleBanner>
+        Every statement cites NASA evidence and is checked by a validator before it is shown: citations must resolve and every number must appear in the cited source.
+        {health && !health.copilot_configured && " No language model is configured on this server, so answers are built deterministically from the database."}
+      </SampleBanner>
+      <Header eyebrow="AI Copilot" title="Ask about NASA combustion evidence"
+        description="Answers separate measured evidence, reported text, literature and interpretation. FIREWISE does not predict fire risk or partial-gravity behaviour." />
 
       <div className="panel chat" aria-live="polite">
-        {messages.map((msg, i) => <Message key={i} msg={msg} />)}
-        {loading && <div className="msg system">Waiting for the backend…</div>}
+        {messages.map((msg, i) => <Message key={i} msg={msg} onOpenExperiment={onOpenExperiment} />)}
+        {loading && <div className="msg system">Retrieving NASA evidence and validating the answer…</div>}
         <div ref={endRef} />
       </div>
 
       <div className="chips">
-        {SUGGESTED_QUESTIONS.map((q) => <button key={q} onClick={() => setInput(q)}>{q}</button>)}
+        {SUGGESTED_QUESTIONS.map((q) => <button key={q} onClick={() => send(q)} disabled={loading}>{q}</button>)}
       </div>
 
       <div className="ask-row">
-        <textarea rows={2} value={input} placeholder="Ask a question about NASA combustion research" aria-label="Your question"
+        <textarea rows={2} value={input} placeholder="Ask a question about NASA combustion research" aria-label="Your question" maxLength={1000}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }} />
-        <button className="btn primary" onClick={send} disabled={loading || !input.trim()}>
+        <button className="btn primary" onClick={() => send()} disabled={loading || input.trim().length < 3}>
           <Send size={16} /> Send
         </button>
       </div>
@@ -60,36 +77,57 @@ export default function AIAssistant() {
   );
 }
 
-// Renders one chat message (user question, placeholder card, real answer or error)
-function Message({ msg }) {
+function Message({ msg, onOpenExperiment }) {
   if (msg.role === "user") return <div className="msg user">{msg.text}</div>;
-
   if (msg.kind === "welcome") {
-    return <div className="msg system"><b>Welcome.</b> You can ask about flame behavior, specific experiments, or fire safety. The assistant is not connected yet, so questions are not answered at this stage.</div>;
+    return <div className="msg system"><b>Welcome.</b> Ask about specific investigations, test conditions, habitat atmospheres or evidence gaps. Try one of the questions below.</div>;
   }
   if (msg.kind === "error") {
-    return <div className="msg system">The request failed: {msg.text} Check that the backend is running, then try again.</div>;
+    return <div className="msg system">The request failed: {msg.text} The other pages keep working without the Copilot.</div>;
   }
-  if (msg.kind === "answer") {
-    const { answer, key_findings = [], sources = [], related_experiments = [] } = msg.result;
-    return (
-      <div className="msg system">
-        <p>{answer}</p>
-        {key_findings.length > 0 && <><h4>Key findings</h4><ul>{key_findings.map((f, i) => <li key={i}>{f}</li>)}</ul></>}
-        {related_experiments.length > 0 && <><h4>Supporting experiments</h4><p>{related_experiments.join(", ")}</p></>}
-        {sources.length > 0 && (
-          <><h4>Sources</h4><ul>{sources.map((s, i) => (
-            <li key={i}><a href={s.url} target="_blank" rel="noreferrer">{s.title}</a> {s.experiment && `– ${s.experiment}`} {s.year && `(${s.year})`}</li>
-          ))}</ul></>
-        )}
-      </div>
-    );
-  }
-  // not_connected: show where the real answer will appear
+  const r = msg.result;
   return (
-    <div className="msg system">
-      <b>Assistant not connected.</b> This is where the answer to “{msg.question}” will appear after the RAG backend is implemented. No answer or citation is generated in this prototype.
-      <div className="slots">{ANSWER_SECTIONS.map((s) => <div key={s} className="slot">{s}: waiting for backend</div>)}</div>
+    <div className="msg system answer">
+      <div className="tags">
+        <span className={`tag ${r.status === "answered" ? "green" : r.status === "partial" ? "amber" : "red"}`}>
+          {r.status === "answered" ? "Answered" : r.status === "partial" ? "Partial answer" : "Insufficient evidence"}
+        </span>
+        <span className="tag">{MODE_LABEL[r.mode]}</span>
+        <span className="tag mono">{r.latency_ms} ms</span>
+      </div>
+      {r.notice && <p className="note small">{r.notice}</p>}
+      {r.answer_summary && <p className="summary">{r.answer_summary}</p>}
+      {r.claims.length > 0 && (
+        <ul className="claims">
+          {r.claims.map((c, i) => (
+            <li key={i}>
+              <TierTag tier={c.tier} />
+              <span>{c.text}</span>
+              <span className="ev-row">{c.evidence_ids.map((id) => <EvidenceLink key={id} id={id} />)}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      {r.limitations.length > 0 && <><h4>Limitations</h4><ul>{r.limitations.map((l, i) => <li key={i} className="muted">{l}</li>)}</ul></>}
+      {r.gaps.length > 0 && <><h4>Evidence gaps</h4><ul>{r.gaps.map((g, i) => <li key={i} className="muted">{g}</li>)}</ul></>}
+      {r.related_investigations.length > 0 && (
+        <><h4>Related investigations</h4>
+          <p>{r.related_investigations.map((id, i) => <span key={id}>{i ? ", " : ""}<button className="linkish" onClick={() => onOpenExperiment(id)}>{id}</button></span>)}</p></>
+      )}
+      {r.evidence.length > 0 && (
+        <details className="evidence-list">
+          <summary>Evidence consulted ({r.evidence.length})</summary>
+          <ul>
+            {r.evidence.map((e) => (
+              <li key={e.evidence_id}>
+                <EvidenceLink id={e.evidence_id} label={e.title} />
+                <span className="muted small"> {evidenceKind(e.kind)}</span>
+                <div className="muted small clamp2">{e.snippet}</div>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
     </div>
   );
 }

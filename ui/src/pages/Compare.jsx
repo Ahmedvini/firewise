@@ -1,86 +1,148 @@
 import { useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, LabelList } from "recharts";
 import SampleBanner from "../components/SampleBanner.jsx";
 import Header from "../components/Header.jsx";
 import ChartCard, { tooltipStyle } from "../components/ChartCard.jsx";
-import { EXPERIMENTS, COMPARE_PARAMETERS } from "../data/sampleData.js";
+import { EvidenceLink } from "../components/Evidence.jsx";
+import { Quantity } from "../components/Tags.jsx";
+import { Loading, ErrorPanel, Empty } from "../components/States.jsx";
+import { useApi } from "../services/api.js";
+import { COMPARE_PRESETS, FUEL_LABEL } from "../data/constants.js";
+import { num } from "../utils/format.js";
 
-export default function Compare() {
-  const [chosenIds, setChosenIds] = useState(["bass2", "saffire3", "acme"]);
-  const [paramKey, setParamKey] = useState("oxygenPercent");
+const PARAMS = [
+  { key: "Chamber (ambient) O₂", label: "Chamber O₂ (%)", noun: "chamber O₂", unit: "%", pick: (q) => [q.min, q.max] },
+  { key: "Chamber pressure", label: "Pressure (psia)", noun: "chamber pressure", unit: " psia", pick: (q) => (q.psia ? [q.psia.min, q.psia.max] : [null, null]) },
+  { key: "Airflow", label: "Airflow (cm/s)", noun: "airflow", unit: " cm/s", pick: (q) => [q.min, q.max] },
+];
+const axis = { stroke: "#A9B0C0", fontSize: 12 };
+
+function Value({ v }) {
+  if (v && typeof v === "object" && "unit" in v) return <Quantity q={v} psia={v.unit === "atm"} />;
+  if (Array.isArray(v)) return v.length ? <span className="small">{v.map((x) => FUEL_LABEL[x] ?? x).join(", ")}</span> : <span className="missing">Not documented</span>;
+  if (v == null || v === "") return <span className="missing">Not documented</span>;
+  return <span>{String(v)}</span>;
+}
+
+export default function Compare({ onOpenExperiment }) {
+  const [chosenIds, setChosenIds] = useState(COMPARE_PRESETS[0].ids);
+  const [paramKey, setParamKey] = useState(PARAMS[0].key);
+  const { data: list } = useApi("/api/investigations?limit=500");
+  const ready = chosenIds.length >= 2 && chosenIds.length <= 4;
+  const { data, error, loading, reload } = useApi(ready ? `/api/compare?ids=${chosenIds.join(",")}` : null);
 
   const toggle = (id) =>
-    setChosenIds(chosenIds.includes(id) ? chosenIds.filter((x) => x !== id) : [...chosenIds, id]);
-
-  const chosen = EXPERIMENTS.filter((e) => chosenIds.includes(e.id));
-  const param = COMPARE_PARAMETERS.find((p) => p.key === paramKey);
-  const missing = chosen.filter((e) => e[paramKey] == null);
-  const axis = { stroke: "#A9B0C0", fontSize: 12 };
-  const show = (v) => (v == null ? <span className="muted">Not in dataset</span> : v);
+    setChosenIds(chosenIds.includes(id) ? chosenIds.filter((x) => x !== id) : chosenIds.length >= 4 ? chosenIds : [...chosenIds, id]);
+  const param = PARAMS.find((p) => p.key === paramKey);
+  const feature = data?.features.find((f) => f.name === paramKey);
+  const chartData = data && feature
+    ? data.investigations.map((inv) => {
+        const [lo, hi] = param.pick(feature.values[inv.id] ?? {});
+        return { name: inv.acronym || inv.id, range: lo == null ? null : [lo, hi === lo ? lo + (paramKey.includes("O₂") ? 0.15 : 0.08) : hi], lo, hi };
+      })
+    : [];
+  const missing = chartData.filter((d) => d.range == null);
 
   return (
     <>
       <SampleBanner />
-      <Header title="Compare and analyze"
-        description="Select two or more experiments. When a measurement is missing, the experiments are flagged as not directly comparable. Values are placeholders and imply no scientific conclusion." />
+      <Header eyebrow="Comparison Studio" title="Compare investigations"
+        description="Choose 2–4 investigations. Documented ranges are compared dimension by dimension; anything not documented is excluded from the comparison — never treated as zero. Similarity is condition overlap, not scientific equivalence." />
 
       <div className="chips">
-        {EXPERIMENTS.map((e) => (
-          <button key={e.id} className={chosenIds.includes(e.id) ? "on" : ""} onClick={() => toggle(e.id)}>{e.name}</button>
+        {COMPARE_PRESETS.map((p) => (
+          <button key={p.label} className={p.ids.join() === chosenIds.join() ? "on" : ""} onClick={() => setChosenIds(p.ids)}>{p.label}</button>
         ))}
       </div>
+      <details className="panel picker">
+        <summary>Choose investigations ({chosenIds.length} selected, max 4)</summary>
+        <div className="chips" style={{ marginTop: 12 }}>
+          {(list?.items ?? []).map((e) => (
+            <button key={e.id} className={chosenIds.includes(e.id) ? "on" : ""} onClick={() => toggle(e.id)} title={e.title}>{e.acronym || e.id}</button>
+          ))}
+        </div>
+      </details>
 
-      {chosen.length < 2 ? (
-        <div className="panel empty">Select at least two experiments to compare.</div>
-      ) : (
+      {!ready && <div className="panel empty">Select between two and four investigations to compare.</div>}
+      {ready && loading && <Loading rows={6} />}
+      {ready && error && <ErrorPanel error={error} onRetry={reload} />}
+      {ready && data && (
         <>
-          <div className="grid cols-2">
+          <div className="grid cols-2" style={{ marginTop: 16 }}>
             <div>
               <select value={paramKey} onChange={(e) => setParamKey(e.target.value)} aria-label="Parameter" className="param-select">
-                {COMPARE_PARAMETERS.map((p) => <option key={p.key} value={p.key}>{p.label}</option>)}
+                {PARAMS.map((p) => <option key={p.key} value={p.key}>{p.label}</option>)}
               </select>
-              <ChartCard title={param.label}>
-                <BarChart data={chosen}>
-                  <CartesianGrid stroke="rgba(169,176,192,.12)" vertical={false} />
-                  <XAxis dataKey="name" {...axis} /><YAxis {...axis} />
-                  <Tooltip {...tooltipStyle} />
-                  <Bar dataKey={paramKey} name={param.label} fill="#FF7138" radius={[6, 6, 0, 0]} />
+              {missing.length === chartData.length ? (
+                <div className="panel"><Empty title={`No selected investigation documents ${param.noun}.`}>Choose another parameter or preset; missing values are not plotted as zero.</Empty></div>
+              ) : (
+              <ChartCard title={`${param.label} — documented range`}>
+                <BarChart data={chartData} layout="vertical" margin={{ left: 20, right: 40 }}>
+                  <CartesianGrid stroke="rgba(169,176,192,.12)" horizontal={false} />
+                  <XAxis type="number" domain={["auto", "auto"]} {...axis} />
+                  <YAxis type="category" dataKey="name" width={120} {...axis} />
+                  <Tooltip {...tooltipStyle} formatter={(_, __, item) => {
+                    const p = item.payload;
+                    return [p.lo == null ? "Not documented" : p.lo === p.hi ? `${num(p.lo)}${param.unit}` : `${num(p.lo)}–${num(p.hi)}${param.unit}`, param.label];
+                  }} />
+                  <Bar dataKey="range" fill="#3987e5" radius={4} isAnimationActive={false} minPointSize={3}>
+                    <LabelList dataKey="lo" position="right" formatter={(v) => (v == null ? "Not documented" : "")} fill="#A9B0C0" fontSize={11} />
+                  </Bar>
                 </BarChart>
               </ChartCard>
+              )}
             </div>
 
             <div className="grid">
               {missing.length > 0 ? (
                 <div className="panel warn">
-                  <span className="tag red">Not directly comparable</span>
-                  <p className="muted">{missing.map((e) => e.name).join(", ")} {missing.length > 1 ? "have" : "has"} no value for this parameter in the sample data.</p>
+                  <span className="tag red">Not directly comparable on this parameter</span>
+                  <p className="muted">{missing.map((d) => d.name).join(", ")} {missing.length > 1 ? "do" : "does"} not document {param.noun} in the PSI tables.</p>
                 </div>
               ) : (
                 <div className="panel">
-                  <span className="tag green">Values available</span>
-                  <p className="muted">All selected experiments report this parameter. Differences in other conditions may still limit comparison.</p>
+                  <span className="tag green">Documented for all selected</span>
+                  <p className="muted">Ranges overlap {feature?.similarity == null ? "—" : `${Math.round(feature.similarity * 100)}%`} (interval overlap ÷ union). Other conditions may still limit comparison.</p>
                 </div>
               )}
-              {chosen.map((e) => (
-                <div className="panel" key={e.id}><h3>{e.name}</h3><span className="tag">{e.type}</span></div>
+              {data.incompatibilities.map((x, i) => (
+                <div className="panel warn" key={i}><span className="tag red">Incompatible: {x.a} vs {x.b}</span><p className="muted">{x.reason}</p></div>
               ))}
+              {data.relations.map((r, i) => (
+                <div className="panel" key={i}>
+                  <span className={`tag ${r.status === "verified" ? "green" : "amber"}`}>{r.status} relationship</span>
+                  <p className="muted"><b>{r.src}</b> {r.type.replaceAll("_", " ")} <b>{r.dst}</b>. {r.note}</p>
+                  <EvidenceLink id={r.evidence_id} />
+                </div>
+              ))}
+              <div className="panel">
+                <span className="tag">Compared on {data.compared_on} dimensions</span>
+                <p className="muted small">{data.label}. Mean similarity on comparable dimensions: {data.mean_similarity_on_comparable == null ? "—" : data.mean_similarity_on_comparable.toFixed(2)}.</p>
+              </div>
             </div>
           </div>
 
           <div className="panel table-wrap">
             <table>
-              <thead><tr><th>Parameter</th>{chosen.map((e) => <th key={e.id}>{e.name}</th>)}</tr></thead>
+              <thead>
+                <tr><th>Dimension</th>{data.investigations.map((e) => (
+                  <th key={e.id}><button className="linkish" onClick={() => onOpenExperiment(e.id)}>{e.acronym || e.id}</button><div className="mono muted small">{e.id}</div></th>
+                ))}<th>Similarity</th></tr>
+              </thead>
               <tbody>
-                <tr><td>Program</td>{chosen.map((e) => <td key={e.id}>{e.program}</td>)}</tr>
-                <tr><td>Fuel / material</td>{chosen.map((e) => <td key={e.id}>{e.fuel}</td>)}</tr>
-                {COMPARE_PARAMETERS.map((p) => (
-                  <tr key={p.key}><td>{p.label}</td>{chosen.map((e) => <td key={e.id}>{show(e[p.key])}</td>)}</tr>
+                {data.features.map((f) => (
+                  <tr key={f.name}>
+                    <td>{f.name}{f.note && <div className="muted small">{f.note}</div>}</td>
+                    {data.investigations.map((e) => <td key={e.id}><Value v={f.values[e.id]} /></td>)}
+                    <td>{f.kind === "count" ? <span className="muted small">context</span> : f.comparable ? <span className="tnum">{f.similarity.toFixed(2)}</span> : <span className="tag">not comparable</span>}</td>
+                  </tr>
                 ))}
               </tbody>
             </table>
           </div>
         </>
       )}
+      {ready && data && data.investigations.length < chosenIds.length && <Empty title="Some selected ids were not found." />}
     </>
   );
 }
