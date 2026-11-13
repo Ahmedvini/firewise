@@ -1,36 +1,53 @@
-/* Design tokens and base styles */
+/* ============================================================
+   FIREWISE design tokens and base styles.
+   One palette, one type scale, one spacing scale. Accent (ember) is for primary actions and the
+   active state only; data colours live in the charts; status colours carry meaning, never decoration.
+   ============================================================ */
 :root {
   color-scheme: dark;
-  --bg: #090D16;
-  --surface: #111827;
-  --ember: #FF7138;
-  --amber: #FFB454;
-  --text: #F5F7FA;
-  --muted: #A9B0C0;
-  --line: rgba(169, 176, 192, 0.16);
-  --red: #ff5a4d;
-  --green: #7fd6a4;
-  --font-display: "Bricolage Grotesque", "Segoe UI", sans-serif;
-  --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+  /* surfaces */
+  --bg: #0b0f17;
+  --surface: #111722;
+  --surface-2: #161d2a;
+  --surface-3: #1c2433;
+  --line: rgba(148, 163, 184, 0.14);
+  --line-strong: rgba(148, 163, 184, 0.28);
+  /* text */
+  --text: #e8edf5;
+  --muted: #9ba5b6;
+  --faint: #6f798b;
+  /* accent + status */
+  --ember: #ff7a45;
+  --ember-weak: rgba(255, 122, 69, 0.12);
+  --ember-text: #ffa77f;
+  --amber: #f2b45c;
+  --green: #6fcf97;
+  --red: #f47b72;
+  --blue: #7fb2f0;
+  /* data series (validated with the dataviz checker) */
+  --series-nasa: #3987e5;
+  --series-user: #d95926;
+  --series-model: #199e70;
+  /* type */
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --fs-xs: 12px; --fs-sm: 13px; --fs: 15px; --fs-md: 17px; --fs-lg: 20px; --fs-xl: 26px; --fs-2xl: 32px;
+  /* space, radius, controls */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 20px; --s6: 24px; --s7: 32px; --s8: 48px;
+  --r-sm: 6px; --r: 10px; --r-lg: 14px;
+  --control-h: 36px; --control-h-sm: 30px; --icon: 16px;
 }
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.55; }
-h1, h2, h3, h4 { font-family: var(--font-display); margin: 0; line-height: 1.15; }
-h2 { font-size: 28px; margin-bottom: 6px; }
-h3 { font-size: 18px; }
-h4 { margin: 14px 0 4px; }
-p { margin: 0 0 10px; }
-:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
-
-/* Animated background */
-.bg-glow {
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background:
-    radial-gradient(600px 400px at 85% 8%, rgba(255, 113, 56, 0.13), transparent 70%),
-    radial-gradient(500px 380px at 10% 95%, rgba(255, 180, 84, 0.08), transparent 70%);
-  animation: drift 18s ease-in-out infinite alternate;
-}
-@keyframes drift { to { transform: translate(-2%, 2%) scale(1.06); } }
-.embers { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-
+html, body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: var(--fs); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+body { overflow-x: hidden; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.2; font-weight: 600; }
+h1, h2 { font-family: var(--font-display); }
+h2 { font-size: var(--fs-xl); letter-spacing: -0.01em; }
+h3 { font-size: var(--fs-md); }
+h4 { font-size: var(--fs); margin: var(--s4) 0 var(--s1); }
+p { margin: 0 0 var(--s3); }
+a { color: var(--ember-text); }
+:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+img, svg, canvas { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }

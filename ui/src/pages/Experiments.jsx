@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { ExternalLink } from "lucide-react";
-import SampleBanner from "../components/SampleBanner.jsx";
-import Header from "../components/Header.jsx";
+import { Disclosure, Tabs } from "../components/ui.jsx";
 import ExperimentCard from "../components/ExperimentCard.jsx";
 import { EvidenceLink, useEvidence } from "../components/Evidence.jsx";
 import { Quantity, StatusTag, TierTag, StatusLegend } from "../components/Tags.jsx";
@@ -31,6 +30,8 @@ export default function Experiments({ initialSelectedId, onSelect }) {
   const { data: all } = useApi("/api/investigations?limit=500");
   const selectedId = initialSelectedId;
   const setFilter = (key) => (e) => setFilters({ ...filters, [key]: e.target.value });
+  const advanced = [filters.facility, filters.dataClass, sortBy !== "id"].filter(Boolean).length;
+  const anyFilter = filters.search || filters.fuel || filters.facility || filters.dataClass;
 
   const options = useMemo(() => {
     const items = all?.items ?? [];
@@ -43,38 +44,43 @@ export default function Experiments({ initialSelectedId, onSelect }) {
 
   return (
     <>
-      <SampleBanner />
-      <Header eyebrow="Investigation Explorer" title="NASA combustion investigations"
-        description="Search the 24 PSI combustion investigations. Select one to see its verbatim objectives, documented test conditions with their measurement status, every test record and its NASA source." />
-
       <div className="filters">
-        <input value={filters.search} onChange={setFilter("search")} placeholder="Search records and reports (e.g. cool flame, smoke, PMMA)" aria-label="Search investigations" />
+        <input type="search" value={filters.search} onChange={setFilter("search")} placeholder="Search records and NASA reports — e.g. cool flame, smoke, PMMA" aria-label="Search investigations" />
         <select value={filters.fuel} onChange={setFilter("fuel")} aria-label="Fuel class">
-          <option value="">Fuel class</option>{options.fuel.map((v) => <option key={v} value={v}>{FUEL_LABEL[v] ?? v}</option>)}
-        </select>
-        <select value={filters.facility} onChange={setFilter("facility")} aria-label="Facility">
-          <option value="">Facility</option>{options.facility.map((v) => <option key={v} value={v}>{v}</option>)}
-        </select>
-        <select value={filters.dataClass} onChange={setFilter("dataClass")} aria-label="PSI data class">
-          <option value="">Data class</option>{options.dataClass.map((v) => <option key={v} value={v}>Class {v}</option>)}
-        </select>
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} aria-label="Sort by">
-          <option value="id">Sort: PSI id</option><option value="acronym">Sort: name</option><option value="n_records">Sort: most records</option>
+          <option value="">All fuel classes</option>{options.fuel.map((v) => <option key={v} value={v}>{FUEL_LABEL[v] ?? v}</option>)}
         </select>
       </div>
-      <div className="sort-row">
+      <Disclosure plain title={`More filters${advanced ? ` (${advanced} active)` : ""}`}>
+        <div className="filters secondary">
+          <select value={filters.facility} onChange={setFilter("facility")} aria-label="Facility">
+            <option value="">Any facility</option>{options.facility.map((v) => <option key={v} value={v}>{v}</option>)}
+          </select>
+          <select value={filters.dataClass} onChange={setFilter("dataClass")} aria-label="PSI data class">
+            <option value="">Any PSI data class</option>{options.dataClass.map((v) => <option key={v} value={v}>Class {v}</option>)}
+          </select>
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} aria-label="Sort by">
+            <option value="id">Sort by PSI id</option><option value="acronym">Sort by name</option><option value="n_records">Most records first</option>
+          </select>
+        </div>
+      </Disclosure>
+      <div className="row-between list-meta">
         <span className="muted small">{data ? `${data.total} of 24 investigations` : ""}</span>
-        <button className="btn" onClick={() => setFilters(EMPTY_FILTERS)}>Clear filters</button>
+        {anyFilter && <button className="btn ghost sm" onClick={() => setFilters(EMPTY_FILTERS)}>Clear filters</button>}
       </div>
 
       <div className="split wide-detail">
-        <div className="grid list-col">
+        <div className="list-col">
           {loading && <Loading rows={5} />}
           {error && <ErrorPanel error={error} onRetry={reload} />}
-          {data && data.items.length === 0 && <Empty title="No investigation matches these filters.">Clear a filter or change the search words.</Empty>}
-          {data?.items.map((e) => <ExperimentCard key={e.id} experiment={e} selected={e.id === selectedId} onSelect={onSelect} />)}
+          {data && data.items.length === 0 && <Empty title="No investigation matches these filters.">Clear a filter or try other search words.</Empty>}
+          <div className="inv-list">
+            {data?.items.map((e) => <ExperimentCard key={e.id} experiment={e} selected={e.id === selectedId} onSelect={onSelect} />)}
+          </div>
         </div>
-        {selectedId ? <Detail id={selectedId} /> : <div className="panel empty">Select an investigation to see its records and sources.</div>}
+        {selectedId ? <Detail id={selectedId} /> : (
+          <div className="panel empty state center detail-empty"><span className="state-title">Select an investigation</span>
+            <span className="muted small">Its NASA objective, documented test conditions, every test record and its sources open here.</span></div>
+        )}
       </div>
     </>
   );
@@ -101,11 +107,8 @@ function Detail({ id }) {
         <span className="tag">{d.project_type}</span>
       </div>
 
-      <div className="tabs" role="tablist">
-        {[["overview", "Overview"], ["records", `Test records (${d.n_records.toLocaleString()})`], ["sources", `Publications (${d.publications.length})`], ["data", "Data & quality"]].map(([k, l]) => (
-          <button key={k} role="tab" aria-selected={tab === k} className={tab === k ? "on" : ""} onClick={() => setTab(k)}>{l}</button>
-        ))}
-      </div>
+      <Tabs label="Investigation sections" value={tab} onChange={setTab}
+        items={[["overview", "Overview"], ["records", `Test records (${d.n_records.toLocaleString()})`], ["sources", `Publications (${d.publications.length})`], ["data", "Data & quality"]]} />
 
       {tab === "overview" && (
         <>
@@ -115,14 +118,19 @@ function Detail({ id }) {
             <div><span className="eyebrow">Airflow</span><Quantity q={d.flow} /></div>
           </div>
           {d.has_burner_stream_o2 && <p className="note small">Includes inverse flames whose O₂ value is the burner oxidizer stream — not shown as chamber O₂ and never compared with habitat atmospheres.</p>}
-          <dl>
-            {[["Objective", d.objective], ["Hypothesis", d.hypothesis], ["Approach", d.approach], ["Research impacts", d.research_impacts]].map(([label, f]) => f.value && (
-              <div key={label}><dt>{label} <EvidenceLink id={f.evidence_id} label="PSI text" /></dt><dd className="clamp-text">{f.value}</dd></div>
-            ))}
-            <dt>Fuel classes</dt><dd>{d.fuel_classes.map((f) => FUEL_LABEL[f] ?? f).join(", ") || "—"}</dd>
-            <dt>Record types</dt><dd>{Object.entries(d.granularity).map(([g, n]) => `${GRANULARITY_LABEL[g] ?? g}: ${n}`).join(" · ")}</dd>
-            <dt>Dates (PSI record)</dt><dd>{d.start_date || "—"} → {d.end_date || "—"}</dd>
-          </dl>
+          {d.objective.value && (
+            <dl><dt>Objective (verbatim, NASA PSI) <EvidenceLink id={d.objective.evidence_id} label="PSI text" /></dt><dd className="clamp-text">{d.objective.value}</dd></dl>
+          )}
+          <Disclosure plain title="Hypothesis, approach, impacts and record details">
+            <dl>
+              {[["Hypothesis", d.hypothesis], ["Approach", d.approach], ["Research impacts", d.research_impacts]].map(([label, f]) => f.value && (
+                <div key={label}><dt>{label} <EvidenceLink id={f.evidence_id} label="PSI text" /></dt><dd className="clamp-text">{f.value}</dd></div>
+              ))}
+              <dt>Fuel classes</dt><dd>{d.fuel_classes.map((f) => FUEL_LABEL[f] ?? f).join(", ") || "—"}</dd>
+              <dt>Record types</dt><dd>{Object.entries(d.granularity).map(([g, n]) => `${GRANULARITY_LABEL[g] ?? g}: ${n}`).join(" · ")}</dd>
+              <dt>Dates (PSI record)</dt><dd>{d.start_date || "—"} → {d.end_date || "—"}</dd>
+            </dl>
+          </Disclosure>
           {d.curated_facts.length > 0 && (
             <>
               <h4>Verified facts</h4>

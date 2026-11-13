@@ -64,17 +64,7 @@ export default function EngineeringView() {
   const assumptions = [...new Set(ph.results.filter((r) => r.status === "completed").flatMap((r) => r.assumptions))];
   return (
     <div className="eng">
-      <div className="grid cols-4">
-        <div className="panel stat-tile"><span className="eyebrow">Cabin pressure</span><strong>{p?.toFixed(2)} kPa</strong>
-          <span className="muted small">{(p / 6.894757).toFixed(2)} psia · {(p / 101.325).toFixed(3)} atm</span><TwinStatusTag status={t.scenario.pressure_kPa.status} source={t.scenario.pressure_kPa.source} /></div>
-        <div className="panel stat-tile"><span className="eyebrow">Gravity regime</span><strong>{t.scenario.gravity}</strong>
-          <span className="muted small">{ev.coverage.gravity.records_at_requested} NASA records at this gravity</span><TwinStatusTag status="user_defined" /></div>
-        <div className="panel stat-tile"><span className="eyebrow">Bulk axial velocity</span><strong>{bulk == null ? "not computed" : `${bulk.toFixed(2)} cm/s`}</strong>
-          <span className="muted small">Model C, uniform estimate</span><TwinStatusTag status={bulk == null ? "not_documented" : "simulated"} /></div>
-        <div className="panel stat-tile"><span className="eyebrow">Exact NASA matches</span><strong>{ev.coverage.exact_matches}</strong>
-          <span className="muted small">of {N.toLocaleString()} records · nearest distance {ev.nearest[0]?.distance.toFixed(2) ?? "—"}</span></div>
-      </div>
-
+      <p className="small muted eng-key"><span className="sw" style={{ background: SERIES.user }} /> user-defined <span className="sw" style={{ background: SERIES.model }} /> computed by a model <span className="sw" style={{ background: SERIES.nasa }} /> NASA records · pressure {p?.toFixed(2)} kPa ({(p / 6.894757).toFixed(2)} psia) · bulk velocity {bulk == null ? "not computed" : `${bulk.toFixed(2)} cm/s (Model C)`}</p>
       <div className="grid cols-2 section-gap">
         <ZoneBars title="Oxygen by zone (user-defined)" data={o2} unit="%" color={SERIES.user} provenance="User-defined O₂" />
         <ZoneBars title="O₂ partial pressure by zone (computed, Model B)" data={po2} unit=" kPa" color={SERIES.model} provenance="Computed p(O₂)"

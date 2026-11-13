@@ -1,13 +1,8 @@
-import { Info } from "lucide-react";
+// Backwards-compatible alias of the design-system Notice.
+// Without children it renders nothing: the generic provenance message now lives once in the app footer.
+import { Notice } from "./ui.jsx";
 
-// Provenance / caution note shown at the top of pages. Pass children to override the message.
 export default function SampleBanner({ children, danger = false }) {
-  return (
-    <div className={`banner ${danger ? "danger" : ""}`} role="note">
-      <Info size={18} />
-      <span>
-        {children || "All values come from NASA PSI investigation records and experimental tables. Each value carries its status: measured, derived, reported, set-point or not documented — missing values are never treated as zero."}
-      </span>
-    </div>
-  );
+  if (!children) return null;
+  return <Notice tone={danger ? "danger" : "warn"}>{children}</Notice>;
 }

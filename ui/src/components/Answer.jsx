@@ -1,5 +1,6 @@
 import { EvidenceLink, registerInlineEvidence } from "./Evidence.jsx";
 import { TierTag } from "./Tags.jsx";
+import { Disclosure } from "./ui.jsx";
 import { evidenceKind } from "../utils/format.js";
 
 const MODE_LABEL = {
@@ -7,54 +8,63 @@ const MODE_LABEL = {
   deterministic: "Deterministic answer computed from the database",
   evidence_only: "Evidence list only (no validated prose)",
 };
+// Claim groups, in reading order. Every claim keeps its exact tier tag inside its group.
+const GROUPS = [
+  ["Documented evidence", ["measured", "reported", "literature"]],
+  ["Calculations and model estimates", ["calculation", "model_prediction"]],
+  ["Unknown or not documented", ["unknown"]],
+  ["Interpretation", ["interpretation"]],
+];
 
-/** Renders one Copilot AskResponse: status, tiers, cited claims, limitations, gaps, evidence. */
+/** One Copilot answer: summary, grouped cited claims, limitations and gaps; sources and method on demand. */
 export default function Answer({ r, onOpenExperiment, context }) {
   registerInlineEvidence(r.evidence);
+  const status = r.status === "answered" ? null : r.status === "partial" ? "Partial answer" : "Insufficient evidence";
   return (
     <div className="msg system answer">
-      <div className="tags">
-        <span className={`tag ${r.status === "answered" ? "green" : r.status === "partial" ? "amber" : "red"}`}>
-          {r.status === "answered" ? "Answered" : r.status === "partial" ? "Partial answer" : "Insufficient evidence"}
-        </span>
-        <span className="tag">{MODE_LABEL[r.mode]}</span>
-        {r.cached && <span className="tag blue" title="Identical question and context answered before; served from the answer cache">Cached answer</span>}
-        {context?.twin_scenario && <span className="tag amber" title={`Selected zone ${context.selected_zone ?? "—"} · input hash ${context.input_hash}`}>Twin: {context.twin_scenario}</span>}
-        <span className="tag mono">{r.latency_ms} ms</span>
-      </div>
+      {(status || r.cached || context?.twin_scenario) && (
+        <div className="tags answer-tags">
+          {status && <span className={`tag ${r.status === "partial" ? "amber" : "red"}`}>{status}</span>}
+          {context?.twin_scenario && <span className="tag amber" title={`Selected zone ${context.selected_zone ?? "—"} · input hash ${context.input_hash}`}>Twin: {context.twin_scenario}</span>}
+          {r.cached && <span className="tag blue" title="Same question and context answered before; served from the answer cache">Cached answer</span>}
+        </div>
+      )}
       {r.notice && <p className="note small">{r.notice}</p>}
       {r.answer_summary && <p className="summary">{r.answer_summary}</p>}
-      {r.claims.length > 0 && (
-        <ul className="claims">
-          {r.claims.map((c, i) => (
-            <li key={i}>
-              <TierTag tier={c.tier} />
-              <span>{c.text}</span>
-              <span className="ev-row">{c.evidence_ids.map((id) => <EvidenceLink key={id} id={id} />)}</span>
+      {GROUPS.map(([title, tiers]) => {
+        const claims = r.claims.filter((c) => tiers.includes(c.tier));
+        if (!claims.length) return null;
+        return (
+          <div key={title} className="claim-group">
+            <span className="eyebrow">{title}</span>
+            <ul className="claims">
+              {claims.map((c, i) => (
+                <li key={i}>
+                  <span className="claim-text">{c.text}</span>
+                  <span className="claim-meta"><TierTag tier={c.tier} />{c.evidence_ids.map((id) => <EvidenceLink key={id} id={id} />)}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+      {r.limitations.length > 0 && <div className="claim-group"><span className="eyebrow">Limitations</span><ul className="limits">{r.limitations.map((l, i) => <li key={i}>{l}</li>)}</ul></div>}
+      {r.gaps.length > 0 && <div className="claim-group"><span className="eyebrow">Evidence gaps</span><ul className="limits">{r.gaps.map((g, i) => <li key={i}>{g}</li>)}</ul></div>}
+      <Disclosure plain title={`Sources and method (${r.evidence.length} evidence items)`}>
+        <p className="small faint">{MODE_LABEL[r.mode]} · {r.latency_ms} ms{r.model ? ` · ${r.model.id}` : ""}</p>
+        {r.related_investigations.length > 0 && onOpenExperiment && (
+          <p className="small">Related investigations: {r.related_investigations.map((id, i) => <span key={id}>{i ? ", " : ""}<button className="linkish" onClick={() => onOpenExperiment(id)}>{id}</button></span>)}</p>
+        )}
+        <ul className="plain evidence-list">
+          {r.evidence.map((e) => (
+            <li key={e.evidence_id}>
+              <EvidenceLink id={e.evidence_id} label={e.title} />
+              <span className="faint small"> {evidenceKind(e.kind)}</span>
+              <div className="muted small clamp2">{e.snippet}</div>
             </li>
           ))}
         </ul>
-      )}
-      {r.limitations.length > 0 && <><h4>Limitations</h4><ul>{r.limitations.map((l, i) => <li key={i} className="muted">{l}</li>)}</ul></>}
-      {r.gaps.length > 0 && <><h4>Evidence gaps</h4><ul>{r.gaps.map((g, i) => <li key={i} className="muted">{g}</li>)}</ul></>}
-      {r.related_investigations.length > 0 && onOpenExperiment && (
-        <><h4>Related investigations</h4>
-          <p>{r.related_investigations.map((id, i) => <span key={id}>{i ? ", " : ""}<button className="linkish" onClick={() => onOpenExperiment(id)}>{id}</button></span>)}</p></>
-      )}
-      {r.evidence.length > 0 && (
-        <details className="evidence-list">
-          <summary>Evidence consulted ({r.evidence.length})</summary>
-          <ul>
-            {r.evidence.map((e) => (
-              <li key={e.evidence_id}>
-                <EvidenceLink id={e.evidence_id} label={e.title} />
-                <span className="muted small"> {evidenceKind(e.kind)}</span>
-                <div className="muted small clamp2">{e.snippet}</div>
-              </li>
-            ))}
-          </ul>
-        </details>
-      )}
+      </Disclosure>
     </div>
   );
 }

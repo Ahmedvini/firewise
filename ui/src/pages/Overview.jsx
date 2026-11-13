@@ -1,19 +1,17 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { ArrowRight, FlaskConical, Crosshair, Box, Sparkles } from "lucide-react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ScatterChart, Scatter, ReferenceArea, Legend, ZAxis, ResponsiveContainer,
 } from "recharts";
-import SampleBanner from "../components/SampleBanner.jsx";
-import StatCard from "../components/StatCard.jsx";
-import ChartCard, { tooltipStyle } from "../components/ChartCard.jsx";
-import ExperimentCard from "../components/ExperimentCard.jsx";
+import { tooltipStyle } from "../components/ChartCard.jsx";
+import { PageHeader, Metrics, Disclosure } from "../components/ui.jsx";
 import { EvidenceLink, useEvidence } from "../components/Evidence.jsx";
 import { TierTag } from "../components/Tags.jsx";
 import { Loading, ErrorPanel } from "../components/States.jsx";
-import { useApi } from "../services/api.js";
+import { useApi, twin, chats } from "../services/api.js";
 import { FUEL_LABEL, SERIES_COLOR, STATUS_INFO } from "../data/constants.js";
 import { num } from "../utils/format.js";
 
-const FEATURED = ["PSI-159", "PSI-69", "PSI-99", "PSI-47"];
 const axis = { stroke: "#A9B0C0", fontSize: 12 };
 
 /** Marker shape encodes measurement status (secondary encoding; colour = fuel class). */
@@ -116,117 +114,102 @@ function ScatterChartWrapper({ series, windows, sc, highlight, onPoint }) {
 
 const ResponsiveScatter = ({ children }) => <ResponsiveContainer width="100%" height="100%">{children}</ResponsiveContainer>;
 
-export default function Overview({ onNavigate, onOpenExperiment }) {
-  const [microgravity, setMicrogravity] = useState(false);
-  const { data: s, error, loading, reload } = useApi("/api/summary");
-  const { data: invs } = useApi("/api/investigations?limit=500");
+function relTime(iso) {
+  const d = (Date.now() - new Date(iso).getTime()) / 1000;
+  if (d < 3600) return `${Math.max(1, Math.floor(d / 60))} min ago`;
+  if (d < 86400) return `${Math.floor(d / 3600)} h ago`;
+  return new Date(iso).toLocaleDateString();
+}
 
-  const m = s?.metrics ?? {};
-  const byFuel = s ? Object.entries(s.by_fuel_class).map(([k, v]) => ({ name: FUEL_LABEL[k] ?? k, value: v })) : [];
-  const doc = s
-    ? Object.entries(s.documentation_by_fuel_class).map(([k, v]) => ({ name: FUEL_LABEL[k] ?? k, ...v }))
-    : [];
-  const featured = (invs?.items ?? []).filter((e) => FEATURED.includes(e.id)).sort((a, b) => FEATURED.indexOf(a.id) - FEATURED.indexOf(b.id));
+/** Recent activity in this browser's workspace (saved twin scenarios and Copilot conversations). */
+function RecentActivity({ onNavigate }) {
+  const [state, setState] = useState({ scenarios: null, chats: null });
+  useEffect(() => {
+    twin.list().then((x) => setState((s) => ({ ...s, scenarios: x }))).catch(() => setState((s) => ({ ...s, scenarios: [] })));
+    chats.list().then((x) => setState((s) => ({ ...s, chats: x }))).catch(() => setState((s) => ({ ...s, chats: [] })));
+  }, []);
+  const items = [
+    ...(state.scenarios ?? []).map((x) => ({ kind: "Twin scenario", title: x.name, when: x.updated_at, detail: `${x.o2_pct}% O₂ · ${x.pressure_kPa} kPa · ${x.gravity}`, go: () => onNavigate("twin", "scenarios") })),
+    ...(state.chats ?? []).filter((c) => c.message_count).map((c) => ({ kind: "Copilot", title: c.title, when: c.updated_at, detail: `${c.message_count / 2 | 0} question${c.message_count === 2 ? "" : "s"}`, go: () => onNavigate("assistant") })),
+  ].sort((a, b) => b.when.localeCompare(a.when)).slice(0, 5);
+  if (state.scenarios === null || state.chats === null) return <p className="faint small">Loading…</p>;
+  if (!items.length) return <p className="muted small">Nothing yet. Saved Digital Twin scenarios and Copilot conversations from this browser appear here.</p>;
+  return (
+    <ul className="plain activity">
+      {items.map((x, i) => (
+        <li key={i}><button className="activity-row" onClick={x.go}>
+          <span className="tag">{x.kind}</span><span className="activity-title">{x.title}</span>
+          <span className="faint small">{x.detail} · {relTime(x.when)}</span>
+        </button></li>
+      ))}
+    </ul>
+  );
+}
 
+const TASKS = [
+  { page: "experiments", icon: FlaskConical, title: "Explore investigations", text: "Browse NASA's 24 combustion investigations, their test records and sources." },
+  { page: "scenarios", icon: Crosshair, title: "Check a habitat atmosphere", text: "See which NASA tests document a given O₂ and pressure." },
+  { page: "twin", icon: Box, title: "Configure the Digital Twin", text: "Set up a habitat in 3D, match it to evidence and run physics models." },
+  { page: "assistant", icon: Sparkles, title: "Ask the Copilot", text: "Get cited answers that separate evidence, calculations and unknowns." },
+];
+
+export default function Overview({ onNavigate }) {
+  const { data: summary, error, loading, reload } = useApi("/api/summary");
+  const m = (k) => summary?.metrics[k];
   return (
     <>
-      <SampleBanner />
-
-      <section className="hero">
-        <div>
-          <h1 className="hero-title">FIREWISE</h1>
-          <p className="hero-sub">Understanding combustion in microgravity. Turning NASA research into evidence for fire-safety decisions.</p>
-          <p className="lede">
-            FIREWISE organizes NASA&apos;s Physical Sciences Informatics combustion investigations into documented test
-            conditions, comparisons and research gaps for spacecraft and future lunar habitats. Every value links to
-            its NASA source and keeps its status — measured, set-point, reported or not documented.
-          </p>
-          <button className="btn primary" onClick={() => onNavigate("scenarios")}>Explore habitat scenarios</button>{" "}
-          <button className="btn" onClick={() => onNavigate("assistant")}>Ask the Copilot</button>
-        </div>
-
-        <div className="panel stage" aria-label="Flame shape on Earth versus in microgravity">
-          <div className={`flame ${microgravity ? "round" : ""}`} />
-          <div className="stage-controls">
-            <div className="segmented">
-              <button className={!microgravity ? "on" : ""} onClick={() => setMicrogravity(false)}>Earth gravity</button>
-              <button className={microgravity ? "on" : ""} onClick={() => setMicrogravity(true)}>Microgravity</button>
-            </div>
-            <small className="muted">Conceptual illustration, not experimental data</small>
-          </div>
-        </div>
-      </section>
-
-      {loading && <Loading rows={4} />}
+      <PageHeader eyebrow="FIREWISE" title="Fire-safety evidence for space exploration"
+        description="NASA's microgravity combustion investigations, organised so you can see what was tested, under which documented conditions, and where the evidence stops." />
+      {loading && <Loading rows={3} />}
       {error && <ErrorPanel error={error} onRetry={reload} />}
-      {s && (
-        <>
-          <h2>The evidence base at a glance</h2>
-          <div className="grid cols-3 section-gap">
-            <StatCard value={m.investigations.value} label="NASA PSI combustion investigations" evidence={m.investigations.evidence_id} />
-            <StatCard value={m.condition_records.value} label="Normalized condition records from 22 NASA experimental tables" evidence={m.condition_records.evidence_id} />
-            <StatCard value={m.unique_individual_tests.value} label="Unique individual tests (duplicates excluded)" evidence={m.unique_individual_tests.evidence_id} />
-            <StatCard value={m.partial_gravity_records.value} label="Partial-gravity (lunar / Mars) records" evidence={m.partial_gravity_records.evidence_id} highlight />
-            <StatCard value={m.anomaly_flags.value} label="Defects found in NASA source tables — flagged, not hidden" evidence={m.anomaly_flags.evidence_id} />
-            <StatCard value={m.report_pages_indexed.value} label="NASA report pages searchable by the Copilot" />
-          </div>
+      {summary && (
+        <Metrics items={[
+          { value: m("investigations").value, label: "NASA combustion investigations", evidence: m("investigations").evidence_id },
+          { value: m("unique_individual_tests").value, label: "individual tests (duplicates excluded)", evidence: m("unique_individual_tests").evidence_id,
+            tip: `${m("condition_records").value.toLocaleString()} condition records in 22 NASA tables, some summarising several tests.` },
+          { value: summary.scenario_counts.exploration_envelope, label: "tests in the 30–36% O₂ / 8.2–10.2 psia habitat window", evidence: "agg:scenario:exploration_envelope", alert: true },
+          { value: m("partial_gravity_records").value, label: "partial-gravity (Moon/Mars) records", evidence: m("partial_gravity_records").evidence_id, alert: true },
+        ]} />
+      )}
 
-          <h2>Key findings</h2>
-          <p className="lede">Each finding is computed from the database and links to the records behind it.</p>
-          <div className="grid cols-3 section-gap">
-            {s.key_findings.map((k) => (
-              <div className="panel finding" key={k.id}>
-                <TierTag tier={k.tier} />
-                <h3>{k.title}</h3>
-                <p className="muted">{k.statement}</p>
-                <div className="ev-row">{k.evidence_ids.map((id) => <EvidenceLink key={id} id={id} />)}</div>
-              </div>
-            ))}
-          </div>
+      <h3 className="section-title">Start here</h3>
+      <div className="task-grid">
+        {TASKS.map(({ page, icon: Icon, title, text }) => (
+          <button key={page} className="task" onClick={() => onNavigate(page)}>
+            <Icon size={18} aria-hidden /><span><b>{title}</b><span className="muted small">{text}</span></span>
+            <ArrowRight size={16} className="task-arrow" aria-hidden />
+          </button>
+        ))}
+      </div>
 
-          <h2>Where the evidence sits</h2>
-          <div className="section-gap"><O2PressureChart /></div>
+      <div className="overview-cols">
+        <section>
+          <div className="section-head"><h3>Key findings</h3><button className="btn ghost sm" onClick={() => onNavigate("gaps")}>All research gaps <ArrowRight size={14} /></button></div>
+          {summary && (
+            <ul className="plain findings-compact">
+              {summary.key_findings.slice(0, 4).map((k) => (
+                <li key={k.id}>
+                  <div className="row-between"><b>{k.title}</b><TierTag tier={k.tier} /></div>
+                  <p className="muted small">{k.statement}</p>
+                  <div className="ev-row">{k.evidence_ids.slice(0, 2).map((id) => <EvidenceLink key={id} id={id} />)}</div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+        <section>
+          <div className="section-head"><h3>Recent activity</h3></div>
+          <RecentActivity onNavigate={onNavigate} />
+        </section>
+      </div>
 
-          <div className="grid cols-2 section-gap">
-            <ChartCard title="Records by fuel class">
-              <BarChart data={byFuel} layout="vertical" margin={{ left: 40, right: 24 }}>
-                <CartesianGrid stroke="rgba(169,176,192,.12)" horizontal={false} />
-                <XAxis type="number" allowDecimals={false} {...axis} />
-                <YAxis type="category" dataKey="name" width={170} {...axis} />
-                <Tooltip {...tooltipStyle} />
-                <Bar dataKey="value" name="Records" fill="#3987e5" radius={[0, 4, 4, 0]} isAnimationActive={false} />
-              </BarChart>
-            </ChartCard>
-            <ChartCard title="What each fuel class documents (chamber O₂ / pressure)">
-              <BarChart data={doc} layout="vertical" margin={{ left: 40, right: 24 }} stackOffset="expand">
-                <defs>
-                  <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                    <rect width="6" height="6" fill="#1b2232" /><line x1="0" y1="0" x2="0" y2="6" stroke="#5b6475" strokeWidth="2" />
-                  </pattern>
-                </defs>
-                <CartesianGrid stroke="rgba(169,176,192,.12)" horizontal={false} />
-                <XAxis type="number" tickFormatter={(v) => `${Math.round(v * 100)}%`} {...axis} />
-                <YAxis type="category" dataKey="name" width={170} {...axis} />
-                <Tooltip {...tooltipStyle} formatter={(v, name) => [v.toLocaleString(), name]} />
-                <Legend wrapperStyle={{ fontSize: 12, color: "#A9B0C0" }} />
-                <Bar dataKey="both" stackId="d" name="O₂ and pressure" fill="#86b6ef" isAnimationActive={false} />
-                <Bar dataKey="o2_only" stackId="d" name="O₂ only" fill="#3987e5" isAnimationActive={false} />
-                <Bar dataKey="p_only" stackId="d" name="Pressure only" fill="#1c5cab" isAnimationActive={false} />
-                <Bar dataKey="neither" stackId="d" name="Neither documented" fill="url(#hatch)" isAnimationActive={false} />
-              </BarChart>
-            </ChartCard>
-          </div>
-
-          <h2>Featured investigations</h2>
-          <div className="grid cols-4 section-gap">
-            {featured.map((e) => <ExperimentCard key={e.id} experiment={e} showSummary onSelect={onOpenExperiment} />)}
-          </div>
-
-          <h2>Read this before drawing conclusions</h2>
-          <div className="panel section-gap">
-            <ul className="limits">{s.limitations.map((l) => <li key={l}>{l}</li>)}</ul>
-          </div>
-        </>
+      <Disclosure title="Where the evidence sits: chamber O₂ vs pressure for every documented record" hint="interactive chart">
+        <O2PressureChart height={380} />
+      </Disclosure>
+      {summary && (
+        <Disclosure title="Limitations of the data">
+          <ul className="limits">{summary.limitations.map((l) => <li key={l}>{l}</li>)}</ul>
+        </Disclosure>
       )}
     </>
   );

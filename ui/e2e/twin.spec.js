@@ -20,8 +20,8 @@ async function freshTwin(page, preset = "Sea-level cabin air") {
 
 test("every existing FIREWISE module still renders without errors", async ({ page }) => {
   const errs = consoleErrors(page);
-  for (const [route, text] of [["overview", "The evidence base at a glance"], ["experiments", "NASA combustion investigations"], ["scenarios", "Which NASA tests document"],
-    ["compare", "Compare investigations"], ["gaps", "Where NASA has"], ["insights", "Fire-safety findings"], ["assistant", "Ask about NASA combustion evidence"]]) {
+  for (const [route, text] of [["overview", "Start here"], ["experiments", "of 24 investigations"], ["compare", "Pick a preset or choose 2–4 investigations"],
+    ["scenarios", "Pick a habitat atmosphere"], ["gaps", "Key evidence gaps"], ["insights", "Key evidence gaps"], ["assistant", "Ask a scientific question"]]) {
     await page.goto(`/#/${route}`);
     await expect(page.getByText(text).first()).toBeVisible();
   }
@@ -48,7 +48,7 @@ test("3D habitat renders, responds to camera controls and zone selection by clic
   const visH = 2 * dist * Math.tan((42 / 2) * Math.PI / 180), visW = visH * (box.width / box.height);
   const px = box.x + box.width / 2 + ((0.1 * L - L / 2) / (visW / 2)) * (box.width / 2);
   await page.mouse.click(px, box.y + box.height / 2 + 6);
-  await expect(page.getByRole("heading", { name: /Zone Z1/ })).toBeVisible();
+  await expect(page.locator(".zone-line")).toContainText("Zone Z1");
   await expect(page.getByRole("button", { name: /Z1 Forward hatch/ })).toHaveAttribute("aria-pressed", "true");
   // orbit / zoom / pan do not throw
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
@@ -58,7 +58,7 @@ test("3D habitat renders, responds to camera controls and zone selection by clic
   for (const v of ["Top", "Inside", "3/4"]) await page.getByRole("button", { name: v, exact: true }).click();
   // overlays and airflow toggle
   await page.getByLabel("Environmental overlay").selectOption("temperature");
-  await expect(page.getByText(/Zone colour: Temperature/)).toBeVisible();
+  await expect(page.locator(".scene-legend")).toContainText("Temperature (°C)");
   await expect(page.getByText(/Model C bulk velocity/)).toBeVisible();
   await page.getByRole("checkbox", { name: "Airflow", exact: true }).uncheck();
   await expect(page.getByText(/Model C bulk velocity/)).toHaveCount(0);
@@ -67,24 +67,25 @@ test("3D habitat renders, responds to camera controls and zone selection by clic
 
 test("controls update the shared state; 3D and 2D views agree; invalid input is rejected", async ({ page }) => {
   await freshTwin(page);
-  await page.getByRole("button", { name: "Z3", exact: true }).click();
+  await page.locator(".zone-chip", { hasText: "Z3" }).click();
   await page.locator("#o2").fill("30");
   await page.locator("#p").fill("500");
   await expect(page.getByText(/Allowed 10\.0–200\.0 kPa/)).toBeVisible();          // rejected, not committed
   await page.locator("#p").fill("70.33");
-  await page.getByRole("tab", { name: /Engineering/ }).click();
-  await expect(page.getByText("70.33 kPa")).toBeVisible();
+  await page.getByRole("tab", { name: /2D engineering/ }).click();
+  await expect(page.getByText("70.33 kPa").first()).toBeVisible();
   await expect(page.getByText("Oxygen by zone (user-defined)")).toBeVisible();
-  await page.getByRole("tab", { name: /Habitat/ }).click();
+  await page.getByRole("tab", { name: /3D habitat/ }).click();
   await expect(page.locator("#o2")).toHaveValue("30");                         // configuration survives view switches
-  await expect(page.locator(".stat-tile").filter({ hasText: "Zone Z3 · O₂" })).toContainText("30%");
+  await expect(page.locator(".zone-line")).toContainText("O₂ 30%");
+  await expect(page.locator(".glance")).toContainText("30% O₂");
 });
 
 test("evidence counts come from the database and source rows open", async ({ page, request }) => {
   await freshTwin(page, "Sea-level cabin air");
   const presets = await (await request.get("/api/twin/environments/fwh-1/presets")).json();
   const ev = await (await request.post("/api/twin/evaluate", { data: { scenario: presets[0].scenario } })).json();
-  await page.getByRole("tab", { name: /Evidence/ }).click();
+  await page.getByRole("tab", { name: /NASA evidence/ }).click();
   const tile = page.locator(".stat-tile").filter({ hasText: "Exact matches" });
   await expect(tile.locator("strong")).toHaveText(String(ev.evidence.coverage.exact_matches));
   expect(ev.evidence.coverage.exact_matches).toBeGreaterThan(0);
@@ -99,7 +100,7 @@ test("evidence counts come from the database and source rows open", async ({ pag
 
 test("physics view shows units, assumptions, validation and unimplemented models", async ({ page }) => {
   await freshTwin(page);
-  await page.getByRole("tab", { name: /Physics/ }).click();
+  await page.getByRole("tab", { name: /Calculations/ }).click();
   await expect(page.getByRole("heading", { name: /Model B — Gas-mixture properties/ })).toBeVisible();
   await expect(page.getByText("19.224 kPa").or(page.getByText(/kPa/)).first()).toBeVisible();
   await expect(page.getByText("Missing inputs: surface_temperature_K")).toBeVisible();     // never assumed
@@ -130,7 +131,7 @@ test("scenarios: save, reload, duplicate, compare, history, simulation run, dele
   await expect(page.getByRole("heading", { name: "Scenario comparison" })).toBeVisible();
   await expect(page.locator("tr.differs").first()).toBeVisible();
   await expect(page.getByRole("heading", { name: /Version history/ })).toBeVisible();
-  await page.getByRole("tab", { name: /Physics/ }).click();
+  await page.getByRole("tab", { name: /Calculations/ }).click();
   await page.getByRole("button", { name: "Run & record simulation" }).click();
   await expect(page.locator("td").filter({ hasText: /^run_/ }).first()).toBeVisible();
   await page.getByRole("tab", { name: /Report/ }).click();
@@ -151,7 +152,8 @@ test("twin Copilot explains the active scenario without an API key", async ({ pa
   await expect(drawer.getByText(/physics models apply to this scenario/)).toBeVisible();
   await expect(drawer.locator(".tag.status").filter({ hasText: "Calculation" }).first()).toBeVisible();
   await expect(drawer.getByText(/Twin: Exploration atmosphere/)).toBeVisible();
-  await drawer.getByRole("button", { name: "What prevents us from predicting flame behavior?" }).click();
+  await drawer.getByLabel("Your question").fill("What prevents us from predicting flame behavior?");
+  await drawer.getByLabel("Your question").press("Enter");
   await expect(drawer.getByText(/flame behaviour cannot be predicted/)).toBeVisible();
 });
 
@@ -167,12 +169,15 @@ test("Copilot conversations: history is saved, chats switch, rename, delete; ans
   await page.locator(".chat-item").filter({ hasText: "Under what conditions did CFI-G" }).click();
   await expect(page.getByText(/CFI-G tests are marked as cool flames/).first()).toBeVisible();
   await expect(page.getByText(/short-lived inverse butane flame/)).toHaveCount(0);
-  // reload: still there
+  // reload: still there (the active conversation and the list)
   await page.reload();
   await expect(page.locator(".chat-item")).toHaveCount(2);
-  // the same question again is served from the cache
+  await expect(page.getByText(/CFI-G tests are marked as cool flames/).first()).toBeVisible();
+  // the same question in a new chat is served from the answer cache
+  await page.getByRole("button", { name: /New chat/ }).click();
   await page.getByRole("button", { name: "Under what conditions did CFI-G produce cool flames?", exact: true }).click();
   await expect(page.getByText("Cached answer").first()).toBeVisible();
+  await expect(page.locator(".chat-item")).toHaveCount(3);
   // rename and delete
   await page.getByRole("button", { name: /Rename What is test 21265C3/ }).click();
   await page.getByLabel("Conversation title").fill("Local test 21265C3");
@@ -180,7 +185,42 @@ test("Copilot conversations: history is saved, chats switch, rename, delete; ans
   await expect(page.locator(".chat-item").filter({ hasText: "Local test 21265C3" })).toBeVisible();
   await page.getByRole("button", { name: /Delete Local test 21265C3/ }).click();
   await page.getByRole("button", { name: "Delete", exact: true }).click();
-  await expect(page.locator(".chat-item")).toHaveCount(1);
+  await expect(page.locator(".chat-item")).toHaveCount(2);
+});
+
+test("navigation: six destinations, legacy links, progressive disclosure, mobile layout", async ({ page }) => {
+  await page.goto("/#/overview");
+  const nav = page.getByRole("navigation", { name: "Main navigation" });
+  await expect(nav.locator(".nav-link")).toHaveCount(6);
+  for (const [label, text] of [["Investigations", "of 24 investigations"], ["Scenario Explorer", "Pick a habitat atmosphere"], ["Research Gaps", "Key evidence gaps"], ["Copilot", "Ask a scientific question"], ["Overview", "Start here"]]) {
+    await nav.getByRole("button", { name: label }).click();
+    await expect(page.getByText(text).first()).toBeVisible();
+  }
+  // legacy routes land on their new homes, with the right nav item active
+  await page.goto("/#/compare");
+  await expect(nav.getByRole("button", { name: "Investigations" })).toHaveAttribute("aria-current", "page");
+  await page.goto("/#/insights");
+  await expect(nav.getByRole("button", { name: "Research Gaps" })).toHaveAttribute("aria-current", "page");
+  // advanced filters and the coverage map are collapsed until asked for
+  await page.goto("/#/experiments");
+  await expect(page.getByLabel("Facility")).toBeHidden();
+  await page.getByText(/More filters/).click();
+  await expect(page.getByLabel("Facility")).toBeVisible();
+  await page.goto("/#/gaps");
+  await expect(page.locator(".heat").first()).toBeHidden();
+  await page.getByText("Coverage map by fuel class, pressure and O₂").click();
+  await expect(page.locator(".heat").first()).toBeVisible();
+  // shortcuts on the overview work
+  await page.goto("/#/overview");
+  await page.getByRole("button", { name: /Check a habitat atmosphere/ }).click();
+  await expect(page.getByText("Pick a habitat atmosphere").first()).toBeVisible();
+  // phone width: no horizontal overflow on any destination
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const r of ["overview", "experiments/PSI-159", "compare", "scenarios", "twin/habitat", "gaps", "assistant"]) {
+    await page.goto(`/#/${r}`);
+    await page.waitForTimeout(800);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth), r).toBeLessThanOrEqual(390);
+  }
 });
 
 test("rendering performance on this machine (software WebGL: a lower bound)", async ({ page }) => {

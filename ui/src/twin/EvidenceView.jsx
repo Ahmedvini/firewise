@@ -58,7 +58,7 @@ export default function EvidenceView() {
       </div>
       <p className="muted small section-gap">Targets (experiment zone {tg.zone_id}): O₂ {tg.o2_pct}% ±{ev.tolerances.o2_pct} · pressure {tg.pressure_kPa} kPa ±{ev.tolerances.pressure_kPa}
         {ev.variables_enabled.includes("airflow_m_s") && ` · airflow ${tg.airflow_m_s ?? "not set"} m/s ±${ev.tolerances.airflow_m_s}`}
-        {ev.use_material && ` · material ${tg.fuel_class ?? "any"}${tg.material ? ` “${tg.material}”` : ""}`}. {ev.method} <span className="tag amber">{ev.label}</span></p>
+        {ev.use_material && ` · material ${tg.fuel_class ?? "any"}${tg.material ? ` “${tg.material}”` : ""}`}. {ev.method} <span className="tag amber wrap">{ev.label}</span></p>
 
       <div className="panel section-gap"><h3>Exact matches ({ev.exact.length})</h3><RecordTable items={ev.exact} onImport={t.importRecord} exact /></div>
       <div className="panel section-gap"><h3>Nearest documented records</h3>

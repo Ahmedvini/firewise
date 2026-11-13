@@ -1,9 +1,6 @@
 import { useMemo, useState } from "react";
-import SampleBanner from "../components/SampleBanner.jsx";
-import Header from "../components/Header.jsx";
 import { Loading, ErrorPanel } from "../components/States.jsx";
 import { EvidenceLink } from "../components/Evidence.jsx";
-import { TierTag } from "../components/Tags.jsx";
 import { useApi } from "../services/api.js";
 import { FUEL_LABEL } from "../data/constants.js";
 
@@ -29,6 +26,7 @@ function cellColor(n, max) {
   return RAMP[Math.min(RAMP.length - 1, Math.floor(t * RAMP.length))];
 }
 
+/** Coverage heatmaps (records by fuel class × chamber pressure × chamber O₂, per gravity level). Embedded in Research Gaps. */
 export default function GapMap({ onOpenExperiment }) {
   const { data, error, loading, reload } = useApi("/api/gaps");
   const [gravity, setGravity] = useState("microgravity");
@@ -52,19 +50,7 @@ export default function GapMap({ onOpenExperiment }) {
 
   return (
     <>
-      <SampleBanner danger>
-        A zero cell means NASA&apos;s PSI tables document no test there. It is a gap in evidence — not a statement that the condition is safe or unsafe.
-      </SampleBanner>
-      <Header eyebrow="Research Gap Map" title="Where NASA has — and has not — tested"
-        description="Each panel is one fuel class. Rows are chamber pressure, columns chamber (ambient) O₂; the last row and column hold records where that value is not documented. Cell shade = number of records (log scale). Hatched = none. The outlined cell is the 30–36% O₂ / 8.2–10.2 psia exploration envelope." />
-
-      <div className="grid cols-4 section-gap">
-        {data.headline.map((k) => (
-          <div className="panel finding" key={k.id}><TierTag tier={k.tier} /><h3>{k.title}</h3><p className="muted small">{k.statement}</p>
-            <div className="ev-row">{k.evidence_ids.slice(0, 2).map((id) => <EvidenceLink key={id} id={id} />)}</div></div>
-        ))}
-      </div>
-
+      <p className="muted small">Each panel is one fuel class: rows are chamber pressure, columns chamber (ambient) O₂; the last row and column hold records where that value is not documented. Shade = number of records (log scale); hatched = none; outlined = the 30–36% O₂ / 8.2–10.2 psia exploration envelope.</p>
       <div className="segmented gravity-tabs" role="tablist">
         {GRAVITY_TABS.map(([g, l]) => (
           <button key={g} role="tab" aria-selected={gravity === g} className={gravity === g ? "on" : ""} onClick={() => { setGravity(g); setPicked(null); }}>{l}</button>
@@ -123,10 +109,6 @@ export default function GapMap({ onOpenExperiment }) {
         </div>
       )}
 
-      <div className="panel section-gap">
-        <h3>Definitions</h3>
-        <dl>{Object.entries(data.definitions).map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
-      </div>
     </>
   );
 }

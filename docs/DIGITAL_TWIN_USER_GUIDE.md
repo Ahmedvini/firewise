@@ -1,8 +1,10 @@
 # FIREWISE Digital Twin — User Guide
 
-Open **Digital Twin** in the left navigation (`#/twin/habitat`). The workspace has three parts:
-- **Configuration panel** (left): every environmental input, each with its unit and a status tag.
-- **Six views** (tabs): Habitat, Engineering, Evidence, Physics, Scenarios, Report.
+Open **Digital Twin** in the navigation (`#/twin/habitat`). The workspace has four parts:
+- **At-a-glance strip** (top): the environment, the values you set, what NASA documents for them, and what is calculated.
+- **Main area:** the 3D habitat, or the 2D engineering dashboard (toggle; both show the same scenario).
+- **Control panel** (right): the essential inputs (preset, O₂, pressure, temperature, gravity, experiment), with zone conditions, sample and wall heat transfer, habitat and ventilation, trace gases and evidence matching under **Advanced**. Every input shows its unit and a status tag.
+- **Detail tabs** (below): NASA evidence, Calculations (the physics models), Scenarios and Report.
 - **Ask Copilot** (top right): a Copilot that knows the active scenario.
 
 All views show the same scenario. A change in the panel updates the 3D scene, the charts, the evidence, the physics and the report together.
@@ -24,13 +26,13 @@ All views show the same scenario. A change in the panel updates the 3D scene, th
    - Camera presets: 3/4, Side, Top and Inside.
    - Toggle the overlay (O₂ / temperature / airflow), the airflow arrows and the cutaway.
    - The legend says what each visual encodes. Zone colours are user-defined values. Arrows show an illustrative direction, with speed from Model C's computed bulk velocity; they are not a flow field.
-5. **Engineering view:**
+5. **2D engineering view** (main-area toggle):
    - zone charts (orange = user-defined, green = computed)
    - NASA records vs your scenario (blue = NASA)
    - evidence coverage
    - saved-version and session history
    - the outputs table and the assumptions in force
-6. **Evidence view:**
+6. **NASA evidence tab:**
    - exact NASA matches and the nearest documented records, with the distance per variable
    - which variables could not be compared
    - source rows (click to see the verbatim NASA row)
@@ -38,7 +40,7 @@ All views show the same scenario. A change in the panel updates the 3D scene, th
    - coverage: missing measurements, available observations, materials, outcomes, sources
 
    A grey row is evidence at a different gravity level.
-7. **Physics view:**
+7. **Calculations tab:**
    - each model's status (completed / unavailable with the missing inputs / rejected with the reason)
    - inputs with their provenance; outputs with unit and Verified/Validated tag
    - equations, assumptions, applicability and limitations
@@ -46,11 +48,11 @@ All views show the same scenario. A change in the panel updates the 3D scene, th
    - the models that are not implemented
 
    Save the scenario, then click **Run & record simulation** to store a reproducible run (input hash, engine version).
-8. **Scenarios view:**
+8. **Scenarios tab:**
    - Save and save new versions; a version history lets you restore older configurations.
    - Load, Duplicate and Delete (with confirmation).
    - Tick 2–4 scenarios and **Compare selected** to see configuration, evidence and physics side by side. Rows that differ are highlighted.
-9. **Report view:** the scientific report for the current configuration (saved or unsaved), downloadable as Markdown or JSON.
+9. **Report tab:** the scientific report for the current configuration (saved or unsaved), downloadable as Markdown or JSON.
 10. **Ask Copilot:** for example "Which NASA experiments are closest to this environment?", "Which variables are missing?" or "How reliable is the selected model?". Every claim is tagged (measured, calculation, model estimate, unknown, interpretation) and cites its evidence.
 
 ## Copilot conversations

@@ -1,5 +1,6 @@
 import { EvidenceLink } from "./Evidence.jsx";
 
+// A single key number (use <Metrics> for a row of them).
 export default function StatCard({ value, label, evidence, highlight = false }) {
   const isText = typeof value === "string";
   return (

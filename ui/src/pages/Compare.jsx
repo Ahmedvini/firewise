@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, LabelList } from "recharts";
-import SampleBanner from "../components/SampleBanner.jsx";
-import Header from "../components/Header.jsx";
+import { Disclosure } from "../components/ui.jsx";
 import ChartCard, { tooltipStyle } from "../components/ChartCard.jsx";
 import { EvidenceLink } from "../components/Evidence.jsx";
 import { Quantity, TierTag } from "../components/Tags.jsx";
@@ -45,23 +44,20 @@ export default function Compare({ onOpenExperiment }) {
 
   return (
     <>
-      <SampleBanner />
-      <Header eyebrow="Comparison Studio" title="Compare investigations"
-        description="Choose 2–4 investigations. Documented ranges are compared dimension by dimension; anything not documented is excluded from the comparison — never treated as zero. Similarity is condition overlap, not scientific equivalence." />
+      <p className="muted small compare-intro">Pick a preset or choose 2–4 investigations. Documented ranges are compared dimension by dimension; anything not documented is excluded — never treated as zero. Similarity means condition overlap, not scientific equivalence.</p>
 
       <div className="chips">
         {COMPARE_PRESETS.map((p) => (
           <button key={p.label} className={p.ids.join() === chosenIds.join() ? "on" : ""} onClick={() => setChosenIds(p.ids)}>{p.label}</button>
         ))}
       </div>
-      <details className="panel picker">
-        <summary>Choose investigations ({chosenIds.length} selected, max 4)</summary>
-        <div className="chips" style={{ marginTop: 12 }}>
+      <Disclosure title={`Choose investigations`} hint={`${chosenIds.length} selected · up to 4`}>
+        <div className="chips">
           {(list?.items ?? []).map((e) => (
             <button key={e.id} className={chosenIds.includes(e.id) ? "on" : ""} onClick={() => toggle(e.id)} title={e.title}>{e.acronym || e.id}</button>
           ))}
         </div>
-      </details>
+      </Disclosure>
 
       {!ready && <div className="panel empty">Select between two and four investigations to compare.</div>}
       {ready && loading && <Loading rows={6} />}

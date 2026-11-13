@@ -1,20 +1,19 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar.jsx";
-import EmbersBackground from "./components/EmbersBackground.jsx";
 import { EvidenceProvider } from "./components/Evidence.jsx";
 import Overview from "./pages/Overview.jsx";
 import AIAssistant from "./pages/AIAssistant.jsx";
-import Experiments from "./pages/Experiments.jsx";
-import Compare from "./pages/Compare.jsx";
-import Insights from "./pages/Insights.jsx";
+import Investigations from "./pages/Investigations.jsx";
 import Scenarios from "./pages/Scenarios.jsx";
-import GapMap from "./pages/GapMap.jsx";
-const DigitalTwin = lazy(() => import("./twin/DigitalTwin.jsx")); // three.js loads only when the twin opens
+import ResearchGaps from "./pages/ResearchGaps.jsx";
 import { TwinProvider } from "./twin/TwinContext.jsx";
 
-const PAGES = ["overview", "experiments", "scenarios", "twin", "compare", "gaps", "insights", "assistant"];
+const DigitalTwin = lazy(() => import("./twin/DigitalTwin.jsx")); // three.js loads only when the twin opens
 
-// Pages are linkable via the hash: #/compare, #/experiments/PSI-69
+// Routes. Old links keep working: #/compare → Investigations (compare), #/insights → Research gaps.
+const PAGES = ["overview", "experiments", "compare", "scenarios", "twin", "gaps", "insights", "assistant"];
+const NAV_OF = { compare: "experiments", insights: "gaps" };
+
 function readHash() {
   const [, page, id] = window.location.hash.split("?")[0].split("/");
   return { page: PAGES.includes(page) ? page : "overview", id: id ? decodeURIComponent(id) : null };
@@ -46,13 +45,17 @@ export default function App() {
     navigate("experiments", id);
   };
 
+  const investigations = (mode) => (
+    <Investigations mode={mode} onMode={(m) => navigate(m === "compare" ? "compare" : "experiments")} selectedId={selectedExperimentId}
+      onSelect={(id) => navigate("experiments", id)} onOpenExperiment={openExperiment} />
+  );
   const pages = {
     overview: <Overview onNavigate={navigate} onOpenExperiment={openExperiment} />,
-    experiments: <Experiments initialSelectedId={selectedExperimentId} onSelect={(id) => navigate("experiments", id)} />,
+    experiments: investigations("browse"),
+    compare: investigations("compare"),
     scenarios: <Scenarios onOpenExperiment={openExperiment} />,
-    compare: <Compare onOpenExperiment={openExperiment} />,
-    gaps: <GapMap onOpenExperiment={openExperiment} />,
-    insights: <Insights onNavigate={navigate} />,
+    gaps: <ResearchGaps onOpenExperiment={openExperiment} onNavigate={navigate} />,
+    insights: <ResearchGaps onOpenExperiment={openExperiment} onNavigate={navigate} />,
     assistant: <AIAssistant onOpenExperiment={openExperiment} />,
     twin: (
       <Suspense fallback={<div className="panel">Loading the Digital Twin…</div>}>
@@ -64,15 +67,13 @@ export default function App() {
   return (
     <EvidenceProvider>
       <TwinProvider>
-      <a href="#main" className="skip-link" onClick={(e) => { e.preventDefault(); document.getElementById("main")?.focus(); }}>Skip to content</a>
-      <div className="bg-glow" />
-      {page !== "twin" && <EmbersBackground />}{/* decorative animation off where the 3D view needs the GPU/CPU */}
-      <div className="app-shell">
-        <Sidebar activePage={page} onNavigate={navigate} />
-        <main className={`main-content ${page === "twin" ? "wide" : ""}`} key={page} id="main" tabIndex={-1}>
-          {pages[page]}
-        </main>
-      </div>
+        <a href="#main" className="skip-link" onClick={(e) => { e.preventDefault(); document.getElementById("main")?.focus(); }}>Skip to content</a>
+        <div className="app-shell">
+          <Sidebar activePage={NAV_OF[page] ?? page} onNavigate={navigate} />
+          <main className={`main-content ${page === "twin" ? "wide" : ""}`} key={page} id="main" tabIndex={-1}>
+            {pages[page]}
+          </main>
+        </div>
       </TwinProvider>
     </EvidenceProvider>
   );

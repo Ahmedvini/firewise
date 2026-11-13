@@ -120,7 +120,7 @@ export default function ChatPanel({ kind = "general", getContext, suggestions = 
   return (
     <div className={`chat-shell ${compact ? "compact" : ""}`}>
       <aside className="chat-list" aria-label="Conversations">
-        <button className="btn primary new-chat" onClick={newChat}><MessageSquarePlus size={16} /> New chat</button>
+        <button className="btn new-chat" onClick={newChat}><MessageSquarePlus size={16} /> New chat</button>
         {list === null && <p className="muted small">Loading conversations…</p>}
         {list?.length === 0 && <p className="muted small">No saved conversations yet. Your questions and answers are saved here.</p>}
         <ul>
@@ -135,8 +135,8 @@ export default function ChatPanel({ kind = "general", getContext, suggestions = 
               ) : confirmDelete === c.id ? (
                 <div className="confirm">
                   <span className="small">Delete “{c.title}”?</span>
-                  <button className="btn small-btn danger" onClick={() => remove(c.id)}>Delete</button>
-                  <button className="btn small-btn" onClick={() => setConfirmDelete(null)}>Keep</button>
+                  <button className="btn sm danger" onClick={() => remove(c.id)}>Delete</button>
+                  <button className="btn sm" onClick={() => setConfirmDelete(null)}>Keep</button>
                 </div>
               ) : (
                 <>
@@ -156,7 +156,7 @@ export default function ChatPanel({ kind = "general", getContext, suggestions = 
       </aside>
 
       <section className="chat-main">
-        <div className="panel chat" aria-live="polite">
+        <div className="chat" aria-live="polite">
           {conv && <div className="chat-head"><h3>{conv.title}</h3><span className="muted small">Saved conversation · {messages.length / 2 | 0} exchange{(messages.length / 2 | 0) === 1 ? "" : "s"}</span></div>}
           {messages.length === 0 && (
             <div className="msg system">{intro ?? <><b>Welcome.</b> Ask about NASA investigations, test conditions, habitat atmospheres or evidence gaps.</>}</div>
@@ -168,8 +168,9 @@ export default function ChatPanel({ kind = "general", getContext, suggestions = 
           <div ref={endRef} />
         </div>
         {error && <ErrorPanel error={error} onRetry={() => { setError(null); refreshList(); }} />}
-        {suggestions.length > 0 && (
-          <div className="chips">
+        {suggestions.length > 0 && messages.length === 0 && !busy && (
+          <div className="chips suggestions">
+            <span className="faint small">Try:</span>
             {suggestions.map((q) => <button key={q} onClick={() => send(q)} disabled={busy}>{q}</button>)}
           </div>
         )}
