@@ -9,7 +9,7 @@ _Updated 2026-11-13, evening. Concise and live; the newest state wins._
 | 1: Database | `load_db.py` builds `build/firewise.sqlite` deterministically (~14 s) with rules R1–R7; 1,233 NASA report pages indexed | `ff33402` |
 | 2+4: Backend + Copilot | FastAPI with 14 routes. Copilot: intent routing, evidence pack, Claude `claude-opus-5-5` with structured output, then a validator (citations must resolve; numbers must appear in the cited evidence), deterministic fallback, and risk / partial-gravity refusal | `5ca8db6`, `d3a0238` |
 | 3+5: Frontend, 7 modules | The team's FLARE UI imported (`8c32ee3`), rebranded FIREWISE and wired to the API. Placeholder data deleted. New Scenario Explorer and Research Gap Map | `eadc235` + follow-ups |
-| 6: Validation and packaging | Root README; `Dockerfile` (304 MB image, smoke-tested); `.env.example`; contract and changelog updated | this commit |
+| 6: Validation and packaging | Root README; `Dockerfile` (304 MB image, smoke-tested); `.env.example`; contract and changelog updated; 7-slide deck drafted from verified numbers and real screenshots | `3457f97` + this commit |
 
 ## Test results (latest run)
 - `pytest tests -q`: **27 passed** (11 DB acceptance + 16 API/Copilot).
@@ -43,7 +43,7 @@ _Updated 2026-11-13, evening. Concise and live; the newest state wins._
 
 ## Next actions
 1. Deploy the container and run the smoke test from a private window (P0 definition of done).
-2. Review the 7-slide deck and add team names and the demo URL.
+2. Review the 7-slide deck (https://claude.ai/artifact/Jw6EcFNhq49wpkmwT1315t; private until shared from its Share menu; downloads as .pptx/PDF) and fill in `[Team name]`, `[Demo URL]` and `[Repository URL]`.
 3. Optional: add a key, run the 35-item validation in LLM mode, and record the citation-validity and numeric-grounding rates.
 4. Optional P1: a Playwright smoke suite, code-splitting the 600 KB JS bundle, and an ACME frame strip.
 
