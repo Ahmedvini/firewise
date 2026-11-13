@@ -131,3 +131,12 @@ by the documented sort key with `row_key` as the tiebreak.
 | `stop_reason == "refusal"` (after fallback) | evidence-only response |
 
 The UI never crashes on any of these; the other 5 screens never call the LLM.
+
+
+---
+
+## Digital Twin and conversations (added 2026-11-13)
+- **Twin routes.** All twin routes are under `/api/twin/*`; the full reference is in `docs/DIGITAL_TWIN_API.md`. Scenario, run, history, comparison and report routes require `X-Workspace`.
+- **`/api/ask`.** It also accepts `twin: {scenario, selected_zone?, scenario_id?}` and returns `cached`.
+- **New claim tiers:** `calculation`, `model_prediction`, `unknown`.
+- **Conversations:** `/api/conversations` (list, create, get, rename via PATCH, delete) and `/api/conversations/{id}/messages`.

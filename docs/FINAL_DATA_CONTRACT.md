@@ -250,3 +250,23 @@ CREATE VIRTUAL TABLE passage USING fts5(evidence_id UNINDEXED, investigation_id 
 | BASS-II | `o2_final_pct`, `co2_initial/final_pct`, `co_initial/final_ppm` (measured) |
 | SAME / SAME-R | `weight_loss_mg_min`, `aging_s`, `rt_r0` (status reported; meaning unverified) |
 | Test-day tables | `flames_ignited` (count, reported) |
+
+
+---
+
+## Schema v2 addendum (2026-11-13): Digital Twin
+**Scientific database** (`build/firewise.sqlite`, deterministic, read-only), new tables loaded by `scripts/load_db.py`:
+| Table | Content | Source | Rule |
+|---|---|---|---|
+| `twin_environment(id, name, body_json)` | habitat templates (geometry, zones, slots, monitoring points, equipment) | `derived/twin/environments.json` | R8: zones tile `[0,1]` without gaps |
+| `twin_zone(environment_id, id, name, x_start, x_end, purpose)` | zone fractions along the habitat axis | same | CHECK `0 ≤ x_start < x_end ≤ 1` |
+| `twin_validation(id, model_id, output, kind, status, reference, record_json)` | physics model verification/validation records | `derived/twin/validation.json` (from `scripts/twin_validate.py` + `derived/twin/reference_data.json`) | R9: no record with status `failed` |
+
+**User-state store** (`$FIREWISE_STATE_DB`, default `state/twin_state.sqlite`, never committed). It holds no scientific records. Versioned migrations:
+1. scenarios, versions, simulation runs
+2. workspace owner hash
+3. Copilot conversations, messages and answer cache
+
+See `docs/DIGITAL_TWIN_ARCHITECTURE.md`.
+
+**Twin value statuses:** `user_defined`, `measured`, `derived`, `reported`, `specified`, `simulated`, `not_documented`. NASA statuses are kept when a record's conditions are imported. `null` is never zero.

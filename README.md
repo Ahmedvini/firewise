@@ -22,7 +22,15 @@ Every value keeps its measurement status: measured, derived, reported, set-point
 | Comparison Studio | 2–4 investigations side by side; incompatibilities; documented ranges | no |
 | Research Gap Map | Records by fuel class × chamber O₂ × pressure for each gravity level; "not documented" shown explicitly | no |
 | Findings | Evidence-graded findings: established, possible implication, or more research needed | no |
-| AI Copilot | Cited answers; a validator checks every citation and number; deterministic fallback | optional |
+| AI Copilot | Cited answers; a validator checks every citation and number; deterministic fallback; saved conversations (switch, rename, delete) and an answer cache | optional |
+| **Digital Twin** | 3D habitat (Three.js) + engineering dashboard + NASA evidence twin + physics twin (ideal gas, gas-mixture properties, bulk airflow, convection, conduction) + scenario save/compare/history + scientific report + twin-aware Copilot | no (Copilot optional) |
+
+Digital Twin documentation:
+- [architecture](docs/DIGITAL_TWIN_ARCHITECTURE.md)
+- [scientific models](docs/DIGITAL_TWIN_SCIENTIFIC_MODELS.md)
+- [validation](docs/DIGITAL_TWIN_VALIDATION.md)
+- [API](docs/DIGITAL_TWIN_API.md)
+- [user guide](docs/DIGITAL_TWIN_USER_GUIDE.md)
 
 ## Run locally
 Requirements: Python 3.12 and Node 18+.
@@ -40,7 +48,9 @@ For UI development with hot reload, run `cd ui && npm run dev`. The dev server p
 
 ## Tests
 ```bash
-.venv/bin/python -m pytest tests -q   # 27 tests: DB acceptance criteria 1-12, API semantics, Copilot validator and fallback
+.venv/bin/python -m pytest tests -q   # 73 tests: DB acceptance 1-12, API, Copilot, Digital Twin physics/evidence/API, conversations and cache
+python3 -I scripts/twin_validate.py . # regenerate the Digital Twin model validation records (derived/twin/validation.json)
+(cd ui && npm run build && npx playwright test)   # 9 browser tests (system Chrome; starts its own server on :8767)
 python3 -I scripts/verify_claims.py . # independent re-derivation of every quantitative claim -> derived/claims_check.json
 python3 -I scripts/checksum_data.py Data derived/data_sha256.txt --verify   # original NASA files unchanged
 ```
@@ -49,9 +59,11 @@ python3 -I scripts/checksum_data.py Data derived/data_sha256.txt --verify   # or
 ```bash
 python3 -I scripts/load_db.py . && (cd ui && npm ci && npm run build)
 docker build -t firewise .
-docker run -p 8000:8000 firewise                                # deterministic Copilot
-docker run -p 8000:8000 -e ANTHROPIC_API_KEY=... firewise       # with the language model
+docker run -p 8000:8000 -v firewise-state:/app/state firewise                          # deterministic Copilot
+docker run -p 8000:8000 -v firewise-state:/app/state -e ANTHROPIC_API_KEY=... firewise  # with the language model
 ```
+
+**User state.** Digital Twin scenarios, Copilot conversations and the answer cache live in `/app/state`, or `$FIREWISE_STATE_DB` outside Docker; the default there is `state/twin_state.sqlite`. Mount a volume to keep them. The scientific database stays read-only. Scenarios and conversations are scoped to a random per-browser workspace key (`X-Workspace`). That is isolation, not user authentication.
 
 The image contains only the API code, the built UI and the 15 MB SQLite database. It contains no raw NASA data and no secrets. It honours `$PORT`, so it runs on Render, Fly.io or Cloud Run as is.
 

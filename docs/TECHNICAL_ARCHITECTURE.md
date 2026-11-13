@@ -106,3 +106,15 @@ Git: initialise at the start of the hackathon. Commit `derived/` (small); add `s
 - Single-container fallback: `docker run` serves both the API and the static Next export on a laptop if
   hosting fails.
 - Secrets: `ANTHROPIC_API_KEY` only in API environment variables; never in the frontend or the repo.
+
+
+---
+
+## As built: Digital Twin (2026-11-13)
+The Digital Twin extends the same FastAPI app and the same UI.
+- **Back end:** `api/twin/*`.
+- **Front end:** `ui/src/twin/*`, using Three.js through React Three Fiber.
+- **Scientific database:** schema v2 adds the twin reference tables.
+- **User state:** a separate store with migrations.
+
+Diagram, decisions, state model and performance figures: `docs/DIGITAL_TWIN_ARCHITECTURE.md`.
