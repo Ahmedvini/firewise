@@ -155,3 +155,22 @@ def test_user_key_requests_are_rate_limited(monkeypatch):
     assert codes[:30] == [200] * 30 and codes[30] == 429
     r = c.post("/api/ask", json={"question": "Is there partial-gravity data in PSI?"})        # no key: not limited
     assert r.status_code == 200
+
+
+def test_rate_limit_identity_respects_trusted_hops(monkeypatch):
+    from api import ratelimit
+
+    class R:
+        def __init__(self, xff, peer="10.0.0.1", extra=None):
+            self.headers = {"x-forwarded-for": xff, **(extra or {})}
+            self.client = type("C", (), {"host": peer})()
+    monkeypatch.delenv("FIREWISE_TRUST_PROXY", raising=False)
+    assert ratelimit.client_id(R("6.6.6.6, 1.2.3.4")) == "10.0.0.1"                    # proxy headers ignored by default
+    monkeypatch.setenv("FIREWISE_TRUST_PROXY", "1")
+    monkeypatch.setenv("FIREWISE_TRUSTED_HOPS", "1")
+    assert ratelimit.client_id(R("6.6.6.6, 1.2.3.4")) == "1.2.3.4"                      # spoofed left entry ignored
+    monkeypatch.setenv("FIREWISE_TRUSTED_HOPS", "2")
+    assert ratelimit.client_id(R("6.6.6.6, 1.2.3.4, 172.16.0.9")) == "1.2.3.4"          # skip one internal proxy hop
+    assert ratelimit.client_id(R("1.2.3.4")) == "10.0.0.1"                               # chain shorter than configured
+    monkeypatch.setenv("FIREWISE_CLIENT_IP_HEADER", "cf-connecting-ip")
+    assert ratelimit.client_id(R("x", extra={"cf-connecting-ip": "8.8.4.4"})) == "8.8.4.4"

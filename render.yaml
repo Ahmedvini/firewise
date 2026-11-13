@@ -12,7 +12,9 @@ services:
     healthCheckPath: /api/health
     autoDeploy: true
     envVars:
-      - key: FIREWISE_TRUST_PROXY   # client IP for rate limits = right-most X-Forwarded-For (set by Render's proxy)
+      - key: FIREWISE_TRUST_PROXY   # rate-limit identity from X-Forwarded-For: entry parts[-FIREWISE_TRUSTED_HOPS]
+        value: "1"
+      - key: FIREWISE_TRUSTED_HOPS  # number of trusted proxies in front of the app; verify after deploy
         value: "1"
       - key: ANTHROPIC_API_KEY   # optional: enables language-model Copilot answers; leave empty for deterministic mode
         sync: false

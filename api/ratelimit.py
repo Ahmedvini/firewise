@@ -1,8 +1,12 @@
 """Small in-memory sliding-window rate limiter (per process) for abuse-prone endpoints.
 
-Client identity: the TCP peer address, or — when FIREWISE_TRUST_PROXY=1 (e.g. behind Render's proxy) — the
-RIGHT-most X-Forwarded-For entry, which is the address the trusted proxy itself saw (left-most entries are
-client-controlled and can be spoofed).
+Client identity (choose to match the real proxy chain in front of the app — verify after deploying):
+- default: the TCP peer address (request.client.host);
+- FIREWISE_CLIENT_IP_HEADER=<name>: a dedicated client-IP header set by the operator's edge proxy
+  (e.g. cf-connecting-ip); only safe when that proxy always overwrites it;
+- FIREWISE_TRUST_PROXY=1 with FIREWISE_TRUSTED_HOPS=N (default 1): the X-Forwarded-For entry appended by the
+  N-th trusted proxy counting from the right, i.e. parts[-N]. Entries further left are client-controlled.
+If the chain is misconfigured, all clients may share one bucket — fail-safe for abuse, but noisy; check it.
 """
 import os
 import threading
@@ -14,11 +18,19 @@ _hits = defaultdict(deque)
 
 
 def client_id(request):
+    header = os.environ.get("FIREWISE_CLIENT_IP_HEADER", "").strip().lower()
+    if header:
+        v = request.headers.get(header, "").strip()
+        if v:
+            return v
     if os.environ.get("FIREWISE_TRUST_PROXY") == "1":
-        xff = request.headers.get("x-forwarded-for", "")
-        parts = [p.strip() for p in xff.split(",") if p.strip()]
-        if parts:
-            return parts[-1]
+        try:
+            hops = max(1, int(os.environ.get("FIREWISE_TRUSTED_HOPS", "1")))
+        except ValueError:
+            hops = 1
+        parts = [p.strip() for p in request.headers.get("x-forwarded-for", "").split(",") if p.strip()]
+        if len(parts) >= hops:
+            return parts[-hops]
     return request.client.host if request.client else "unknown"
 
 
