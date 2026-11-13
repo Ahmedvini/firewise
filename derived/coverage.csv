@@ -1,0 +1,39 @@
+gravity_regime,fuel_class,o2_band_ambient,p_band,records,investigations
+microgravity,dust_aerosol,not documented,not documented,2,DAFT / DAFT-2:2
+microgravity,gaseous,20.5-23% (air),13.7-15.7 psia (~1 atm),63,ACME CFI-G:27; ACME Flame Design:26; ACME s-Flame:10
+microgravity,gaseous,20.5-23% (air),<8.2 psia,5,ACME CFI-G:5
+microgravity,gaseous,20.5-23% (air),>15.7 psia,24,ACME CFI-G:24
+microgravity,gaseous,23-30%,13.7-15.7 psia (~1 atm),17,ACME Flame Design:6; ACME CFI-G:6; ACME s-Flame:5
+microgravity,gaseous,30-36%,13.7-15.7 psia (~1 atm),10,ACME CFI-G:4; ACME Flame Design:3; ACME s-Flame:3
+microgravity,gaseous,30-36%,<8.2 psia,10,ACME CFI-G:10
+microgravity,gaseous,<20.5%,13.7-15.7 psia (~1 atm),47,ACME Flame Design:45; ACME CFI-G:2
+microgravity,gaseous,>36%,10.2-13.7 psia,42,ACME CFI-G:22; ACME Flame Design:20
+microgravity,gaseous,>36%,13.7-15.7 psia (~1 atm),95,ACME Flame Design:51; ACME CFI-G:44
+microgravity,gaseous,>36%,<8.2 psia,10,ACME CFI-G:10
+microgravity,gaseous,>36%,>15.7 psia,81,ACME Flame Design:56; ACME CFI-G:25
+microgravity,gaseous,not documented,13.7-15.7 psia (~1 atm),69,ACME Flame Design:69
+microgravity,gaseous,not documented,<8.2 psia,67,ACME CFI-G:40; ACME Flame Design:27
+microgravity,gaseous,not documented,>15.7 psia,138,ACME CFI-G:114; ACME Flame Design:24
+microgravity,gaseous,not documented,not documented,499,SPICE:435; ACME CLD Flame:32; ACME E-FIELD Flames:20; SLICE:12
+microgravity,liquid_droplet,20.5-23% (air),10.2-13.7 psia,15,FLEX:11; CFI:4
+microgravity,liquid_droplet,20.5-23% (air),13.7-15.7 psia (~1 atm),59,FLEX:34; CFI:25
+microgravity,liquid_droplet,20.5-23% (air),<8.2 psia,3,CFI:3
+microgravity,liquid_droplet,20.5-23% (air),>15.7 psia,37,CFI:28; FLEX:9
+microgravity,liquid_droplet,23-30%,10.2-13.7 psia,35,FLEX:35
+microgravity,liquid_droplet,23-30%,13.7-15.7 psia (~1 atm),9,FLEX:9
+microgravity,liquid_droplet,30-36%,10.2-13.7 psia,17,FLEX:17
+microgravity,liquid_droplet,30-36%,13.7-15.7 psia (~1 atm),7,FLEX:7
+microgravity,liquid_droplet,<20.5%,10.2-13.7 psia,39,FLEX:39
+microgravity,liquid_droplet,<20.5%,13.7-15.7 psia (~1 atm),125,FLEX:111; CFI:14
+microgravity,liquid_droplet,<20.5%,8.2-10.2 psia,1,FLEX:1
+microgravity,liquid_droplet,<20.5%,>15.7 psia,5,CFI:5
+microgravity,liquid_droplet,<20.5%,not documented,1,FLEX:1
+microgravity,liquid_droplet,not documented,>15.7 psia,8,FLEX-2:8
+microgravity,smoke_source_nonflaming,not documented,not documented,117,SAME-R:109; SAME:8
+microgravity,solid,20.5-23% (air),not documented,52,BASS-II:41; Saffire-II:9; Saffire-I:2
+microgravity,solid,<20.5%,not documented,88,BASS-II:88
+microgravity,solid,not documented,not documented,124,BASS:122; Saffire-III:2
+microgravity,solid_emulating_gas_burner,20.5-23% (air),not documented,5,ACME BRE:5
+microgravity,solid_emulating_gas_burner,23-30%,not documented,15,ACME BRE:15
+microgravity,solid_emulating_gas_burner,30-36%,not documented,13,ACME BRE:13
+microgravity,solid_emulating_gas_burner,>36%,not documented,10,ACME BRE:10

@@ -1,0 +1,232 @@
+{
+ "id": "PSI-26",
+ "acronym": "BASS",
+ "title": "Burning and Suppression of Solids",
+ "doi": "10.60555/58h4-dy80",
+ "doi_url": "https://doi.org/10.60555/58h4-dy80",
+ "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+ "api_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-26",
+ "license": "CC0-1.0",
+ "project_type": "Microgravity Investigation",
+ "research_area": "Combustion Science",
+ "sub_research_area": "Spacecraft Fire Safety",
+ "platform": "International Space Station (ISS)",
+ "hardware": "Microgravity Science Glovebox",
+ "hardware_links": "https://www1.grc.nasa.gov/space/iss-research/msg/",
+ "managing_center": "Glenn Research Center (GRC)",
+ "dates": {
+  "start": "10-01-2009",
+  "end": "06-30-2013",
+  "psi_release": "30-Jun-2013",
+  "psi_modified": "19-Mar-2025"
+ },
+ "text": {
+  "objective": {
+   "value": "The two main objectives for BASS are to: 1.) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity. The relation between these can be investigated by observing flames burning for the longer times available in flight. Practical, realistic (thicker) fuels in typical geometries will be examined, including wake flames which have characteristics of a fire burning behind another object (for example, a fire burning in tight area which may not be easily accessible). 2.) Assess the effectiveness of an inert, gaseous extinguishing agent (similar to that used on ISS) in putting out flames over different materials, geometries, preheating, and flow.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-26.json#objective"
+  },
+  "hypothesis": {
+   "value": "BASS experiments were based on the hypothesis that materials in microgravity, with adequate ventilation, burn as well if not better than the same material in normal gravity with other conditions being identical (pressure, oxygen concentration, temperature, etc.) To test this hypothesis with any but the thinnest materials requires extended microgravity time – longer than available in drop towers or parabolic aircraft.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-26.json#hypothesis"
+  },
+  "approach": {
+   "value": "The experiment was conducted aboard the International Space Station (ISS) inside the Microgravity Glove Box (MSG). Custom-made fabric samples consisting of 75% cotton and 25% fiberglass (by mass) measuring were used as a fuel source as well as Nomex fabric and Ultem. A Kanthal wire (29-gage)igniter was used to initiate combustion at one end of the fabric. Airflow was controlled using a variable speed fan, with airflow speeds reaching as high as 40 cm/s. The airflow was directed along the fuel surface in either the opposed or concurrent direction. This investigation explored two primary air flow configurations; concurrent-flow and opposed-flow. With concurrent-flow air flows in the same direction as the flame spread and in opposed-flow air flows in the opposite direction of flame spread. Flames were observed in the top and edge profiles and data was collected on flame size, shape, color, spread rate, and potential flame quenching. The samples were placed in a small flow duct (76 mm x 76 mm cross section) that allowed for airflow across the fabric. Other sample shapes were utilized as well including spheres and cylinders.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-26.json#approach"
+  },
+  "research_impacts": {
+   "value": "Current NASA spacecraft materials selection is based on a standard test method (NASA–STD–6001 Test 1) that segregates material based on 1-g behavior without consideration of low gravity effects. A critical element of this understanding is the radiative heat emission from the flame. These results are used in first order models and predictions of heat release in spacecraft fires and as a means to extend heat release data from tests like the NASA cone calorimeter test (NASA–STD–6001 Test 2) to a performance-based material selection process. Using nitrogen as a flame suppressant in microgravity provides a direct link to current and planned extinguishment techniques. BASS results provide essential guidance to ground-based microgravity combustion research efforts. Detailed combustion models are validated using the simpler flow environment afforded by tests in microgravity. Once validated, they can be used to build more complex combustion models needed to capture the important details of flames burning in normal gravity. These models have wide applicability to the general understanding of many terrestrial combustion problems and will guide novel spacecraft design and ensure the safety of future crewed missions.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-26.json#researchImpacts"
+  },
+  "proposal_title": {
+   "value": "",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-26.json#proposalTitle"
+  }
+ },
+ "publications": [
+  {
+   "title": "The Microgravity Science Glovebox as a Platform for Exploration Research on the International Space Station",
+   "authors": "Spivey Reggie, Luz Paul",
+   "doi": "10.2514/6.2006-941",
+   "status": "published"
+  },
+  {
+   "title": "Opposed-flow flame spread: A comparison of microgravity and normal gravity experiments to establish the thermal regime",
+   "authors": "Bhattacharjee Subrata, Laue Matthew, Carmignani Luca, Ferkul Paul, Olson Sandra",
+   "doi": "10.1016/j.firesaf.2015.11.011",
+   "status": "published"
+  },
+  {
+   "title": "Simplified model for predicting difference between flammability limits of a thin material in normal gravity and microgravity environments",
+   "authors": "Takahashi Shuhei, Ebisawa Tomoya, Bhattacharjee Subrata, Ihara Tadayoshi",
+   "doi": "10.1016/j.proci.2014.07.017",
+   "status": "published"
+  },
+  {
+   "title": "A Correlation for an Effective Flow Velocity for Capturing the Boundary Layer Effect in Opposed-Flow Flame Spread over Thin Fuels",
+   "authors": "S Bhattacharjee, R Nagarkar, Y Nakamura",
+   "doi": "10.1080/00102202.2014.900056",
+   "status": "published"
+  },
+  {
+   "title": "Radiation signature in opposed-flow flame spread",
+   "authors": "Bhattacharjee Subrata, Paolini Christopher P., Miller Fletcher, Nagarkar Rohit",
+   "doi": "10.1504/PCFD.2012.048249",
+   "status": "published"
+  },
+  {
+   "title": "OS24-1 The Effect of Boundary Layer on Blow-Off Extinction in Opposed-Flow Flame Spread: Results of Experiments and Simplified Analysis(invited,Scale modeling on solid combustion,OS24 Scale modeling,FLUID AND THERMODYNAMICS)",
+   "authors": "Bhattacharjee Subrata, Cartnignani Luca",
+   "doi": "10.1299/jsmeatem.2015.14.289",
+   "status": "published"
+  },
+  {
+   "title": "Role of Gas Radiation in the Mechanism of Opposed-Flow Flame Spread in a Microgravity Environment",
+   "authors": "JR Villaraza, L Carmignani, S Bhattacharjee",
+   "doi": "",
+   "status": "published"
+  },
+  {
+   "title": "Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment",
+   "authors": "P Ferkul, SL Olson, F Takahashi, M Endo, MC Johnston, JS Tien",
+   "doi": "",
+   "status": "published"
+  },
+  {
+   "title": "A novel apparatus for flame spread study",
+   "authors": "S Bhattacharjee, M Bundy, C Paolini, G Patel, W Tran.",
+   "doi": "10.1016/j.proci.2012.05.076",
+   "status": "published"
+  },
+  {
+   "title": "Opposed-Flow Flame Spread in a Narrow Channel Apparatus over Thin PMMA Sheets",
+   "authors": "GR Bornand, FJ Miller, JM Pepper, SL Olson, IS Wichman",
+   "doi": "",
+   "status": "published"
+  }
+ ],
+ "related_investigations": [
+  "PSI-107",
+  "PSI-25"
+ ],
+ "data_products": {
+  "n_files_listed": 212,
+  "listed_GB": 163.551,
+  "totalFileSize_GB": 163.551,
+  "listing_complete": true,
+  "folders": "Raw Data:173; Engineering Documents:24; Presentations:6; Science Documents:5; Reports:2; Experimental table:1; metadata:1",
+  "experimental_tables": [
+   "PSI-26_Experimental table_BASS.csv"
+  ]
+ },
+ "runs_summary": {
+  "n_runs": 122,
+  "fuel_or_material": {
+   "2 cm sphere": 18,
+   "PMMA sphere 2 cm": 10,
+   "SIBAL 2 cm": 9,
+   "PMMA 2 cm": 8,
+   "Japan Wax Candle   wake": 8,
+   "1 cm sphere": 6,
+   "pmma 2 cm": 5,
+   "PMMA sphere 1 cm": 4,
+   "Nomex blend 2 cm": 4,
+   "PMMA 1 cm": 4,
+   "PMMA slab": 4,
+   "candle": 3,
+   "2 cm sphere   wake ign": 3,
+   "pmma sphere": 3,
+   "pmma 1 cm": 3
+  },
+  "fuel_class": {
+   "solid": 122
+  },
+  "geometry_examples": [
+   "SIBAL 2 cm",
+   "PMMA sphere 2 cm",
+   "PMMA sphere 1 cm",
+   "SIBAL 1 cm",
+   "Nomex blend 2 cm",
+   "PMMA 2 cm",
+   "PMMA 1 cm",
+   "2 cm sphere"
+  ],
+  "diluents": {},
+  "gravity_regime": {
+   "microgravity": 122
+  },
+  "platform": [
+   "ISS-MSG"
+  ],
+  "granularity": {
+   "test": 122
+  },
+  "duplicates": 0,
+  "o2_pct": {
+   "min": null,
+   "max": null,
+   "n_documented": 0,
+   "n_runs": 122,
+   "statuses": {
+    "missing": 122
+   }
+  },
+  "pressure_atm": {
+   "min": null,
+   "max": null,
+   "n_documented": 0,
+   "n_runs": 122,
+   "statuses": {
+    "missing": 122
+   }
+  },
+  "flow_cm_s": {
+   "min": null,
+   "max": null,
+   "n_documented": 0,
+   "n_runs": 122,
+   "statuses": {
+    "missing": 122
+   }
+  }
+ },
+ "quality_flags": {
+  "n_table_flags": 123,
+  "by_severity": {
+   "limitation": 122,
+   "anomaly": 1
+  },
+  "by_code": {
+   "conditions_not_in_table": 122,
+   "malformed_date": 1
+  }
+ },
+ "local_files": [
+  {
+   "file": "2013_04_16_txt.zip",
+   "category": "crew-photo EXIF text (images absent)",
+   "match": "name"
+  }
+ ],
+ "curated_facts": [
+  {
+   "id": "F12",
+   "investigations": [
+    "PSI-106",
+    "PSI-107",
+    "PSI-26",
+    "PSI-25"
+   ],
+   "field": "msg_flow_duct",
+   "value": "SLICE: fan-driven flow duct with exchangeable burner tubes; SPICE: MSG flow duct with integrated nozzles and cameras; BASS: MSG, variable-speed fan up to 40 cm/s, Kanthal 29-gauge igniter; BASS-II: MSG forced flow with N2 vitiation. Same physical duct across all four: UNVERIFIED.",
+   "status": "reported",
+   "tag": "PSI-rec",
+   "source": "PSI-106/107/26/25 records (objective/approach)",
+   "confidence": "medium"
+  }
+ ]
+}

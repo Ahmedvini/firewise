@@ -1,0 +1,59 @@
+# FIREWISE — Change Log
+
+## 2026-11-13 ~19:30–20:15 EET: Final readiness audit
+**Not modified:**
+- `Data/` (checksums verified OK)
+- `sources/`
+- the pipeline scripts `harvest_psi`, `inventory_*`, `fetch_psi_files`, `build_runs`, `coverage`, `build_records`
+- the derived pipeline outputs `runs.*`, `coverage*`, `investigations*`, `psi_*`
+- the three background download processes (PIDs 197030, 197088, 241974), left running
+
+Pre-audit copies of every modified file are in `docs/_superseded/` and `derived/_superseded/`.
+
+### Added
+| File | Purpose |
+|---|---|
+| `scripts/verify_claims.py` | Recomputes every quantitative claim from `derived/runs.csv` and raw PSI tables (read-only) |
+| `derived/claims_check.json` | Output of the above; source of truth for numbers in docs and tests |
+| `docs/FINAL_READINESS_AUDIT.md` | Verdict, issues with root causes, claim-validation matrix, eligibility |
+| `docs/FINAL_DATA_CONTRACT.md` | Canonical schema, keys, enums, import process |
+| `docs/FINAL_API_CONTRACT.md` | Endpoints, schemas, error and fallback behaviour |
+| `docs/P0_ACCEPTANCE_CRITERIA.md` | Screen, backend, science, AI and frontend gates; demo format |
+| `docs/KICKOFF_CHECKLIST.md` | Environment, team, dependency graph, `load_db.py` spec and tests |
+| `docs/OPEN_DECISIONS.md` | Decisions requiring approval |
+| `docs/CHANGELOG.md` | This file |
+
+### Modified data artifacts (hand-curated, not pipeline output)
+| File | Change | Reason |
+|---|---|---|
+| `derived/curated_facts.json` | **F18** rewritten (envelope: 0 / 20 / 27 on an ambient-O₂ basis) | The earlier "35 runs" used a mislabeled pressure band (0.5–0.75 atm ≠ 8.2–10.2 psia) and counted 8 inverse-flame burner-stream O₂ rows |
+| | **F01** "never flown" → "absent from 333 documented tests; publication confirms" | Overstatement |
+| | **F02** "n-butane" → table term "30% butane"; added the 1 "no" and 171 blank | Precision |
+| | **F11** FLEX→CFI numbering → inference stated explicitly; confidence medium | Inference stated as fact |
+| | **F06** O₂ marked as derived from CO₂ | Precision |
+| | **added F19** (inverse-flame O₂ semantics), **F20** (duplicate rows in NASA tables) | New verified findings |
+| `derived/validation.jsonl` | **V02**, **V08**, **V11**, **V12** expected answers corrected | Same reasons as above |
+| | **added V33–V35** (inverse O₂, CFI duplicates, missing ≠ zero) | New traps |
+
+### Modified documents (minimal factual corrections + dated banner)
+| Document | Change |
+|---|---|
+| EXECUTIVE_SUMMARY | 35 → 0 envelope finding with bracket and challenge definitions; "test runs across 20 investigations" → "condition records (1,386 unique tests) from 19 flight investigations"; solids wording; pentane wording; FLEX/CFI wording; demo format; scenario naming |
+| DATASET_AUDIT | headline 5 corrected; CFI 87 rows (79 unique); E-FIELD 21 rows (20 unique) |
+| SCIENTIFIC_ANALYSIS | CFI row; FLEX→CFI paragraph; O₂ documented count split ambient vs burner stream; gap item 7 |
+| PROJECT_UNDERSTANDING | counts wording; solids wording |
+| RISKS_AND_VALIDATION | 35-item validation set; envelope numbers |
+| AI_ARCHITECTURE | false example sentence replaced by a verified one; banner: ranking and streaming superseded |
+| PRODUCT_DESIGN | banner (6 screens, Scenario Explorer); demo marked superseded; scenario and pentane lines corrected |
+| IMPLEMENTATION_ROADMAP | banner (D0, eligibility gate); demo deliverable → 7-slide deck / ≤ 30 s video |
+| TECHNICAL_ARCHITECTURE, DATA_ARCHITECTURE | banners pointing to the FINAL contracts |
+
+### Known items deliberately NOT changed (pending D0 at kickoff)
+- `scripts/build_runs.py`:
+  - add `row_key`, `test_label`, `row_granularity`, the `*_context` fields, `gravity_regime`/`platform` and
+    `duplicate_of`
+  - generic duplicate detection
+  - emit flags after the BRE split
+- `scripts/coverage.py`: the pressure-band label `0.5-0.75 atm (8.2-10.2 psia)` is wrong (the band is
+  7.35–11.0 psia), and inverse flames must be excluded. **`derived/coverage_summary.json` currently contains the
+  superseded value 35**; use `claims_check.json` until D0 is done.

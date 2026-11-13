@@ -1,0 +1,230 @@
+{
+ "id": "PSI-159",
+ "acronym": "ACME CFI-G",
+ "title": "Advanced Combustion via Microgravity Experiments / Cool Flames Investigation with Gases",
+ "doi": "10.60555/cyt1-kh64",
+ "doi_url": "https://doi.org/10.60555/cyt1-kh64",
+ "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+ "api_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-159",
+ "license": "CC0-1.0",
+ "project_type": "Microgravity Investigation",
+ "research_area": "Combustion Science",
+ "sub_research_area": "Flames of Gaseous Fuels",
+ "platform": "International Space Station (ISS)",
+ "hardware": "ACME, Combustion Integrated Rack (CIR)",
+ "hardware_links": "https://www1.grc.nasa.gov/space/iss-research/iss-fcf/combustion-science/acme/implementation/, https://www1.grc.nasa.gov/space/iss-research/iss-fcf/cir/",
+ "managing_center": "Glenn Research Center (GRC)",
+ "dates": {
+  "start": "",
+  "end": "",
+  "psi_release": "20-Nov-2025",
+  "psi_modified": "20-Nov-2025"
+ },
+ "text": {
+  "objective": {
+   "value": "1. Plan and support flight testing on the International Space Station (ISS). 2. Determine the conditions for which cool diffusion flames occur for propane, n-butane, and n-pentane; normal and inverse flames; and a broad range of Zst, Tad, and fluent flow rate. 3. Support the flight tests with advanced CFD simulations. 4. Identify or develop a chemical kinetics mechanism that yields good agreement between the CFD predictions and the ISS measurements. 5. Disseminate the results as widely as possible.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-159.json#objective"
+  },
+  "hypothesis": {
+   "value": "The hypotheses of this research are that testing aboard the ISS can demonstrate the following for the first time, contributing to an improved understanding of cool flame kinetics. 1. Steady-state cool diffusion flames on spherical porous burners. 2. Cool diffusion flames burning propane, n-butane, and n-pentane. 3. Cool diffusion flames for a wide range of Zst, Tad, and pressures. 4. Inverse cool diffusion flames. 5. Cool diffusion flames for which a decrease in fluent flow rate will cause extinction, whereas an increase will cause a transition to a hot diffusion flame, with oscillation possible between hot and cool flames.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-159.json#hypothesis"
+  },
+  "approach": {
+   "value": "Perform spherical diffusion flame tests aboard the International Space Station. Consider multiple fuels, a range of reactant dilutions, flow rates, and pressures for normal and inverse convection directions. Observe the flames with a broad suite of cameras, radiometers, photomultiplier tubes, and thermocouples.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-159.json#approach"
+  },
+  "research_impacts": {
+   "value": "Combustion provides 86% of the world’s energy and an even higher fraction of the energy used for transportation. The internal combustion engines used for transportation generally have thermal efficiencies of 38% or lower because of thermal losses. These efficiencies may increase to 60% if future engines can take advantage of ultra-lean combustion. However, this progress is being impeded by the limited understanding of the chemistry of cool flames. Research into cool diffusion flames (whose peak temperatures are 500 – 1000 K) has grown exponentially since they were discovered in 2012. The measurements performed for this project will help to test and advance cool flame kinetics mechanisms. This should facilitate the development of more efficient internal combustion engines.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-159.json#researchImpacts"
+  },
+  "proposal_title": {
+   "value": "ISS: Collaborative Research: Spherical Cool Diffusion Flames Burning Gaseous Fuels",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-159.json#proposalTitle"
+  }
+ },
+ "publications": [
+  {
+   "title": "Spherical gas-fueled cool diffusion flames",
+   "authors": "Kim Minhyeng, Waddell Kendyl A., Sunderland Peter B., Nayagam Vedha, Stocker Dennis P., Dietrich Daniel L., Ju Yiguang, Williams Forman A., Irace Phillip, Axelbaum Richard L.",
+   "doi": "10.1016/j.proci.2022.07.015",
+   "status": "published"
+  },
+  {
+   "title": "Cool diffusion flames in a stably stratified stagnation flow",
+   "authors": "Waddell Kendyl A., Lee Han Ju, Nayagam Vedha, Axelbaum Richard L., Sunderland Peter B.",
+   "doi": "10.1016/j.combustflame.2023.112852",
+   "status": "published"
+  }
+ ],
+ "related_investigations": [],
+ "data_products": {
+  "n_files_listed": 3756,
+  "listed_GB": 2085.592,
+  "totalFileSize_GB": 2085.592,
+  "listing_complete": true,
+  "folders": "Raw Data:3749; Experimental table:2; Representative Image(s):2; Engineering Documents:1; Reports:1; metadata:1",
+  "experimental_tables": [
+   "PSI-159_Experimental table_CFI-G_Normal Flames.csv",
+   "PSI-159_Experimental table_CFI-G_Inverse Flames.csv"
+  ]
+ },
+ "runs_summary": {
+  "n_runs": 333,
+  "fuel_or_material": {
+   "ethane": 67,
+   "propane": 63,
+   "butane": 58,
+   "30% butane": 52,
+   "30% propane": 36,
+   "50% butane": 30,
+   "30% ethane": 27
+  },
+  "fuel_class": {
+   "gaseous": 333
+  },
+  "geometry_examples": [
+   "porous spherical burner"
+  ],
+  "diluents": {
+   "N2": 333
+  },
+  "gravity_regime": {
+   "microgravity": 333
+  },
+  "platform": [
+   "ISS-CIR"
+  ],
+  "granularity": {
+   "test": 333
+  },
+  "duplicates": 0,
+  "o2_pct": {
+   "min": 12.0,
+   "max": 85.0,
+   "n_documented": 333,
+   "n_runs": 333,
+   "statuses": {
+    "specified": 154,
+    "measured": 179
+   }
+  },
+  "pressure_atm": {
+   "min": 0.4889,
+   "max": 3.2666,
+   "n_documented": 333,
+   "n_runs": 333,
+   "statuses": {
+    "reported": 333
+   }
+  },
+  "flow_cm_s": {
+   "min": null,
+   "max": null,
+   "n_documented": 0,
+   "n_runs": 333,
+   "statuses": {
+    "missing": 333
+   }
+  }
+ },
+ "quality_flags": {
+  "n_table_flags": 487,
+  "by_severity": {
+   "note": 487
+  },
+  "by_code": {
+   "approximate_value": 333,
+   "burner_stream_o2": 154
+  }
+ },
+ "local_files": [
+  {
+   "file": "PSI-159_Raw Data_21265C3_ACME.zip",
+   "category": "raw camera frames + frame index",
+   "match": "name"
+  },
+  {
+   "file": "PSI-159_Raw Data_ACME_21265H1.mdipsug",
+   "category": "frame index (frames absent)",
+   "match": "name"
+  }
+ ],
+ "curated_facts": [
+  {
+   "id": "F01",
+   "investigations": [
+    "PSI-159"
+   ],
+   "field": "fuels_planned_vs_tested",
+   "value": "Planned (PSI-159 objective text): propane, n-butane, n-pentane. Documented tests (333 rows in the two PSI CFI-G tables): ethane, propane, butane (pure, 30%, 50% in N2); pentane appears in no table row. 'Never flown' is an inference supported by Kim et al. 2023, not by PSI data alone.",
+   "status": "reported",
+   "tag": "PSI-rec + PSI-tab",
+   "source": "sources/psi_api/PSI-159.json#objective; sources/psi_files/PSI-159/Experimental table/*.csv (Fuel column)",
+   "confidence": "high"
+  },
+  {
+   "id": "F02",
+   "investigations": [
+    "PSI-159"
+   ],
+   "field": "cool_flame_conditions",
+   "value": "7 normal-flame tests marked 'cool flame = yes' (labels PCI-A..G): all '30% butane' in the PSI table (n-butane per Kim et al. 2023), X_O2 0.385-0.399 (measured, before/after test), 'approx p (bar)' = 2.0266 (reported, approximate). 1 normal-flame test marked 'no, PCI-hot'; 171 normal-flame rows leave the column blank (not recorded, NOT 'no').",
+   "status": "measured",
+   "tag": "PSI-tab",
+   "source": "sources/psi_files/PSI-159/Experimental table/PSI-159_Experimental table_CFI-G_Normal Flames.csv",
+   "locator": "column 'Cool flame?'",
+   "confidence": "high",
+   "corroboration": "Kim et al., Proc. Combust. Inst. 39 (2023) 1647 - https://drum.lib.umd.edu/items/9ab92529-d125-4385-993b-6e65a8479831"
+  },
+  {
+   "id": "F03",
+   "investigations": [
+    "PSI-159"
+   ],
+   "field": "local_raw_data_conditions",
+   "value": "Local Data/PSI-159_Raw Data_21265C3_ACME.zip = test 21265C3: inverse flame, burner O2 stream X_O2 0.50 into butane/N2 ambient (X_fuel 0.058), approx 3.3 bar, hot ignition yes, ~2 s, self-extinguished, Tad 2320 K. 21265H1: same at X_O2 0.40, ~1 s.",
+   "status": "reported",
+   "tag": "PSI-tab",
+   "source": "PSI-159_Experimental table_CFI-G_Inverse Flames.csv",
+   "locator": "Test = '21265 C3', '21265 H1'",
+   "confidence": "high"
+  },
+  {
+   "id": "F10",
+   "investigations": [
+    "PSI-10",
+    "PSI-20",
+    "PSI-21",
+    "PSI-22",
+    "PSI-23",
+    "PSI-159"
+   ],
+   "field": "acme_shared_hardware",
+   "value": "ACME insert in the Combustion Integrated Rack: ~100 L constant-volume chamber, mass-flow controllers, retracting resistively-heated igniter, 12-bit 1360x1024 colour camera with filter wheel, intensified OH*/CH2O cameras, radiometers, PMTs, thermocouple rake, SiC fibres, gas chromatograph.",
+   "status": "reported",
+   "tag": "Lit",
+   "source": "https://www.nasa.gov/wp-content/uploads/2025/07/advanced-combustion-via-microgravity-experiments-acme.pdf ; NTRS 20210021781",
+   "confidence": "medium",
+   "local_corroboration": "Data/PSI-159 frames are 1360x1024 BayerRG12 (12-bit), consistent with the colour camera; Data/ACME_drawings_igniter.zip = PSI-23 Engineering Documents (name+size match).",
+   "primary_source": "PSI-23 Engineering Documents: ACME_drawings_burners/data_camera/analog_camera/diagnostic_system/avionics_package/igniter zips (derived/psi_files.csv)"
+  },
+  {
+   "id": "F19",
+   "investigations": [
+    "PSI-10",
+    "PSI-159"
+   ],
+   "field": "inverse_flame_o2_semantics",
+   "value": "In ACME Flame Design and CFI-G inverse flames the XO2 column is the O2 mole fraction of the oxidizer stream issued from the burner into a fuel/N2 ambient; it is NOT the chamber atmosphere and must never be compared with a habitat atmosphere. 274 such rows (Flame Design 120, CFI-G 154).",
+   "status": "reported",
+   "tag": "PSI-tab + PSI-rec",
+   "source": "PSI-10/PSI-159 'Inverse' experimental tables (columns XO2, Xf before/after test)",
+   "confidence": "high"
+  }
+ ]
+}

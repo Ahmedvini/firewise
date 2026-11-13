@@ -1,0 +1,185 @@
+{
+ "id": "PSI-106",
+ "acronym": "SLICE",
+ "title": "Structure and Liftoff In Combustion Experiment",
+ "doi": "10.60555/pm12-rg61",
+ "doi_url": "https://doi.org/10.60555/pm12-rg61",
+ "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-106",
+ "api_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-106",
+ "license": "CC0-1.0",
+ "project_type": "Microgravity Investigation",
+ "research_area": "Combustion Science",
+ "sub_research_area": "",
+ "platform": "International Space Station (ISS)",
+ "hardware": "",
+ "hardware_links": "",
+ "managing_center": "Glenn Research Center (GRC)",
+ "dates": {
+  "start": "",
+  "end": "",
+  "psi_release": "18-Sep-2024",
+  "psi_modified": "06-Feb-2025"
+ },
+ "text": {
+  "objective": {
+   "value": "Objective: The objective of this investigation is to better understand the structure and stability of laminar diffusion flames in microgravity. Specific objectives of this investigation were: 1. To investigate the structure of laminar diffusion flames in microgravity to understand the stabilizing mechanisms at the flames base. 2. Determine the liftoff velocity limits for different fuels and burner diameters. 3. Evaluate the impact of fuel dilution with nitrogen on soot formation and flame stability. 4. Quantify the effects of microgravity on flame length and radiative heat loss compared to normal gravity conditions. 5. Validate numerical models for flame dynamics, soot production, and thermal radiation in non-premixed flames.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-106.json#objective"
+  },
+  "hypothesis": {
+   "value": "The hypothesis is that the structure and stability of laminar diffusion flames in microgravity are significantly influenced by burner diameter, coflow velocity, and fuel composition and are fundamentally different than flames observed on Earth.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-106.json#hypothesis"
+  },
+  "approach": {
+   "value": "The SLICE apparatus consisted of a fan-driven flow duct, exchangeable burner tubes, and integrated sensors to measure flow rates and temperature. This setup used several fuels such as methane, ethylene, and nitrogen-diluted mixtures. Flames were then manually ignited and observed under controlled coflow air conditions. A high resolution camera captured still images while sensor data was overlaid on these images. Calibration tests for airflow velocity, soot measurement, and the fans were conducted to ensure the accuracy of the results. More than 4,000 high-resolution images were captured across 13 testing experiments. Data was then analyzed to correlate flame structure with stability with flow dynamics and fuel properties.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-106.json#approach"
+  },
+  "research_impacts": {
+   "value": "1. Improved numerical models for flame behavior lead to more efficient combustion technologies on Earth. 2. Understanding soot formation aids in designing combustion systems with minimum emissions. 3. Insights into flame stability and behavior to enhance fire safety. 4. Findings will inform the development of cleaner, more efficient engines and industrial burners.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-106.json#researchImpacts"
+  },
+  "proposal_title": {
+   "value": "",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-106.json#proposalTitle"
+  }
+ },
+ "publications": [
+  {
+   "title": "A computational and experimental study of coflow laminar methane/air diffusion flames: Effects of fuel dilution, inlet velocity, and gravity",
+   "authors": "Cao S., Ma B., Bennett B.A.V., Giassi D., Stocker D.P., Takahashi F., Long M.B., Smooke M.D.",
+   "doi": "10.1016/j.proci.2014.05.138",
+   "status": "published"
+  },
+  {
+   "title": "A Combined Experimental and Computational Study of Soot Formation in Normal and Microgravity Conditions",
+   "authors": "Dobbins Richard R., Tinjero Jesse, Squeo Joseph, Zhao Xinyu, Hall Robert J., Colket Meredith B., Long Marshall B., Smooke Mitchell D.",
+   "doi": "10.1080/00102202.2022.2041621",
+   "status": "published"
+  },
+  {
+   "title": "Effects of Fuel Dilution and Gravity on Laminar Coflow Methane-Air Diffusion Flames: A Computational and Experimental Investigation",
+   "authors": "S Cao, BAV Bennett, B Ma, D Giassi, DP Stocker, F Takahashi, MB Long, MD Smooke",
+   "doi": "",
+   "status": "published"
+  },
+  {
+   "title": "An experimental and computational study of soot formation in a coflow jet flame under microgravity and normal gravity",
+   "authors": "Ma Bin, Cao Su, Giassi Davide, Stocker Dennis P., Takahashi Fumiaki, Bennett Beth Anne V., Smooke Mitchell D., Long Marshall B.",
+   "doi": "10.1016/j.proci.2014.05.064",
+   "status": "published"
+  },
+  {
+   "title": "Analysis of CH* concentration and flame heat release rate in laminar coflow diffusion flames under microgravity and normal gravity",
+   "authors": "Giassi Davide, Cao Su, Bennett Beth Anne V., Stocker Dennis P., Takahashi Fumiaki, Smooke Mitchell D., Long Marshall B.",
+   "doi": "10.1016/j.combustflame.2016.02.012",
+   "status": "published"
+  }
+ ],
+ "related_investigations": [
+  "PSI-107"
+ ],
+ "data_products": {
+  "n_files_listed": 2,
+  "listed_GB": 0.0,
+  "totalFileSize_GB": 72.915,
+  "listing_complete": false,
+  "folders": "Experimental table:1; metadata:1",
+  "experimental_tables": [
+   "PSI-106_Experimental table_Slice.csv"
+  ]
+ },
+ "runs_summary": {
+  "n_runs": 12,
+  "fuel_or_material": {
+   "100% CH4": 2,
+   "40% CH4 (balance N2) including 2 pyrometry calibration tests and 2 fan calibrations": 1,
+   "70% CH4 (balance N2) including 1 pyrometry calibration test": 1,
+   "20% C2H4 (balance N2)": 1,
+   "40% CH4 (balance N2)": 1,
+   "70% CH4 (balance N2) where the fuel bottle was not emptied (in contrast to most days)": 1,
+   "100% C2H6": 1,
+   " 100% CH4": 1,
+   " 20% C2H4 (balance N2)": 1,
+   "70% CH4 (balance N2) including 1 pyrometry calibration test and 2 fan calibrations": 1,
+   "100% C2H4": 1
+  },
+  "fuel_class": {
+   "gaseous": 12
+  },
+  "geometry_examples": [
+   "exchangeable burner tubes in fan-driven flow duct"
+  ],
+  "diluents": {},
+  "gravity_regime": {
+   "microgravity": 12
+  },
+  "platform": [
+   "ISS-MSG"
+  ],
+  "granularity": {
+   "test_date": 12
+  },
+  "duplicates": 0,
+  "o2_pct": {
+   "min": null,
+   "max": null,
+   "n_documented": 0,
+   "n_runs": 12,
+   "statuses": {
+    "missing": 12
+   }
+  },
+  "pressure_atm": {
+   "min": null,
+   "max": null,
+   "n_documented": 0,
+   "n_runs": 12,
+   "statuses": {
+    "missing": 12
+   }
+  },
+  "flow_cm_s": {
+   "min": null,
+   "max": null,
+   "n_documented": 0,
+   "n_runs": 12,
+   "statuses": {
+    "missing": 12
+   }
+  }
+ },
+ "quality_flags": {
+  "n_table_flags": 12,
+  "by_severity": {
+   "limitation": 12
+  },
+  "by_code": {
+   "conditions_not_in_table": 12
+  },
+  "record_level": [
+   "totalFileSize 73 GB but only 2 files listed"
+  ]
+ },
+ "local_files": [],
+ "curated_facts": [
+  {
+   "id": "F12",
+   "investigations": [
+    "PSI-106",
+    "PSI-107",
+    "PSI-26",
+    "PSI-25"
+   ],
+   "field": "msg_flow_duct",
+   "value": "SLICE: fan-driven flow duct with exchangeable burner tubes; SPICE: MSG flow duct with integrated nozzles and cameras; BASS: MSG, variable-speed fan up to 40 cm/s, Kanthal 29-gauge igniter; BASS-II: MSG forced flow with N2 vitiation. Same physical duct across all four: UNVERIFIED.",
+   "status": "reported",
+   "tag": "PSI-rec",
+   "source": "PSI-106/107/26/25 records (objective/approach)",
+   "confidence": "medium"
+  }
+ ]
+}

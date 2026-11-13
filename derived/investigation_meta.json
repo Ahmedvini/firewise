@@ -1,0 +1,194 @@
+[
+ {
+  "investigation_id": "PSI-10",
+  "data_class": "A",
+  "facility": "CIR",
+  "insert_hw": "ACME",
+  "primary_fuel_class": "gaseous",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-20",
+  "data_class": "C",
+  "facility": "CIR",
+  "insert_hw": "ACME",
+  "primary_fuel_class": "solid_emulating_gas_burner",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-21",
+  "data_class": "C",
+  "facility": "CIR",
+  "insert_hw": "ACME",
+  "primary_fuel_class": "gaseous",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-22",
+  "data_class": "C",
+  "facility": "CIR",
+  "insert_hw": "ACME",
+  "primary_fuel_class": "gaseous",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-23",
+  "data_class": "A",
+  "facility": "CIR",
+  "insert_hw": "ACME",
+  "primary_fuel_class": "gaseous",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-25",
+  "data_class": "A",
+  "facility": "MSG",
+  "insert_hw": "forced-flow duct (N2 vitiation)",
+  "primary_fuel_class": "solid",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-26",
+  "data_class": "A",
+  "facility": "MSG",
+  "insert_hw": "fan-driven flow duct",
+  "primary_fuel_class": "solid",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-39",
+  "data_class": "A",
+  "facility": "CIR",
+  "insert_hw": "MDCA",
+  "primary_fuel_class": "liquid_droplet",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-47",
+  "data_class": "A",
+  "facility": "ISS cabin",
+  "insert_hw": "TSI P-Trak / DustTrak",
+  "primary_fuel_class": "dust_aerosol",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-60",
+  "data_class": "D",
+  "facility": null,
+  "insert_hw": null,
+  "primary_fuel_class": null,
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-62",
+  "data_class": "D",
+  "facility": null,
+  "insert_hw": null,
+  "primary_fuel_class": null,
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-68",
+  "data_class": "C",
+  "facility": "CIR",
+  "insert_hw": "MDCA",
+  "primary_fuel_class": "liquid_droplet",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-69",
+  "data_class": "C",
+  "facility": "CIR",
+  "insert_hw": "MDCA",
+  "primary_fuel_class": "liquid_droplet",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-98",
+  "data_class": "A",
+  "facility": "Cygnus",
+  "insert_hw": "Saffire flow duct",
+  "primary_fuel_class": "solid",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-99",
+  "data_class": "C",
+  "facility": "Cygnus",
+  "insert_hw": "Saffire flow duct",
+  "primary_fuel_class": "solid",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-100",
+  "data_class": "A",
+  "facility": "Cygnus",
+  "insert_hw": "Saffire flow duct",
+  "primary_fuel_class": "solid",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-101",
+  "data_class": "A",
+  "facility": "MSG",
+  "insert_hw": "SAME smoke apparatus",
+  "primary_fuel_class": "smoke_source_nonflaming",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-102",
+  "data_class": "B",
+  "facility": "MSG",
+  "insert_hw": "SAME smoke apparatus",
+  "primary_fuel_class": "smoke_source_nonflaming",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-106",
+  "data_class": "C",
+  "facility": "MSG",
+  "insert_hw": "fan-driven flow duct",
+  "primary_fuel_class": "gaseous",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-107",
+  "data_class": "A",
+  "facility": "MSG",
+  "insert_hw": "flow duct with nozzles",
+  "primary_fuel_class": "gaseous",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-115",
+  "data_class": "B",
+  "facility": null,
+  "insert_hw": null,
+  "primary_fuel_class": null,
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-117",
+  "data_class": "B",
+  "facility": null,
+  "insert_hw": null,
+  "primary_fuel_class": null,
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-142",
+  "data_class": "D",
+  "facility": null,
+  "insert_hw": null,
+  "primary_fuel_class": null,
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ },
+ {
+  "investigation_id": "PSI-159",
+  "data_class": "A",
+  "facility": "CIR",
+  "insert_hw": "ACME",
+  "primary_fuel_class": "gaseous",
+  "source": "docs/DATASET_AUDIT.md \u00a73 (data class from PSI file listings); facility/insert from PSI record experimentHardware/approach text"
+ }
+]

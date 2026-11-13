@@ -1,0 +1,299 @@
+[
+ {
+  "id": "F01",
+  "investigations": [
+   "PSI-159"
+  ],
+  "field": "fuels_planned_vs_tested",
+  "value": "Planned (PSI-159 objective text): propane, n-butane, n-pentane. Documented tests (333 rows in the two PSI CFI-G tables): ethane, propane, butane (pure, 30%, 50% in N2); pentane appears in no table row. 'Never flown' is an inference supported by Kim et al. 2023, not by PSI data alone.",
+  "status": "reported",
+  "tag": "PSI-rec + PSI-tab",
+  "source": "sources/psi_api/PSI-159.json#objective; sources/psi_files/PSI-159/Experimental table/*.csv (Fuel column)",
+  "confidence": "high"
+ },
+ {
+  "id": "F02",
+  "investigations": [
+   "PSI-159"
+  ],
+  "field": "cool_flame_conditions",
+  "value": "7 normal-flame tests marked 'cool flame = yes' (labels PCI-A..G): all '30% butane' in the PSI table (n-butane per Kim et al. 2023), X_O2 0.385-0.399 (measured, before/after test), 'approx p (bar)' = 2.0266 (reported, approximate). 1 normal-flame test marked 'no, PCI-hot'; 171 normal-flame rows leave the column blank (not recorded, NOT 'no').",
+  "status": "measured",
+  "tag": "PSI-tab",
+  "source": "sources/psi_files/PSI-159/Experimental table/PSI-159_Experimental table_CFI-G_Normal Flames.csv",
+  "locator": "column 'Cool flame?'",
+  "confidence": "high",
+  "corroboration": "Kim et al., Proc. Combust. Inst. 39 (2023) 1647 - https://drum.lib.umd.edu/items/9ab92529-d125-4385-993b-6e65a8479831"
+ },
+ {
+  "id": "F03",
+  "investigations": [
+   "PSI-159"
+  ],
+  "field": "local_raw_data_conditions",
+  "value": "Local Data/PSI-159_Raw Data_21265C3_ACME.zip = test 21265C3: inverse flame, burner O2 stream X_O2 0.50 into butane/N2 ambient (X_fuel 0.058), approx 3.3 bar, hot ignition yes, ~2 s, self-extinguished, Tad 2320 K. 21265H1: same at X_O2 0.40, ~1 s.",
+  "status": "reported",
+  "tag": "PSI-tab",
+  "source": "PSI-159_Experimental table_CFI-G_Inverse Flames.csv",
+  "locator": "Test = '21265 C3', '21265 H1'",
+  "confidence": "high"
+ },
+ {
+  "id": "F04",
+  "investigations": [
+   "PSI-47",
+   "PSI-102",
+   "PSI-101"
+  ],
+  "field": "instrument_lineage",
+  "value": "DAFT/DAFT-2 (2005) qualified a modified TSI P-Trak (alcohol wick) against a DustTrak control using Arizona Road Dust, to mitigate risk for SAME, which relied on the P-Trak. Direction: DAFT -> SAME, not SAME -> DAFT.",
+  "status": "reported",
+  "tag": "PSI-rec + PSI-tab",
+  "source": "sources/psi_api/PSI-47.json#objective; PSI-47_Experimental table_DAFT.csv",
+  "confidence": "high"
+ },
+ {
+  "id": "F05",
+  "investigations": [
+   "PSI-101",
+   "PSI-102"
+  ],
+  "field": "sameR_motivation",
+  "value": "SAME thermal-precipitator TEM grids returned contaminated with unidentified particles; SAME-R re-flew to recover particle-size data.",
+  "status": "reported",
+  "tag": "PSI-rec",
+  "source": "sources/psi_api/PSI-101.json#objective",
+  "confidence": "high"
+ },
+ {
+  "id": "F06",
+  "investigations": [
+   "PSI-99"
+  ],
+  "field": "microgravity_vs_1g",
+  "value": "Saffire-II at 20 cm/s, ~21.5-22.1% O2 (derived from CO2): silicone samples 2-1..2-4 burn length ~0 in microgravity vs complete burning with acceleratory spread (or 0.6-1.2 mm/s) in 1g; SIBAL 2-5/2-6 burned 29 cm at 2.1-2.6 mm/s concurrent spread in microgravity.",
+  "status": "reported",
+  "tag": "PSI-tab",
+  "source": "PSI-99_Experimental table_SAFFIRE-2.csv",
+  "locator": "columns '?-g Burn Length', '1-g Burn Length', '1-g Spread Rate'",
+  "confidence": "medium",
+  "caveat": "1g test configuration not stated in the table; O2 derived from CO2 production (table Note 1)."
+ },
+ {
+  "id": "F07",
+  "investigations": [
+   "PSI-99",
+   "PSI-98"
+  ],
+  "field": "saffire_F1C1_meaning",
+  "value": "Camera folders 'F1C1/F1C2' = pre-test flow visualization (sample 1 / 2-1), cameras 1 and 2. The local SAFFIRE_II_F1C1-BIT_jpeg frames are therefore a flow-visualization record, not a burn.",
+  "status": "reported",
+  "tag": "PSI-tab + Inf",
+  "source": "PSI-99_Experimental table_SAFFIRE-2.csv rows F1C1/F1C2; PSI-98 table",
+  "confidence": "medium"
+ },
+ {
+  "id": "F08",
+  "investigations": [
+   "PSI-20"
+  ],
+  "field": "bre_quiescent_burning",
+  "value": "Quasi-steady burning observed in microgravity despite absence of air flow, notably in elevated-oxygen atmospheres considered for future spacecraft.",
+  "status": "reported",
+  "tag": "PSI-rec",
+  "source": "sources/psi_api/PSI-20.json#researchImpacts",
+  "confidence": "high"
+ },
+ {
+  "id": "F09",
+  "investigations": [
+   "PSI-20"
+  ],
+  "field": "bre_pressure",
+  "value": "Chamber pressures were varied between tests but are not identified in the PSI summary table.",
+  "status": "missing",
+  "tag": "PSI-tab",
+  "source": "PSI-20_Experimental table_ACME BRE.csv",
+  "locator": "Notes column",
+  "confidence": "high"
+ },
+ {
+  "id": "F10",
+  "investigations": [
+   "PSI-10",
+   "PSI-20",
+   "PSI-21",
+   "PSI-22",
+   "PSI-23",
+   "PSI-159"
+  ],
+  "field": "acme_shared_hardware",
+  "value": "ACME insert in the Combustion Integrated Rack: ~100 L constant-volume chamber, mass-flow controllers, retracting resistively-heated igniter, 12-bit 1360x1024 colour camera with filter wheel, intensified OH*/CH2O cameras, radiometers, PMTs, thermocouple rake, SiC fibres, gas chromatograph.",
+  "status": "reported",
+  "tag": "Lit",
+  "source": "https://www.nasa.gov/wp-content/uploads/2025/07/advanced-combustion-via-microgravity-experiments-acme.pdf ; NTRS 20210021781",
+  "confidence": "medium",
+  "local_corroboration": "Data/PSI-159 frames are 1360x1024 BayerRG12 (12-bit), consistent with the colour camera; Data/ACME_drawings_igniter.zip = PSI-23 Engineering Documents (name+size match).",
+  "primary_source": "PSI-23 Engineering Documents: ACME_drawings_burners/data_camera/analog_camera/diagnostic_system/avionics_package/igniter zips (derived/psi_files.csv)"
+ },
+ {
+  "id": "F11",
+  "investigations": [
+   "PSI-39",
+   "PSI-69"
+  ],
+  "field": "flex_cfi_lineage",
+  "value": "CFI's PSI table identifies tests by a column named 'Flex Number' with values 1206-1387; FLEX's table numbers tests 1-274. The shared column name and MDCA/CIR hardware support one MDCA test-number series; numbers 275-1205 (presumably FLEX-2, which has no per-test PSI table) are undocumented in PSI.",
+  "status": "reported",
+  "tag": "PSI-tab",
+  "source": "PSI-39_Experimental table_CFI.csv",
+  "locator": "column 'Flex Number'",
+  "confidence": "medium"
+ },
+ {
+  "id": "F12",
+  "investigations": [
+   "PSI-106",
+   "PSI-107",
+   "PSI-26",
+   "PSI-25"
+  ],
+  "field": "msg_flow_duct",
+  "value": "SLICE: fan-driven flow duct with exchangeable burner tubes; SPICE: MSG flow duct with integrated nozzles and cameras; BASS: MSG, variable-speed fan up to 40 cm/s, Kanthal 29-gauge igniter; BASS-II: MSG forced flow with N2 vitiation. Same physical duct across all four: UNVERIFIED.",
+  "status": "reported",
+  "tag": "PSI-rec",
+  "source": "PSI-106/107/26/25 records (objective/approach)",
+  "confidence": "medium"
+ },
+ {
+  "id": "F13",
+  "investigations": [
+   "PSI-22"
+  ],
+  "field": "efield_space_relevance",
+  "value": "PSI record: E-FIELD 'is not being conducted to serve any space applications'. Challenge page claims E-FIELD mimicked partial gravity - not stated in PSI-22 record.",
+  "status": "reported",
+  "tag": "PSI-rec",
+  "source": "sources/psi_api/PSI-22.json#researchImpacts",
+  "confidence": "high"
+ },
+ {
+  "id": "F14",
+  "investigations": [
+   "PSI-69"
+  ],
+  "field": "flex_outcomes",
+  "value": "274 tests: end mode extinction 186, disruption 61, completion 27; fuels heptane 117, methanol 157; diluents N2, N2+CO2, N2+He; pressures ~0.7 atm (103), ~1 atm (161), 2-3 atm (9).",
+  "status": "measured",
+  "tag": "PSI-tab",
+  "source": "PSI-69_Experimental table_FLEX.csv",
+  "confidence": "high"
+ },
+ {
+  "id": "F15",
+  "investigations": [
+   "PSI-69"
+  ],
+  "field": "flex_cool_flames",
+  "value": "FLEX discovered quasi-steady cool-flame burning of n-heptane droplets after radiative extinction of the hot flame.",
+  "status": "reported",
+  "tag": "Lit",
+  "source": "Nayagam et al., Combust. Flame 159 (2012) 3583",
+  "confidence": "medium"
+ },
+ {
+  "id": "F16",
+  "investigations": [
+   "PSI-98"
+  ],
+  "field": "saffire1_growth",
+  "value": "Saffire-I: large SIBAL sheet (94 x 40.6 cm) at 20 cm/s; concurrent burn 420 s vs opposed 70 s; flame stayed limited in size rather than growing continuously.",
+  "status": "reported",
+  "tag": "PSI-tab + Lit",
+  "source": "PSI-98_Experimental table_SAFFIRE-1.csv; NTRS 20170008805",
+  "confidence": "medium"
+ },
+ {
+  "id": "F17",
+  "investigations": [],
+  "field": "partial_gravity_psi",
+  "value": "PSI contains no partial-gravity combustion runs (0 of 1,989 normalized runs).",
+  "status": "measured",
+  "tag": "PSI-tab",
+  "source": "derived/coverage_summary.json#partial_gravity_runs",
+  "confidence": "high"
+ },
+ {
+  "id": "F18",
+  "investigations": [],
+  "field": "exploration_atmosphere_coverage",
+  "value": "Ambient-O2 basis (inverse-flame burner-stream O2 excluded). FIREWISE exploration envelope (O2 30-36% AND 8.2-10.2 psia): 0 runs. Challenge Moon-base definition (O2 >=30% AND P <=10.2 psia): 20 runs, all ACME CFI-G normal gas flames at 'approx p' 0.5066 bar (7.35 psia, reported), O2 32.3-38.9% (measured). Bracket within ~1 psia (O2 30-36%, 7.0-11.0 psia): 27 runs = 10 CFI-G (7.35 psia) + 17 FLEX droplets (10.33-10.50 psia, measured). Solids: 0 of 264 runs document pressure; 140 document O2 (max 22.2%), 124 document none.",
+  "status": "measured",
+  "tag": "PSI-tab",
+  "source": "derived/claims_check.json (scripts/verify_claims.py) keys ambient_A..D, solid_*",
+  "confidence": "high",
+  "supersedes": "Earlier value '35 runs ... 0.5-0.75 atm' (wrong: band mislabeled as 8.2-10.2 psia and 8 inverse-flame burner-stream O2 rows counted). Corrected 2026-11-13 readiness audit."
+ },
+ {
+  "id": "X01",
+  "investigations": [
+   "LUCI"
+  ],
+  "field": "luci",
+  "value": "Lunar-g Combustion Investigation flew on Blue Origin New Shepard NS-29 (2025-02-04); capsule spun at 11 RPM to simulate lunar gravity for >25 s; burned cotton-fiberglass fabric and a 4 mm PMMA rod; falling O2 used to define a limiting O2. Data not in PSI.",
+  "status": "reported",
+  "tag": "Lit",
+  "source": "https://ntrs.nasa.gov/citations/20250010653 ; https://www.nasa.gov/centers-and-facilities/glenn/nasa-fire-safety-test-took-on-reduced-gravity",
+  "confidence": "medium"
+ },
+ {
+  "id": "X02",
+  "investigations": [
+   "FM2"
+  ],
+  "field": "fm2",
+  "value": "Flammability of Materials on the Moon: planned on CLPS CP-21, late 2026; 4 solid samples, quiescent, 21% O2 / 14.7 psia and 34% O2 / 8.2 psia; cameras, thermocouples, radiometers, O2 sensor. Launch status as of 2026-11-13 unverified.",
+  "status": "specified",
+  "tag": "Lit",
+  "source": "https://ntrs.nasa.gov/citations/20240015307 ; https://www.hou.usra.edu/meetings/lpsc2026/pdf/1799.pdf",
+  "confidence": "medium"
+ },
+ {
+  "id": "X03",
+  "investigations": [],
+  "field": "habitat_atmospheres",
+  "value": "Moon base atmosphere likely >=30% O2 at <=10.2 psi (challenge text); exploration atmosphere 34% O2 / 8.2 psia (FM2 poster); ISS 21% / 14.7 psia.",
+  "status": "specified",
+  "tag": "Lit",
+  "source": "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/ ; NTRS 20240015307",
+  "confidence": "high"
+ },
+ {
+  "id": "F19",
+  "investigations": [
+   "PSI-10",
+   "PSI-159"
+  ],
+  "field": "inverse_flame_o2_semantics",
+  "value": "In ACME Flame Design and CFI-G inverse flames the XO2 column is the O2 mole fraction of the oxidizer stream issued from the burner into a fuel/N2 ambient; it is NOT the chamber atmosphere and must never be compared with a habitat atmosphere. 274 such rows (Flame Design 120, CFI-G 154).",
+  "status": "reported",
+  "tag": "PSI-tab + PSI-rec",
+  "source": "PSI-10/PSI-159 'Inverse' experimental tables (columns XO2, Xf before/after test)",
+  "confidence": "high"
+ },
+ {
+  "id": "F20",
+  "investigations": [
+   "PSI-39",
+   "PSI-22",
+   "PSI-107",
+   "PSI-101"
+  ],
+  "field": "source_table_duplicates",
+  "value": "Exact duplicate rows inside NASA PSI experimental tables: CFI 8 (87 rows -> 79 unique tests), E-FIELD 1 (test day 18319 listed twice), SPICE 34. SAME-R test number 57 is used for two different materials (Lampwick, Teflon).",
+  "status": "measured",
+  "tag": "PSI-tab",
+  "source": "derived/claims_check.json exact_duplicate_source_rows, duplicate_run_ids",
+  "confidence": "high"
+ }
+]

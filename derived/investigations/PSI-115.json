@@ -1,0 +1,101 @@
+{
+ "id": "PSI-115",
+ "acronym": "",
+ "title": "Utilization of the Smoke Aerosol Measurement Experiment Data for Advanced Modeling and Simulation of Smoke Generation in Micro-Gravity",
+ "doi": "10.60555/q0v5-1v28",
+ "doi_url": "https://doi.org/10.60555/q0v5-1v28",
+ "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-115",
+ "api_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-115",
+ "license": "CC0-1.0",
+ "project_type": "Ground Investigation",
+ "research_area": "Combustion Science",
+ "sub_research_area": "Smoke Aerosol, Combustion Simulation",
+ "platform": "Not Applicable",
+ "hardware": "",
+ "hardware_links": "",
+ "managing_center": "Glenn Research Center (GRC)",
+ "dates": {
+  "start": "01-30-2017",
+  "end": "12-31-2019",
+  "psi_release": "18-Sep-2024",
+  "psi_modified": "02-Jun-2025"
+ },
+ "text": {
+  "objective": {
+   "value": "The objective of this investigation was to use numerical simulation to explore the influence of gravity on pyrolysis smoke growth from a fundamental perspective. The intention of this effort is to quantify the differences between microgravity and Earth gravity smoke, and to identify the fluid dynamic mechanisms that cause the differences.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-115.json#objective"
+  },
+  "hypothesis": {
+   "value": "Without buoyancy, mixing and heat transfer are reduced, the time-temperature history of the combustion vapors (or particle precursors) and particle trajectories are significantly altered, changing the composition of the smoke. The chemical composition of the burning material also affects the characteristics of the smoke generated.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-115.json#hypothesis"
+  },
+  "approach": {
+   "value": "The formation and growth of dibutyl-phthalate (DBP) particles in Earth gravity and microgravity environments was simulated. Direct numerical simulation via a Navier-Stokes nodal approach was utlilized. The smoke originates from pyrolysis vapor expelled from a heated sample in a geometry similar to that considered in the SAME experiments. This study considered two cross-flow velocities of sufficiently low speed that buoyancy cannot be neglected in the presence of gravity. Simulations are presented to assess the dependence of particle size distributions on thermophoresis, particle settling, and flow geometry. The final report for this investigation introduces the simulation and modeling methodology, followed by a description of the flow geometry and the parameter space under consideration.The differences in the wake geometry attributable to buoyancy for the lower of two flow speeds was examined. Instantaneous scalar fields were used to describe particle accumulation and growth in the buoyant and non-buoyant wakes that form downstream of the hot vapor source.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-115.json#approach"
+  },
+  "research_impacts": {
+   "value": "Models and tools that characterize particles generated as smoke can be used to ascertain how temperature, gravity, and material properties affect the smoke produced. This would directly lead to better smoke detection devices and prevent fires that can lead to loss of materiel and loss of life.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-115.json#researchImpacts"
+  },
+  "proposal_title": {
+   "value": "",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-115.json#proposalTitle"
+  }
+ },
+ "publications": [],
+ "related_investigations": [
+  "PSI-102"
+ ],
+ "data_products": {
+  "n_files_listed": 47,
+  "listed_GB": 0.264,
+  "totalFileSize_GB": 0.264,
+  "listing_complete": true,
+  "folders": "Analyzed Data:44; Reports:1; Science Documents:1; metadata:1",
+  "experimental_tables": []
+ },
+ "runs_summary": {
+  "n_runs": 0,
+  "fuel_or_material": {},
+  "fuel_class": {},
+  "geometry_examples": [],
+  "diluents": {},
+  "gravity_regime": {},
+  "platform": [],
+  "granularity": {},
+  "duplicates": 0,
+  "o2_pct": {
+   "min": null,
+   "max": null,
+   "n_documented": 0,
+   "n_runs": 0,
+   "statuses": {}
+  },
+  "pressure_atm": {
+   "min": null,
+   "max": null,
+   "n_documented": 0,
+   "n_runs": 0,
+   "statuses": {}
+  },
+  "flow_cm_s": {
+   "min": null,
+   "max": null,
+   "n_documented": 0,
+   "n_runs": 0,
+   "statuses": {}
+  }
+ },
+ "quality_flags": {
+  "n_table_flags": 0,
+  "by_severity": {},
+  "by_code": {}
+ },
+ "local_files": [],
+ "curated_facts": []
+}

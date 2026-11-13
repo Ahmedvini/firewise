@@ -1,0 +1,279 @@
+{
+ "id": "PSI-20",
+ "acronym": "ACME BRE",
+ "title": "Advanced Combustion via Microgravity Experiments - Burning Rate Emulator",
+ "doi": "10.60555/vb93-3y72",
+ "doi_url": "https://doi.org/10.60555/vb93-3y72",
+ "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20",
+ "api_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-20",
+ "license": "CC0-1.0",
+ "project_type": "Microgravity Investigation",
+ "research_area": "Combustion Science",
+ "sub_research_area": "Flames of Gaseous Fuels",
+ "platform": "International Space Station (ISS)",
+ "hardware": "Combustion Integrated Rack (CIR), ACME",
+ "hardware_links": "https://www1.grc.nasa.gov/space/iss-research/iss-fcf/cir/, https://www1.grc.nasa.gov/space/iss-research/iss-fcf/combustion-science/acme/",
+ "managing_center": "Glenn Research Center (GRC)",
+ "dates": {
+  "start": "01-01-2010",
+  "end": "02-08-2025",
+  "psi_release": "15-Sep-2022",
+  "psi_modified": "05-Jun-2025"
+ },
+ "text": {
+  "objective": {
+   "value": "The BRE flight program seeks to establish the burning conditions in a quiescent microgravity ambient in terms of material properties. The specific flight objectives are as follows. 1. Observe burning behavior in long-duration microgravity for CH4/N2 and C2H4/N2mixtures on porous circular burners of 25 and 50 mm diameter. Consider O2/N2 ambients with various pressures and ambient O2 concentrations and pressures. NASA - considered atmosphere for human space missions will be examined: 14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen. Emphasize fuel conditions that can be related to a diverse range of condensed fuels. 2. Consider the conditions of Objective 1 for ambients of O2/CO2 (desired). 3. Consider the conditions of Objectives 1 – 2 for extinction limits.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-20.json#objective"
+  },
+  "hypothesis": {
+   "value": "The BRE investigation hypothesizes that there can exist a regime of quasi-steady burning in microgravity as a function of materials properties. Steady burning may never be achieved, and only slowly changing unsteady flames are possible. The proposed tests aboard the ISS aims to query this hypothesis by establishing a range of quasi-steady burning conditions for condensed fuels in the microgravity environment. It is hypothesized that BRE can determine a range of burning conditions in microgravity as a function of heat of gasification, reradiation heat flux, applied radiant heat flux, heat of combustion and smoke point. This could enable the Cone Calorimeter (NASA Test 2) test as a basis for establishing flammability maps for real materials. The key hypothesis is that the heat of combustion, smoke point, and heat of gasification of the fuel mixture will represent a real solid fuel (or liquid fuel absorbed in an inert matrix). Thus achieved steady burning would represent the potential for real solid fuels to achieve steady burning in microgravity. Other than a candle flame, this has not been shown before.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-20.json#hypothesis"
+  },
+  "approach": {
+   "value": "To accomplish the above objectives, flight experiments are proposed. Additionally, preliminary flight tests will be performed to verify the experiment operations and for comparison with ground-based tests. For each test, conditions will be established for the chamber contents, namely choice of diluent, oxygen concentration, and pressure. Fuel flow will commence followed by ignition. The flames will initially be observed without varying the fuel flow rate. Because burner surface temperature and heat flux will vary, this will allow a broad range of conditions to be observed during a single test. As the surface temperature of the burner increases, and the flame remains steady, a continuous set of data is produced for the flammability map. Eventually either the flame will extinguish, the surface temperature of the burner will equilibrate, or the temperature limit of the heat flux sensor will be reached. At this time the fuel flow will be terminated. So a test should terminate for a given flow rate at extinction, and for continued burning when the burner surface temperature has steadied or the temperature limit of the heat flux sensor is neared. The extinction limit could be found once the burner temperature has steadied, and the heat flux sensor has not exceeded its limit. At that state, the flow rate can be reduced in small increments, until extinction is observed and the flow rate shut off. Again, in this process, new data is being produced for the flammability map. Ignition limit tests are not proposed for microgravity, but we will explore these under normal gravity. We believe there is better control on Earth-based ignition testing and that these results should carry over to microgravity conditions. In addition to the flight experiments, in normal gravity testing will continue. These tests will involve gaseous, liquid, and solid fuels. These experiments will further establish the validation of the BRE for 1-g applications and show its usefulness to establish 1-g ignition and extinction limits. As available, drop facility testing will be used to refine procedures, test instrumentation, and help to establish viable flow conditions. We will also pursue a CFD model for the quiescent microgravity burning. This will also guide us in the flight experiments, and potentially provide a predictive methodology.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-20.json#approach"
+  },
+  "research_impacts": {
+   "value": "BRE yielded important data relevant to spacecraft fire safety. Quasi-steady burning corresponding to various condensed-phase materials (such as PMMA and Nylon) was observed in microgravity despite the absence of air flow, where the cessation of ventilation is an established step in putting out spacecraft fires. The ongoing combustion without air flow was notably seen in elevated-oxygen atmospheres which are being considered for use in future spacecraft, whereas such flames in a normal atmosphere of 21% oxygen self-extinguished in a short time. While BRE’s results are still preliminary, they suggest that NASA may want to increase use of its alternative flammability Test 2, with the cone calorimeter, where that test can measure material properties corresponding to the microgravity flames observed with the BRE burner.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-20.json#researchImpacts"
+  },
+  "proposal_title": {
+   "value": "Experimental Investigation of Emulated Burning Rate at Various Gravity Levels",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-20.json#proposalTitle"
+  }
+ },
+ "publications": [
+  {
+   "title": "Burning on flat wicks at various orientations",
+   "authors": "Zhang Yi, Bustamante Michael J, Gollner Michael J, Sunderland Peter B, Quintiere James G",
+   "doi": "10.1177/0734904113495650",
+   "status": "published"
+  },
+  {
+   "title": "A Gas Burner to Emulate Condensed-Phase Burning",
+   "authors": "Zhang Y., Bustamante M. J., Dotson K. T., Sunderland P. B., Quintiere J. G.",
+   "doi": "10.3850/978-981-07-5936-0_03-01",
+   "status": "published"
+  },
+  {
+   "title": "Experimental Investigation of Liquid and Gas Fueled Flames Towards the Development of a Burning Rate Emulator (BRE) for Microgravity Applications",
+   "authors": "MJ Bustamante",
+   "doi": "",
+   "status": "published"
+  },
+  {
+   "title": "Burning in microgravity: Experimental results and analysis",
+   "authors": "P Dehghani, PB Sunderland, JG Quintiere, JL deRis",
+   "doi": "10.1016/j.combustflame.2021.01.035",
+   "status": "published"
+  },
+  {
+   "title": "Transient dynamics of radiative extinction in low-momentum microgravity diffusion flames",
+   "authors": "Snegirev Alexander, Kuznetsov Egor, Markus Ekaterina, Dehghani Parham, Sunderland Peter",
+   "doi": "10.1016/j.proci.2020.06.110",
+   "status": "published"
+  },
+  {
+   "title": "Emulation of condensed fuel flames with gaseous fuels supplied through a porous copper calorimeter",
+   "authors": "Auth Eric, Quintiere James G., Sunderland Peter B.",
+   "doi": "10.1002/fam.2896",
+   "status": "published"
+  },
+  {
+   "title": "Radiative Extinction of Laminar Diffusion Flame above the Flat Porous Burner in Microgravity: A Computational Study",
+   "authors": "Kuznetsov E. A., Snegirev A. Yu., Markus E. S.",
+   "doi": "10.1134/S0010508220040036",
+   "status": "published"
+  },
+  {
+   "title": "Transient ellipsoidal combustion model for a porous burner in microgravity",
+   "authors": "Markan Akshit, Baum Howard R., Sunderland Peter B., Quintiere James G., de Ris John L.",
+   "doi": "10.1016/j.combustflame.2019.09.030",
+   "status": "published"
+  },
+  {
+   "title": "Measuring heat flux to a porous burner in microgravity",
+   "authors": "Markan Akshit, Sunderland Peter B., Quintiere James G., de Ris John L., Baum Howard R.",
+   "doi": "10.1016/j.proci.2018.05.006",
+   "status": "published"
+  },
+  {
+   "title": "Analysis of extinction and sustained ignition",
+   "authors": "Vermina Plathner Frida, Quintiere James G., van Hees Patrick",
+   "doi": "10.1016/j.firesaf.2019.02.003",
+   "status": "published"
+  },
+  {
+   "title": "A Burning Rate Emulator (BRE) for study of condensed fuel burning in microgravity",
+   "authors": "Markan Akshit, Sunderland Peter B., Quintiere James G., de Ris John L., Stocker Dennis P., Baum Howard R.",
+   "doi": "10.1016/j.combustflame.2018.01.044",
+   "status": "published"
+  },
+  {
+   "title": "Study of ignition and extinction of small-scale fires in experiments with an emulating gas burner",
+   "authors": "Lundström Frida Vermina, Sunderland Peter B., Quintiere James G., van Hees Patrick, de Ris John L.",
+   "doi": "10.1016/j.firesaf.2016.11.003",
+   "status": "published"
+  },
+  {
+   "title": "Emulation of condensed fuel flames with gases in microgravity",
+   "authors": "Zhang Yi, Kim Matt, Guo Haiqing, Sunderland Peter B., Quintiere James G., deRis John, Stocker Dennis P.",
+   "doi": "10.1016/j.combustflame.2015.05.005",
+   "status": "published"
+  },
+  {
+   "title": "Flammability maps for microgravity burning of a small flat material in a quiescent ambient",
+   "authors": "Dehghani Parham, Quintiere James G.",
+   "doi": "10.1016/j.combustflame.2023.112809",
+   "status": "published"
+  },
+  {
+   "title": "Demonstrating steady burning for small flat materials in microgravity in a quiescent ambient",
+   "authors": "Dehghani Parham, de Ris John L., Quintiere James G.",
+   "doi": "10.1016/j.proci.2022.08.107",
+   "status": "published"
+  },
+  {
+   "title": "Theoretical analysis and predictions of burning in microgravity using a burning emulator",
+   "authors": "Dehghani Parham, Quintiere James G.",
+   "doi": "10.1016/j.combustflame.2021.111572",
+   "status": "published"
+  }
+ ],
+ "related_investigations": [],
+ "data_products": {
+  "n_files_listed": 2,
+  "listed_GB": 0.0,
+  "totalFileSize_GB": 2035.568,
+  "listing_complete": false,
+  "folders": "Experimental table:1; metadata:1",
+  "experimental_tables": [
+   "PSI-20_Experimental table_ACME BRE.csv"
+  ]
+ },
+ "runs_summary": {
+  "n_runs": 43,
+  "fuel_or_material": {
+   "100% C2H4": 21,
+   "50% C2H4": 11,
+   "100%C2H4": 6,
+   "100% CH4": 5
+  },
+  "fuel_class": {
+   "solid_emulating_gas_burner": 43
+  },
+  "geometry_examples": [
+   "flat porous burner 25 mm",
+   "flat porous burner 50 mm"
+  ],
+  "diluents": {
+   "N2": 43
+  },
+  "gravity_regime": {
+   "microgravity": 43
+  },
+  "platform": [
+   "ISS-CIR"
+  ],
+  "granularity": {
+   "test_day_o2_level": 43
+  },
+  "duplicates": 0,
+  "o2_pct": {
+   "min": 21.0,
+   "max": 40.0,
+   "n_documented": 43,
+   "n_runs": 43,
+   "statuses": {
+    "specified": 43
+   }
+  },
+  "pressure_atm": {
+   "min": null,
+   "max": null,
+   "n_documented": 0,
+   "n_runs": 43,
+   "statuses": {
+    "missing": 43
+   }
+  },
+  "flow_cm_s": {
+   "min": 0.0,
+   "max": 0.0,
+   "n_documented": 43,
+   "n_runs": 43,
+   "statuses": {
+    "specified": 43
+   }
+  }
+ },
+ "quality_flags": {
+  "n_table_flags": 129,
+  "by_severity": {
+   "limitation": 43,
+   "note": 84,
+   "anomaly": 2
+  },
+  "by_code": {
+   "pressure_not_identified": 43,
+   "flow_from_record_text": 43,
+   "day_split_by_o2": 41,
+   "pct_format_artifact": 2
+  },
+  "record_level": [
+   "totalFileSize 2036 GB but only 2 files listed"
+  ]
+ },
+ "local_files": [],
+ "curated_facts": [
+  {
+   "id": "F08",
+   "investigations": [
+    "PSI-20"
+   ],
+   "field": "bre_quiescent_burning",
+   "value": "Quasi-steady burning observed in microgravity despite absence of air flow, notably in elevated-oxygen atmospheres considered for future spacecraft.",
+   "status": "reported",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-20.json#researchImpacts",
+   "confidence": "high"
+  },
+  {
+   "id": "F09",
+   "investigations": [
+    "PSI-20"
+   ],
+   "field": "bre_pressure",
+   "value": "Chamber pressures were varied between tests but are not identified in the PSI summary table.",
+   "status": "missing",
+   "tag": "PSI-tab",
+   "source": "PSI-20_Experimental table_ACME BRE.csv",
+   "locator": "Notes column",
+   "confidence": "high"
+  },
+  {
+   "id": "F10",
+   "investigations": [
+    "PSI-10",
+    "PSI-20",
+    "PSI-21",
+    "PSI-22",
+    "PSI-23",
+    "PSI-159"
+   ],
+   "field": "acme_shared_hardware",
+   "value": "ACME insert in the Combustion Integrated Rack: ~100 L constant-volume chamber, mass-flow controllers, retracting resistively-heated igniter, 12-bit 1360x1024 colour camera with filter wheel, intensified OH*/CH2O cameras, radiometers, PMTs, thermocouple rake, SiC fibres, gas chromatograph.",
+   "status": "reported",
+   "tag": "Lit",
+   "source": "https://www.nasa.gov/wp-content/uploads/2025/07/advanced-combustion-via-microgravity-experiments-acme.pdf ; NTRS 20210021781",
+   "confidence": "medium",
+   "local_corroboration": "Data/PSI-159 frames are 1360x1024 BayerRG12 (12-bit), consistent with the colour camera; Data/ACME_drawings_igniter.zip = PSI-23 Engineering Documents (name+size match).",
+   "primary_source": "PSI-23 Engineering Documents: ACME_drawings_burners/data_camera/analog_camera/diagnostic_system/avionics_package/igniter zips (derived/psi_files.csv)"
+  }
+ ]
+}

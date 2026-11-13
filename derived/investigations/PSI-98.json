@@ -1,0 +1,195 @@
+{
+ "id": "PSI-98",
+ "acronym": "SAFFIRE-I",
+ "title": "Spacecraft Fire Safety Experiment-I",
+ "doi": "10.60555/0t15-1z43",
+ "doi_url": "https://doi.org/10.60555/0t15-1z43",
+ "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+ "api_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-98",
+ "license": "CC0-1.0",
+ "project_type": "Microgravity Investigation",
+ "research_area": "Combustion Science",
+ "sub_research_area": "Spacecraft Fire, Smoke Distribution",
+ "platform": "International Space Station (ISS)",
+ "hardware": "Saffire 1 enclosure in Cygnus",
+ "hardware_links": "https://www1.grc.nasa.gov/space/iss-research/msg/saffire/",
+ "managing_center": "Glenn Research Center (GRC)",
+ "dates": {
+  "start": "03-02-2001",
+  "end": "02-28-2008",
+  "psi_release": "18-Sep-2024",
+  "psi_modified": "03-Jun-2025"
+ },
+ "text": {
+  "objective": {
+   "value": "The objectives of this investigation were to: (1) determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits compared to those obtained in NASA’s normal gravity material flammability screening test.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-98.json#objective"
+  },
+  "hypothesis": {
+   "value": "This investigation hypothesizes that due to large differences between fire behavior in normal and reduced gravity, the use of terrestrial fires and fire standards to design spacecraft fire safety systems presents an inherent risk to the vehicle because of the significant level of uncertainty. While this approach has been successful thus far, the uncertainty and risk will increase as exploration missions venture further from earth with considerably longer transit times for a safe return. There is a significant lack of microgravity data available for spacecraft designers on which to base their fire safety designs and procedures. To address this knowledge gap, this investigation proposed to conduct large-scale fire safety experiments in an expendable spacecraft without risk to a crew.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-98.json#hypothesis"
+  },
+  "approach": {
+   "value": "The Saffire-1 experiments was performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS. The sample material for Saffire-I is a composite fabric called Sibal consisting of cotton on a fiberglass substrate (75% cotton, 25% fiberglass by weight). It has been used in many space experiments because it burns like cotton but maintains structural integrity after the cotton is consumed. The sample was approximately 0.94 meters long and 0.4 meters wide, simulating a large piece of flammable fabric. The Saffire-1 flight unit had a sample card installed in the middle of a large flow duct. Air is drawn through the flow duct by fans located at the top of the duct with flow straighteners at the bottom of the experiment module. Saffire-I was conducted at an air flow velocity of 20 cm/s. Once the sample was ignited flame images were captured using two cameras. In addition, thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity. All data was compressed, and subsequently downlinked.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-98.json#approach"
+  },
+  "research_impacts": {
+   "value": "The Saffire-I experiment provides a new way to study a realistic fire on an exploration vehicle, which has not been possible in the past because the risks are too high. Instruments on an unmanned cargo vessel measure oxygen, carbon dioxide, heat, pressure and flame growth, and two video cameras provide views of the flame. Results determine microgravity flammability limits for several spacecraft materials, help to validate NASA’s material selection criteria, and how microgravity and limited oxygen affect flame size. The investigation is crucial for the safety of current and future space missions. Studying fire in small, sealed environments such as the Cygnus cargo supply vehicle benefits fire safety and prevention efforts on Earth, including inside mines, airplanes, or submarines.",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-98.json#researchImpacts"
+  },
+  "proposal_title": {
+   "value": "Characterization of Smoke from Microgravity Fires for Improved Spacecraft Fire Detection",
+   "tag": "PSI-rec",
+   "source": "sources/psi_api/PSI-98.json#proposalTitle"
+  }
+ },
+ "publications": [
+  {
+   "title": "The Spacecraft Fire Experiment (Saffire) - Objectives, Development and Status",
+   "authors": "W Schoren, GA Ruff, DL Urban",
+   "doi": "",
+   "status": "published"
+  },
+  {
+   "title": "Buoyant Effects on the Flammability of Silicone Samples Planned for the Spacecraft Fire Experiment (Saffire)",
+   "authors": "JE Niehaus, PV Ferkul, SA Gokoglu, GA Ruff",
+   "doi": "",
+   "status": "published"
+  },
+  {
+   "title": "Flame spread: Effects of microgravity and scale",
+   "authors": "Urban David L., Ferkul Paul, Olson Sandra, Ruff Gary A., Easton John, T'ien James S., Liao Ya-Ting T., Li Chengyao, Fernandez-Pello Carlos, Torero Jose L., Legros Guillaume, Eigenbrod Christian, Smirnov Nickolay, Fujita Osamu, Rouvreau Sébastien, Toth Balazs, Jomaas Grunde",
+   "doi": "10.1016/j.combustflame.2018.10.012",
+   "status": "published"
+  },
+  {
+   "title": "Transient flame growth and spread processes over a large solid fabric in concurrent low-speed flows in microgravity – Model versus experiment",
+   "authors": "Li Chengyao, Liao Ya-Ting T., T'ien James S., Urban David L., Ferkul Paul, Olson Sandra, Ruff Gary A., Easton John",
+   "doi": "10.1016/j.proci.2018.05.168",
+   "status": "published"
+  },
+  {
+   "title": "Fire safety in space – beyond flammability testing of small samples",
+   "authors": "Jomaas Grunde, Torero Jose L., Eigenbrod Christian, Niehaus Justin, Olson Sandra L., Ferkul Paul V., Legros Guillaume, Fernandez-Pello A. Carlos, Cowlard Adam J., Rouvreau Sebastien, Smirnov Nickolay, Fujita Osamu, T׳ien James S., Ruff Gary A., Urban David L.",
+   "doi": "10.1016/j.actaastro.2014.11.025",
+   "status": "published"
+  },
+  {
+   "title": "Operation and Development Status of the Spacecraft Fire Experiments (Saffire)",
+   "authors": "Gary A. Ruff and David L. Urban.",
+   "doi": "",
+   "status": "published"
+  }
+ ],
+ "related_investigations": [
+  "PSI-99",
+  "PSI-100",
+  "PSI-26"
+ ],
+ "data_products": {
+  "n_files_listed": 76,
+  "listed_GB": 12.251,
+  "totalFileSize_GB": 12.251,
+  "listing_complete": true,
+  "folders": "Raw Data:68; Science Documents:4; Engineering Documents:2; Experimental table:1; metadata:1",
+  "experimental_tables": [
+   "PSI-98_Experimental table_SAFFIRE-1.csv"
+  ]
+ },
+ "runs_summary": {
+  "n_runs": 4,
+  "fuel_or_material": {
+   "SIBAL Fabric": 2,
+   "(none: flow visualization)": 2
+  },
+  "fuel_class": {
+   "solid": 2,
+   "none": 2
+  },
+  "geometry_examples": [
+   "sheet 0.37 x 40.6 x 94"
+  ],
+  "diluents": {},
+  "gravity_regime": {
+   "microgravity": 4
+  },
+  "platform": [
+   "Cygnus"
+  ],
+  "granularity": {
+   "test": 2,
+   "flow_visualization": 2
+  },
+  "duplicates": 0,
+  "o2_pct": {
+   "min": 21.5,
+   "max": 21.7,
+   "n_documented": 2,
+   "n_runs": 4,
+   "statuses": {
+    "reported": 2,
+    "missing": 2
+   }
+  },
+  "pressure_atm": {
+   "min": null,
+   "max": null,
+   "n_documented": 0,
+   "n_runs": 4,
+   "statuses": {
+    "missing": 4
+   }
+  },
+  "flow_cm_s": {
+   "min": 20.0,
+   "max": 20.0,
+   "n_documented": 2,
+   "n_runs": 4,
+   "statuses": {
+    "specified": 2,
+    "missing": 2
+   }
+  }
+ },
+ "quality_flags": {
+  "n_table_flags": 2,
+  "by_severity": {
+   "note": 2
+  },
+  "by_code": {
+   "not_a_burn": 2
+  }
+ },
+ "local_files": [],
+ "curated_facts": [
+  {
+   "id": "F07",
+   "investigations": [
+    "PSI-99",
+    "PSI-98"
+   ],
+   "field": "saffire_F1C1_meaning",
+   "value": "Camera folders 'F1C1/F1C2' = pre-test flow visualization (sample 1 / 2-1), cameras 1 and 2. The local SAFFIRE_II_F1C1-BIT_jpeg frames are therefore a flow-visualization record, not a burn.",
+   "status": "reported",
+   "tag": "PSI-tab + Inf",
+   "source": "PSI-99_Experimental table_SAFFIRE-2.csv rows F1C1/F1C2; PSI-98 table",
+   "confidence": "medium"
+  },
+  {
+   "id": "F16",
+   "investigations": [
+    "PSI-98"
+   ],
+   "field": "saffire1_growth",
+   "value": "Saffire-I: large SIBAL sheet (94 x 40.6 cm) at 20 cm/s; concurrent burn 420 s vs opposed 70 s; flame stayed limited in size rather than growing continuously.",
+   "status": "reported",
+   "tag": "PSI-tab + Lit",
+   "source": "PSI-98_Experimental table_SAFFIRE-1.csv; NTRS 20170008805",
+   "confidence": "medium"
+  }
+ ]
+}

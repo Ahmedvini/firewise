@@ -1,0 +1,22 @@
+# Original NASA data and bulk downloads (large; never committed)
+Data/
+sources/psi_files/
+# Build artifacts
+build/
+*.sqlite
+*.sqlite-journal
+# Secrets
+.env
+.env.*
+!.env.example
+# Environments / caches
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+web/.next/
+web/out/
+# Superseded copies kept locally only
+derived/_superseded/
+docs/_superseded/

@@ -1,0 +1,76 @@
+{
+ "records_counted": 1964,
+ "records_by_fuel_class": {
+  "gaseous": 1177,
+  "solid_emulating_gas_burner": 43,
+  "solid": 264,
+  "liquid_droplet": 361,
+  "dust_aerosol": 2,
+  "smoke_source_nonflaming": 117
+ },
+ "records_by_gravity": {
+  "microgravity": 1964
+ },
+ "ambient_o2_documented": 940,
+ "pressure_documented": 1038,
+ "scenarios": {
+  "iss": {
+   "records": 174,
+   "by_investigation": {
+    "PSI-10": 63,
+    "PSI-23": 10,
+    "PSI-39": 25,
+    "PSI-69": 49,
+    "PSI-159": 27
+   },
+   "by_fuel_class": {
+    "gaseous": 100,
+    "liquid_droplet": 74
+   }
+  },
+  "exploration_envelope": {
+   "records": 0,
+   "by_investigation": {},
+   "by_fuel_class": {}
+  },
+  "moon_base_challenge": {
+   "records": 20,
+   "by_investigation": {
+    "PSI-159": 20
+   },
+   "by_fuel_class": {
+    "gaseous": 20
+   }
+  },
+  "fm2_point": {
+   "records": 10,
+   "by_investigation": {
+    "PSI-159": 10
+   },
+   "by_fuel_class": {
+    "gaseous": 10
+   }
+  }
+ },
+ "solid_records": 264,
+ "solid_with_pressure": 0,
+ "solid_with_o2": 140,
+ "solid_o2_max_pct": 22.2,
+ "partial_gravity_records": 0,
+ "bands": {
+  "o2_ambient_pct": [
+   "<20.5%",
+   "20.5-23% (air)",
+   "23-30%",
+   "30-36%",
+   ">36%"
+  ],
+  "pressure_psia": [
+   "<8.2 psia",
+   "8.2-10.2 psia",
+   "10.2-13.7 psia",
+   "13.7-15.7 psia (~1 atm)",
+   ">15.7 psia"
+  ]
+ }
+}

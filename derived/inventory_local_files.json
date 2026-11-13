@@ -1,0 +1,167 @@
+[
+  {
+    "file": "2013_04_16_txt.zip",
+    "bytes": 2784,
+    "format": "zip",
+    "investigation": "PSI-26 BASS (session 2013-04-16)",
+    "category": "crew-photo EXIF text (images absent)",
+    "measurements": "none",
+    "parseable": "yes (text)",
+    "value": "low",
+    "psi_match": [
+      {
+        "accession": "PSI-26",
+        "psi_file_name": "PSI-26_Raw Data_2013_04_16_txt.zip",
+        "psi_size": 2784.0,
+        "match": "name",
+        "size_match": true,
+        "remote_path": "/Home/psi-data/PSI-26/Raw Data/PSI-26_Raw Data_2013_04_16_txt.zip"
+      }
+    ],
+    "members": 4,
+    "member_formats": {
+      "text (camera EXIF dump)": 4
+    },
+    "zip_crc_ok": true
+  },
+  {
+    "file": "4 lampwick vlc-record-2010-09-08-12h10m02s-udp___233.1.14.5 _50000-.zip",
+    "bytes": 41582320,
+    "format": "zip",
+    "investigation": "PSI-101 SAME-R",
+    "category": "downlink video (cotton lamp wick smoke run)",
+    "measurements": "video only (no calibration/metadata)",
+    "parseable": "needs ffmpeg",
+    "value": "medium",
+    "psi_match": [
+      {
+        "accession": "PSI-101",
+        "psi_file_name": "PSI-101_Raw Data_4 lampwick vlc-record-2010-09-08-12h10m02s-udp___233.1.14.5 _50000-.zip",
+        "psi_size": 41582320.0,
+        "match": "name",
+        "size_match": true,
+        "remote_path": "/Home/psi-data/PSI-101/Raw Data/PSI-101_Raw Data_4 lampwick vlc-record-2010-09-08-12h10m02s-udp___233.1.14.5 _50000-.zip"
+      }
+    ],
+    "members": 1,
+    "member_formats": {
+      "mpeg-ts (H.264 video)": 1
+    },
+    "zip_crc_ok": true
+  },
+  {
+    "file": "ACME_drawings_igniter.zip",
+    "bytes": 2943491,
+    "format": "zip",
+    "investigation": "ACME (shared hardware; PSI record to confirm)",
+    "category": "engineering drawings",
+    "measurements": "none (hardware documentation)",
+    "parseable": "partial: 5/14 have text layer, 9 need OCR",
+    "value": "medium (shared-hardware evidence)",
+    "psi_match": [
+      {
+        "accession": "PSI-23",
+        "psi_file_name": "PSI-23_Engineering Documents_ACME_drawings_igniter.zip",
+        "psi_size": 2943491.0,
+        "match": "name",
+        "size_match": true,
+        "remote_path": "/Home/psi-data/PSI-23/Engineering Documents/PSI-23_Engineering Documents_ACME_drawings_igniter.zip"
+      }
+    ],
+    "members": 14,
+    "member_formats": {
+      "pdf": 14
+    },
+    "zip_crc_ok": true
+  },
+  {
+    "file": "PSI-159_Raw Data_21265C3_ACME.zip",
+    "bytes": 415449312,
+    "format": "zip",
+    "investigation": "PSI-159 ACME CFI-G",
+    "category": "raw camera frames + frame index",
+    "measurements": "raw imagery only (no O2/P/flow/T in files)",
+    "parseable": "partial: .hobj needs validated reader",
+    "value": "high (only real ACME flame imagery we hold)",
+    "psi_match": [
+      {
+        "accession": "PSI-159",
+        "psi_file_name": "PSI-159_Raw Data_21265C3_ACME.zip",
+        "psi_size": 415449312,
+        "match": "name",
+        "size_match": true,
+        "remote_path": "/Home/psi-data/PSI-159/Raw Data/PSI-159_Raw Data_21265C3_ACME.zip"
+      }
+    ],
+    "members": 375,
+    "member_formats": {
+      "hobj (MVTec HALCON serialized iconic object)": 373,
+      "csv (frame index)": 1,
+      "text (next frame counter)": 1
+    },
+    "zip_crc_ok": true
+  },
+  {
+    "file": "PSI-159_Raw Data_ACME_21265H1.mdipsug",
+    "bytes": 59922,
+    "format": "csv (frame index)",
+    "investigation": "PSI-159 ACME CFI-G",
+    "category": "frame index (frames absent)",
+    "measurements": "none (camera timing/exposure metadata)",
+    "parseable": "yes (CSV)",
+    "value": "low",
+    "psi_match": [
+      {
+        "accession": "PSI-159",
+        "psi_file_name": "PSI-159_Raw Data_ACME_21265H1.mdipsug",
+        "psi_size": 59922,
+        "match": "name",
+        "size_match": true,
+        "remote_path": "/Home/psi-data/PSI-159/Raw Data/PSI-159_Raw Data_ACME_21265H1.mdipsug"
+      }
+    ],
+    "members": 0,
+    "member_formats": {}
+  },
+  {
+    "file": "SAFFIRE-III_F1C1_1200x920.zip",
+    "bytes": 171750,
+    "format": "zip",
+    "investigation": "PSI-100 Saffire-III",
+    "category": "camera distortion-grid calibration",
+    "measurements": "calibration only (30 mm grid -> pixel scale)",
+    "parseable": "yes (JPEG)",
+    "value": "medium",
+    "psi_match": [
+      {
+        "accession": "PSI-100",
+        "psi_file_name": "PSI-100_Raw Data_SAFFIRE-III_F1C1_Distortion Grid_1200x920.zip",
+        "psi_size": 171750.0,
+        "match": "size-only",
+        "size_match": true,
+        "remote_path": "/Home/psi-data/PSI-100/Raw Data/PSI-100_Raw Data_SAFFIRE-III_F1C1_Distortion Grid_1200x920.zip"
+      }
+    ],
+    "members": 2,
+    "member_formats": {
+      "jpeg": 2
+    },
+    "zip_crc_ok": true
+  },
+  {
+    "file": "SAFFIRE_II_F1C1-BIT_jpeg.zip",
+    "bytes": 21447511,
+    "format": "zip",
+    "investigation": "Saffire-II (PSI-99) \u2014 inferred: not in PSI listings; frame timestamps 2016-11-21 = Saffire-II burn day",
+    "category": "camera built-in-test frames",
+    "measurements": "none (static frames, no fire)",
+    "parseable": "yes (JPEG)",
+    "value": "low",
+    "psi_match": [],
+    "members": 600,
+    "member_formats": {
+      "jpeg": 600
+    },
+    "zip_crc_ok": true
+  }
+]

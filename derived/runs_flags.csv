@@ -1,0 +1,1221 @@
+row_key,investigation,source_table_id,source_row,severity,code,message
+PSI-10:flame-design-inverse-flame:r2,PSI-10,PSI-10:flame-design-inverse-flame,2,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r3,PSI-10,PSI-10:flame-design-inverse-flame,3,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r4,PSI-10,PSI-10:flame-design-inverse-flame,4,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r5,PSI-10,PSI-10:flame-design-inverse-flame,5,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r6,PSI-10,PSI-10:flame-design-inverse-flame,6,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r7,PSI-10,PSI-10:flame-design-inverse-flame,7,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r8,PSI-10,PSI-10:flame-design-inverse-flame,8,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r9,PSI-10,PSI-10:flame-design-inverse-flame,9,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r10,PSI-10,PSI-10:flame-design-inverse-flame,10,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r11,PSI-10,PSI-10:flame-design-inverse-flame,11,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r12,PSI-10,PSI-10:flame-design-inverse-flame,12,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r13,PSI-10,PSI-10:flame-design-inverse-flame,13,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r14,PSI-10,PSI-10:flame-design-inverse-flame,14,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r15,PSI-10,PSI-10:flame-design-inverse-flame,15,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r16,PSI-10,PSI-10:flame-design-inverse-flame,16,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r17,PSI-10,PSI-10:flame-design-inverse-flame,17,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r18,PSI-10,PSI-10:flame-design-inverse-flame,18,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r19,PSI-10,PSI-10:flame-design-inverse-flame,19,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r20,PSI-10,PSI-10:flame-design-inverse-flame,20,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r21,PSI-10,PSI-10:flame-design-inverse-flame,21,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r22,PSI-10,PSI-10:flame-design-inverse-flame,22,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r23,PSI-10,PSI-10:flame-design-inverse-flame,23,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r24,PSI-10,PSI-10:flame-design-inverse-flame,24,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r25,PSI-10,PSI-10:flame-design-inverse-flame,25,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r26,PSI-10,PSI-10:flame-design-inverse-flame,26,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r27,PSI-10,PSI-10:flame-design-inverse-flame,27,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r28,PSI-10,PSI-10:flame-design-inverse-flame,28,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r29,PSI-10,PSI-10:flame-design-inverse-flame,29,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r30,PSI-10,PSI-10:flame-design-inverse-flame,30,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r31,PSI-10,PSI-10:flame-design-inverse-flame,31,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r32,PSI-10,PSI-10:flame-design-inverse-flame,32,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r33,PSI-10,PSI-10:flame-design-inverse-flame,33,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r34,PSI-10,PSI-10:flame-design-inverse-flame,34,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r35,PSI-10,PSI-10:flame-design-inverse-flame,35,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r36,PSI-10,PSI-10:flame-design-inverse-flame,36,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r37,PSI-10,PSI-10:flame-design-inverse-flame,37,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r38,PSI-10,PSI-10:flame-design-inverse-flame,38,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r39,PSI-10,PSI-10:flame-design-inverse-flame,39,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r40,PSI-10,PSI-10:flame-design-inverse-flame,40,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r41,PSI-10,PSI-10:flame-design-inverse-flame,41,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r42,PSI-10,PSI-10:flame-design-inverse-flame,42,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r43,PSI-10,PSI-10:flame-design-inverse-flame,43,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r44,PSI-10,PSI-10:flame-design-inverse-flame,44,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r45,PSI-10,PSI-10:flame-design-inverse-flame,45,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r46,PSI-10,PSI-10:flame-design-inverse-flame,46,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r47,PSI-10,PSI-10:flame-design-inverse-flame,47,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r48,PSI-10,PSI-10:flame-design-inverse-flame,48,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r49,PSI-10,PSI-10:flame-design-inverse-flame,49,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r50,PSI-10,PSI-10:flame-design-inverse-flame,50,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r51,PSI-10,PSI-10:flame-design-inverse-flame,51,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r52,PSI-10,PSI-10:flame-design-inverse-flame,52,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r53,PSI-10,PSI-10:flame-design-inverse-flame,53,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r54,PSI-10,PSI-10:flame-design-inverse-flame,54,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r55,PSI-10,PSI-10:flame-design-inverse-flame,55,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r56,PSI-10,PSI-10:flame-design-inverse-flame,56,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r57,PSI-10,PSI-10:flame-design-inverse-flame,57,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r58,PSI-10,PSI-10:flame-design-inverse-flame,58,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r59,PSI-10,PSI-10:flame-design-inverse-flame,59,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r60,PSI-10,PSI-10:flame-design-inverse-flame,60,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r61,PSI-10,PSI-10:flame-design-inverse-flame,61,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r62,PSI-10,PSI-10:flame-design-inverse-flame,62,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r63,PSI-10,PSI-10:flame-design-inverse-flame,63,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r64,PSI-10,PSI-10:flame-design-inverse-flame,64,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r65,PSI-10,PSI-10:flame-design-inverse-flame,65,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r66,PSI-10,PSI-10:flame-design-inverse-flame,66,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r67,PSI-10,PSI-10:flame-design-inverse-flame,67,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r68,PSI-10,PSI-10:flame-design-inverse-flame,68,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r69,PSI-10,PSI-10:flame-design-inverse-flame,69,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r70,PSI-10,PSI-10:flame-design-inverse-flame,70,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r71,PSI-10,PSI-10:flame-design-inverse-flame,71,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r72,PSI-10,PSI-10:flame-design-inverse-flame,72,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r73,PSI-10,PSI-10:flame-design-inverse-flame,73,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r74,PSI-10,PSI-10:flame-design-inverse-flame,74,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r75,PSI-10,PSI-10:flame-design-inverse-flame,75,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r76,PSI-10,PSI-10:flame-design-inverse-flame,76,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r77,PSI-10,PSI-10:flame-design-inverse-flame,77,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r78,PSI-10,PSI-10:flame-design-inverse-flame,78,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r79,PSI-10,PSI-10:flame-design-inverse-flame,79,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r80,PSI-10,PSI-10:flame-design-inverse-flame,80,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r81,PSI-10,PSI-10:flame-design-inverse-flame,81,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r82,PSI-10,PSI-10:flame-design-inverse-flame,82,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r83,PSI-10,PSI-10:flame-design-inverse-flame,83,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r84,PSI-10,PSI-10:flame-design-inverse-flame,84,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r85,PSI-10,PSI-10:flame-design-inverse-flame,85,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r86,PSI-10,PSI-10:flame-design-inverse-flame,86,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r87,PSI-10,PSI-10:flame-design-inverse-flame,87,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r88,PSI-10,PSI-10:flame-design-inverse-flame,88,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r89,PSI-10,PSI-10:flame-design-inverse-flame,89,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r90,PSI-10,PSI-10:flame-design-inverse-flame,90,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r91,PSI-10,PSI-10:flame-design-inverse-flame,91,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r92,PSI-10,PSI-10:flame-design-inverse-flame,92,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r93,PSI-10,PSI-10:flame-design-inverse-flame,93,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r94,PSI-10,PSI-10:flame-design-inverse-flame,94,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r95,PSI-10,PSI-10:flame-design-inverse-flame,95,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r96,PSI-10,PSI-10:flame-design-inverse-flame,96,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r97,PSI-10,PSI-10:flame-design-inverse-flame,97,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r98,PSI-10,PSI-10:flame-design-inverse-flame,98,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r99,PSI-10,PSI-10:flame-design-inverse-flame,99,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r100,PSI-10,PSI-10:flame-design-inverse-flame,100,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r101,PSI-10,PSI-10:flame-design-inverse-flame,101,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r102,PSI-10,PSI-10:flame-design-inverse-flame,102,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r103,PSI-10,PSI-10:flame-design-inverse-flame,103,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r104,PSI-10,PSI-10:flame-design-inverse-flame,104,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r105,PSI-10,PSI-10:flame-design-inverse-flame,105,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r106,PSI-10,PSI-10:flame-design-inverse-flame,106,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r107,PSI-10,PSI-10:flame-design-inverse-flame,107,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r108,PSI-10,PSI-10:flame-design-inverse-flame,108,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r109,PSI-10,PSI-10:flame-design-inverse-flame,109,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r110,PSI-10,PSI-10:flame-design-inverse-flame,110,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r111,PSI-10,PSI-10:flame-design-inverse-flame,111,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r112,PSI-10,PSI-10:flame-design-inverse-flame,112,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r113,PSI-10,PSI-10:flame-design-inverse-flame,113,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r114,PSI-10,PSI-10:flame-design-inverse-flame,114,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r115,PSI-10,PSI-10:flame-design-inverse-flame,115,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r116,PSI-10,PSI-10:flame-design-inverse-flame,116,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r117,PSI-10,PSI-10:flame-design-inverse-flame,117,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r118,PSI-10,PSI-10:flame-design-inverse-flame,118,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r119,PSI-10,PSI-10:flame-design-inverse-flame,119,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r120,PSI-10,PSI-10:flame-design-inverse-flame,120,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-inverse-flame:r121,PSI-10,PSI-10:flame-design-inverse-flame,121,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-10:flame-design-normal-flame:r3,PSI-10,PSI-10:flame-design-normal-flame,3,note,ramped_test,flow/composition RAMPED during test: per-test mass flows not single-valued
+PSI-10:flame-design-normal-flame:r5,PSI-10,PSI-10:flame-design-normal-flame,5,note,ramped_test,flow/composition RAMPED during test: per-test mass flows not single-valued
+PSI-10:flame-design-normal-flame:r7,PSI-10,PSI-10:flame-design-normal-flame,7,note,ramped_test,flow/composition RAMPED during test: per-test mass flows not single-valued
+PSI-20:acme-bre:r2:o2=21,PSI-20,PSI-20:acme-bre,2,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r2:o2=21,PSI-20,PSI-20:acme-bre,2,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r2:o2=21,PSI-20,PSI-20:acme-bre,2,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r2:o2=26.5,PSI-20,PSI-20:acme-bre,2,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r2:o2=26.5,PSI-20,PSI-20:acme-bre,2,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r2:o2=26.5,PSI-20,PSI-20:acme-bre,2,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r2:o2=40,PSI-20,PSI-20:acme-bre,2,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r2:o2=40,PSI-20,PSI-20:acme-bre,2,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r2:o2=40,PSI-20,PSI-20:acme-bre,2,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r3:o2=26.5,PSI-20,PSI-20:acme-bre,3,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r3:o2=26.5,PSI-20,PSI-20:acme-bre,3,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r3:o2=26.5,PSI-20,PSI-20:acme-bre,3,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r3:o2=34,PSI-20,PSI-20:acme-bre,3,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r3:o2=34,PSI-20,PSI-20:acme-bre,3,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r3:o2=34,PSI-20,PSI-20:acme-bre,3,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r4:o2=21,PSI-20,PSI-20:acme-bre,4,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r4:o2=21,PSI-20,PSI-20:acme-bre,4,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r4:o2=21,PSI-20,PSI-20:acme-bre,4,note,day_split_by_o2,test day listed 4 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r4:o2=26.5,PSI-20,PSI-20:acme-bre,4,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r4:o2=26.5,PSI-20,PSI-20:acme-bre,4,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r4:o2=26.5,PSI-20,PSI-20:acme-bre,4,note,day_split_by_o2,test day listed 4 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r4:o2=34,PSI-20,PSI-20:acme-bre,4,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r4:o2=34,PSI-20,PSI-20:acme-bre,4,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r4:o2=34,PSI-20,PSI-20:acme-bre,4,note,day_split_by_o2,test day listed 4 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r4:o2=40,PSI-20,PSI-20:acme-bre,4,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r4:o2=40,PSI-20,PSI-20:acme-bre,4,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r4:o2=40,PSI-20,PSI-20:acme-bre,4,note,day_split_by_o2,test day listed 4 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r5:o2=26.5,PSI-20,PSI-20:acme-bre,5,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r5:o2=26.5,PSI-20,PSI-20:acme-bre,5,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r5:o2=26.5,PSI-20,PSI-20:acme-bre,5,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r5:o2=40,PSI-20,PSI-20:acme-bre,5,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r5:o2=40,PSI-20,PSI-20:acme-bre,5,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r5:o2=40,PSI-20,PSI-20:acme-bre,5,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r6:o2=34,PSI-20,PSI-20:acme-bre,6,anomaly,pct_format_artifact,O2 '3400%' read as 34% (spreadsheet percent-format artifact)
+PSI-20:acme-bre:r6:o2=34,PSI-20,PSI-20:acme-bre,6,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r6:o2=34,PSI-20,PSI-20:acme-bre,6,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r7:o2=26.5,PSI-20,PSI-20:acme-bre,7,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r7:o2=26.5,PSI-20,PSI-20:acme-bre,7,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r7:o2=26.5,PSI-20,PSI-20:acme-bre,7,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r7:o2=34,PSI-20,PSI-20:acme-bre,7,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r7:o2=34,PSI-20,PSI-20:acme-bre,7,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r7:o2=34,PSI-20,PSI-20:acme-bre,7,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r8:o2=26.5,PSI-20,PSI-20:acme-bre,8,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r8:o2=26.5,PSI-20,PSI-20:acme-bre,8,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r8:o2=26.5,PSI-20,PSI-20:acme-bre,8,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r8:o2=34,PSI-20,PSI-20:acme-bre,8,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r8:o2=34,PSI-20,PSI-20:acme-bre,8,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r8:o2=34,PSI-20,PSI-20:acme-bre,8,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r9:o2=21,PSI-20,PSI-20:acme-bre,9,anomaly,pct_format_artifact,O2 '2100%' read as 21% (spreadsheet percent-format artifact)
+PSI-20:acme-bre:r9:o2=21,PSI-20,PSI-20:acme-bre,9,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r9:o2=21,PSI-20,PSI-20:acme-bre,9,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r10:o2=21,PSI-20,PSI-20:acme-bre,10,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r10:o2=21,PSI-20,PSI-20:acme-bre,10,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r10:o2=21,PSI-20,PSI-20:acme-bre,10,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r10:o2=26.5,PSI-20,PSI-20:acme-bre,10,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r10:o2=26.5,PSI-20,PSI-20:acme-bre,10,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r10:o2=26.5,PSI-20,PSI-20:acme-bre,10,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r10:o2=34,PSI-20,PSI-20:acme-bre,10,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r10:o2=34,PSI-20,PSI-20:acme-bre,10,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r10:o2=34,PSI-20,PSI-20:acme-bre,10,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r11:o2=25,PSI-20,PSI-20:acme-bre,11,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r11:o2=25,PSI-20,PSI-20:acme-bre,11,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r11:o2=25,PSI-20,PSI-20:acme-bre,11,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r11:o2=34,PSI-20,PSI-20:acme-bre,11,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r11:o2=34,PSI-20,PSI-20:acme-bre,11,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r11:o2=34,PSI-20,PSI-20:acme-bre,11,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r11:o2=40,PSI-20,PSI-20:acme-bre,11,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r11:o2=40,PSI-20,PSI-20:acme-bre,11,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r11:o2=40,PSI-20,PSI-20:acme-bre,11,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r12:o2=26.5,PSI-20,PSI-20:acme-bre,12,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r12:o2=26.5,PSI-20,PSI-20:acme-bre,12,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r12:o2=26.5,PSI-20,PSI-20:acme-bre,12,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r12:o2=34,PSI-20,PSI-20:acme-bre,12,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r12:o2=34,PSI-20,PSI-20:acme-bre,12,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r12:o2=34,PSI-20,PSI-20:acme-bre,12,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r13:o2=25,PSI-20,PSI-20:acme-bre,13,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r13:o2=25,PSI-20,PSI-20:acme-bre,13,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r13:o2=25,PSI-20,PSI-20:acme-bre,13,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r13:o2=34,PSI-20,PSI-20:acme-bre,13,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r13:o2=34,PSI-20,PSI-20:acme-bre,13,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r13:o2=34,PSI-20,PSI-20:acme-bre,13,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r13:o2=40,PSI-20,PSI-20:acme-bre,13,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r13:o2=40,PSI-20,PSI-20:acme-bre,13,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r13:o2=40,PSI-20,PSI-20:acme-bre,13,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r14:o2=25,PSI-20,PSI-20:acme-bre,14,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r14:o2=25,PSI-20,PSI-20:acme-bre,14,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r14:o2=25,PSI-20,PSI-20:acme-bre,14,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r14:o2=40,PSI-20,PSI-20:acme-bre,14,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r14:o2=40,PSI-20,PSI-20:acme-bre,14,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r14:o2=40,PSI-20,PSI-20:acme-bre,14,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r15:o2=25,PSI-20,PSI-20:acme-bre,15,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r15:o2=25,PSI-20,PSI-20:acme-bre,15,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r15:o2=25,PSI-20,PSI-20:acme-bre,15,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r15:o2=40,PSI-20,PSI-20:acme-bre,15,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r15:o2=40,PSI-20,PSI-20:acme-bre,15,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r15:o2=40,PSI-20,PSI-20:acme-bre,15,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r16:o2=34,PSI-20,PSI-20:acme-bre,16,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r16:o2=34,PSI-20,PSI-20:acme-bre,16,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r16:o2=34,PSI-20,PSI-20:acme-bre,16,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r16:o2=40,PSI-20,PSI-20:acme-bre,16,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r16:o2=40,PSI-20,PSI-20:acme-bre,16,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r16:o2=40,PSI-20,PSI-20:acme-bre,16,note,day_split_by_o2,test day listed 2 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r17:o2=25,PSI-20,PSI-20:acme-bre,17,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r17:o2=25,PSI-20,PSI-20:acme-bre,17,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r17:o2=25,PSI-20,PSI-20:acme-bre,17,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r17:o2=34,PSI-20,PSI-20:acme-bre,17,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r17:o2=34,PSI-20,PSI-20:acme-bre,17,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r17:o2=34,PSI-20,PSI-20:acme-bre,17,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r17:o2=40,PSI-20,PSI-20:acme-bre,17,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r17:o2=40,PSI-20,PSI-20:acme-bre,17,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r17:o2=40,PSI-20,PSI-20:acme-bre,17,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r18:o2=21,PSI-20,PSI-20:acme-bre,18,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r18:o2=21,PSI-20,PSI-20:acme-bre,18,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r18:o2=21,PSI-20,PSI-20:acme-bre,18,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r18:o2=26.5,PSI-20,PSI-20:acme-bre,18,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r18:o2=26.5,PSI-20,PSI-20:acme-bre,18,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r18:o2=26.5,PSI-20,PSI-20:acme-bre,18,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r18:o2=34,PSI-20,PSI-20:acme-bre,18,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r18:o2=34,PSI-20,PSI-20:acme-bre,18,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r18:o2=34,PSI-20,PSI-20:acme-bre,18,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r19:o2=25,PSI-20,PSI-20:acme-bre,19,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r19:o2=25,PSI-20,PSI-20:acme-bre,19,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r19:o2=25,PSI-20,PSI-20:acme-bre,19,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r19:o2=34,PSI-20,PSI-20:acme-bre,19,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r19:o2=34,PSI-20,PSI-20:acme-bre,19,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r19:o2=34,PSI-20,PSI-20:acme-bre,19,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-20:acme-bre:r19:o2=40,PSI-20,PSI-20:acme-bre,19,limitation,pressure_not_identified,chamber pressure varied between tests but is not identified in the PSI table
+PSI-20:acme-bre:r19:o2=40,PSI-20,PSI-20:acme-bre,19,note,flow_from_record_text,flow 0 cm/s: 'quiescent microgravity ambient' per PSI-20 objective
+PSI-20:acme-bre:r19:o2=40,PSI-20,PSI-20:acme-bre,19,note,day_split_by_o2,test day listed 3 O2 levels; ignition count is for the whole day
+PSI-21:cld-flame:r2,PSI-21,PSI-21:cld-flame,2,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r3,PSI-21,PSI-21:cld-flame,3,anomaly,autoincrement_artifact,fuel '40% CH5' read as '40% CH4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r3,PSI-21,PSI-21:cld-flame,3,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r4,PSI-21,PSI-21:cld-flame,4,anomaly,autoincrement_artifact,fuel '40% CH6' read as '40% CH4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r4,PSI-21,PSI-21:cld-flame,4,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r5,PSI-21,PSI-21:cld-flame,5,anomaly,autoincrement_artifact,fuel '40% CH7' read as '40% CH4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r5,PSI-21,PSI-21:cld-flame,5,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r6,PSI-21,PSI-21:cld-flame,6,anomaly,autoincrement_artifact,fuel '40% CH8' read as '40% CH4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r6,PSI-21,PSI-21:cld-flame,6,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r7,PSI-21,PSI-21:cld-flame,7,anomaly,autoincrement_artifact,fuel '40% CH9' read as '40% CH4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r7,PSI-21,PSI-21:cld-flame,7,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r8,PSI-21,PSI-21:cld-flame,8,anomaly,autoincrement_artifact,fuel '40% CH10' read as '40% CH4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r8,PSI-21,PSI-21:cld-flame,8,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r9,PSI-21,PSI-21:cld-flame,9,anomaly,autoincrement_artifact,fuel '40% CH11' read as '40% CH4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r9,PSI-21,PSI-21:cld-flame,9,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r10,PSI-21,PSI-21:cld-flame,10,anomaly,autoincrement_artifact,fuel '40% CH12' read as '40% CH4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r10,PSI-21,PSI-21:cld-flame,10,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r11,PSI-21,PSI-21:cld-flame,11,anomaly,autoincrement_artifact,fuel '40% CH13' read as '40% CH4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r11,PSI-21,PSI-21:cld-flame,11,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r12,PSI-21,PSI-21:cld-flame,12,anomaly,autoincrement_artifact,fuel '40% CH14' read as '40% CH4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r12,PSI-21,PSI-21:cld-flame,12,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r13,PSI-21,PSI-21:cld-flame,13,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r14,PSI-21,PSI-21:cld-flame,14,anomaly,autoincrement_artifact,fuel '100% CH5' read as '100% CH4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r14,PSI-21,PSI-21:cld-flame,14,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r15,PSI-21,PSI-21:cld-flame,15,anomaly,autoincrement_artifact,fuel '100% CH6' read as '100% CH4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r15,PSI-21,PSI-21:cld-flame,15,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r16,PSI-21,PSI-21:cld-flame,16,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r17,PSI-21,PSI-21:cld-flame,17,anomaly,autoincrement_artifact,fuel '100% C2H5' read as '100% C2H4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r17,PSI-21,PSI-21:cld-flame,17,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r18,PSI-21,PSI-21:cld-flame,18,anomaly,autoincrement_artifact,fuel '100% C2H6' read as '100% C2H4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r18,PSI-21,PSI-21:cld-flame,18,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r19,PSI-21,PSI-21:cld-flame,19,anomaly,autoincrement_artifact,fuel '100% C2H7' read as '100% C2H4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r19,PSI-21,PSI-21:cld-flame,19,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r20,PSI-21,PSI-21:cld-flame,20,anomaly,autoincrement_artifact,fuel '100% C2H8' read as '100% C2H4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r20,PSI-21,PSI-21:cld-flame,20,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r21,PSI-21,PSI-21:cld-flame,21,anomaly,autoincrement_artifact,fuel '100% C2H9' read as '100% C2H4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r21,PSI-21,PSI-21:cld-flame,21,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r22,PSI-21,PSI-21:cld-flame,22,anomaly,autoincrement_artifact,fuel '100% C2H10' read as '100% C2H4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r22,PSI-21,PSI-21:cld-flame,22,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r23,PSI-21,PSI-21:cld-flame,23,anomaly,autoincrement_artifact,fuel '100% C2H11' read as '100% C2H4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r23,PSI-21,PSI-21:cld-flame,23,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r24,PSI-21,PSI-21:cld-flame,24,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r25,PSI-21,PSI-21:cld-flame,25,anomaly,autoincrement_artifact,fuel '50% C2H5' read as '50% C2H4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r25,PSI-21,PSI-21:cld-flame,25,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r26,PSI-21,PSI-21:cld-flame,26,anomaly,autoincrement_artifact,fuel '50% C2H6' read as '50% C2H4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r26,PSI-21,PSI-21:cld-flame,26,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r27,PSI-21,PSI-21:cld-flame,27,anomaly,autoincrement_artifact,fuel '50% C2H7' read as '50% C2H4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r27,PSI-21,PSI-21:cld-flame,27,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r28,PSI-21,PSI-21:cld-flame,28,anomaly,autoincrement_artifact,fuel '50% C2H8' read as '50% C2H4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r28,PSI-21,PSI-21:cld-flame,28,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r29,PSI-21,PSI-21:cld-flame,29,anomaly,autoincrement_artifact,fuel '50% C2H9' read as '50% C2H4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r29,PSI-21,PSI-21:cld-flame,29,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r30,PSI-21,PSI-21:cld-flame,30,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r31,PSI-21,PSI-21:cld-flame,31,anomaly,autoincrement_artifact,fuel '30% C2H5' read as '30% C2H4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r31,PSI-21,PSI-21:cld-flame,31,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r32,PSI-21,PSI-21:cld-flame,32,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-21:cld-flame:r33,PSI-21,PSI-21:cld-flame,33,anomaly,autoincrement_artifact,fuel '40% CH5' read as '40% CH4' (spreadsheet auto-increment artifact)
+PSI-21:cld-flame:r33,PSI-21,PSI-21:cld-flame,33,limitation,conditions_not_in_table,"coflow O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r2,PSI-22,PSI-22:acme-e-field-flames,2,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r3,PSI-22,PSI-22:acme-e-field-flames,3,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r3,PSI-22,PSI-22:acme-e-field-flames,3,note,continuation_row_merged,continuation source row 4 merged into this test day
+PSI-22:acme-e-field-flames:r5,PSI-22,PSI-22:acme-e-field-flames,5,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r6,PSI-22,PSI-22:acme-e-field-flames,6,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r6,PSI-22,PSI-22:acme-e-field-flames,6,note,continuation_row_merged,continuation source row 7 merged into this test day
+PSI-22:acme-e-field-flames:r8,PSI-22,PSI-22:acme-e-field-flames,8,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r9,PSI-22,PSI-22:acme-e-field-flames,9,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r10,PSI-22,PSI-22:acme-e-field-flames,10,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r11,PSI-22,PSI-22:acme-e-field-flames,11,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r12,PSI-22,PSI-22:acme-e-field-flames,12,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r13,PSI-22,PSI-22:acme-e-field-flames,13,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r14,PSI-22,PSI-22:acme-e-field-flames,14,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r14,PSI-22,PSI-22:acme-e-field-flames,14,note,continuation_row_merged,continuation source row 15 merged into this test day
+PSI-22:acme-e-field-flames:r16,PSI-22,PSI-22:acme-e-field-flames,16,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r17,PSI-22,PSI-22:acme-e-field-flames,17,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r18,PSI-22,PSI-22:acme-e-field-flames,18,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r18,PSI-22,PSI-22:acme-e-field-flames,18,note,continuation_row_merged,continuation source row 19 merged into this test day
+PSI-22:acme-e-field-flames:r20,PSI-22,PSI-22:acme-e-field-flames,20,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r21,PSI-22,PSI-22:acme-e-field-flames,21,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r22,PSI-22,PSI-22:acme-e-field-flames,22,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r23,PSI-22,PSI-22:acme-e-field-flames,23,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r24,PSI-22,PSI-22:acme-e-field-flames,24,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r24,PSI-22,PSI-22:acme-e-field-flames,24,note,continuation_row_merged,continuation source row 25 merged into this test day
+PSI-22:acme-e-field-flames:r26,PSI-22,PSI-22:acme-e-field-flames,26,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r26,PSI-22,PSI-22:acme-e-field-flames,26,note,continuation_row_merged,continuation source row 27 merged into this test day
+PSI-22:acme-e-field-flames:r26,PSI-22,PSI-22:acme-e-field-flames,26,note,continuation_row_merged,continuation source row 28 merged into this test day
+PSI-22:acme-e-field-flames:r26,PSI-22,PSI-22:acme-e-field-flames,26,note,continuation_row_merged,continuation source row 29 merged into this test day
+PSI-22:acme-e-field-flames:r30,PSI-22,PSI-22:acme-e-field-flames,30,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-22:acme-e-field-flames:r30,PSI-22,PSI-22:acme-e-field-flames,30,note,continuation_row_merged,continuation source row 31 merged into this test day
+PSI-22:acme-e-field-flames:r30,PSI-22,PSI-22:acme-e-field-flames,30,note,continuation_row_merged,continuation source row 32 merged into this test day
+PSI-22:acme-e-field-flames:r30,PSI-22,PSI-22:acme-e-field-flames,30,note,continuation_row_merged,continuation source row 33 merged into this test day
+PSI-22:acme-e-field-flames:r30,PSI-22,PSI-22:acme-e-field-flames,30,anomaly,exact_duplicate,exact duplicate of source row 26 (PSI-22:acme-e-field-flames:r26)
+PSI-23:acme-s-flame:r2,PSI-23,PSI-23:acme-s-flame,2,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r3,PSI-23,PSI-23:acme-s-flame,3,anomaly,autoincrement_artifact,atmosphere 'with N3' read as 'with N2' (spreadsheet auto-increment artifact)
+PSI-23:acme-s-flame:r3,PSI-23,PSI-23:acme-s-flame,3,anomaly,autoincrement_artifact,fuel bottle 'with N3' read as 'with N2' (spreadsheet auto-increment artifact)
+PSI-23:acme-s-flame:r3,PSI-23,PSI-23:acme-s-flame,3,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r4,PSI-23,PSI-23:acme-s-flame,4,anomaly,autoincrement_artifact,atmosphere 'with N4' read as 'with N2' (spreadsheet auto-increment artifact)
+PSI-23:acme-s-flame:r4,PSI-23,PSI-23:acme-s-flame,4,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r5,PSI-23,PSI-23:acme-s-flame,5,anomaly,autoincrement_artifact,fuel bottle 'with N3' read as 'with N2' (spreadsheet auto-increment artifact)
+PSI-23:acme-s-flame:r5,PSI-23,PSI-23:acme-s-flame,5,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r6,PSI-23,PSI-23:acme-s-flame,6,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r7,PSI-23,PSI-23:acme-s-flame,7,anomaly,autoincrement_artifact,atmosphere 'with N3' read as 'with N2' (spreadsheet auto-increment artifact)
+PSI-23:acme-s-flame:r7,PSI-23,PSI-23:acme-s-flame,7,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r8,PSI-23,PSI-23:acme-s-flame,8,anomaly,autoincrement_artifact,atmosphere 'with N4' read as 'with N2' (spreadsheet auto-increment artifact)
+PSI-23:acme-s-flame:r8,PSI-23,PSI-23:acme-s-flame,8,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r9,PSI-23,PSI-23:acme-s-flame,9,anomaly,autoincrement_artifact,atmosphere 'with N5' read as 'with N2' (spreadsheet auto-increment artifact)
+PSI-23:acme-s-flame:r9,PSI-23,PSI-23:acme-s-flame,9,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r10,PSI-23,PSI-23:acme-s-flame,10,anomaly,autoincrement_artifact,atmosphere 'with N6' read as 'with N2' (spreadsheet auto-increment artifact)
+PSI-23:acme-s-flame:r10,PSI-23,PSI-23:acme-s-flame,10,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r11,PSI-23,PSI-23:acme-s-flame,11,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r12,PSI-23,PSI-23:acme-s-flame,12,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r13,PSI-23,PSI-23:acme-s-flame,13,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r14,PSI-23,PSI-23:acme-s-flame,14,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r14,PSI-23,PSI-23:acme-s-flame,14,note,multiple_o2_levels,"test day ran at more than one O2 level (30%, 21%)"
+PSI-23:acme-s-flame:r15,PSI-23,PSI-23:acme-s-flame,15,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r15,PSI-23,PSI-23:acme-s-flame,15,note,multiple_o2_levels,"test day ran at more than one O2 level (30%, 21%)"
+PSI-23:acme-s-flame:r16,PSI-23,PSI-23:acme-s-flame,16,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r17,PSI-23,PSI-23:acme-s-flame,17,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r17,PSI-23,PSI-23:acme-s-flame,17,note,multiple_o2_levels,"test day ran at more than one O2 level (30%, 21%)"
+PSI-23:acme-s-flame:r18,PSI-23,PSI-23:acme-s-flame,18,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r18,PSI-23,PSI-23:acme-s-flame,18,note,multiple_o2_levels,"test day ran at more than one O2 level (30%, 21%)"
+PSI-23:acme-s-flame:r19,PSI-23,PSI-23:acme-s-flame,19,note,approximate_value,"O2 and pressure approximate ('~'); table note: ~1 atm, pressure rises and O2 drops with vitiation"
+PSI-23:acme-s-flame:r19,PSI-23,PSI-23:acme-s-flame,19,note,multiple_o2_levels,"test day ran at more than one O2 level (30%, 21%)"
+PSI-25:bass-ii:r2,PSI-25,PSI-25:bass-ii,2,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r3,PSI-25,PSI-25:bass-ii,3,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r4,PSI-25,PSI-25:bass-ii,4,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r5,PSI-25,PSI-25:bass-ii,5,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r6,PSI-25,PSI-25:bass-ii,6,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r7,PSI-25,PSI-25:bass-ii,7,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r8,PSI-25,PSI-25:bass-ii,8,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r9,PSI-25,PSI-25:bass-ii,9,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r10,PSI-25,PSI-25:bass-ii,10,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r11,PSI-25,PSI-25:bass-ii,11,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r12,PSI-25,PSI-25:bass-ii,12,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r13,PSI-25,PSI-25:bass-ii,13,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r14,PSI-25,PSI-25:bass-ii,14,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r15,PSI-25,PSI-25:bass-ii,15,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r16,PSI-25,PSI-25:bass-ii,16,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r17,PSI-25,PSI-25:bass-ii,17,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r18,PSI-25,PSI-25:bass-ii,18,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r19,PSI-25,PSI-25:bass-ii,19,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r20,PSI-25,PSI-25:bass-ii,20,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r21,PSI-25,PSI-25:bass-ii,21,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r22,PSI-25,PSI-25:bass-ii,22,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r23,PSI-25,PSI-25:bass-ii,23,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r24,PSI-25,PSI-25:bass-ii,24,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r25,PSI-25,PSI-25:bass-ii,25,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r26,PSI-25,PSI-25:bass-ii,26,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r27,PSI-25,PSI-25:bass-ii,27,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r28,PSI-25,PSI-25:bass-ii,28,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r29,PSI-25,PSI-25:bass-ii,29,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r30,PSI-25,PSI-25:bass-ii,30,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r31,PSI-25,PSI-25:bass-ii,31,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r32,PSI-25,PSI-25:bass-ii,32,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r33,PSI-25,PSI-25:bass-ii,33,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r34,PSI-25,PSI-25:bass-ii,34,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r35,PSI-25,PSI-25:bass-ii,35,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r36,PSI-25,PSI-25:bass-ii,36,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r37,PSI-25,PSI-25:bass-ii,37,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r38,PSI-25,PSI-25:bass-ii,38,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r39,PSI-25,PSI-25:bass-ii,39,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r40,PSI-25,PSI-25:bass-ii,40,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r41,PSI-25,PSI-25:bass-ii,41,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r42,PSI-25,PSI-25:bass-ii,42,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r43,PSI-25,PSI-25:bass-ii,43,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r44,PSI-25,PSI-25:bass-ii,44,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r45,PSI-25,PSI-25:bass-ii,45,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r46,PSI-25,PSI-25:bass-ii,46,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r47,PSI-25,PSI-25:bass-ii,47,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r48,PSI-25,PSI-25:bass-ii,48,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r49,PSI-25,PSI-25:bass-ii,49,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r50,PSI-25,PSI-25:bass-ii,50,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r51,PSI-25,PSI-25:bass-ii,51,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r52,PSI-25,PSI-25:bass-ii,52,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r53,PSI-25,PSI-25:bass-ii,53,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r54,PSI-25,PSI-25:bass-ii,54,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r55,PSI-25,PSI-25:bass-ii,55,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r56,PSI-25,PSI-25:bass-ii,56,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r57,PSI-25,PSI-25:bass-ii,57,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r58,PSI-25,PSI-25:bass-ii,58,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r59,PSI-25,PSI-25:bass-ii,59,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r60,PSI-25,PSI-25:bass-ii,60,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r61,PSI-25,PSI-25:bass-ii,61,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r62,PSI-25,PSI-25:bass-ii,62,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r63,PSI-25,PSI-25:bass-ii,63,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r64,PSI-25,PSI-25:bass-ii,64,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r65,PSI-25,PSI-25:bass-ii,65,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r66,PSI-25,PSI-25:bass-ii,66,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r67,PSI-25,PSI-25:bass-ii,67,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r68,PSI-25,PSI-25:bass-ii,68,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r69,PSI-25,PSI-25:bass-ii,69,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r70,PSI-25,PSI-25:bass-ii,70,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r71,PSI-25,PSI-25:bass-ii,71,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r72,PSI-25,PSI-25:bass-ii,72,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r73,PSI-25,PSI-25:bass-ii,73,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r74,PSI-25,PSI-25:bass-ii,74,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r75,PSI-25,PSI-25:bass-ii,75,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r76,PSI-25,PSI-25:bass-ii,76,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r77,PSI-25,PSI-25:bass-ii,77,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r78,PSI-25,PSI-25:bass-ii,78,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r79,PSI-25,PSI-25:bass-ii,79,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r80,PSI-25,PSI-25:bass-ii,80,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r81,PSI-25,PSI-25:bass-ii,81,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r82,PSI-25,PSI-25:bass-ii,82,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r83,PSI-25,PSI-25:bass-ii,83,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r84,PSI-25,PSI-25:bass-ii,84,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r85,PSI-25,PSI-25:bass-ii,85,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r86,PSI-25,PSI-25:bass-ii,86,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r87,PSI-25,PSI-25:bass-ii,87,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r88,PSI-25,PSI-25:bass-ii,88,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r89,PSI-25,PSI-25:bass-ii,89,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r90,PSI-25,PSI-25:bass-ii,90,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r91,PSI-25,PSI-25:bass-ii,91,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r92,PSI-25,PSI-25:bass-ii,92,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r93,PSI-25,PSI-25:bass-ii,93,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r94,PSI-25,PSI-25:bass-ii,94,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r95,PSI-25,PSI-25:bass-ii,95,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r96,PSI-25,PSI-25:bass-ii,96,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r97,PSI-25,PSI-25:bass-ii,97,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r98,PSI-25,PSI-25:bass-ii,98,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r99,PSI-25,PSI-25:bass-ii,99,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r100,PSI-25,PSI-25:bass-ii,100,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r101,PSI-25,PSI-25:bass-ii,101,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r102,PSI-25,PSI-25:bass-ii,102,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r103,PSI-25,PSI-25:bass-ii,103,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r104,PSI-25,PSI-25:bass-ii,104,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r105,PSI-25,PSI-25:bass-ii,105,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r106,PSI-25,PSI-25:bass-ii,106,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r107,PSI-25,PSI-25:bass-ii,107,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r108,PSI-25,PSI-25:bass-ii,108,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r109,PSI-25,PSI-25:bass-ii,109,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r110,PSI-25,PSI-25:bass-ii,110,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r111,PSI-25,PSI-25:bass-ii,111,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r112,PSI-25,PSI-25:bass-ii,112,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r113,PSI-25,PSI-25:bass-ii,113,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r114,PSI-25,PSI-25:bass-ii,114,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r115,PSI-25,PSI-25:bass-ii,115,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r116,PSI-25,PSI-25:bass-ii,116,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r117,PSI-25,PSI-25:bass-ii,117,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r118,PSI-25,PSI-25:bass-ii,118,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r119,PSI-25,PSI-25:bass-ii,119,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r120,PSI-25,PSI-25:bass-ii,120,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r121,PSI-25,PSI-25:bass-ii,121,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r122,PSI-25,PSI-25:bass-ii,122,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r123,PSI-25,PSI-25:bass-ii,123,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r124,PSI-25,PSI-25:bass-ii,124,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r125,PSI-25,PSI-25:bass-ii,125,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r126,PSI-25,PSI-25:bass-ii,126,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r127,PSI-25,PSI-25:bass-ii,127,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r128,PSI-25,PSI-25:bass-ii,128,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r129,PSI-25,PSI-25:bass-ii,129,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-25:bass-ii:r130,PSI-25,PSI-25:bass-ii,130,limitation,flow_uncalibrated,flow given only as fan/air display settings (not cm/s)
+PSI-26:bass:r2,PSI-26,PSI-26:bass,2,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r3,PSI-26,PSI-26:bass,3,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r4,PSI-26,PSI-26:bass,4,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r5,PSI-26,PSI-26:bass,5,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r6,PSI-26,PSI-26:bass,6,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r7,PSI-26,PSI-26:bass,7,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r8,PSI-26,PSI-26:bass,8,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r9,PSI-26,PSI-26:bass,9,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r10,PSI-26,PSI-26:bass,10,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r11,PSI-26,PSI-26:bass,11,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r12,PSI-26,PSI-26:bass,12,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r13,PSI-26,PSI-26:bass,13,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r14,PSI-26,PSI-26:bass,14,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r15,PSI-26,PSI-26:bass,15,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r16,PSI-26,PSI-26:bass,16,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r17,PSI-26,PSI-26:bass,17,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r18,PSI-26,PSI-26:bass,18,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r19,PSI-26,PSI-26:bass,19,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r20,PSI-26,PSI-26:bass,20,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r21,PSI-26,PSI-26:bass,21,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r22,PSI-26,PSI-26:bass,22,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r23,PSI-26,PSI-26:bass,23,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r24,PSI-26,PSI-26:bass,24,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r25,PSI-26,PSI-26:bass,25,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r26,PSI-26,PSI-26:bass,26,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r27,PSI-26,PSI-26:bass,27,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r28,PSI-26,PSI-26:bass,28,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r29,PSI-26,PSI-26:bass,29,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r30,PSI-26,PSI-26:bass,30,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r31,PSI-26,PSI-26:bass,31,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r32,PSI-26,PSI-26:bass,32,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r33,PSI-26,PSI-26:bass,33,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r34,PSI-26,PSI-26:bass,34,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r35,PSI-26,PSI-26:bass,35,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r36,PSI-26,PSI-26:bass,36,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r37,PSI-26,PSI-26:bass,37,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r38,PSI-26,PSI-26:bass,38,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r39,PSI-26,PSI-26:bass,39,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r40,PSI-26,PSI-26:bass,40,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r41,PSI-26,PSI-26:bass,41,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r42,PSI-26,PSI-26:bass,42,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r43,PSI-26,PSI-26:bass,43,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r44,PSI-26,PSI-26:bass,44,anomaly,malformed_date,malformed date '6/29/`12'
+PSI-26:bass:r44,PSI-26,PSI-26:bass,44,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r45,PSI-26,PSI-26:bass,45,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r46,PSI-26,PSI-26:bass,46,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r47,PSI-26,PSI-26:bass,47,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r48,PSI-26,PSI-26:bass,48,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r49,PSI-26,PSI-26:bass,49,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r50,PSI-26,PSI-26:bass,50,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r51,PSI-26,PSI-26:bass,51,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r52,PSI-26,PSI-26:bass,52,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r53,PSI-26,PSI-26:bass,53,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r54,PSI-26,PSI-26:bass,54,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r55,PSI-26,PSI-26:bass,55,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r56,PSI-26,PSI-26:bass,56,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r57,PSI-26,PSI-26:bass,57,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r58,PSI-26,PSI-26:bass,58,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r59,PSI-26,PSI-26:bass,59,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r60,PSI-26,PSI-26:bass,60,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r61,PSI-26,PSI-26:bass,61,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r62,PSI-26,PSI-26:bass,62,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r63,PSI-26,PSI-26:bass,63,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r64,PSI-26,PSI-26:bass,64,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r65,PSI-26,PSI-26:bass,65,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r66,PSI-26,PSI-26:bass,66,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r67,PSI-26,PSI-26:bass,67,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r68,PSI-26,PSI-26:bass,68,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r69,PSI-26,PSI-26:bass,69,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r70,PSI-26,PSI-26:bass,70,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r71,PSI-26,PSI-26:bass,71,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r72,PSI-26,PSI-26:bass,72,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r73,PSI-26,PSI-26:bass,73,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r74,PSI-26,PSI-26:bass,74,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r75,PSI-26,PSI-26:bass,75,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r76,PSI-26,PSI-26:bass,76,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r77,PSI-26,PSI-26:bass,77,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r78,PSI-26,PSI-26:bass,78,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r79,PSI-26,PSI-26:bass,79,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r80,PSI-26,PSI-26:bass,80,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r81,PSI-26,PSI-26:bass,81,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r82,PSI-26,PSI-26:bass,82,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r83,PSI-26,PSI-26:bass,83,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r84,PSI-26,PSI-26:bass,84,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r85,PSI-26,PSI-26:bass,85,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r86,PSI-26,PSI-26:bass,86,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r87,PSI-26,PSI-26:bass,87,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r88,PSI-26,PSI-26:bass,88,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r89,PSI-26,PSI-26:bass,89,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r90,PSI-26,PSI-26:bass,90,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r91,PSI-26,PSI-26:bass,91,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r92,PSI-26,PSI-26:bass,92,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r93,PSI-26,PSI-26:bass,93,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r94,PSI-26,PSI-26:bass,94,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r95,PSI-26,PSI-26:bass,95,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r96,PSI-26,PSI-26:bass,96,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r97,PSI-26,PSI-26:bass,97,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r98,PSI-26,PSI-26:bass,98,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r99,PSI-26,PSI-26:bass,99,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r100,PSI-26,PSI-26:bass,100,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r101,PSI-26,PSI-26:bass,101,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r102,PSI-26,PSI-26:bass,102,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r103,PSI-26,PSI-26:bass,103,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r104,PSI-26,PSI-26:bass,104,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r105,PSI-26,PSI-26:bass,105,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r106,PSI-26,PSI-26:bass,106,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r107,PSI-26,PSI-26:bass,107,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r108,PSI-26,PSI-26:bass,108,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r109,PSI-26,PSI-26:bass,109,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r110,PSI-26,PSI-26:bass,110,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r111,PSI-26,PSI-26:bass,111,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r112,PSI-26,PSI-26:bass,112,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r113,PSI-26,PSI-26:bass,113,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r114,PSI-26,PSI-26:bass,114,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r115,PSI-26,PSI-26:bass,115,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r116,PSI-26,PSI-26:bass,116,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r117,PSI-26,PSI-26:bass,117,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r118,PSI-26,PSI-26:bass,118,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r119,PSI-26,PSI-26:bass,119,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r120,PSI-26,PSI-26:bass,120,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r121,PSI-26,PSI-26:bass,121,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r122,PSI-26,PSI-26:bass,122,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-26:bass:r123,PSI-26,PSI-26:bass,123,limitation,conditions_not_in_table,"O2, pressure and flow not in PSI table"
+PSI-39:cfi:r81,PSI-39,PSI-39:cfi,81,anomaly,exact_duplicate,exact duplicate of source row 24 (PSI-39:cfi:r24)
+PSI-39:cfi:r82,PSI-39,PSI-39:cfi,82,anomaly,exact_duplicate,exact duplicate of source row 25 (PSI-39:cfi:r25)
+PSI-39:cfi:r83,PSI-39,PSI-39:cfi,83,anomaly,exact_duplicate,exact duplicate of source row 26 (PSI-39:cfi:r26)
+PSI-39:cfi:r84,PSI-39,PSI-39:cfi,84,anomaly,exact_duplicate,exact duplicate of source row 27 (PSI-39:cfi:r27)
+PSI-39:cfi:r85,PSI-39,PSI-39:cfi,85,anomaly,exact_duplicate,exact duplicate of source row 28 (PSI-39:cfi:r28)
+PSI-39:cfi:r86,PSI-39,PSI-39:cfi,86,anomaly,exact_duplicate,exact duplicate of source row 29 (PSI-39:cfi:r29)
+PSI-39:cfi:r87,PSI-39,PSI-39:cfi,87,anomaly,exact_duplicate,exact duplicate of source row 30 (PSI-39:cfi:r30)
+PSI-39:cfi:r88,PSI-39,PSI-39:cfi,88,anomaly,exact_duplicate,exact duplicate of source row 31 (PSI-39:cfi:r31)
+PSI-68:flex2:r2,PSI-68,PSI-68:flex2,2,note,envelope_row,"envelope row: conditions are ranges across a test series, not a single test"
+PSI-68:flex2:r3,PSI-68,PSI-68:flex2,3,note,envelope_row,"envelope row: conditions are ranges across a test series, not a single test"
+PSI-68:flex2:r4,PSI-68,PSI-68:flex2,4,note,envelope_row,"envelope row: conditions are ranges across a test series, not a single test"
+PSI-68:flex2:r5,PSI-68,PSI-68:flex2,5,note,envelope_row,"envelope row: conditions are ranges across a test series, not a single test"
+PSI-68:flex2:r6,PSI-68,PSI-68:flex2,6,note,envelope_row,"envelope row: conditions are ranges across a test series, not a single test"
+PSI-68:flex2:r7,PSI-68,PSI-68:flex2,7,note,envelope_row,"envelope row: conditions are ranges across a test series, not a single test"
+PSI-68:flex2:r8,PSI-68,PSI-68:flex2,8,note,envelope_row,"envelope row: conditions are ranges across a test series, not a single test"
+PSI-68:flex2:r9,PSI-68,PSI-68:flex2,9,note,envelope_row,"envelope row: conditions are ranges across a test series, not a single test"
+PSI-69:flex:r2,PSI-69,PSI-69:flex,2,anomaly,header_interpretation,header 'CO initial ambient composition' read as CO2 (subscript lost); 'Burning rate; mm' unit unverified (likely mm^2/s) - see NASA/TP-2015-216046
+PSI-69:flex:r25,PSI-69,PSI-69:flex,25,anomaly,encoding_loss,initial droplet diameter unreadable (encoding loss in PSI CSV)
+PSI-69:flex:r81,PSI-69,PSI-69:flex,81,anomaly,encoding_loss,initial droplet diameter unreadable (encoding loss in PSI CSV)
+PSI-69:flex:r82,PSI-69,PSI-69:flex,82,anomaly,encoding_loss,initial droplet diameter unreadable (encoding loss in PSI CSV)
+PSI-69:flex:r84,PSI-69,PSI-69:flex,84,anomaly,encoding_loss,initial droplet diameter unreadable (encoding loss in PSI CSV)
+PSI-69:flex:r97,PSI-69,PSI-69:flex,97,anomaly,encoding_loss,initial droplet diameter unreadable (encoding loss in PSI CSV)
+PSI-69:flex:r115,PSI-69,PSI-69:flex,115,anomaly,zero_as_missing,ambient pressure recorded as 0 mmHg - treated as not documented
+PSI-69:flex:r139,PSI-69,PSI-69:flex,139,anomaly,encoding_loss,initial droplet diameter unreadable (encoding loss in PSI CSV)
+PSI-98:saffire-1:r4,PSI-98,PSI-98:saffire-1,4,note,not_a_burn,"pre-test flow-visualization camera record, not a burn"
+PSI-98:saffire-1:r5,PSI-98,PSI-98:saffire-1,5,note,not_a_burn,"pre-test flow-visualization camera record, not a burn"
+PSI-99:saffire-2:r2,PSI-99,PSI-99:saffire-2,2,anomaly,encoding_loss,header '?-g' read as 'µ-g' (encoding loss in PSI CSV)
+PSI-99:saffire-2:r3,PSI-99,PSI-99:saffire-2,3,anomaly,encoding_loss,header '?-g' read as 'µ-g' (encoding loss in PSI CSV)
+PSI-99:saffire-2:r4,PSI-99,PSI-99:saffire-2,4,anomaly,encoding_loss,header '?-g' read as 'µ-g' (encoding loss in PSI CSV)
+PSI-99:saffire-2:r5,PSI-99,PSI-99:saffire-2,5,anomaly,missing_decimal,thickness '037 mm' likely means 0.37 mm (missing decimal point)
+PSI-99:saffire-2:r5,PSI-99,PSI-99:saffire-2,5,anomaly,encoding_loss,header '?-g' read as 'µ-g' (encoding loss in PSI CSV)
+PSI-99:saffire-2:r6,PSI-99,PSI-99:saffire-2,6,anomaly,missing_decimal,thickness '037 mm' likely means 0.37 mm (missing decimal point)
+PSI-99:saffire-2:r6,PSI-99,PSI-99:saffire-2,6,anomaly,encoding_loss,header '?-g' read as 'µ-g' (encoding loss in PSI CSV)
+PSI-99:saffire-2:r7,PSI-99,PSI-99:saffire-2,7,anomaly,merged_cell_inherited,material blank in table; inherited 'Cotton-Fiberglass (SIBAL)' from previous row (merged cell)
+PSI-99:saffire-2:r7,PSI-99,PSI-99:saffire-2,7,anomaly,missing_decimal,thickness '037 mm' likely means 0.37 mm (missing decimal point)
+PSI-99:saffire-2:r7,PSI-99,PSI-99:saffire-2,7,anomaly,encoding_loss,header '?-g' read as 'µ-g' (encoding loss in PSI CSV)
+PSI-99:saffire-2:r8,PSI-99,PSI-99:saffire-2,8,anomaly,encoding_loss,header '?-g' read as 'µ-g' (encoding loss in PSI CSV)
+PSI-99:saffire-2:r9,PSI-99,PSI-99:saffire-2,9,anomaly,encoding_loss,header '?-g' read as 'µ-g' (encoding loss in PSI CSV)
+PSI-99:saffire-2:r10,PSI-99,PSI-99:saffire-2,10,anomaly,merged_cell_inherited,material blank in table; inherited 'PMMA' from previous row (merged cell)
+PSI-99:saffire-2:r10,PSI-99,PSI-99:saffire-2,10,anomaly,encoding_loss,header '?-g' read as 'µ-g' (encoding loss in PSI CSV)
+PSI-99:saffire-2:r11,PSI-99,PSI-99:saffire-2,11,note,not_a_burn,"pre-test flow-visualization camera record, not a burn"
+PSI-99:saffire-2:r12,PSI-99,PSI-99:saffire-2,12,note,not_a_burn,"pre-test flow-visualization camera record, not a burn"
+PSI-100:saffire-3:r2,PSI-100,PSI-100:saffire-3,2,limitation,conditions_not_in_table,O2 not in PSI table
+PSI-100:saffire-3:r3,PSI-100,PSI-100:saffire-3,3,limitation,conditions_not_in_table,O2 not in PSI table
+PSI-101:same-r:r75,PSI-101,PSI-101:same-r,75,anomaly,test_label_reused,test label '57' also used by non-identical row PSI-101:same-r:r57
+PSI-106:slice:r2,PSI-106,PSI-106:slice,2,limitation,conditions_not_in_table,"only date and fuel reported; O2, pressure and flow not in PSI table"
+PSI-106:slice:r3,PSI-106,PSI-106:slice,3,limitation,conditions_not_in_table,"only date and fuel reported; O2, pressure and flow not in PSI table"
+PSI-106:slice:r4,PSI-106,PSI-106:slice,4,limitation,conditions_not_in_table,"only date and fuel reported; O2, pressure and flow not in PSI table"
+PSI-106:slice:r5,PSI-106,PSI-106:slice,5,limitation,conditions_not_in_table,"only date and fuel reported; O2, pressure and flow not in PSI table"
+PSI-106:slice:r6,PSI-106,PSI-106:slice,6,limitation,conditions_not_in_table,"only date and fuel reported; O2, pressure and flow not in PSI table"
+PSI-106:slice:r7,PSI-106,PSI-106:slice,7,limitation,conditions_not_in_table,"only date and fuel reported; O2, pressure and flow not in PSI table"
+PSI-106:slice:r8,PSI-106,PSI-106:slice,8,limitation,conditions_not_in_table,"only date and fuel reported; O2, pressure and flow not in PSI table"
+PSI-106:slice:r9,PSI-106,PSI-106:slice,9,limitation,conditions_not_in_table,"only date and fuel reported; O2, pressure and flow not in PSI table"
+PSI-106:slice:r10,PSI-106,PSI-106:slice,10,limitation,conditions_not_in_table,"only date and fuel reported; O2, pressure and flow not in PSI table"
+PSI-106:slice:r11,PSI-106,PSI-106:slice,11,limitation,conditions_not_in_table,"only date and fuel reported; O2, pressure and flow not in PSI table"
+PSI-106:slice:r12,PSI-106,PSI-106:slice,12,limitation,conditions_not_in_table,"only date and fuel reported; O2, pressure and flow not in PSI table"
+PSI-106:slice:r13,PSI-106,PSI-106:slice,13,limitation,conditions_not_in_table,"only date and fuel reported; O2, pressure and flow not in PSI table"
+PSI-107:spice:r3,PSI-107,PSI-107:spice,3,anomaly,exact_duplicate,exact duplicate of source row 2 (PSI-107:spice:r2)
+PSI-107:spice:r7,PSI-107,PSI-107:spice,7,anomaly,exact_duplicate,exact duplicate of source row 6 (PSI-107:spice:r6)
+PSI-107:spice:r10,PSI-107,PSI-107:spice,10,anomaly,exact_duplicate,exact duplicate of source row 9 (PSI-107:spice:r9)
+PSI-107:spice:r12,PSI-107,PSI-107:spice,12,anomaly,exact_duplicate,exact duplicate of source row 11 (PSI-107:spice:r11)
+PSI-107:spice:r14,PSI-107,PSI-107:spice,14,anomaly,exact_duplicate,exact duplicate of source row 13 (PSI-107:spice:r13)
+PSI-107:spice:r103,PSI-107,PSI-107:spice,103,anomaly,exact_duplicate,exact duplicate of source row 102 (PSI-107:spice:r102)
+PSI-107:spice:r125,PSI-107,PSI-107:spice,125,anomaly,exact_duplicate,exact duplicate of source row 123 (PSI-107:spice:r123)
+PSI-107:spice:r131,PSI-107,PSI-107:spice,131,anomaly,exact_duplicate,exact duplicate of source row 129 (PSI-107:spice:r129)
+PSI-107:spice:r132,PSI-107,PSI-107:spice,132,anomaly,exact_duplicate,exact duplicate of source row 129 (PSI-107:spice:r129)
+PSI-107:spice:r146,PSI-107,PSI-107:spice,146,anomaly,exact_duplicate,exact duplicate of source row 142 (PSI-107:spice:r142)
+PSI-107:spice:r148,PSI-107,PSI-107:spice,148,anomaly,exact_duplicate,exact duplicate of source row 144 (PSI-107:spice:r144)
+PSI-107:spice:r153,PSI-107,PSI-107:spice,153,anomaly,exact_duplicate,exact duplicate of source row 150 (PSI-107:spice:r150)
+PSI-107:spice:r155,PSI-107,PSI-107:spice,155,anomaly,exact_duplicate,exact duplicate of source row 151 (PSI-107:spice:r151)
+PSI-107:spice:r159,PSI-107,PSI-107:spice,159,anomaly,exact_duplicate,exact duplicate of source row 156 (PSI-107:spice:r156)
+PSI-107:spice:r160,PSI-107,PSI-107:spice,160,anomaly,exact_duplicate,exact duplicate of source row 157 (PSI-107:spice:r157)
+PSI-107:spice:r165,PSI-107,PSI-107:spice,165,anomaly,exact_duplicate,exact duplicate of source row 162 (PSI-107:spice:r162)
+PSI-107:spice:r167,PSI-107,PSI-107:spice,167,anomaly,exact_duplicate,exact duplicate of source row 164 (PSI-107:spice:r164)
+PSI-107:spice:r172,PSI-107,PSI-107:spice,172,anomaly,exact_duplicate,exact duplicate of source row 169 (PSI-107:spice:r169)
+PSI-107:spice:r173,PSI-107,PSI-107:spice,173,anomaly,exact_duplicate,exact duplicate of source row 170 (PSI-107:spice:r170)
+PSI-107:spice:r174,PSI-107,PSI-107:spice,174,anomaly,exact_duplicate,exact duplicate of source row 171 (PSI-107:spice:r171)
+PSI-107:spice:r184,PSI-107,PSI-107:spice,184,anomaly,exact_duplicate,exact duplicate of source row 182 (PSI-107:spice:r182)
+PSI-107:spice:r185,PSI-107,PSI-107:spice,185,anomaly,exact_duplicate,exact duplicate of source row 183 (PSI-107:spice:r183)
+PSI-107:spice:r192,PSI-107,PSI-107:spice,192,anomaly,exact_duplicate,exact duplicate of source row 191 (PSI-107:spice:r191)
+PSI-107:spice:r216,PSI-107,PSI-107:spice,216,anomaly,exact_duplicate,exact duplicate of source row 215 (PSI-107:spice:r215)
+PSI-107:spice:r222,PSI-107,PSI-107:spice,222,anomaly,exact_duplicate,exact duplicate of source row 220 (PSI-107:spice:r220)
+PSI-107:spice:r231,PSI-107,PSI-107:spice,231,anomaly,exact_duplicate,exact duplicate of source row 229 (PSI-107:spice:r229)
+PSI-107:spice:r232,PSI-107,PSI-107:spice,232,anomaly,exact_duplicate,exact duplicate of source row 230 (PSI-107:spice:r230)
+PSI-107:spice:r235,PSI-107,PSI-107:spice,235,anomaly,exact_duplicate,exact duplicate of source row 234 (PSI-107:spice:r234)
+PSI-107:spice:r236,PSI-107,PSI-107:spice,236,anomaly,exact_duplicate,exact duplicate of source row 234 (PSI-107:spice:r234)
+PSI-107:spice:r241,PSI-107,PSI-107:spice,241,anomaly,exact_duplicate,exact duplicate of source row 240 (PSI-107:spice:r240)
+PSI-107:spice:r242,PSI-107,PSI-107:spice,242,anomaly,exact_duplicate,exact duplicate of source row 240 (PSI-107:spice:r240)
+PSI-107:spice:r253,PSI-107,PSI-107:spice,253,anomaly,exact_duplicate,exact duplicate of source row 251 (PSI-107:spice:r251)
+PSI-107:spice:r267,PSI-107,PSI-107:spice,267,anomaly,exact_duplicate,exact duplicate of source row 266 (PSI-107:spice:r266)
+PSI-107:spice:r296,PSI-107,PSI-107:spice,296,anomaly,negative_flow,negative air rate -0.28 cm/s kept as reported (likely zero-flow sensor offset)
+PSI-107:spice:r298,PSI-107,PSI-107:spice,298,anomaly,negative_flow,negative air rate -0.28 cm/s kept as reported (likely zero-flow sensor offset)
+PSI-107:spice:r299,PSI-107,PSI-107:spice,299,anomaly,negative_flow,negative air rate -0.28 cm/s kept as reported (likely zero-flow sensor offset)
+PSI-107:spice:r300,PSI-107,PSI-107:spice,300,anomaly,negative_flow,negative air rate -0.28 cm/s kept as reported (likely zero-flow sensor offset)
+PSI-107:spice:r301,PSI-107,PSI-107:spice,301,anomaly,negative_flow,negative air rate -0.28 cm/s kept as reported (likely zero-flow sensor offset)
+PSI-107:spice:r336,PSI-107,PSI-107:spice,336,anomaly,exact_duplicate,exact duplicate of source row 330 (PSI-107:spice:r330)
+PSI-107:spice:r337,PSI-107,PSI-107:spice,337,anomaly,negative_flow,negative air rate -5.92 cm/s kept as reported (likely zero-flow sensor offset)
+PSI-107:spice:r338,PSI-107,PSI-107:spice,338,anomaly,negative_flow,negative air rate -5.92 cm/s kept as reported (likely zero-flow sensor offset)
+PSI-107:spice:r339,PSI-107,PSI-107:spice,339,anomaly,negative_flow,negative air rate -5.92 cm/s kept as reported (likely zero-flow sensor offset)
+PSI-142:data-summary-table:r2,PSI-142,PSI-142:data-summary-table,2,note,not_a_test,data-summary row pointing to a publication figure; not an experimental test
+PSI-142:data-summary-table:r3,PSI-142,PSI-142:data-summary-table,3,note,not_a_test,data-summary row pointing to a publication figure; not an experimental test
+PSI-142:data-summary-table:r4,PSI-142,PSI-142:data-summary-table,4,note,not_a_test,data-summary row pointing to a publication figure; not an experimental test
+PSI-142:data-summary-table:r5,PSI-142,PSI-142:data-summary-table,5,note,not_a_test,data-summary row pointing to a publication figure; not an experimental test
+PSI-142:data-summary-table:r6,PSI-142,PSI-142:data-summary-table,6,note,not_a_test,data-summary row pointing to a publication figure; not an experimental test
+PSI-142:data-summary-table:r7,PSI-142,PSI-142:data-summary-table,7,note,not_a_test,data-summary row pointing to a publication figure; not an experimental test
+PSI-142:data-summary-table:r8,PSI-142,PSI-142:data-summary-table,8,note,not_a_test,data-summary row pointing to a publication figure; not an experimental test
+PSI-142:data-summary-table:r9,PSI-142,PSI-142:data-summary-table,9,note,not_a_test,data-summary row pointing to a publication figure; not an experimental test
+PSI-159:cfi-g-inverse-flames:r2,PSI-159,PSI-159:cfi-g-inverse-flames,2,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r2,PSI-159,PSI-159:cfi-g-inverse-flames,2,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r3,PSI-159,PSI-159:cfi-g-inverse-flames,3,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r3,PSI-159,PSI-159:cfi-g-inverse-flames,3,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r4,PSI-159,PSI-159:cfi-g-inverse-flames,4,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r4,PSI-159,PSI-159:cfi-g-inverse-flames,4,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r5,PSI-159,PSI-159:cfi-g-inverse-flames,5,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r5,PSI-159,PSI-159:cfi-g-inverse-flames,5,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r6,PSI-159,PSI-159:cfi-g-inverse-flames,6,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r6,PSI-159,PSI-159:cfi-g-inverse-flames,6,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r7,PSI-159,PSI-159:cfi-g-inverse-flames,7,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r7,PSI-159,PSI-159:cfi-g-inverse-flames,7,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r8,PSI-159,PSI-159:cfi-g-inverse-flames,8,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r8,PSI-159,PSI-159:cfi-g-inverse-flames,8,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r9,PSI-159,PSI-159:cfi-g-inverse-flames,9,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r9,PSI-159,PSI-159:cfi-g-inverse-flames,9,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r10,PSI-159,PSI-159:cfi-g-inverse-flames,10,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r10,PSI-159,PSI-159:cfi-g-inverse-flames,10,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r11,PSI-159,PSI-159:cfi-g-inverse-flames,11,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r11,PSI-159,PSI-159:cfi-g-inverse-flames,11,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r12,PSI-159,PSI-159:cfi-g-inverse-flames,12,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r12,PSI-159,PSI-159:cfi-g-inverse-flames,12,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r13,PSI-159,PSI-159:cfi-g-inverse-flames,13,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r13,PSI-159,PSI-159:cfi-g-inverse-flames,13,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r14,PSI-159,PSI-159:cfi-g-inverse-flames,14,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r14,PSI-159,PSI-159:cfi-g-inverse-flames,14,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r15,PSI-159,PSI-159:cfi-g-inverse-flames,15,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r15,PSI-159,PSI-159:cfi-g-inverse-flames,15,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r16,PSI-159,PSI-159:cfi-g-inverse-flames,16,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r16,PSI-159,PSI-159:cfi-g-inverse-flames,16,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r17,PSI-159,PSI-159:cfi-g-inverse-flames,17,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r17,PSI-159,PSI-159:cfi-g-inverse-flames,17,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r18,PSI-159,PSI-159:cfi-g-inverse-flames,18,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r18,PSI-159,PSI-159:cfi-g-inverse-flames,18,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r19,PSI-159,PSI-159:cfi-g-inverse-flames,19,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r19,PSI-159,PSI-159:cfi-g-inverse-flames,19,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r20,PSI-159,PSI-159:cfi-g-inverse-flames,20,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r20,PSI-159,PSI-159:cfi-g-inverse-flames,20,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r21,PSI-159,PSI-159:cfi-g-inverse-flames,21,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r21,PSI-159,PSI-159:cfi-g-inverse-flames,21,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r22,PSI-159,PSI-159:cfi-g-inverse-flames,22,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r22,PSI-159,PSI-159:cfi-g-inverse-flames,22,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r23,PSI-159,PSI-159:cfi-g-inverse-flames,23,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r23,PSI-159,PSI-159:cfi-g-inverse-flames,23,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r24,PSI-159,PSI-159:cfi-g-inverse-flames,24,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r24,PSI-159,PSI-159:cfi-g-inverse-flames,24,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r25,PSI-159,PSI-159:cfi-g-inverse-flames,25,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r25,PSI-159,PSI-159:cfi-g-inverse-flames,25,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r26,PSI-159,PSI-159:cfi-g-inverse-flames,26,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r26,PSI-159,PSI-159:cfi-g-inverse-flames,26,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r27,PSI-159,PSI-159:cfi-g-inverse-flames,27,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r27,PSI-159,PSI-159:cfi-g-inverse-flames,27,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r28,PSI-159,PSI-159:cfi-g-inverse-flames,28,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r28,PSI-159,PSI-159:cfi-g-inverse-flames,28,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r29,PSI-159,PSI-159:cfi-g-inverse-flames,29,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r29,PSI-159,PSI-159:cfi-g-inverse-flames,29,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r30,PSI-159,PSI-159:cfi-g-inverse-flames,30,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r30,PSI-159,PSI-159:cfi-g-inverse-flames,30,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r31,PSI-159,PSI-159:cfi-g-inverse-flames,31,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r31,PSI-159,PSI-159:cfi-g-inverse-flames,31,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r32,PSI-159,PSI-159:cfi-g-inverse-flames,32,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r32,PSI-159,PSI-159:cfi-g-inverse-flames,32,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r33,PSI-159,PSI-159:cfi-g-inverse-flames,33,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r33,PSI-159,PSI-159:cfi-g-inverse-flames,33,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r34,PSI-159,PSI-159:cfi-g-inverse-flames,34,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r34,PSI-159,PSI-159:cfi-g-inverse-flames,34,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r35,PSI-159,PSI-159:cfi-g-inverse-flames,35,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r35,PSI-159,PSI-159:cfi-g-inverse-flames,35,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r36,PSI-159,PSI-159:cfi-g-inverse-flames,36,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r36,PSI-159,PSI-159:cfi-g-inverse-flames,36,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r37,PSI-159,PSI-159:cfi-g-inverse-flames,37,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r37,PSI-159,PSI-159:cfi-g-inverse-flames,37,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r38,PSI-159,PSI-159:cfi-g-inverse-flames,38,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r38,PSI-159,PSI-159:cfi-g-inverse-flames,38,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r39,PSI-159,PSI-159:cfi-g-inverse-flames,39,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r39,PSI-159,PSI-159:cfi-g-inverse-flames,39,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r40,PSI-159,PSI-159:cfi-g-inverse-flames,40,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r40,PSI-159,PSI-159:cfi-g-inverse-flames,40,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r41,PSI-159,PSI-159:cfi-g-inverse-flames,41,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r41,PSI-159,PSI-159:cfi-g-inverse-flames,41,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r42,PSI-159,PSI-159:cfi-g-inverse-flames,42,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r42,PSI-159,PSI-159:cfi-g-inverse-flames,42,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r43,PSI-159,PSI-159:cfi-g-inverse-flames,43,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r43,PSI-159,PSI-159:cfi-g-inverse-flames,43,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r44,PSI-159,PSI-159:cfi-g-inverse-flames,44,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r44,PSI-159,PSI-159:cfi-g-inverse-flames,44,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r45,PSI-159,PSI-159:cfi-g-inverse-flames,45,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r45,PSI-159,PSI-159:cfi-g-inverse-flames,45,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r46,PSI-159,PSI-159:cfi-g-inverse-flames,46,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r46,PSI-159,PSI-159:cfi-g-inverse-flames,46,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r47,PSI-159,PSI-159:cfi-g-inverse-flames,47,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r47,PSI-159,PSI-159:cfi-g-inverse-flames,47,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r48,PSI-159,PSI-159:cfi-g-inverse-flames,48,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r48,PSI-159,PSI-159:cfi-g-inverse-flames,48,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r49,PSI-159,PSI-159:cfi-g-inverse-flames,49,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r49,PSI-159,PSI-159:cfi-g-inverse-flames,49,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r50,PSI-159,PSI-159:cfi-g-inverse-flames,50,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r50,PSI-159,PSI-159:cfi-g-inverse-flames,50,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r51,PSI-159,PSI-159:cfi-g-inverse-flames,51,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r51,PSI-159,PSI-159:cfi-g-inverse-flames,51,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r52,PSI-159,PSI-159:cfi-g-inverse-flames,52,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r52,PSI-159,PSI-159:cfi-g-inverse-flames,52,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r53,PSI-159,PSI-159:cfi-g-inverse-flames,53,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r53,PSI-159,PSI-159:cfi-g-inverse-flames,53,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r54,PSI-159,PSI-159:cfi-g-inverse-flames,54,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r54,PSI-159,PSI-159:cfi-g-inverse-flames,54,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r55,PSI-159,PSI-159:cfi-g-inverse-flames,55,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r55,PSI-159,PSI-159:cfi-g-inverse-flames,55,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r56,PSI-159,PSI-159:cfi-g-inverse-flames,56,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r56,PSI-159,PSI-159:cfi-g-inverse-flames,56,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r57,PSI-159,PSI-159:cfi-g-inverse-flames,57,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r57,PSI-159,PSI-159:cfi-g-inverse-flames,57,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r58,PSI-159,PSI-159:cfi-g-inverse-flames,58,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r58,PSI-159,PSI-159:cfi-g-inverse-flames,58,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r59,PSI-159,PSI-159:cfi-g-inverse-flames,59,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r59,PSI-159,PSI-159:cfi-g-inverse-flames,59,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r60,PSI-159,PSI-159:cfi-g-inverse-flames,60,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r60,PSI-159,PSI-159:cfi-g-inverse-flames,60,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r61,PSI-159,PSI-159:cfi-g-inverse-flames,61,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r61,PSI-159,PSI-159:cfi-g-inverse-flames,61,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r62,PSI-159,PSI-159:cfi-g-inverse-flames,62,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r62,PSI-159,PSI-159:cfi-g-inverse-flames,62,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r63,PSI-159,PSI-159:cfi-g-inverse-flames,63,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r63,PSI-159,PSI-159:cfi-g-inverse-flames,63,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r64,PSI-159,PSI-159:cfi-g-inverse-flames,64,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r64,PSI-159,PSI-159:cfi-g-inverse-flames,64,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r65,PSI-159,PSI-159:cfi-g-inverse-flames,65,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r65,PSI-159,PSI-159:cfi-g-inverse-flames,65,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r66,PSI-159,PSI-159:cfi-g-inverse-flames,66,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r66,PSI-159,PSI-159:cfi-g-inverse-flames,66,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r67,PSI-159,PSI-159:cfi-g-inverse-flames,67,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r67,PSI-159,PSI-159:cfi-g-inverse-flames,67,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r68,PSI-159,PSI-159:cfi-g-inverse-flames,68,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r68,PSI-159,PSI-159:cfi-g-inverse-flames,68,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r69,PSI-159,PSI-159:cfi-g-inverse-flames,69,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r69,PSI-159,PSI-159:cfi-g-inverse-flames,69,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r70,PSI-159,PSI-159:cfi-g-inverse-flames,70,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r70,PSI-159,PSI-159:cfi-g-inverse-flames,70,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r71,PSI-159,PSI-159:cfi-g-inverse-flames,71,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r71,PSI-159,PSI-159:cfi-g-inverse-flames,71,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r72,PSI-159,PSI-159:cfi-g-inverse-flames,72,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r72,PSI-159,PSI-159:cfi-g-inverse-flames,72,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r73,PSI-159,PSI-159:cfi-g-inverse-flames,73,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r73,PSI-159,PSI-159:cfi-g-inverse-flames,73,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r74,PSI-159,PSI-159:cfi-g-inverse-flames,74,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r74,PSI-159,PSI-159:cfi-g-inverse-flames,74,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r75,PSI-159,PSI-159:cfi-g-inverse-flames,75,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r75,PSI-159,PSI-159:cfi-g-inverse-flames,75,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r76,PSI-159,PSI-159:cfi-g-inverse-flames,76,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r76,PSI-159,PSI-159:cfi-g-inverse-flames,76,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r77,PSI-159,PSI-159:cfi-g-inverse-flames,77,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r77,PSI-159,PSI-159:cfi-g-inverse-flames,77,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r78,PSI-159,PSI-159:cfi-g-inverse-flames,78,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r78,PSI-159,PSI-159:cfi-g-inverse-flames,78,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r79,PSI-159,PSI-159:cfi-g-inverse-flames,79,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r79,PSI-159,PSI-159:cfi-g-inverse-flames,79,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r80,PSI-159,PSI-159:cfi-g-inverse-flames,80,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r80,PSI-159,PSI-159:cfi-g-inverse-flames,80,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r81,PSI-159,PSI-159:cfi-g-inverse-flames,81,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r81,PSI-159,PSI-159:cfi-g-inverse-flames,81,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r82,PSI-159,PSI-159:cfi-g-inverse-flames,82,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r82,PSI-159,PSI-159:cfi-g-inverse-flames,82,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r83,PSI-159,PSI-159:cfi-g-inverse-flames,83,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r83,PSI-159,PSI-159:cfi-g-inverse-flames,83,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r84,PSI-159,PSI-159:cfi-g-inverse-flames,84,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r84,PSI-159,PSI-159:cfi-g-inverse-flames,84,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r85,PSI-159,PSI-159:cfi-g-inverse-flames,85,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r85,PSI-159,PSI-159:cfi-g-inverse-flames,85,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r86,PSI-159,PSI-159:cfi-g-inverse-flames,86,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r86,PSI-159,PSI-159:cfi-g-inverse-flames,86,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r87,PSI-159,PSI-159:cfi-g-inverse-flames,87,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r87,PSI-159,PSI-159:cfi-g-inverse-flames,87,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r88,PSI-159,PSI-159:cfi-g-inverse-flames,88,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r88,PSI-159,PSI-159:cfi-g-inverse-flames,88,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r89,PSI-159,PSI-159:cfi-g-inverse-flames,89,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r89,PSI-159,PSI-159:cfi-g-inverse-flames,89,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r90,PSI-159,PSI-159:cfi-g-inverse-flames,90,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r90,PSI-159,PSI-159:cfi-g-inverse-flames,90,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r91,PSI-159,PSI-159:cfi-g-inverse-flames,91,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r91,PSI-159,PSI-159:cfi-g-inverse-flames,91,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r92,PSI-159,PSI-159:cfi-g-inverse-flames,92,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r92,PSI-159,PSI-159:cfi-g-inverse-flames,92,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r93,PSI-159,PSI-159:cfi-g-inverse-flames,93,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r93,PSI-159,PSI-159:cfi-g-inverse-flames,93,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r94,PSI-159,PSI-159:cfi-g-inverse-flames,94,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r94,PSI-159,PSI-159:cfi-g-inverse-flames,94,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r95,PSI-159,PSI-159:cfi-g-inverse-flames,95,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r95,PSI-159,PSI-159:cfi-g-inverse-flames,95,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r96,PSI-159,PSI-159:cfi-g-inverse-flames,96,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r96,PSI-159,PSI-159:cfi-g-inverse-flames,96,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r97,PSI-159,PSI-159:cfi-g-inverse-flames,97,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r97,PSI-159,PSI-159:cfi-g-inverse-flames,97,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r98,PSI-159,PSI-159:cfi-g-inverse-flames,98,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r98,PSI-159,PSI-159:cfi-g-inverse-flames,98,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r99,PSI-159,PSI-159:cfi-g-inverse-flames,99,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r99,PSI-159,PSI-159:cfi-g-inverse-flames,99,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r100,PSI-159,PSI-159:cfi-g-inverse-flames,100,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r100,PSI-159,PSI-159:cfi-g-inverse-flames,100,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r101,PSI-159,PSI-159:cfi-g-inverse-flames,101,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r101,PSI-159,PSI-159:cfi-g-inverse-flames,101,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r102,PSI-159,PSI-159:cfi-g-inverse-flames,102,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r102,PSI-159,PSI-159:cfi-g-inverse-flames,102,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r103,PSI-159,PSI-159:cfi-g-inverse-flames,103,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r103,PSI-159,PSI-159:cfi-g-inverse-flames,103,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r104,PSI-159,PSI-159:cfi-g-inverse-flames,104,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r104,PSI-159,PSI-159:cfi-g-inverse-flames,104,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r105,PSI-159,PSI-159:cfi-g-inverse-flames,105,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r105,PSI-159,PSI-159:cfi-g-inverse-flames,105,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r106,PSI-159,PSI-159:cfi-g-inverse-flames,106,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r106,PSI-159,PSI-159:cfi-g-inverse-flames,106,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r107,PSI-159,PSI-159:cfi-g-inverse-flames,107,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r107,PSI-159,PSI-159:cfi-g-inverse-flames,107,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r108,PSI-159,PSI-159:cfi-g-inverse-flames,108,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r108,PSI-159,PSI-159:cfi-g-inverse-flames,108,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r109,PSI-159,PSI-159:cfi-g-inverse-flames,109,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r109,PSI-159,PSI-159:cfi-g-inverse-flames,109,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r110,PSI-159,PSI-159:cfi-g-inverse-flames,110,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r110,PSI-159,PSI-159:cfi-g-inverse-flames,110,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r111,PSI-159,PSI-159:cfi-g-inverse-flames,111,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r111,PSI-159,PSI-159:cfi-g-inverse-flames,111,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r112,PSI-159,PSI-159:cfi-g-inverse-flames,112,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r112,PSI-159,PSI-159:cfi-g-inverse-flames,112,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r113,PSI-159,PSI-159:cfi-g-inverse-flames,113,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r113,PSI-159,PSI-159:cfi-g-inverse-flames,113,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r114,PSI-159,PSI-159:cfi-g-inverse-flames,114,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r114,PSI-159,PSI-159:cfi-g-inverse-flames,114,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r115,PSI-159,PSI-159:cfi-g-inverse-flames,115,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r115,PSI-159,PSI-159:cfi-g-inverse-flames,115,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r116,PSI-159,PSI-159:cfi-g-inverse-flames,116,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r116,PSI-159,PSI-159:cfi-g-inverse-flames,116,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r117,PSI-159,PSI-159:cfi-g-inverse-flames,117,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r117,PSI-159,PSI-159:cfi-g-inverse-flames,117,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r118,PSI-159,PSI-159:cfi-g-inverse-flames,118,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r118,PSI-159,PSI-159:cfi-g-inverse-flames,118,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r119,PSI-159,PSI-159:cfi-g-inverse-flames,119,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r119,PSI-159,PSI-159:cfi-g-inverse-flames,119,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r120,PSI-159,PSI-159:cfi-g-inverse-flames,120,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r120,PSI-159,PSI-159:cfi-g-inverse-flames,120,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r121,PSI-159,PSI-159:cfi-g-inverse-flames,121,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r121,PSI-159,PSI-159:cfi-g-inverse-flames,121,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r122,PSI-159,PSI-159:cfi-g-inverse-flames,122,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r122,PSI-159,PSI-159:cfi-g-inverse-flames,122,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r123,PSI-159,PSI-159:cfi-g-inverse-flames,123,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r123,PSI-159,PSI-159:cfi-g-inverse-flames,123,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r124,PSI-159,PSI-159:cfi-g-inverse-flames,124,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r124,PSI-159,PSI-159:cfi-g-inverse-flames,124,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r125,PSI-159,PSI-159:cfi-g-inverse-flames,125,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r125,PSI-159,PSI-159:cfi-g-inverse-flames,125,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r126,PSI-159,PSI-159:cfi-g-inverse-flames,126,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r126,PSI-159,PSI-159:cfi-g-inverse-flames,126,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r127,PSI-159,PSI-159:cfi-g-inverse-flames,127,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r127,PSI-159,PSI-159:cfi-g-inverse-flames,127,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r128,PSI-159,PSI-159:cfi-g-inverse-flames,128,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r128,PSI-159,PSI-159:cfi-g-inverse-flames,128,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r129,PSI-159,PSI-159:cfi-g-inverse-flames,129,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r129,PSI-159,PSI-159:cfi-g-inverse-flames,129,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r130,PSI-159,PSI-159:cfi-g-inverse-flames,130,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r130,PSI-159,PSI-159:cfi-g-inverse-flames,130,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r131,PSI-159,PSI-159:cfi-g-inverse-flames,131,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r131,PSI-159,PSI-159:cfi-g-inverse-flames,131,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r132,PSI-159,PSI-159:cfi-g-inverse-flames,132,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r132,PSI-159,PSI-159:cfi-g-inverse-flames,132,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r133,PSI-159,PSI-159:cfi-g-inverse-flames,133,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r133,PSI-159,PSI-159:cfi-g-inverse-flames,133,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r134,PSI-159,PSI-159:cfi-g-inverse-flames,134,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r134,PSI-159,PSI-159:cfi-g-inverse-flames,134,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r135,PSI-159,PSI-159:cfi-g-inverse-flames,135,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r135,PSI-159,PSI-159:cfi-g-inverse-flames,135,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r136,PSI-159,PSI-159:cfi-g-inverse-flames,136,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r136,PSI-159,PSI-159:cfi-g-inverse-flames,136,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r137,PSI-159,PSI-159:cfi-g-inverse-flames,137,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r137,PSI-159,PSI-159:cfi-g-inverse-flames,137,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r138,PSI-159,PSI-159:cfi-g-inverse-flames,138,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r138,PSI-159,PSI-159:cfi-g-inverse-flames,138,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r139,PSI-159,PSI-159:cfi-g-inverse-flames,139,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r139,PSI-159,PSI-159:cfi-g-inverse-flames,139,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r140,PSI-159,PSI-159:cfi-g-inverse-flames,140,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r140,PSI-159,PSI-159:cfi-g-inverse-flames,140,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r141,PSI-159,PSI-159:cfi-g-inverse-flames,141,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r141,PSI-159,PSI-159:cfi-g-inverse-flames,141,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r142,PSI-159,PSI-159:cfi-g-inverse-flames,142,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r142,PSI-159,PSI-159:cfi-g-inverse-flames,142,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r143,PSI-159,PSI-159:cfi-g-inverse-flames,143,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r143,PSI-159,PSI-159:cfi-g-inverse-flames,143,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r144,PSI-159,PSI-159:cfi-g-inverse-flames,144,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r144,PSI-159,PSI-159:cfi-g-inverse-flames,144,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r145,PSI-159,PSI-159:cfi-g-inverse-flames,145,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r145,PSI-159,PSI-159:cfi-g-inverse-flames,145,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r146,PSI-159,PSI-159:cfi-g-inverse-flames,146,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r146,PSI-159,PSI-159:cfi-g-inverse-flames,146,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r147,PSI-159,PSI-159:cfi-g-inverse-flames,147,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r147,PSI-159,PSI-159:cfi-g-inverse-flames,147,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r148,PSI-159,PSI-159:cfi-g-inverse-flames,148,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r148,PSI-159,PSI-159:cfi-g-inverse-flames,148,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r149,PSI-159,PSI-159:cfi-g-inverse-flames,149,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r149,PSI-159,PSI-159:cfi-g-inverse-flames,149,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r150,PSI-159,PSI-159:cfi-g-inverse-flames,150,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r150,PSI-159,PSI-159:cfi-g-inverse-flames,150,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r151,PSI-159,PSI-159:cfi-g-inverse-flames,151,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r151,PSI-159,PSI-159:cfi-g-inverse-flames,151,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r152,PSI-159,PSI-159:cfi-g-inverse-flames,152,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r152,PSI-159,PSI-159:cfi-g-inverse-flames,152,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r153,PSI-159,PSI-159:cfi-g-inverse-flames,153,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r153,PSI-159,PSI-159:cfi-g-inverse-flames,153,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r154,PSI-159,PSI-159:cfi-g-inverse-flames,154,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r154,PSI-159,PSI-159:cfi-g-inverse-flames,154,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-inverse-flames:r155,PSI-159,PSI-159:cfi-g-inverse-flames,155,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-inverse-flames:r155,PSI-159,PSI-159:cfi-g-inverse-flames,155,note,burner_stream_o2,"inverse flame: XO2 is the burner oxidizer stream, not the chamber atmosphere"
+PSI-159:cfi-g-normal-flames:r2,PSI-159,PSI-159:cfi-g-normal-flames,2,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r3,PSI-159,PSI-159:cfi-g-normal-flames,3,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r4,PSI-159,PSI-159:cfi-g-normal-flames,4,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r5,PSI-159,PSI-159:cfi-g-normal-flames,5,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r6,PSI-159,PSI-159:cfi-g-normal-flames,6,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r7,PSI-159,PSI-159:cfi-g-normal-flames,7,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r8,PSI-159,PSI-159:cfi-g-normal-flames,8,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r9,PSI-159,PSI-159:cfi-g-normal-flames,9,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r10,PSI-159,PSI-159:cfi-g-normal-flames,10,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r11,PSI-159,PSI-159:cfi-g-normal-flames,11,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r12,PSI-159,PSI-159:cfi-g-normal-flames,12,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r13,PSI-159,PSI-159:cfi-g-normal-flames,13,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r14,PSI-159,PSI-159:cfi-g-normal-flames,14,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r15,PSI-159,PSI-159:cfi-g-normal-flames,15,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r16,PSI-159,PSI-159:cfi-g-normal-flames,16,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r17,PSI-159,PSI-159:cfi-g-normal-flames,17,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r18,PSI-159,PSI-159:cfi-g-normal-flames,18,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r19,PSI-159,PSI-159:cfi-g-normal-flames,19,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r20,PSI-159,PSI-159:cfi-g-normal-flames,20,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r21,PSI-159,PSI-159:cfi-g-normal-flames,21,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r22,PSI-159,PSI-159:cfi-g-normal-flames,22,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r23,PSI-159,PSI-159:cfi-g-normal-flames,23,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r24,PSI-159,PSI-159:cfi-g-normal-flames,24,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r25,PSI-159,PSI-159:cfi-g-normal-flames,25,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r26,PSI-159,PSI-159:cfi-g-normal-flames,26,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r27,PSI-159,PSI-159:cfi-g-normal-flames,27,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r28,PSI-159,PSI-159:cfi-g-normal-flames,28,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r29,PSI-159,PSI-159:cfi-g-normal-flames,29,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r30,PSI-159,PSI-159:cfi-g-normal-flames,30,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r31,PSI-159,PSI-159:cfi-g-normal-flames,31,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r32,PSI-159,PSI-159:cfi-g-normal-flames,32,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r33,PSI-159,PSI-159:cfi-g-normal-flames,33,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r34,PSI-159,PSI-159:cfi-g-normal-flames,34,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r35,PSI-159,PSI-159:cfi-g-normal-flames,35,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r36,PSI-159,PSI-159:cfi-g-normal-flames,36,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r37,PSI-159,PSI-159:cfi-g-normal-flames,37,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r38,PSI-159,PSI-159:cfi-g-normal-flames,38,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r39,PSI-159,PSI-159:cfi-g-normal-flames,39,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r40,PSI-159,PSI-159:cfi-g-normal-flames,40,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r41,PSI-159,PSI-159:cfi-g-normal-flames,41,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r42,PSI-159,PSI-159:cfi-g-normal-flames,42,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r43,PSI-159,PSI-159:cfi-g-normal-flames,43,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r44,PSI-159,PSI-159:cfi-g-normal-flames,44,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r45,PSI-159,PSI-159:cfi-g-normal-flames,45,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r46,PSI-159,PSI-159:cfi-g-normal-flames,46,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r47,PSI-159,PSI-159:cfi-g-normal-flames,47,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r48,PSI-159,PSI-159:cfi-g-normal-flames,48,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r49,PSI-159,PSI-159:cfi-g-normal-flames,49,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r50,PSI-159,PSI-159:cfi-g-normal-flames,50,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r51,PSI-159,PSI-159:cfi-g-normal-flames,51,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r52,PSI-159,PSI-159:cfi-g-normal-flames,52,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r53,PSI-159,PSI-159:cfi-g-normal-flames,53,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r54,PSI-159,PSI-159:cfi-g-normal-flames,54,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r55,PSI-159,PSI-159:cfi-g-normal-flames,55,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r56,PSI-159,PSI-159:cfi-g-normal-flames,56,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r57,PSI-159,PSI-159:cfi-g-normal-flames,57,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r58,PSI-159,PSI-159:cfi-g-normal-flames,58,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r59,PSI-159,PSI-159:cfi-g-normal-flames,59,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r60,PSI-159,PSI-159:cfi-g-normal-flames,60,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r61,PSI-159,PSI-159:cfi-g-normal-flames,61,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r62,PSI-159,PSI-159:cfi-g-normal-flames,62,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r63,PSI-159,PSI-159:cfi-g-normal-flames,63,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r64,PSI-159,PSI-159:cfi-g-normal-flames,64,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r65,PSI-159,PSI-159:cfi-g-normal-flames,65,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r66,PSI-159,PSI-159:cfi-g-normal-flames,66,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r67,PSI-159,PSI-159:cfi-g-normal-flames,67,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r68,PSI-159,PSI-159:cfi-g-normal-flames,68,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r69,PSI-159,PSI-159:cfi-g-normal-flames,69,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r70,PSI-159,PSI-159:cfi-g-normal-flames,70,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r71,PSI-159,PSI-159:cfi-g-normal-flames,71,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r72,PSI-159,PSI-159:cfi-g-normal-flames,72,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r73,PSI-159,PSI-159:cfi-g-normal-flames,73,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r74,PSI-159,PSI-159:cfi-g-normal-flames,74,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r75,PSI-159,PSI-159:cfi-g-normal-flames,75,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r76,PSI-159,PSI-159:cfi-g-normal-flames,76,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r77,PSI-159,PSI-159:cfi-g-normal-flames,77,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r78,PSI-159,PSI-159:cfi-g-normal-flames,78,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r79,PSI-159,PSI-159:cfi-g-normal-flames,79,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r80,PSI-159,PSI-159:cfi-g-normal-flames,80,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r81,PSI-159,PSI-159:cfi-g-normal-flames,81,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r82,PSI-159,PSI-159:cfi-g-normal-flames,82,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r83,PSI-159,PSI-159:cfi-g-normal-flames,83,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r84,PSI-159,PSI-159:cfi-g-normal-flames,84,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r85,PSI-159,PSI-159:cfi-g-normal-flames,85,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r86,PSI-159,PSI-159:cfi-g-normal-flames,86,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r87,PSI-159,PSI-159:cfi-g-normal-flames,87,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r88,PSI-159,PSI-159:cfi-g-normal-flames,88,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r89,PSI-159,PSI-159:cfi-g-normal-flames,89,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r90,PSI-159,PSI-159:cfi-g-normal-flames,90,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r91,PSI-159,PSI-159:cfi-g-normal-flames,91,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r92,PSI-159,PSI-159:cfi-g-normal-flames,92,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r93,PSI-159,PSI-159:cfi-g-normal-flames,93,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r94,PSI-159,PSI-159:cfi-g-normal-flames,94,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r95,PSI-159,PSI-159:cfi-g-normal-flames,95,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r96,PSI-159,PSI-159:cfi-g-normal-flames,96,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r97,PSI-159,PSI-159:cfi-g-normal-flames,97,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r98,PSI-159,PSI-159:cfi-g-normal-flames,98,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r99,PSI-159,PSI-159:cfi-g-normal-flames,99,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r100,PSI-159,PSI-159:cfi-g-normal-flames,100,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r101,PSI-159,PSI-159:cfi-g-normal-flames,101,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r102,PSI-159,PSI-159:cfi-g-normal-flames,102,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r103,PSI-159,PSI-159:cfi-g-normal-flames,103,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r104,PSI-159,PSI-159:cfi-g-normal-flames,104,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r105,PSI-159,PSI-159:cfi-g-normal-flames,105,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r106,PSI-159,PSI-159:cfi-g-normal-flames,106,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r107,PSI-159,PSI-159:cfi-g-normal-flames,107,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r108,PSI-159,PSI-159:cfi-g-normal-flames,108,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r109,PSI-159,PSI-159:cfi-g-normal-flames,109,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r110,PSI-159,PSI-159:cfi-g-normal-flames,110,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r111,PSI-159,PSI-159:cfi-g-normal-flames,111,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r112,PSI-159,PSI-159:cfi-g-normal-flames,112,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r113,PSI-159,PSI-159:cfi-g-normal-flames,113,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r114,PSI-159,PSI-159:cfi-g-normal-flames,114,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r115,PSI-159,PSI-159:cfi-g-normal-flames,115,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r116,PSI-159,PSI-159:cfi-g-normal-flames,116,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r117,PSI-159,PSI-159:cfi-g-normal-flames,117,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r118,PSI-159,PSI-159:cfi-g-normal-flames,118,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r119,PSI-159,PSI-159:cfi-g-normal-flames,119,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r120,PSI-159,PSI-159:cfi-g-normal-flames,120,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r121,PSI-159,PSI-159:cfi-g-normal-flames,121,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r122,PSI-159,PSI-159:cfi-g-normal-flames,122,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r123,PSI-159,PSI-159:cfi-g-normal-flames,123,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r124,PSI-159,PSI-159:cfi-g-normal-flames,124,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r125,PSI-159,PSI-159:cfi-g-normal-flames,125,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r126,PSI-159,PSI-159:cfi-g-normal-flames,126,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r127,PSI-159,PSI-159:cfi-g-normal-flames,127,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r128,PSI-159,PSI-159:cfi-g-normal-flames,128,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r129,PSI-159,PSI-159:cfi-g-normal-flames,129,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r130,PSI-159,PSI-159:cfi-g-normal-flames,130,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r131,PSI-159,PSI-159:cfi-g-normal-flames,131,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r132,PSI-159,PSI-159:cfi-g-normal-flames,132,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r133,PSI-159,PSI-159:cfi-g-normal-flames,133,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r134,PSI-159,PSI-159:cfi-g-normal-flames,134,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r135,PSI-159,PSI-159:cfi-g-normal-flames,135,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r136,PSI-159,PSI-159:cfi-g-normal-flames,136,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r137,PSI-159,PSI-159:cfi-g-normal-flames,137,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r138,PSI-159,PSI-159:cfi-g-normal-flames,138,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r139,PSI-159,PSI-159:cfi-g-normal-flames,139,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r140,PSI-159,PSI-159:cfi-g-normal-flames,140,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r141,PSI-159,PSI-159:cfi-g-normal-flames,141,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r142,PSI-159,PSI-159:cfi-g-normal-flames,142,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r143,PSI-159,PSI-159:cfi-g-normal-flames,143,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r144,PSI-159,PSI-159:cfi-g-normal-flames,144,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r145,PSI-159,PSI-159:cfi-g-normal-flames,145,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r146,PSI-159,PSI-159:cfi-g-normal-flames,146,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r147,PSI-159,PSI-159:cfi-g-normal-flames,147,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r148,PSI-159,PSI-159:cfi-g-normal-flames,148,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r149,PSI-159,PSI-159:cfi-g-normal-flames,149,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r150,PSI-159,PSI-159:cfi-g-normal-flames,150,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r151,PSI-159,PSI-159:cfi-g-normal-flames,151,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r152,PSI-159,PSI-159:cfi-g-normal-flames,152,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r153,PSI-159,PSI-159:cfi-g-normal-flames,153,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r154,PSI-159,PSI-159:cfi-g-normal-flames,154,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r155,PSI-159,PSI-159:cfi-g-normal-flames,155,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r156,PSI-159,PSI-159:cfi-g-normal-flames,156,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r157,PSI-159,PSI-159:cfi-g-normal-flames,157,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r158,PSI-159,PSI-159:cfi-g-normal-flames,158,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r159,PSI-159,PSI-159:cfi-g-normal-flames,159,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r160,PSI-159,PSI-159:cfi-g-normal-flames,160,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r161,PSI-159,PSI-159:cfi-g-normal-flames,161,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r162,PSI-159,PSI-159:cfi-g-normal-flames,162,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r163,PSI-159,PSI-159:cfi-g-normal-flames,163,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r164,PSI-159,PSI-159:cfi-g-normal-flames,164,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r165,PSI-159,PSI-159:cfi-g-normal-flames,165,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r166,PSI-159,PSI-159:cfi-g-normal-flames,166,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r167,PSI-159,PSI-159:cfi-g-normal-flames,167,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r168,PSI-159,PSI-159:cfi-g-normal-flames,168,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r169,PSI-159,PSI-159:cfi-g-normal-flames,169,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r170,PSI-159,PSI-159:cfi-g-normal-flames,170,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r171,PSI-159,PSI-159:cfi-g-normal-flames,171,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r172,PSI-159,PSI-159:cfi-g-normal-flames,172,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r173,PSI-159,PSI-159:cfi-g-normal-flames,173,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r174,PSI-159,PSI-159:cfi-g-normal-flames,174,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r175,PSI-159,PSI-159:cfi-g-normal-flames,175,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r176,PSI-159,PSI-159:cfi-g-normal-flames,176,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r177,PSI-159,PSI-159:cfi-g-normal-flames,177,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r178,PSI-159,PSI-159:cfi-g-normal-flames,178,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r179,PSI-159,PSI-159:cfi-g-normal-flames,179,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
+PSI-159:cfi-g-normal-flames:r180,PSI-159,PSI-159:cfi-g-normal-flames,180,note,approximate_value,pressure from 'approx p (bar)' converted bar->atm; status reported (approximate)
