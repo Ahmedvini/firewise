@@ -21,21 +21,33 @@ export class ApiError extends Error {
 export const errorLines = (e) => (e?.details?.errors || []).map((x) => x.msg.replace(/^Value error, /, ""));
 
 async function request(path, options = {}) {
-  let response;
-  try {
-    response = await fetch(`${API_BASE_URL}${path}`, {
-      ...options,
-      headers: { Accept: "application/json", ...(options.body ? { "Content-Type": "application/json" } : {}), ...options.headers },
-    });
-  } catch (error) {
-    if (error.name === "AbortError") throw error;
-    throw new ApiError(0, "network_error", "The FIREWISE data service is unreachable. Is the backend running?");
+  // One automatic retry on a network-level failure — a dropped/changed connection or a truncated body.
+  // HTTP errors (4xx/5xx) are not retried. A response that cannot be read is NEVER treated as empty success.
+  for (let attempt = 0; ; attempt++) {
+    let response, text;
+    try {
+      response = await fetch(`${API_BASE_URL}${path}`, {
+        ...options,
+        headers: { Accept: "application/json", ...(options.body ? { "Content-Type": "application/json" } : {}), ...options.headers },
+      });
+      text = await response.text();
+    } catch (error) {
+      if (error.name === "AbortError") throw error;
+      if (attempt === 0) { await new Promise((r) => setTimeout(r, 400)); continue; }
+      throw new ApiError(0, "network_error", "The FIREWISE data service is unreachable. Check your connection, then retry.");
+    }
+    if (response.status === 204) return null;
+    let body = null;
+    try { body = text ? JSON.parse(text) : null; } catch { body = undefined; }
+    if (!response.ok) {
+      throw new ApiError(response.status, body?.error?.code ?? "error", body?.error?.message ?? `The server responded with status ${response.status}.`, body?.error?.details);
+    }
+    if (body === undefined || body === null) {
+      if (attempt === 0) { await new Promise((r) => setTimeout(r, 400)); continue; }
+      throw new ApiError(0, "bad_response", "The server response could not be read. Check your connection, then retry.");
+    }
+    return body;
   }
-  const body = await response.json().catch(() => null);
-  if (!response.ok) {
-    throw new ApiError(response.status, body?.error?.code ?? "error", body?.error?.message ?? `The server responded with status ${response.status}.`, body?.error?.details);
-  }
-  return body;
 }
 
 export const apiGet = (path, signal) => request(path, { signal });
@@ -59,6 +71,36 @@ export function workspaceKey() {
 }
 const ws = (options = {}) => ({ ...options, headers: { "X-Workspace": workspaceKey(), ...(options.headers || {}) } });
 const json = (method, body) => ({ method, body: JSON.stringify(body) });
+
+// ------------------------------------------------------------ "Bring your own" Anthropic key
+// Stored only in this browser: sessionStorage by default (cleared when the tab closes), localStorage if the user
+// chooses "remember on this device". Sent only with Copilot requests, as the X-Anthropic-Key header (never in a URL).
+const KEY_NAME = "firewise.anthropic_key";
+export const userKey = {
+  get() {
+    try { return window.sessionStorage.getItem(KEY_NAME) || window.localStorage.getItem(KEY_NAME) || null; } catch { return null; }
+  },
+  remembered() {
+    try { return !!window.localStorage.getItem(KEY_NAME); } catch { return false; }
+  },
+  set(key, remember) {
+    try {
+      window.sessionStorage.removeItem(KEY_NAME); window.localStorage.removeItem(KEY_NAME);
+      (remember ? window.localStorage : window.sessionStorage).setItem(KEY_NAME, key);
+    } catch { /* storage blocked */ }
+    window.dispatchEvent(new Event("firewise-key"));
+  },
+  clear() {
+    try { window.sessionStorage.removeItem(KEY_NAME); window.localStorage.removeItem(KEY_NAME); } catch { /* storage blocked */ }
+    window.dispatchEvent(new Event("firewise-key"));
+  },
+  masked(k = userKey.get()) { return k ? `${k.slice(0, 7)}…${k.slice(-4)}` : null; },
+};
+const withKey = (options = {}) => {
+  const k = userKey.get();
+  return k ? { ...options, headers: { ...(options.headers || {}), "X-Anthropic-Key": k } } : options;
+};
+export const checkKey = (key) => request("/api/copilot/key/check", { method: "POST", headers: { "X-Anthropic-Key": key } });
 
 // ------------------------------------------------------------ Digital Twin
 export const twin = {
@@ -89,12 +131,12 @@ export const chats = {
   get: (id) => request(`/api/conversations/${id}`, ws()),
   rename: (id, title) => request(`/api/conversations/${id}`, ws(json("PATCH", { title }))),
   remove: (id) => request(`/api/conversations/${id}`, ws({ method: "DELETE" })),
-  send: (id, question, twinContext) => request(`/api/conversations/${id}/messages`, ws(json("POST", { question, twin: twinContext ?? null }))),
+  send: (id, question, twinContext) => request(`/api/conversations/${id}/messages`, withKey(ws(json("POST", { question, twin: twinContext ?? null })))),
 };
 
 /** POST /api/ask — evidence-grounded Copilot. Returns the AskResponse contract (docs/FINAL_API_CONTRACT.md §4). */
 export const askQuestion = (question, scenarioId) =>
-  request("/api/ask", { method: "POST", body: JSON.stringify({ question, scenario_id: scenarioId ?? null }) });
+  request("/api/ask", withKey({ method: "POST", body: JSON.stringify({ question, scenario_id: scenarioId ?? null }) }));
 
 export const scenarioCustom = (window) =>
   request("/api/scenarios/custom/evidence", { method: "POST", body: JSON.stringify(window) });
@@ -119,7 +161,7 @@ export function useApi(path) {
     setState((s) => ({ ...s, loading: true, error: null }));
     apiGet(path, controller.signal)
       .then((data) => {
-        cache.set(path, data);
+        if (data != null) cache.set(path, data); // never cache an empty result
         setState({ data, error: null, loading: false });
       })
       .catch((error) => {

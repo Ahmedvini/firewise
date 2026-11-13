@@ -4,6 +4,7 @@
 import { Box, Gauge, FileSearch, Atom, FolderKanban, FileText, Sparkles, X, Save } from "lucide-react";
 import { PageHeader, Tabs } from "../components/ui.jsx";
 import ChatPanel from "../components/ChatPanel.jsx";
+import ApiKeySettings, { CopilotModeLine } from "../components/ApiKeySettings.jsx";
 import { useTwin, val } from "./TwinContext.jsx";
 import ConfigPanel from "./ConfigPanel.jsx";
 import HabitatScene, { OVERLAYS, RAMP, rampColor } from "./HabitatScene.jsx";
@@ -162,7 +163,8 @@ export default function DigitalTwin({ tab = "habitat", onTab, onOpenExperiment }
       {t.copilotOpen && t.scenario && (
         <div className="twin-drawer" role="dialog" aria-label="Twin Copilot">
           <div className="row-between"><h3>Copilot · {t.scenario.name}</h3><button className="icon-btn" onClick={() => t.ui({ copilotOpen: false })} aria-label="Close Copilot"><X size={18} /></button></div>
-          <p className="muted small">Answers use this scenario (zone {t.selectedZone}), its NASA evidence and the physics models, and say which parts are measurements, calculations or unknowns.</p>
+          <p className="muted small">Answers use this scenario (zone {t.selectedZone}), its NASA evidence and the physics models, and say which parts are measurements, calculations or unknowns. <CopilotModeLine /></p>
+          <div className="btn-row" style={{ marginBottom: 12 }}><ApiKeySettings /></div>
           <ChatPanel kind="twin" compact suggestions={TWIN_QUESTIONS} onOpenExperiment={onOpenExperiment}
             getContext={() => ({ scenario: t.scenario, selected_zone: t.selectedZone, scenario_id: t.savedId })}
             intro={<>Ask about this scenario: closest NASA experiments, missing variables, applicable models, what changes with pressure.</>} />

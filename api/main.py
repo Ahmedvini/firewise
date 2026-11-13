@@ -2,7 +2,7 @@
 import os
 from typing import Optional
 
-from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi import FastAPI, Header, HTTPException, Query, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -51,9 +51,9 @@ def need_db():
 @app.get("/api/health", response_model=models.Health)
 def health():
     if not db_available():
-        return {"status": "degraded", "build": None, "copilot_configured": copilot.llm_available(), "copilot_model": copilot.MODEL_ID}
+        return {"status": "degraded", "build": None, "copilot_configured": copilot.server_key_configured(), "copilot_model": copilot.MODEL_ID, "user_keys_accepted": True}
     with connect() as con:
-        return {"status": "ok", "build": services.build_info(con), "copilot_configured": copilot.llm_available(), "copilot_model": copilot.MODEL_ID}
+        return {"status": "ok", "build": services.build_info(con), "copilot_configured": copilot.server_key_configured(), "copilot_model": copilot.MODEL_ID, "user_keys_accepted": True}
 
 
 @app.get("/api/summary", response_model=models.Summary)
@@ -186,15 +186,36 @@ def evidence(evidence_id: str):
     return e
 
 
+def user_key(value):
+    """Optional 'bring your own key' header. Format-checked; never echoed, stored or logged."""
+    if not value:
+        return None
+    value = value.strip()
+    if not copilot.USER_KEY_RE.fullmatch(value):
+        raise HTTPException(400, "X-Anthropic-Key does not look like an Anthropic API key (sk-ant-…)")
+    return value
+
+
 @app.post("/api/ask", response_model=models.AskResponse)
-def ask(req: models.AskRequest):
+def ask(req: models.AskRequest, x_anthropic_key: Optional[str] = Header(None, alias="X-Anthropic-Key")):
     need_db()
-    with connect() as con:
+    key = user_key(x_anthropic_key)
+    with connect() as con, copilot.request_key(key):
         twin = req.twin.model_dump() if req.twin else None
         try:
             return ask_cached(con, req.question.strip(), req.scenario_id, twin=twin)
         except copilot.TwinContextError as e:
             raise HTTPException(400, str(e))
+
+
+@app.post("/api/copilot/key/check", response_model=models.KeyCheck)
+def key_check(x_anthropic_key: Optional[str] = Header(None, alias="X-Anthropic-Key")):
+    """Test a user's own key with a no-cost Models API call. The key is not stored."""
+    key = user_key(x_anthropic_key)
+    if not key:
+        raise HTTPException(400, "Send the key in the X-Anthropic-Key header")
+    valid, message = copilot.check_key(key)
+    return {"valid": valid, "message": message, "model": copilot.MODEL_ID}
 
 
 # Static frontend (Vite build of ui/ -> ui/dist) served on the same origin; API routes above take precedence.

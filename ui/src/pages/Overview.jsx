@@ -5,6 +5,7 @@ import {
 } from "recharts";
 import { tooltipStyle } from "../components/ChartCard.jsx";
 import { PageHeader, Metrics, Disclosure } from "../components/ui.jsx";
+import FlameIllustration from "../components/FlameIllustration.jsx";
 import { EvidenceLink, useEvidence } from "../components/Evidence.jsx";
 import { TierTag } from "../components/Tags.jsx";
 import { Loading, ErrorPanel } from "../components/States.jsx";
@@ -158,11 +159,14 @@ export default function Overview({ onNavigate }) {
   const m = (k) => summary?.metrics[k];
   return (
     <>
+      <div className="hero-row">
+        <div className="hero-text">
       <PageHeader eyebrow="FIREWISE" title="Fire-safety evidence for space exploration"
         description="NASA's microgravity combustion investigations, organised so you can see what was tested, under which documented conditions, and where the evidence stops." />
       {loading && <Loading rows={3} />}
       {error && <ErrorPanel error={error} onRetry={reload} />}
       {summary && (
+        <div className="hero-metrics">
         <Metrics items={[
           { value: m("investigations").value, label: "NASA combustion investigations", evidence: m("investigations").evidence_id },
           { value: m("unique_individual_tests").value, label: "individual tests (duplicates excluded)", evidence: m("unique_individual_tests").evidence_id,
@@ -170,7 +174,11 @@ export default function Overview({ onNavigate }) {
           { value: summary.scenario_counts.exploration_envelope, label: "tests in the 30–36% O₂ / 8.2–10.2 psia habitat window", evidence: "agg:scenario:exploration_envelope", alert: true },
           { value: m("partial_gravity_records").value, label: "partial-gravity (Moon/Mars) records", evidence: m("partial_gravity_records").evidence_id, alert: true },
         ]} />
+        </div>
       )}
+        </div>
+        <FlameIllustration onNavigate={onNavigate} />
+      </div>
 
       <h3 className="section-title">Start here</h3>
       <div className="task-grid">

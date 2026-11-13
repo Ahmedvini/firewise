@@ -1,5 +1,6 @@
 import { LayoutDashboard, Sparkles, FlaskConical, Crosshair, Box, SearchX } from "lucide-react";
 import { useApi } from "../services/api.js";
+import { CopilotModeLine } from "./ApiKeySettings.jsx";
 
 // Six task-based destinations. Secondary actions (compare, findings, scenarios, reports) live inside their pages.
 const NAV_ITEMS = [
@@ -31,7 +32,7 @@ export default function Sidebar({ activePage, onNavigate }) {
           <span className={`dot ${error ? "bad" : health ? "ok" : ""}`} aria-hidden />
           {error ? "Data service offline" : health ? "NASA evidence database online" : "Connecting…"}
         </div>
-        {health && <div className="small">Copilot: {health.copilot_configured ? "language model + validator" : "deterministic mode"}</div>}
+        {health && <div className="small"><CopilotModeLine /></div>}
         <div className="small">Every value comes from NASA PSI records and keeps its status (measured, derived, reported, set-point, not documented). Missing values are never zero. Not an official NASA product.</div>
       </div>
     </nav>

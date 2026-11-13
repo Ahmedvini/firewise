@@ -17,6 +17,7 @@ export default defineConfig({
     baseURL: `http://127.0.0.1:${PORT}`,
     channel: "chrome",
     viewport: { width: 1600, height: 1000 },
+    screenshot: "only-on-failure",
     launchOptions: { args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"] },
   },
   webServer: {

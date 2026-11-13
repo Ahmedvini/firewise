@@ -5,6 +5,8 @@ Pipeline: route intent -> assemble evidence pack (SQL aggregates, records, facts
           -> otherwise / on any failure: deterministic answer built from the same evidence.
 The model never computes counts: every number must already appear in a cited evidence item.
 """
+import contextlib
+import contextvars
 import json
 import os
 import re
@@ -357,13 +359,53 @@ def validate(claims, pack, summary=None):
 
 
 # ------------------------------------------------------------------------------------------- LLM call
-def llm_available():
+# A user's own Anthropic key ("bring your own key"), scoped to ONE request via a context variable.
+# It is never stored, logged, cached or returned; the server key (ANTHROPIC_API_KEY) is used when absent.
+_REQUEST_KEY = contextvars.ContextVar("firewise_user_anthropic_key", default=None)
+USER_KEY_RE = re.compile(r"sk-ant-[A-Za-z0-9_\-]{20,200}")
+
+
+@contextlib.contextmanager
+def request_key(key):
+    token = _REQUEST_KEY.set(key or None)
+    try:
+        yield
+    finally:
+        _REQUEST_KEY.reset(token)
+
+
+def server_key_configured():
     return bool(os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN"))
+
+
+def llm_available():
+    return bool(_REQUEST_KEY.get()) or server_key_configured()
+
+
+def key_source():
+    return "user" if _REQUEST_KEY.get() else ("server" if server_key_configured() else None)
+
+
+def check_key(key):
+    """Validate a user key with a no-cost Models API call. Returns (valid, message); never includes the key."""
+    import anthropic
+    client = anthropic.Anthropic(api_key=key, timeout=15.0, max_retries=0)
+    try:
+        info = client.models.retrieve(MODEL_ID)
+        return True, f"Key accepted; model {info.id} is available."
+    except anthropic.AuthenticationError:
+        return False, "Anthropic rejected this key (authentication failed)."
+    except (anthropic.PermissionDeniedError, anthropic.NotFoundError):
+        return False, f"The key is valid but has no access to {MODEL_ID}."
+    except anthropic.APIConnectionError:
+        return False, "Could not reach the Anthropic API from this server."
+    except anthropic.APIStatusError as e:
+        return False, f"Anthropic API error (HTTP {e.status_code})."
 
 
 def call_llm(question, pack):
     import anthropic
-    client = anthropic.Anthropic(timeout=TIMEOUT_S, max_retries=1)
+    client = anthropic.Anthropic(api_key=_REQUEST_KEY.get() or None, timeout=TIMEOUT_S, max_retries=1)
     ev = "\n\n".join(f"[{i['evidence_id']}] ({i['kind']}) {i['title']}\n{i['text']}" for i in pack.items)
     resp = client.beta.messages.parse(
         model=MODEL_ID, max_tokens=8000,
@@ -407,7 +449,7 @@ def ask(con, question, scenario_id=None, use_llm=True, twin=None):
                 known = {r[0] for r in con.execute("SELECT id FROM investigation")}
                 related = sorted(set(invs) | {r for r in out.related_investigations if r in known}, key=lambda x: int(x[4:]))
                 return _resp("answered" if not removed else "partial", "llm_validated", summary, claims, lim, list(out.gaps),
-                             related, evidence, t0, model={"id": MODEL_ID, "effort": EFFORT}, risk_q=risk_q)
+                             related, evidence, t0, model={"id": MODEL_ID, "effort": EFFORT, "key": key_source()}, risk_q=risk_q)
             notice = "The language model could not support an answer from the evidence; showing the deterministic answer."
         except Exception as e:  # deterministic fallback on any API/validation failure
             notice = f"Copilot language model unavailable ({type(e).__name__}); showing the deterministic, validated answer."
@@ -448,7 +490,7 @@ def ask_twin(con, question, twin, use_llm, t0):
             lim = list(out.limitations) + ([f"{len(removed)} statement(s) removed by the validator ({'; '.join(sorted(set(removed)))})."] if removed else [])
             if claims and out.sufficient_evidence:
                 return _resp("answered" if not removed else "partial", "llm_validated", summary, claims, lim, list(out.gaps), related, evidence, t0,
-                             model={"id": MODEL_ID, "effort": EFFORT}, risk_q=risk_q)
+                             model={"id": MODEL_ID, "effort": EFFORT, "key": key_source()}, risk_q=risk_q)
             notice = "The language model could not support an answer from the evidence; showing the deterministic answer."
         except Exception as e:
             notice = f"Copilot language model unavailable ({type(e).__name__}); showing the deterministic, validated answer."

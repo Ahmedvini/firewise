@@ -68,3 +68,43 @@ def test_twin_cache_never_crosses_names_or_workspaces(monkeypatch):
     r1 = c.post(f"/api/conversations/{a['id']}/messages", json={"question": q, "twin": {"scenario": sc}}, headers=WS).json()
     r2 = c.post(f"/api/conversations/{b['id']}/messages", json={"question": q, "twin": {"scenario": sc}}, headers=OTHER).json()
     assert r1["response"]["cached"] is False and r2["response"]["cached"] is False     # workspace-scoped twin cache
+
+
+def test_user_api_key_is_request_scoped_and_never_exposed(monkeypatch):
+    """Bring-your-own-key: used for the request only; never stored, cached into other modes, echoed or logged."""
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    key = "sk-ant-test-" + "X" * 40
+    seen = []
+
+    def fake(question, pack):
+        seen.append(copilot._REQUEST_KEY.get())
+        return copilot.LLMAnswer(answer_summary="PSI has 0 partial-gravity records.", sufficient_evidence=True, limitations=[], gaps=[],
+                                 related_investigations=[], claims=[copilot.LLMClaim(text="PSI holds 0 partial-gravity records.", tier="measured",
+                                                                                     evidence_ids=["agg:partial_gravity_records"])])
+    monkeypatch.setattr(copilot, "call_llm", fake)
+    q = {"question": "Is there partial-gravity combustion data in PSI?"}
+    r = c.post("/api/ask", json=q, headers={"X-Anthropic-Key": key})
+    assert r.status_code == 200 and r.json()["mode"] == "llm_validated" and r.json()["model"]["key"] == "user"
+    assert seen == [key] and copilot._REQUEST_KEY.get() is None                      # scoped to that request
+    assert key not in r.text
+    r2 = c.post("/api/ask", json=q)                                                     # no key, no server key -> deterministic
+    assert r2.json()["mode"] == "deterministic" and key not in r2.text
+    conv = c.post("/api/conversations", json={}, headers=WS).json()
+    m = c.post(f"/api/conversations/{conv['id']}/messages", json=q, headers={**WS, "X-Anthropic-Key": key})
+    assert m.status_code == 200 and key not in m.text
+    assert key not in c.get(f"/api/conversations/{conv['id']}", headers=WS).text      # not stored with the history
+    import sqlite3, os
+    db = os.environ["FIREWISE_STATE_DB"]
+    dump = "\n".join(sqlite3.connect(db).iterdump())
+    assert key not in dump                                                              # not in the state store / cache
+    bad = c.post("/api/ask", json=q, headers={"X-Anthropic-Key": "not-a-key"})
+    assert bad.status_code == 400 and "not-a-key" not in bad.text
+    h = c.get("/api/health").json()
+    assert h["copilot_configured"] is False and h["user_keys_accepted"] is True
+
+
+def test_key_check_endpoint(monkeypatch):
+    monkeypatch.setattr(copilot, "check_key", lambda k: (True, "Key accepted; model claude-opus-5-5 is available."))
+    r = c.post("/api/copilot/key/check", headers={"X-Anthropic-Key": "sk-ant-test-" + "Y" * 40})
+    assert r.status_code == 200 and r.json()["valid"] is True and "Y" * 10 not in r.text
+    assert c.post("/api/copilot/key/check").status_code == 400

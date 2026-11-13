@@ -88,11 +88,18 @@ class BuildInfo(BaseModel):
     claims_check_sha256: str
 
 
+class KeyCheck(BaseModel):
+    valid: bool
+    message: str
+    model: str
+
+
 class Health(BaseModel):
     status: Literal["ok", "degraded"]
     build: Optional[BuildInfo]
-    copilot_configured: bool
+    copilot_configured: bool = Field(description="A server-wide ANTHROPIC_API_KEY is configured (the key itself is never exposed)")
     copilot_model: str
+    user_keys_accepted: bool = Field(default=True, description="Clients may send their own key per request in X-Anthropic-Key")
 
 
 class Metric(BaseModel):

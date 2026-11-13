@@ -218,3 +218,11 @@ ul.plain li:last-child { border-bottom: 0; }
 .coverage-bar { position: relative; height: 6px; border-radius: 3px; background: var(--surface-3); overflow: hidden; min-width: 80px; }
 .coverage-bar > span { position: absolute; inset: 0 auto 0 0; background: var(--series-nasa); border-radius: 3px; }
 .coverage-bar.zero { background-image: repeating-linear-gradient(135deg, rgba(148, 163, 184, 0.2) 0 1px, transparent 1px 6px); }
+
+/* ---------- AI settings ---------- */
+.key-settings .key-status { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 4px var(--s3); margin: var(--s3) 0 var(--s4); }
+.key-settings .key-status dt, .key-settings .key-status dd { margin: 0; }
+.key-form { display: flex; flex-direction: column; gap: var(--s2); padding: var(--s4); border: 1px solid var(--line); border-radius: var(--r); background: var(--bg); }
+.key-result { display: flex; gap: var(--s2); align-items: center; margin-top: var(--s3); font-size: var(--fs-sm); }
+.key-result.ok { color: var(--green); } .key-result.bad { color: var(--red); }
+.btn .tag { margin-left: 2px; }

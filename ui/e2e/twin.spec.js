@@ -4,7 +4,8 @@ import { test, expect } from "@playwright/test";
 
 const consoleErrors = (page) => {
   const errs = [];
-  page.on("console", (m) => m.type() === "error" && !/favicon|WebGL|GPU stall|swiftshader/i.test(m.text()) && errs.push(m.text()));
+  // ERR_NETWORK_CHANGED: the test machine's network interfaces change during runs (not an app error; the client retries)
+  page.on("console", (m) => m.type() === "error" && !/favicon|WebGL|GPU stall|swiftshader|ERR_NETWORK_CHANGED/i.test(m.text()) && errs.push(m.text()));
   page.on("pageerror", (e) => errs.push(String(e)));
   return errs;
 };
@@ -232,4 +233,54 @@ test("rendering performance on this machine (software WebGL: a lower bound)", as
   }));
   console.log(`habitat view with airflow animation: ${fps.toFixed(1)} fps (headless Chrome, SwiftShader software rendering — a lower bound, not GPU performance)`);
   expect(fps).toBeGreaterThan(0.5); // the render loop stays alive; real-GPU frame rate is measured separately (docs)
+});
+
+test("overview flame illustration: gravity cases, and no partial-gravity shape is drawn", async ({ page }) => {
+  await page.goto("/#/overview");
+  const card = page.locator(".flame-card");
+  await expect(card).toContainText("conceptual illustration");
+  await expect(card).toContainText("oxygen arrives only by diffusion");                 // default: microgravity
+  await card.getByRole("button", { name: /^Earth/ }).click();
+  await expect(card).toContainText("Buoyancy shapes the flame");
+  await expect(card.locator("svg.flame-svg")).toHaveAttribute("aria-label", /teardrop/);
+  for (const g of ["Mars", "Moon"]) {
+    await card.getByRole("button", { name: new RegExp(`^${g}`) }).click();
+    await expect(card).toContainText("Not measured — not predicted");
+    await expect(card.locator("svg.flame-svg")).toHaveAttribute("aria-label", new RegExp(`no data at ${g} gravity`));
+  }
+  await card.getByRole("button", { name: /See research gaps/ }).click();
+  await expect(page.getByText("Key evidence gaps")).toBeVisible();
+});
+
+test("AI settings: a user key stays in the browser and is sent only with Copilot requests", async ({ page }) => {
+  const KEY = "sk-ant-e2e-" + "Z".repeat(40);
+  await page.goto("/#/assistant");
+  await page.getByRole("button", { name: /AI settings/ }).click();
+  const dlg = page.getByRole("dialog", { name: "AI settings" });
+  await expect(dlg).toContainText("never stores, caches or logs it");
+  await dlg.getByLabel(/Anthropic API key/).fill("not-a-key");
+  await dlg.getByRole("button", { name: "Check and save" }).click();
+  await expect(dlg).toContainText("does not look like an Anthropic API key");
+  await dlg.getByRole("button", { name: "Close" }).click();
+  // simulate a saved key (session storage) without contacting Anthropic
+  await page.evaluate((k) => { sessionStorage.setItem("firewise.anthropic_key", k); }, KEY);
+  await page.reload();
+  await expect(page.getByRole("button", { name: /AI settings/ })).toContainText("your key");
+  await expect(page.locator(".ph-note")).toContainText("your API key (sk-ant-…ZZZZ)");
+  const keyed = [], urls = [];
+  page.on("request", (r) => { urls.push(r.url()); if (r.headers()["x-anthropic-key"]) keyed.push(r.url()); });
+  // strip the key before it reaches the test server so no real Anthropic call is made
+  await page.route("**/api/conversations/*/messages", (route) => {
+    const h = { ...route.request().headers() }; delete h["x-anthropic-key"]; route.continue({ headers: h });
+  });
+  await page.getByRole("button", { name: /New chat/ }).click();
+  await page.getByRole("button", { name: "What is test 21265C3?", exact: true }).click();
+  await expect(page.getByText(/short-lived inverse butane flame/)).toBeVisible();
+  expect(keyed.length).toBeGreaterThan(0);
+  expect(keyed.every((u) => /\/api\/conversations\/[^/]+\/messages$/.test(u))).toBe(true);   // only Copilot requests
+  expect(urls.some((u) => u.includes(KEY))).toBe(false);                                     // never in a URL
+  await page.getByRole("button", { name: /AI settings/ }).click();
+  await page.getByRole("button", { name: "Remove my key" }).click();
+  await expect(page.getByRole("dialog", { name: "AI settings" })).toContainText("not set");
+  expect(await page.evaluate(() => sessionStorage.getItem("firewise.anthropic_key"))).toBeNull();
 });
