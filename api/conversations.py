@@ -41,13 +41,15 @@ def _fingerprint(con):
     return f"{m.get('schema_version')}:{m.get('inputs_sha256')}:{m.get('runs_csv_sha256')}"
 
 
-def cache_key(con, question, scenario_id=None, twin=None):
+def cache_key(con, question, scenario_id=None, twin=None, owner=None):
+    """Twin answers quote user-written scenario text (name, description), so the key covers the WHOLE twin
+    context and, when a workspace is known, the workspace too: a cached twin answer is never served to a
+    different context or another workspace. General questions carry no user data and share the cache."""
     mode = f"llm:{copilot.MODEL_ID}:{copilot.EFFORT}" if copilot.llm_available() else "deterministic"
     q = re.sub(r"\s+", " ", question.strip().lower())
     ctx = None
     if twin:
-        ctx = {"scenario": physics.scenario_core(twin["scenario"]), "matching": twin["scenario"].get("matching"),
-               "selected_zone": twin.get("selected_zone"), "engine": physics.ENGINE_VERSION}
+        ctx = {"context": twin, "engine": physics.ENGINE_VERSION, "owner": owner}
     payload = json.dumps({"q": q, "scenario_id": scenario_id, "twin": ctx, "db": _fingerprint(con), "mode": mode}, sort_keys=True, default=str)
     return hashlib.sha256(payload.encode()).hexdigest()
 
@@ -56,10 +58,10 @@ def cacheable(resp):
     return resp["mode"] in ("llm_validated", "deterministic") and not (resp.get("notice") and "unavailable (" in resp["notice"])
 
 
-def ask_cached(con, question, scenario_id=None, twin=None):
+def ask_cached(con, question, scenario_id=None, twin=None, owner=None):
     """copilot.ask with the answer cache. Returns the response with `cached` set."""
     t0 = time.time()
-    key = cache_key(con, question, scenario_id, twin)
+    key = cache_key(con, question, scenario_id, twin, owner)
     cutoff = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=CACHE_MAX_AGE_DAYS)).isoformat(timespec="seconds")
     with state.connect() as s:
         r = s.execute("SELECT response_json FROM copilot_answer_cache WHERE cache_key=? AND created_at >= ?", (key, cutoff)).fetchone()
@@ -205,7 +207,7 @@ def send_message(cid: str, body: MessageIn, ws: str = WS_HEADER):
     twin = body.twin.model_dump() if body.twin else None
     with connect() as con:
         try:
-            resp = ask_cached(con, body.question.strip(), None, twin)
+            resp = ask_cached(con, body.question.strip(), None, twin, owner)
         except copilot.TwinContextError as e:
             raise HTTPException(400, str(e))
     context = None

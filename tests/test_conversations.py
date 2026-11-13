@@ -53,3 +53,18 @@ def test_failed_llm_fallback_is_not_cached(monkeypatch):
     q = {"question": "What evidence is there for partial-gravity combustion?"}
     assert c.post("/api/ask", json=q).json()["cached"] is False
     assert c.post("/api/ask", json=q).json()["cached"] is False
+
+
+def test_twin_cache_never_crosses_names_or_workspaces(monkeypatch):
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    sc = c.get("/api/twin/environments/fwh-1/presets").json()[1]["scenario"]
+    q = "Which NASA experiments are closest to this environment?"
+    first = c.post("/api/ask", json={"question": q, "twin": {"scenario": {**sc, "name": "Private habitat alpha"}}}).json()
+    other = c.post("/api/ask", json={"question": q, "twin": {"scenario": {**sc, "name": "Another name"}}}).json()
+    assert first["cached"] is False and other["cached"] is False
+    assert "Private habitat alpha" not in str(other)
+    a = c.post("/api/conversations", json={"kind": "twin"}, headers=WS).json()
+    b = c.post("/api/conversations", json={"kind": "twin"}, headers=OTHER).json()
+    r1 = c.post(f"/api/conversations/{a['id']}/messages", json={"question": q, "twin": {"scenario": sc}}, headers=WS).json()
+    r2 = c.post(f"/api/conversations/{b['id']}/messages", json={"question": q, "twin": {"scenario": sc}}, headers=OTHER).json()
+    assert r1["response"]["cached"] is False and r2["response"]["cached"] is False     # workspace-scoped twin cache
