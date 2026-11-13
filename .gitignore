@@ -15,8 +15,9 @@ node_modules/
 __pycache__/
 *.pyc
 .pytest_cache/
-web/.next/
-web/out/
+ui/node_modules/
+ui/dist/
+
 # Superseded copies kept locally only
 derived/_superseded/
 docs/_superseded/
