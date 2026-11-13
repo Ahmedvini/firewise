@@ -124,6 +124,7 @@ export default function ResearchGaps({ onOpenExperiment, onNavigate }) {
           </Disclosure>
           <Disclosure title="Methodology, definitions and limitations">
             {g && <dl>{Object.entries(g.definitions).map(([k, v]) => <div key={k}><dt>{k.replaceAll("_", " ")}</dt><dd>{v}</dd></div>)}</dl>}
+            <p className="small">Every count cites NASA PSI records; their dataset DOIs are listed on <button className="linkish" onClick={() => onNavigate("sources")}>Data sources & DOIs</button>.</p>
             <h4>Limitations</h4>
             <ul className="limits">{s.limitations.map((l) => <li key={l}>{l}</li>)}</ul>
           </Disclosure>

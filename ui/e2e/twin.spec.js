@@ -287,3 +287,17 @@ test("AI settings: any provider; the key stays in the browser and is sent only w
   await expect(page.getByRole("dialog", { name: "AI settings" })).toContainText("no key (deterministic answers)");
   expect(await page.evaluate(() => sessionStorage.getItem("firewise.llm"))).toBeNull();
 });
+
+test("data sources page lists every dataset DOI; evidence shows the dataset DOI", async ({ page }) => {
+  await page.goto("/#/overview");
+  await page.getByRole("button", { name: "See all data sources and DOIs" }).click();
+  await expect(page.getByRole("heading", { name: "Data sources & DOIs" })).toBeVisible();
+  const dois = page.locator("table a[href^='https://doi.org/10.60555/']");
+  await expect(dois).toHaveCount(24);
+  await page.getByLabel("Filter sources").fill("CFI-G");
+  await expect(dois).toHaveCount(1);
+  await page.goto("/#/experiments/PSI-159");
+  await page.getByRole("tab", { name: /Test records/ }).click();
+  await page.locator(".ev-link").filter({ hasText: /row/ }).first().click();
+  await expect(page.getByRole("dialog", { name: "Source evidence" })).toContainText("Dataset DOI: doi:10.60555/");
+});

@@ -156,3 +156,11 @@ ul.claims li { display: flex; flex-direction: column; gap: 4px; padding-left: va
   .metric { border-right: 0; border-bottom: 1px solid var(--line); }
   .ask-row { flex-direction: column; align-items: stretch; }
 }
+
+/* ---------- Data sources & DOIs ---------- */
+.doi { display: inline-flex; align-items: center; gap: 2px; flex-wrap: wrap; }
+.doi a { font-size: var(--fs-sm); word-break: break-all; }
+.doi-search { max-width: 360px; }
+.pub-dois li { display: flex; flex-direction: column; gap: 2px; }
+.method-refs li { display: flex; flex-direction: column; gap: 2px; }
+.sources-line { margin: var(--s4) 0 0; }

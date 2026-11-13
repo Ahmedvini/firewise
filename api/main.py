@@ -219,6 +219,14 @@ def ask(req: models.AskRequest, request: Request):
             raise HTTPException(400, str(e))
 
 
+@app.get("/api/citations")
+def citations():
+    """Every DOI FIREWISE relies on: NASA PSI dataset DOIs (24), publication DOIs, and method references."""
+    need_db()
+    with connect() as con:
+        return services.citations(con)
+
+
 @app.get("/api/copilot/providers")
 def llm_providers():
     """Supported bring-your-own-key providers (ids and labels only; endpoints are fixed server-side)."""

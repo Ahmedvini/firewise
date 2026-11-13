@@ -214,6 +214,7 @@ export default function Overview({ onNavigate }) {
       <Disclosure title="Where the evidence sits: chamber O₂ vs pressure for every documented record" hint="interactive chart">
         <O2PressureChart height={380} />
       </Disclosure>
+      <p className="small muted sources-line">All figures come from 24 NASA PSI datasets, each with a DOI. <button className="linkish" onClick={() => onNavigate("sources")}>See all data sources and DOIs</button></p>
       {summary && (
         <Disclosure title="Limitations of the data">
           <ul className="limits">{summary.limitations.map((l) => <li key={l}>{l}</li>)}</ul>

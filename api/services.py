@@ -545,13 +545,16 @@ def evidence(con, eid):
         cols = {"objective", "hypothesis", "approach", "research_impacts", "hardware", "title"}
         if field not in cols:
             return None
-        r = con.execute(f"SELECT {field} AS v, title, psi_url FROM investigation WHERE id=?", (acc,)).fetchone()
-        return r and {"evidence_id": eid, "kind": "psi_record_field", "title": f"{acc} {r['title']} — {field}", "text": r["v"], "url": r["psi_url"]}
+        r = con.execute(f"SELECT {field} AS v, title, psi_url, doi FROM investigation WHERE id=?", (acc,)).fetchone()
+        return r and {"evidence_id": eid, "kind": "psi_record_field", "title": f"{acc} {r['title']} — {field}", "text": r["v"], "url": r["psi_url"],
+                      "data": {"dataset_doi": r["doi"], "dataset_doi_url": f"https://doi.org/{r['doi']}" if r["doi"] else None, "investigation_id": acc}}
     if eid.startswith("row:"):
         r = con.execute(f"{RUN_SELECT} WHERE r.row_key=?", (eid[4:],)).fetchone()
         if not r:
             return None
         d = attach_details(con, [r])[0]
+        doi = con.execute("SELECT doi FROM investigation WHERE id=?", (r["investigation_id"],)).fetchone()[0]
+        d["dataset_doi"], d["dataset_doi_url"] = doi, (f"https://doi.org/{doi}" if doi else None)
         return {"evidence_id": eid, "kind": "psi_table_row", "title": f"{r['investigation_id']} {r['file_name']} row {r['source_row']}",
                 "text": r["raw_json"], "url": r["source_url"], "data": d}
     if eid.startswith("obs:"):
@@ -611,3 +614,39 @@ def validation_text(r):
            f"max |relative error|={m['max_abs_rel_error_pct']:.3g}%.") if m else " No error metric (no meaningful reference comparison)."
     return (f"[{r['model_id']} / {r['output']}] {r['kind']} — status {r['status']}; reference {r['reference'] or 'none'}; "
             f"domain {r['domain'] or 'n/a'}.{met} {r['conclusion']}")
+
+
+# ------------------------------------------------------------------------------------------- citations
+# External references used by FIREWISE itself (physics models). DOIs verified against Crossref (2026-11-13);
+# references without a DOI are cited by title only — never with a guessed identifier.
+METHOD_REFERENCES = [
+    {"use": "Gas-mixture viscosity (Model B)", "citation": "Wilke, C. R. (1950). A Viscosity Equation for Gas Mixtures. The Journal of Chemical Physics 18, 517.", "doi": "10.1063/1.1747673"},
+    {"use": "Gas-mixture thermal conductivity (Model B)", "citation": "Mason, E. A. & Saxena, S. C. (1958). Approximate Formula for the Thermal Conductivity of Gas Mixtures. The Physics of Fluids 1, 361.", "doi": "10.1063/1.1724352"},
+    {"use": "Molar gas constant (Models A, B)", "citation": "Tiesinga, E. et al. (2021). CODATA recommended values of the fundamental physical constants: 2018. Reviews of Modern Physics 93, 025010.", "doi": "10.1103/RevModPhys.93.025010"},
+    {"use": "Pure-gas viscosity and conductivity (Model B; validation reference)", "citation": "White, F. M. (2006). Viscous Fluid Flow, 3rd ed., McGraw-Hill, Tables 1-2 and 1-3.", "doi": None},
+    {"use": "Heat-capacity polynomials (Model B)", "citation": "GRI-Mech 3.0 thermodynamic data (NASA 7-coefficient polynomials).", "doi": None},
+    {"use": "Heat-capacity verification reference", "citation": "Chase, M. W. (1998). NIST-JANAF Thermochemical Tables, 4th ed.", "doi": None},
+    {"use": "Ideal-gas verification reference", "citation": "U.S. Standard Atmosphere, 1976 (NOAA, NASA, USAF).", "doi": None},
+    {"use": "Laminar flat-plate correlation (Model D1)", "citation": "Incropera, F. P., DeWitt, D. P., Bergman, T. L. & Lavine, A. S. Fundamentals of Heat and Mass Transfer (Pohlhausen solution).", "doi": None},
+]
+
+
+def citations(con):
+    """Every DOI FIREWISE relies on: the 24 NASA PSI investigation datasets, their publications, and method references."""
+    pubs = collections.defaultdict(list)
+    for p in con.execute("SELECT investigation_id, title, authors, doi, status FROM publication WHERE doi IS NOT NULL AND doi != '' ORDER BY investigation_id, title"):
+        pubs[p["investigation_id"]].append({"title": p["title"], "authors": p["authors"], "doi": p["doi"], "doi_url": f"https://doi.org/{p['doi']}", "status": p["status"]})
+    datasets = []
+    for r in con.execute("SELECT id, acronym, title, doi, license, psi_url FROM investigation ORDER BY CAST(substr(id, 5) AS INTEGER)"):
+        seen, uniq = set(), []
+        for p in pubs.get(r["id"], []):
+            if p["doi"].lower() not in seen:
+                seen.add(p["doi"].lower())
+                uniq.append(p)
+        datasets.append({"investigation_id": r["id"], "acronym": r["acronym"], "title": r["title"], "doi": r["doi"],
+                         "doi_url": f"https://doi.org/{r['doi']}" if r["doi"] else None, "license": r["license"], "psi_url": r["psi_url"],
+                         "publications": uniq})
+    n_pub = len({p["doi"].lower() for d in datasets for p in d["publications"]})
+    return {"datasets": datasets, "method_references": [{**m, "doi_url": f"https://doi.org/{m['doi']}" if m["doi"] else None} for m in METHOD_REFERENCES],
+            "counts": {"datasets": len(datasets), "dataset_dois": sum(1 for d in datasets if d["doi"]), "publication_dois": n_pub},
+            "how_to_cite": "Cite the NASA PSI dataset DOI of each investigation you use (listed below), together with FIREWISE as the tool used to explore them. NASA PSI records are distributed under the licence shown for each investigation (CC0-1.0 where stated)."}

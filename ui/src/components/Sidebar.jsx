@@ -33,6 +33,7 @@ export default function Sidebar({ activePage, onNavigate }) {
           {error ? "Data service offline" : health ? "NASA evidence database online" : "Connecting…"}
         </div>
         {health && <div className="small"><CopilotModeLine /></div>}
+        <button className={`footer-link ${activePage === "sources" ? "on" : ""}`} onClick={() => onNavigate("sources")}>Data sources & DOIs</button>
         <div className="small">Every value comes from NASA PSI records and keeps its status (measured, derived, reported, set-point, not documented). Missing values are never zero. Not an official NASA product.</div>
       </div>
     </nav>

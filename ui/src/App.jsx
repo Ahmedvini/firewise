@@ -6,12 +6,13 @@ import AIAssistant from "./pages/AIAssistant.jsx";
 import Investigations from "./pages/Investigations.jsx";
 import Scenarios from "./pages/Scenarios.jsx";
 import ResearchGaps from "./pages/ResearchGaps.jsx";
+import Sources from "./pages/Sources.jsx";
 import { TwinProvider } from "./twin/TwinContext.jsx";
 
 const DigitalTwin = lazy(() => import("./twin/DigitalTwin.jsx")); // three.js loads only when the twin opens
 
 // Routes. Old links keep working: #/compare → Investigations (compare), #/insights → Research gaps.
-const PAGES = ["overview", "experiments", "compare", "scenarios", "twin", "gaps", "insights", "assistant"];
+const PAGES = ["overview", "experiments", "compare", "scenarios", "twin", "gaps", "insights", "assistant", "sources"];
 const NAV_OF = { compare: "experiments", insights: "gaps" };
 
 function readHash() {
@@ -57,6 +58,7 @@ export default function App() {
     gaps: <ResearchGaps onOpenExperiment={openExperiment} onNavigate={navigate} />,
     insights: <ResearchGaps onOpenExperiment={openExperiment} onNavigate={navigate} />,
     assistant: <AIAssistant onOpenExperiment={openExperiment} />,
+    sources: <Sources onOpenExperiment={openExperiment} />,
     twin: (
       <Suspense fallback={<div className="panel">Loading the Digital Twin…</div>}>
         <DigitalTwin tab={twinTab} onTab={(k) => { window.location.hash = `/twin/${k}`; }} onOpenExperiment={openExperiment} />

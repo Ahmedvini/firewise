@@ -17,6 +17,8 @@
 .sidebar-about { margin-top: auto; padding: var(--s3); font-size: var(--fs-xs); color: var(--faint); border-top: 1px solid var(--line); line-height: 1.45; }
 .sidebar-about .small { margin-top: var(--s1); font-size: var(--fs-xs); }
 .nav-short { display: none; }
+.footer-link { display: block; background: none; border: 0; padding: 0; margin: var(--s2) 0; color: var(--muted); font: 600 var(--fs-xs) var(--font-body); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.footer-link:hover, .footer-link.on { color: var(--text); }
 
 @media (max-width: 860px) {
   .app-shell { grid-template-columns: minmax(0, 1fr); }

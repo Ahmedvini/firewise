@@ -61,6 +61,9 @@ export function EvidenceProvider({ children }) {
             <div className="modal-body">
               {state.error && <p className="muted">{state.error}</p>}
               {!ev && !state.error && <p className="muted">Loading source…</p>}
+              {ev?.data?.dataset_doi_url && (
+                <p className="small">Dataset DOI: <a href={ev.data.dataset_doi_url} target="_blank" rel="noreferrer" className="mono">doi:{ev.data.dataset_doi}</a></p>
+              )}
               {raw && (
                 <>
                   <p className="muted small">Verbatim record from the NASA PSI experimental table. Blank cells are shown as “—”.</p>

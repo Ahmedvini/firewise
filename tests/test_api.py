@@ -180,3 +180,14 @@ def test_validation_set_recall_and_traps(monkeypatch):
             n += 1
             hits += any(e in [x["evidence_id"] for x in r["evidence"][:5]] for e in v["must_cite_any"])
     assert hits / n >= 0.8, f"recall@5 {hits}/{n}"
+
+
+def test_citations_every_dataset_has_its_doi():
+    d = get("/api/citations")
+    assert d["counts"]["datasets"] == 24 and d["counts"]["dataset_dois"] == 24 and d["counts"]["publication_dois"] > 200
+    for x in d["datasets"]:
+        assert x["doi"].startswith("10.60555/") and x["doi_url"] == f"https://doi.org/{x['doi']}"
+        assert all(p["doi_url"] == f"https://doi.org/{p['doi']}" for p in x["publications"])
+    assert {m["doi"] for m in d["method_references"] if m["doi"]} == {"10.1063/1.1747673", "10.1063/1.1724352", "10.1103/RevModPhys.93.025010"}
+    row = get("/api/evidence/row:PSI-159:cfi-g-normal-flames:r129")
+    assert row["data"]["dataset_doi"] == next(x["doi"] for x in d["datasets"] if x["investigation_id"] == "PSI-159")
