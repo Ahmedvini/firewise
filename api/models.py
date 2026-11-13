@@ -91,7 +91,9 @@ class BuildInfo(BaseModel):
 class KeyCheck(BaseModel):
     valid: bool
     message: str
-    model: str
+    model: str = Field(description="Suggested default model for this provider")
+    provider: str = "anthropic"
+    models: list[str] = Field(default_factory=list, description="Models the key can use (from the provider's model list)")
 
 
 class Health(BaseModel):

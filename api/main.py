@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import copilot, models, ratelimit, services
+from . import copilot, llm, models, ratelimit, services
 from .db import connect, db_available
 from .twin.routes import router as twin_router
 from .conversations import WS_RE, ask_cached, router as conversations_router
@@ -186,14 +186,19 @@ def evidence(evidence_id: str):
     return e
 
 
-def user_key(value):
-    """Optional 'bring your own key' header. Format-checked; never echoed, stored or logged."""
-    if not value:
+def user_llm(request):
+    """Optional bring-your-own-key choice from headers: X-LLM-Provider / X-LLM-Key / X-LLM-Model
+    (or the older X-Anthropic-Key). Validated; the key is never echoed, stored or logged."""
+    h = request.headers
+    key, provider = h.get("x-llm-key"), h.get("x-llm-provider")
+    if not key and h.get("x-anthropic-key"):
+        key, provider = h.get("x-anthropic-key"), "anthropic"
+    if not key:
         return None
-    value = value.strip()
-    if not copilot.USER_KEY_RE.fullmatch(value):
-        raise HTTPException(400, "X-Anthropic-Key does not look like an Anthropic API key (sk-ant-…)")
-    return value
+    try:
+        return llm.validate_choice(provider, key, h.get("x-llm-model"))
+    except llm.ChoiceError as e:
+        raise HTTPException(400, str(e))
 
 
 USER_KEY_ASK_LIMIT = (30, 60.0)      # Copilot requests carrying a user key: 30 per minute per client
@@ -201,12 +206,12 @@ KEY_CHECK_LIMIT = (10, 600.0)        # key checks: 10 per 10 minutes per client,
 
 
 @app.post("/api/ask", response_model=models.AskResponse)
-def ask(req: models.AskRequest, request: Request, x_anthropic_key: Optional[str] = Header(None, alias="X-Anthropic-Key")):
+def ask(req: models.AskRequest, request: Request):
     need_db()
-    key = user_key(x_anthropic_key)
-    if key and not ratelimit.allow("ask-user-key", ratelimit.client_id(request), *USER_KEY_ASK_LIMIT):
+    choice = user_llm(request)
+    if choice and not ratelimit.allow("ask-user-key", ratelimit.client_id(request), *USER_KEY_ASK_LIMIT):
         raise HTTPException(429, "Too many Copilot requests with a personal key; wait a minute and try again")
-    with connect() as con, copilot.request_key(key):
+    with connect() as con, copilot.request_llm(choice):
         twin = req.twin.model_dump() if req.twin else None
         try:
             return ask_cached(con, req.question.strip(), req.scenario_id, twin=twin)
@@ -214,23 +219,29 @@ def ask(req: models.AskRequest, request: Request, x_anthropic_key: Optional[str]
             raise HTTPException(400, str(e))
 
 
+@app.get("/api/copilot/providers")
+def llm_providers():
+    """Supported bring-your-own-key providers (ids and labels only; endpoints are fixed server-side)."""
+    return {"providers": llm.providers_public(), "default_model": {"anthropic": copilot.MODEL_ID}}
+
+
 @app.post("/api/copilot/key/check", response_model=models.KeyCheck)
-def key_check(request: Request, x_anthropic_key: Optional[str] = Header(None, alias="X-Anthropic-Key"),
-              x_workspace: Optional[str] = Header(None, alias="X-Workspace")):
-    """Test a user's own key with a no-cost Models API call. The key is not stored.
-    Abuse controls: a workspace key is required, calls are rate-limited per client and per workspace, and the
-    result is only accepted / not accepted (no reason), so this is not a useful bulk key-validation oracle."""
-    key = user_key(x_anthropic_key)
-    if not key:
-        raise HTTPException(400, "Send the key in the X-Anthropic-Key header")
+def key_check(request: Request, x_workspace: Optional[str] = Header(None, alias="X-Workspace")):
+    """Test a user's own key with the provider's no-cost model listing and return the models it can use.
+    The key is not stored. Abuse controls: a workspace key is required, calls are rate-limited per client and per
+    workspace, and the result is only accepted / not accepted (no reason): not a useful bulk key-validation oracle."""
+    choice = user_llm(request)
+    if not choice:
+        raise HTTPException(400, "Send the key in the X-LLM-Key header (and the provider in X-LLM-Provider)")
     if not x_workspace or not WS_RE.fullmatch(x_workspace):
         raise HTTPException(400, "X-Workspace is required")
     n, window = KEY_CHECK_LIMIT
     if not (ratelimit.allow("key-check-ip", ratelimit.client_id(request), n, window)
             and ratelimit.allow("key-check-ws", x_workspace, n // 2, window)):
         raise HTTPException(429, "Too many key checks; try again in a few minutes")
-    valid, message = copilot.check_key(key)
-    return {"valid": valid, "message": message, "model": copilot.MODEL_ID}
+    valid, message, model_ids = copilot.check_choice(choice)
+    default = copilot.MODEL_ID if choice["provider"] == "anthropic" and copilot.MODEL_ID in model_ids else (model_ids[0] if model_ids else None)
+    return {"valid": valid, "message": message, "model": default or "", "provider": choice["provider"], "models": model_ids if valid else []}
 
 
 # Static frontend (Vite build of ui/ -> ui/dist) served on the same origin; API routes above take precedence.

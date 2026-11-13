@@ -72,35 +72,41 @@ export function workspaceKey() {
 const ws = (options = {}) => ({ ...options, headers: { "X-Workspace": workspaceKey(), ...(options.headers || {}) } });
 const json = (method, body) => ({ method, body: JSON.stringify(body) });
 
-// ------------------------------------------------------------ "Bring your own" Anthropic key
-// Stored only in this browser: sessionStorage by default (cleared when the tab closes), localStorage if the user
-// chooses "remember on this device". Sent only with Copilot requests, as the X-Anthropic-Key header (never in a URL).
-const KEY_NAME = "firewise.anthropic_key";
-export const userKey = {
+// ------------------------------------------------------------ "Bring your own key" for any supported AI provider
+// The choice {provider, key, model} is stored only in this browser: sessionStorage by default (cleared when the tab
+// closes), localStorage if the user chooses "remember on this device". It is sent only with Copilot requests, in the
+// X-LLM-Provider / X-LLM-Key / X-LLM-Model headers (never in a URL). The server calls only the provider's fixed API.
+const LLM_NAME = "firewise.llm";
+const LEGACY_KEY = "firewise.anthropic_key";
+const readStore = (store) => {
+  const raw = store.getItem(LLM_NAME);
+  if (raw) { try { const c = JSON.parse(raw); if (c?.provider && c?.key) return c; } catch { /* ignore */ } }
+  const legacy = store.getItem(LEGACY_KEY);
+  return legacy ? { provider: "anthropic", key: legacy, model: null } : null;
+};
+export const userLLM = {
   get() {
-    try { return window.sessionStorage.getItem(KEY_NAME) || window.localStorage.getItem(KEY_NAME) || null; } catch { return null; }
+    try { return readStore(window.sessionStorage) || readStore(window.localStorage); } catch { return null; }
   },
   remembered() {
-    try { return !!window.localStorage.getItem(KEY_NAME); } catch { return false; }
+    try { return !!(window.localStorage.getItem(LLM_NAME) || window.localStorage.getItem(LEGACY_KEY)); } catch { return false; }
   },
-  set(key, remember) {
+  set(choice, remember) {
     try {
-      window.sessionStorage.removeItem(KEY_NAME); window.localStorage.removeItem(KEY_NAME);
-      (remember ? window.localStorage : window.sessionStorage).setItem(KEY_NAME, key);
+      for (const st of [window.sessionStorage, window.localStorage]) { st.removeItem(LLM_NAME); st.removeItem(LEGACY_KEY); }
+      (remember ? window.localStorage : window.sessionStorage).setItem(LLM_NAME, JSON.stringify(choice));
     } catch { /* storage blocked */ }
     window.dispatchEvent(new Event("firewise-key"));
   },
   clear() {
-    try { window.sessionStorage.removeItem(KEY_NAME); window.localStorage.removeItem(KEY_NAME); } catch { /* storage blocked */ }
+    try { for (const st of [window.sessionStorage, window.localStorage]) { st.removeItem(LLM_NAME); st.removeItem(LEGACY_KEY); } } catch { /* storage blocked */ }
     window.dispatchEvent(new Event("firewise-key"));
   },
-  masked(k = userKey.get()) { return k ? `${k.slice(0, 7)}…${k.slice(-4)}` : null; },
+  masked(k) { return k ? `${k.slice(0, Math.min(6, k.length - 4))}…${k.slice(-4)}` : null; },
 };
-const withKey = (options = {}) => {
-  const k = userKey.get();
-  return k ? { ...options, headers: { ...(options.headers || {}), "X-Anthropic-Key": k } } : options;
-};
-export const checkKey = (key) => request("/api/copilot/key/check", ws({ method: "POST", headers: { "X-Anthropic-Key": key } }));
+const llmHeaders = (c) => (c ? { "X-LLM-Provider": c.provider, "X-LLM-Key": c.key, ...(c.model ? { "X-LLM-Model": c.model } : {}) } : {});
+const withKey = (options = {}) => ({ ...options, headers: { ...(options.headers || {}), ...llmHeaders(userLLM.get()) } });
+export const checkKey = (provider, key) => request("/api/copilot/key/check", ws({ method: "POST", headers: llmHeaders({ provider, key }) }));
 
 // ------------------------------------------------------------ Digital Twin
 export const twin = {

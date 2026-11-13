@@ -77,7 +77,7 @@ def test_user_api_key_is_request_scoped_and_never_exposed(monkeypatch):
     seen = []
 
     def fake(question, pack):
-        seen.append(copilot._REQUEST_KEY.get())
+        seen.append((copilot._REQUEST_LLM.get() or {}).get("key"))
         return copilot.LLMAnswer(answer_summary="PSI has 0 partial-gravity records.", sufficient_evidence=True, limitations=[], gaps=[],
                                  related_investigations=[], claims=[copilot.LLMClaim(text="PSI holds 0 partial-gravity records.", tier="measured",
                                                                                      evidence_ids=["agg:partial_gravity_records"])])
@@ -85,7 +85,7 @@ def test_user_api_key_is_request_scoped_and_never_exposed(monkeypatch):
     q = {"question": "Is there partial-gravity combustion data in PSI?"}
     r = c.post("/api/ask", json=q, headers={"X-Anthropic-Key": key})
     assert r.status_code == 200 and r.json()["mode"] == "llm_validated" and r.json()["model"]["key"] == "user"
-    assert seen == [key] and copilot._REQUEST_KEY.get() is None                      # scoped to that request
+    assert seen == [key] and copilot._REQUEST_LLM.get() is None                      # scoped to that request
     assert key not in r.text
     r2 = c.post("/api/ask", json=q)                                                     # no key, no server key -> deterministic
     assert r2.json()["mode"] == "deterministic" and key not in r2.text
@@ -105,7 +105,7 @@ def test_user_api_key_is_request_scoped_and_never_exposed(monkeypatch):
 
 def test_key_check_requires_workspace_is_rate_limited_and_generic(monkeypatch):
     calls = []
-    monkeypatch.setattr(copilot, "check_key", lambda k: (calls.append(k), (True, "Key accepted."))[1])
+    monkeypatch.setattr(copilot, "check_choice", lambda ch: (calls.append(ch["key"]), (True, "Key accepted.", ["claude-opus-5-5"]))[1])
     key = {"X-Anthropic-Key": "sk-ant-test-" + "Y" * 40}
     assert c.post("/api/copilot/key/check", headers=key).status_code == 400                 # workspace required
     assert c.post("/api/copilot/key/check").status_code == 400

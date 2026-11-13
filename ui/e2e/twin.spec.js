@@ -252,35 +252,38 @@ test("overview flame illustration: gravity cases, and no partial-gravity shape i
   await expect(page.getByText("Key evidence gaps")).toBeVisible();
 });
 
-test("AI settings: a user key stays in the browser and is sent only with Copilot requests", async ({ page }) => {
-  const KEY = "sk-ant-e2e-" + "Z".repeat(40);
+test("AI settings: any provider; the key stays in the browser and is sent only with Copilot requests", async ({ page }) => {
+  const KEY = "sk-e2e-openai-" + "Z".repeat(40);
   await page.goto("/#/assistant");
   await page.getByRole("button", { name: /AI settings/ }).click();
   const dlg = page.getByRole("dialog", { name: "AI settings" });
   await expect(dlg).toContainText("never stores, caches or logs it");
-  await dlg.getByLabel(/Anthropic API key/).fill("not-a-key");
-  await dlg.getByRole("button", { name: "Check and save" }).click();
-  await expect(dlg).toContainText("does not look like an Anthropic API key");
+  const opts = await dlg.getByLabel("AI provider").locator("option").allTextContents();
+  for (const p of ["Anthropic Claude", "OpenAI", "Google Gemini", "OpenRouter", "Groq", "Mistral AI", "DeepSeek", "xAI Grok", "Together AI"]) expect(opts).toContain(p);
+  await dlg.getByLabel("AI provider").selectOption("openai");
+  await dlg.getByLabel("OpenAI API key").fill("short");
+  await dlg.getByRole("button", { name: "Check key" }).click();
+  await expect(dlg).toContainText("does not look like a OpenAI API key");
   await dlg.getByRole("button", { name: "Close" }).click();
-  // simulate a saved key (session storage) without contacting Anthropic
-  await page.evaluate((k) => { sessionStorage.setItem("firewise.anthropic_key", k); }, KEY);
+  // simulate a saved choice (session storage) without contacting any provider
+  await page.evaluate((k) => sessionStorage.setItem("firewise.llm", JSON.stringify({ provider: "openai", key: k, model: "gpt-x" })), KEY);
   await page.reload();
   await expect(page.getByRole("button", { name: /AI settings/ })).toContainText("your key");
-  await expect(page.locator(".ph-note")).toContainText("your API key (sk-ant-…ZZZZ)");
+  await expect(page.locator(".ph-note")).toContainText("OpenAI · gpt-x with your key");
   const keyed = [], urls = [];
-  page.on("request", (r) => { urls.push(r.url()); if (r.headers()["x-anthropic-key"]) keyed.push(r.url()); });
-  // strip the key before it reaches the test server so no real Anthropic call is made
+  page.on("request", (r) => { urls.push(r.url()); if (r.headers()["x-llm-key"]) keyed.push([r.url(), r.headers()["x-llm-provider"], r.headers()["x-llm-model"]]); });
+  // strip the key before it reaches the test server so no real provider call is made
   await page.route("**/api/conversations/*/messages", (route) => {
-    const h = { ...route.request().headers() }; delete h["x-anthropic-key"]; route.continue({ headers: h });
+    const h = { ...route.request().headers() }; delete h["x-llm-key"]; delete h["x-llm-provider"]; delete h["x-llm-model"]; route.continue({ headers: h });
   });
   await page.getByRole("button", { name: /New chat/ }).click();
   await page.getByRole("button", { name: "What is test 21265C3?", exact: true }).click();
   await expect(page.getByText(/short-lived inverse butane flame/)).toBeVisible();
   expect(keyed.length).toBeGreaterThan(0);
-  expect(keyed.every((u) => /\/api\/conversations\/[^/]+\/messages$/.test(u))).toBe(true);   // only Copilot requests
-  expect(urls.some((u) => u.includes(KEY))).toBe(false);                                     // never in a URL
+  expect(keyed.every(([u, p, m]) => /\/api\/conversations\/[^/]+\/messages$/.test(u) && p === "openai" && m === "gpt-x")).toBe(true);
+  expect(urls.some((u) => u.includes(KEY))).toBe(false);
   await page.getByRole("button", { name: /AI settings/ }).click();
   await page.getByRole("button", { name: "Remove my key" }).click();
-  await expect(page.getByRole("dialog", { name: "AI settings" })).toContainText("not set");
-  expect(await page.evaluate(() => sessionStorage.getItem("firewise.anthropic_key"))).toBeNull();
+  await expect(page.getByRole("dialog", { name: "AI settings" })).toContainText("no key (deterministic answers)");
+  expect(await page.evaluate(() => sessionStorage.getItem("firewise.llm"))).toBeNull();
 });

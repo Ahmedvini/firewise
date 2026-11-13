@@ -45,7 +45,8 @@ def cache_key(con, question, scenario_id=None, twin=None, owner=None):
     """Twin answers quote user-written scenario text (name, description), so the key covers the WHOLE twin
     context and, when a workspace is known, the workspace too: a cached twin answer is never served to a
     different context or another workspace. General questions carry no user data and share the cache."""
-    mode = f"llm:{copilot.MODEL_ID}:{copilot.EFFORT}" if copilot.llm_available() else "deterministic"
+    cur = copilot.current_llm()
+    mode = f"llm:{cur[0]}:{cur[1]}:{copilot.EFFORT}" if cur else "deterministic"
     q = re.sub(r"\s+", " ", question.strip().lower())
     ctx = None
     if twin:
@@ -192,17 +193,14 @@ def delete_conversation(cid: str, ws: str = WS_HEADER):
 
 
 @router.post("/{cid}/messages", response_model=dict[str, Any])
-def send_message(cid: str, body: MessageIn, request: Request, ws: str = WS_HEADER, x_anthropic_key: Optional[str] = Header(None, alias="X-Anthropic-Key")):
+def send_message(cid: str, body: MessageIn, request: Request, ws: str = WS_HEADER):
     """Ask the Copilot inside a conversation: the exchange is stored, the answer cache is used.
-    An optional user key (X-Anthropic-Key) is used for this request only and never stored."""
+    An optional bring-your-own-key choice (X-LLM-Provider / X-LLM-Key / X-LLM-Model) is used for this request only."""
+    from .main import user_llm  # header parsing shared with /api/ask
     owner = _owner(ws)
-    key = None
-    if x_anthropic_key:
-        key = x_anthropic_key.strip()
-        if not copilot.USER_KEY_RE.fullmatch(key):
-            raise HTTPException(400, "X-Anthropic-Key does not look like an Anthropic API key (sk-ant-…)")
-        if not ratelimit.allow("ask-user-key", ratelimit.client_id(request), 30, 60.0):
-            raise HTTPException(429, "Too many Copilot requests with a personal key; wait a minute and try again")
+    choice = user_llm(request)
+    if choice and not ratelimit.allow("ask-user-key", ratelimit.client_id(request), 30, 60.0):
+        raise HTTPException(429, "Too many Copilot requests with a personal key; wait a minute and try again")
     with state.connect() as s:
         c = s.execute("SELECT (SELECT COUNT(*) FROM chat_message WHERE conversation_id=c.id) FROM chat_conversation c WHERE id=? AND owner_hash=?",
                       (cid, owner)).fetchone()
@@ -213,7 +211,7 @@ def send_message(cid: str, body: MessageIn, request: Request, ws: str = WS_HEADE
     if not db_available():
         raise HTTPException(503, "Database not built. Run scripts/load_db.py")
     twin = body.twin.model_dump() if body.twin else None
-    with connect() as con, copilot.request_key(key):
+    with connect() as con, copilot.request_llm(choice):
         try:
             resp = ask_cached(con, body.question.strip(), None, twin, owner)
         except copilot.TwinContextError as e:
