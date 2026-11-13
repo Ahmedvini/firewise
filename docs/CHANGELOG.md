@@ -1,5 +1,32 @@
 # FIREWISE — Change Log
 
+## 2026-11-13 evening: hackathon execution (Phases 0–6)
+**Not modified:** `Data/` (checksums verified on every DB build), `sources/` (except `sources.csv`, which the telemetry download still running appends to). Background downloads were left running.
+
+### Added
+| Path | Purpose |
+|---|---|
+| `scripts/load_db.py`, `tests/test_load_db.py` | Deterministic SQLite + FTS5 build with validation rules R1–R7; acceptance criteria 1–12 |
+| `api/` (`main`, `services`, `copilot`, `db`, `models`), `tests/test_api.py` | FastAPI backend; evidence-grounded Copilot with validator and deterministic fallback |
+| `ui/` | The team's FLARE UI (imported unmodified as commit `8c32ee3`), rebranded FIREWISE and wired to the API; new Scenario Explorer and Research Gap Map pages |
+| `README.md`, `ui/README.md`, `Dockerfile`, `.dockerignore`, `.env.example` | Run, test and deploy instructions; a single container image |
+| `docs/EXECUTION_STATUS.md` | Live status |
+
+### Modified
+| File | Change | Reason |
+|---|---|---|
+| `scripts/build_runs.py` | Rewritten to the data contract: `row_key`, true CSV `source_row`, `row_granularity`, `duplicate_of`, `o2_context`, flag severity | Readiness audit D0 |
+| `scripts/coverage.py` | Ambient O₂ only; psia bands with edges at 8.2 and 10.2 | Readiness audit D0 |
+| `scripts/verify_claims.py` | Rewritten against the new fields | Schema change |
+| `derived/validation.jsonl` | Evidence IDs migrated to schema v1; V11 trap narrowed to pentane *cool-flame* claims (backup in `derived/_superseded/`) | The old trap rejected any mention of pentane, which also appears in the planned-fuels text |
+| `derived/curated_facts.json` | **F17**: denominator corrected to 2,007 combustion/aerosol rows (was a stale 1,989) | Stale count |
+| `ui/src/data/sampleData.js` | Deleted | Placeholders must not reach the demo |
+
+### Decisions
+- The abandoned Next.js prototype (`web/`) was moved out of the repo after the user supplied the FLARE UI.
+- Data series colours are `#3987e5` / `#d95926` / `#199e70`, validated against the dark surfaces. FLARE's ember/amber pair failed the normal-vision separation check, so ember is kept for UI chrome only.
+
+
 ## 2026-11-13 ~19:30–20:15 EET: Final readiness audit
 **Not modified:**
 - `Data/` (checksums verified OK)

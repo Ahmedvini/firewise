@@ -36,7 +36,8 @@ function PointTooltip({ active, payload }) {
       <strong>{p.inv} · test {p.label}</strong>
       <div>Chamber O₂ {num(p.x)}% <span className="muted">({STATUS_INFO[p.o2s]?.label})</span></div>
       <div>Pressure {num(p.y)} psia <span className="muted">({STATUS_INFO[p.ps]?.label})</span></div>
-      <div className="muted small">{FUEL_LABEL[p.fc]} · click to open the source row</div>
+      <div className="muted small">Source: {p.rowKey.split(":")[1]} table, row {p.rowKey.split(":")[2]?.slice(1)}</div>
+      <div className="muted small">{FUEL_LABEL[p.fc]} · click to open the verbatim NASA row</div>
     </div>
   );
 }

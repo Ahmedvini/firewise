@@ -1,0 +1,9 @@
+# Only api/, requirements.txt, build/firewise.sqlite and ui/dist/ are needed in the image.
+*
+!requirements.txt
+!api/
+!build/firewise.sqlite
+!ui/dist/
+**/__pycache__
+.env
+.env.*

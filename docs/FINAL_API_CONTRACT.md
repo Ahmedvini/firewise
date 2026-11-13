@@ -52,6 +52,12 @@ by the documented sort key with `row_key` as the tiebreak.
 | 11 | `GET /api/gaps` | Research Gap Map | `dims=gravity_regime,fuel_class,o2_band,p_band` | `{cells: [{key: {...}, runs, investigations, literature_only: string[]}], bands: {o2: [...], p: [...]}, definitions}`; ambient O₂ only |
 | 12 | `GET /api/evidence/{evidence_id}` | resolve any citation | — | `{evidence_id, kind, text \| row \| value, provenance, url}`; 404 if unknown |
 | 13 | `POST /api/ask` | Copilot | body `{question: string (≤ 1000 chars), scenario_id?: string}` | §4 |
+| 14 | `GET /api/points` | Mission Control scatter (added during build) | — | `{fields: ["row_key", "investigation_id", "fuel_class", "test_label", "o2_pct", "p_psia", "o2_status", "p_status"], points: [[…] per record, in field order], n_points, n_records, note}` (compact rows; `row_key` doubles as the evidence id `row:<row_key>`). Only records with **both** chamber (ambient) O₂ and pressure documented; burner-stream O₂ excluded; duplicates excluded |
+
+**As built (2026-11-13).**
+- `GET /api/summary` also returns `documentation_by_fuel_class: {fuel_class: {both, o2_only, p_only, neither}}` (non-duplicate records, ambient O₂ only), plus `metrics`, `key_findings` and `limitations`. Each metric carries `evidence_id: "agg:<name>"`.
+- The static UI (`ui/dist`) is mounted at `/`, and API routes take precedence.
+- `FIREWISE_UI_DIST`, `FIREWISE_DB` and `FIREWISE_CORS` override the defaults.
 
 ---
 

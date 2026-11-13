@@ -15,6 +15,14 @@ const GRAVITY_TABS = [
   ["normal_gravity", "Normal gravity (1 g)"],
 ];
 
+// "8.2-10.2 psia" -> "0.56–0.69 atm"; "<8.2 psia" -> "<0.56 atm" (1 atm = 14.696 psia)
+function psiaToAtm(band) {
+  const a = (v) => (parseFloat(v) / 14.696).toFixed(2);
+  const m = band.match(/^([<>]?)([\d.]+)(?:-([\d.]+))?/);
+  if (!m) return "";
+  return m[3] ? `${a(m[2])}–${a(m[3])} atm` : `${m[1]}${a(m[2])} atm`;
+}
+
 function cellColor(n, max) {
   if (!n) return null;
   const t = Math.log(n + 1) / Math.log(max + 1);
@@ -73,7 +81,7 @@ export default function GapMap({ onOpenExperiment }) {
               {o2.map((b) => <div key={b} className={`heat-col ${b === "not documented" ? "nd" : ""}`}>{b === "not documented" ? "O₂ n/d" : b.replace(" (air)", "")}</div>)}
               {pBands.map((pb) => (
                 <div key={pb} className="heat-row" role="row" style={{ display: "contents" }}>
-                  <div className={`heat-rowlabel ${pb === "not documented" ? "nd" : ""}`}>{pb === "not documented" ? "P not documented" : pb.replace(" (~1 atm)", " · 1 atm")}</div>
+                  <div className={`heat-rowlabel ${pb === "not documented" ? "nd" : ""}`}>{pb === "not documented" ? "P not documented" : <>{pb.replace(" (~1 atm)", "")}<span className="atm">{psiaToAtm(pb)}</span></>}</div>
                   {o2.map((ob) => {
                     const c = idx.get(`${gravity}|${fc}|${ob}|${pb}`);
                     const n = c?.records ?? 0;
@@ -83,7 +91,7 @@ export default function GapMap({ onOpenExperiment }) {
                     return (
                       <button key={ob} role="gridcell" className={`heat-cell ${n ? "" : "hatch"} ${env ? "env" : ""} ${lit.length ? "lit" : ""} ${ob === "not documented" || pb === "not documented" ? "nd" : ""}`}
                         style={color ? { background: color, color: RAMP.indexOf(color) >= 4 ? "#0b1220" : "#F5F7FA" } : undefined}
-                        title={`${FUEL_LABEL[fc]} · O₂ ${ob} · ${pb}: ${n} records${lit.length ? ` · ${lit.map((o) => o.label).join("; ")}` : ""}`}
+                        title={`${FUEL_LABEL[fc]} · O₂ ${ob} · ${pb}${pb === "not documented" ? "" : ` (${psiaToAtm(pb)})`}: ${n} records${lit.length ? ` · ${lit.map((o) => o.label).join("; ")}` : ""}`}
                         onClick={() => setPicked({ fc, ob, pb, c, lit })}>
                         {n ? n : lit.length ? "lit" : "0"}
                       </button>

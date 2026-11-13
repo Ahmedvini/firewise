@@ -4,7 +4,7 @@ import SampleBanner from "../components/SampleBanner.jsx";
 import Header from "../components/Header.jsx";
 import ChartCard, { tooltipStyle } from "../components/ChartCard.jsx";
 import { EvidenceLink } from "../components/Evidence.jsx";
-import { Quantity } from "../components/Tags.jsx";
+import { Quantity, TierTag } from "../components/Tags.jsx";
 import { Loading, ErrorPanel, Empty } from "../components/States.jsx";
 import { useApi } from "../services/api.js";
 import { COMPARE_PRESETS, FUEL_LABEL } from "../data/constants.js";
@@ -142,7 +142,30 @@ export default function Compare({ onOpenExperiment }) {
           </div>
         </>
       )}
+      {ready && data && (
+        <div className="panel section-gap">
+          <h3>Reported in NASA record text</h3>
+          <p className="muted small">Facts curated from PSI record text and publications. They are labelled by evidence tier and are not part of the table-based similarity above.</p>
+          <div className="facts-grid">
+            {data.investigations.map((e) => <RecordFacts key={e.id} id={e.id} name={e.acronym || e.id} />)}
+          </div>
+        </div>
+      )}
       {ready && data && data.investigations.length < chosenIds.length && <Empty title="Some selected ids were not found." />}
     </>
+  );
+}
+
+function RecordFacts({ id, name }) {
+  const { data } = useApi(`/api/investigations/${encodeURIComponent(id)}`);
+  if (!data) return <div><b>{name}</b><Loading rows={2} /></div>;
+  return (
+    <div>
+      <b>{name}</b>
+      {data.curated_facts.length === 0 && <p className="muted small">No curated facts.</p>}
+      {data.curated_facts.map((f) => (
+        <div className="fact small" key={f.id}><TierTag tier={f.tier} /> <EvidenceLink id={f.evidence_id} /><p>{f.value}</p></div>
+      ))}
+    </div>
   );
 }
