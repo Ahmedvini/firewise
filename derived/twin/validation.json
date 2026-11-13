@@ -1,0 +1,515 @@
+{
+ "engine_version": "firewise-twin-physics 1.0.0",
+ "nasa_psi_validation": "No implemented model predicts a quantity measured in the NASA PSI tables, so no model is validated against PSI data. No combustion model is implemented.",
+ "records": [
+  {
+   "calibration_set": "none (no fitted parameters)",
+   "conclusion": "The implementation reproduces the reference density to within its rounding. This is a consistency check, not an experimental validation.",
+   "domain": "288.15 K, 101.325 kPa (single reference state)",
+   "independence": "Not independent of Model A: the standard atmosphere density is itself defined through the ideal-gas law. Used for VERIFICATION only.",
+   "kind": "verification",
+   "metrics": {
+    "bias": -2.18565e-05,
+    "mae": 2.18565e-05,
+    "max_abs_rel_error_pct": 0.00178421,
+    "mean_abs_rel_error_pct": 0.00178421,
+    "n": 1,
+    "rmse": 2.18565e-05
+   },
+   "model_id": "ideal_gas",
+   "output": "density",
+   "points": [
+    {
+     "input": {
+      "density_kg_m3": 1.225,
+      "molar_mass_g_mol": 28.9644,
+      "pressure_Pa": 101325.0,
+      "temperature_K": 288.15
+     },
+     "predicted": 1.224978,
+     "reference": 1.225
+    }
+   ],
+   "reference": "REF-USSA1976-SL",
+   "reference_source": "U.S. Standard Atmosphere, 1976 (NOAA, NASA, USAF), sea-level values",
+   "status": "verified",
+   "uncertainty": "Tabulated to 5 significant figures (±0.00005 kg/m³ rounding).",
+   "unit": "kg/m³"
+  },
+  {
+   "calibration_set": "none (no fitted parameters)",
+   "conclusion": "Mixture molar mass agrees with the standard value; the residual reflects the omitted trace gases.",
+   "domain": "dry air composition",
+   "independence": "Verification of the mixture molar-mass sum with the four species FIREWISE represents (Ne, He, Kr, Xe and other trace gases omitted).",
+   "kind": "verification",
+   "metrics": {
+    "bias": 0.000366131,
+    "mae": 0.000366131,
+    "max_abs_rel_error_pct": 0.00126407,
+    "mean_abs_rel_error_pct": 0.00126407,
+    "n": 1,
+    "rmse": 0.000366131
+   },
+   "model_id": "gas_mixture",
+   "output": "molar_mass",
+   "points": [
+    {
+     "input": {
+      "Ar": 0.00934,
+      "CO2": 0.000314,
+      "N2": 0.78084,
+      "O2": 0.209476
+     },
+     "predicted": 28.96477,
+     "reference": 28.9644
+    }
+   ],
+   "reference": "REF-USSA1976-COMPOSITION",
+   "reference_source": "U.S. Standard Atmosphere, 1976, composition of dry air at sea level (mole fractions); mean molar mass 28.9644 g/mol",
+   "status": "verified",
+   "uncertainty": "Omitted trace species total about 0.003 mole %.",
+   "unit": "g/mol"
+  },
+  {
+   "calibration_set": "none (no fitted parameters)",
+   "conclusion": "Heat capacities agree with NIST-JANAF; the largest deviation (N2, about −0.18%) is a property of the published N2 polynomial.",
+   "domain": "298.15 K; N2, O2, Ar, CO2",
+   "independence": "The NASA polynomials are fits to evaluated data of this kind; the comparison VERIFIES coefficient transcription and fit quality at 298.15 K.",
+   "kind": "verification",
+   "metrics": {
+    "bias": -0.0126146,
+    "mae": 0.0138735,
+    "max_abs_rel_error_pct": 0.181899,
+    "mean_abs_rel_error_pct": 0.0476413,
+    "n": 4,
+    "rmse": 0.026511
+   },
+   "model_id": "gas_mixture",
+   "output": "cp_molar (pure components)",
+   "points": [
+    {
+     "input": {
+      "T_K": 298.15,
+      "species": "N2"
+     },
+     "predicted": 29.071,
+     "reference": 29.124
+    },
+    {
+     "input": {
+      "T_K": 298.15,
+      "species": "O2"
+     },
+     "predicted": 29.3782,
+     "reference": 29.376
+    },
+    {
+     "input": {
+      "T_K": 298.15,
+      "species": "Ar"
+     },
+     "predicted": 20.7862,
+     "reference": 20.786
+    },
+    {
+     "input": {
+      "T_K": 298.15,
+      "species": "CO2"
+     },
+     "predicted": 37.1352,
+     "reference": 37.135
+    }
+   ],
+   "reference": "REF-JANAF-CP298",
+   "reference_source": "NIST-JANAF Thermochemical Tables, 4th ed. (Chase 1998): ideal-gas Cp at 298.15 K",
+   "status": "verified",
+   "uncertainty": "Tabulated to 0.001 J/(mol·K).",
+   "unit": "J/(mol·K)"
+  },
+  {
+   "calibration_set": "none (no fitted parameters)",
+   "conclusion": "Maximum deviation 0.51% is within the ±2% reference uncertainty over the domain. Not validated for O₂-enriched compositions or outside 250–400 K.",
+   "domain": "dry air composition, 250–400 K",
+   "independence": "Independent of the model under test: the model mixes N2, O2, Ar and CO2 pure-component data with the Wilke rule; the reference is a separate fit to measured air viscosity.",
+   "kind": "validation",
+   "metrics": {
+    "bias": 0.0805748,
+    "mae": 0.0805748,
+    "max_abs_rel_error_pct": 0.51236,
+    "mean_abs_rel_error_pct": 0.404068,
+    "n": 16,
+    "rmse": 0.0837161
+   },
+   "model_id": "gas_mixture",
+   "output": "viscosity",
+   "points": [
+    {
+     "input": {
+      "T_K": 250
+     },
+     "predicted": 16.03925,
+     "reference": 15.99585
+    },
+    {
+     "input": {
+      "T_K": 260
+     },
+     "predicted": 16.55623,
+     "reference": 16.50786
+    },
+    {
+     "input": {
+      "T_K": 270
+     },
+     "predicted": 17.06418,
+     "reference": 17.01082
+    },
+    {
+     "input": {
+      "T_K": 280
+     },
+     "predicted": 17.56347,
+     "reference": 17.50511
+    },
+    {
+     "input": {
+      "T_K": 290
+     },
+     "predicted": 18.05443,
+     "reference": 17.99108
+    },
+    {
+     "input": {
+      "T_K": 300
+     },
+     "predicted": 18.53739,
+     "reference": 18.46905
+    },
+    {
+     "input": {
+      "T_K": 310
+     },
+     "predicted": 19.01267,
+     "reference": 18.93935
+    },
+    {
+     "input": {
+      "T_K": 320
+     },
+     "predicted": 19.48054,
+     "reference": 19.40226
+    },
+    {
+     "input": {
+      "T_K": 330
+     },
+     "predicted": 19.94129,
+     "reference": 19.85806
+    },
+    {
+     "input": {
+      "T_K": 340
+     },
+     "predicted": 20.39519,
+     "reference": 20.30703
+    },
+    {
+     "input": {
+      "T_K": 350
+     },
+     "predicted": 20.84247,
+     "reference": 20.74941
+    },
+    {
+     "input": {
+      "T_K": 360
+     },
+     "predicted": 21.28338,
+     "reference": 21.18543
+    },
+    {
+     "input": {
+      "T_K": 370
+     },
+     "predicted": 21.71813,
+     "reference": 21.61534
+    },
+    {
+     "input": {
+      "T_K": 380
+     },
+     "predicted": 22.14695,
+     "reference": 22.03933
+    },
+    {
+     "input": {
+      "T_K": 390
+     },
+     "predicted": 22.57003,
+     "reference": 22.45762
+    },
+    {
+     "input": {
+      "T_K": 400
+     },
+     "predicted": 22.98757,
+     "reference": 22.87039
+    }
+   ],
+   "reference": "REF-WHITE-AIR-VISCOSITY",
+   "reference_source": "White, F. M., Viscous Fluid Flow, 3rd ed. (2006), Table 1-2: Sutherland law for AIR, mu0 = 1.716e-5 Pa·s, T0 = 273 K, S = 111 K (±2% over its stated range)",
+   "status": "validated",
+   "uncertainty": "±2% (stated accuracy of the Sutherland fit).",
+   "unit": "µPa·s"
+  },
+  {
+   "calibration_set": "none (no fitted parameters)",
+   "conclusion": "Maximum deviation 1.03% is within the ±2% reference uncertainty over the domain. Not validated for O₂-enriched compositions or outside 250–400 K.",
+   "domain": "dry air composition, 250–400 K",
+   "independence": "Independent of the model under test (Mason–Saxena mixture of pure-component conductivities).",
+   "kind": "validation",
+   "metrics": {
+    "bias": -0.0991782,
+    "mae": 0.146918,
+    "max_abs_rel_error_pct": 1.02653,
+    "mean_abs_rel_error_pct": 0.497054,
+    "n": 16,
+    "rmse": 0.178559
+   },
+   "model_id": "gas_mixture",
+   "output": "thermal_conductivity",
+   "points": [
+    {
+     "input": {
+      "T_K": 250
+     },
+     "predicted": 22.34923,
+     "reference": 22.2135
+    },
+    {
+     "input": {
+      "T_K": 260
+     },
+     "predicted": 23.14738,
+     "reference": 23.04062
+    },
+    {
+     "input": {
+      "T_K": 270
+     },
+     "predicted": 23.93414,
+     "reference": 23.8571
+    },
+    {
+     "input": {
+      "T_K": 280
+     },
+     "predicted": 24.70982,
+     "reference": 24.66316
+    },
+    {
+     "input": {
+      "T_K": 290
+     },
+     "predicted": 25.47473,
+     "reference": 25.45901
+    },
+    {
+     "input": {
+      "T_K": 300
+     },
+     "predicted": 26.22918,
+     "reference": 26.2449
+    },
+    {
+     "input": {
+      "T_K": 310
+     },
+     "predicted": 26.97346,
+     "reference": 27.02103
+    },
+    {
+     "input": {
+      "T_K": 320
+     },
+     "predicted": 27.70785,
+     "reference": 27.78765
+    },
+    {
+     "input": {
+      "T_K": 330
+     },
+     "predicted": 28.43265,
+     "reference": 28.54497
+    },
+    {
+     "input": {
+      "T_K": 340
+     },
+     "predicted": 29.14812,
+     "reference": 29.29322
+    },
+    {
+     "input": {
+      "T_K": 350
+     },
+     "predicted": 29.85452,
+     "reference": 30.03261
+    },
+    {
+     "input": {
+      "T_K": 360
+     },
+     "predicted": 30.55211,
+     "reference": 30.76337
+    },
+    {
+     "input": {
+      "T_K": 370
+     },
+     "predicted": 31.24115,
+     "reference": 31.48571
+    },
+    {
+     "input": {
+      "T_K": 380
+     },
+     "predicted": 31.92186,
+     "reference": 32.19982
+    },
+    {
+     "input": {
+      "T_K": 390
+     },
+     "predicted": 32.59448,
+     "reference": 32.90592
+    },
+    {
+     "input": {
+      "T_K": 400
+     },
+     "predicted": 33.25924,
+     "reference": 33.60419
+    }
+   ],
+   "reference": "REF-WHITE-AIR-CONDUCTIVITY",
+   "reference_source": "White, F. M., Viscous Fluid Flow, 3rd ed. (2006), Table 1-3: Sutherland-type law for AIR, k0 = 0.0241 W/(m·K), T0 = 273 K, S = 194 K (±2% over its stated range)",
+   "status": "validated",
+   "uncertainty": "±2% (stated accuracy of the fit).",
+   "unit": "mW/(m·K)"
+  },
+  {
+   "calibration_set": "none (no fitted parameters)",
+   "conclusion": "Algebraic definitions (A, V, Q/A, Q/V, Re). Verified by unit tests; there is no velocity-field measurement in PSI or in this project to validate against, so no error metric is reported.",
+   "domain": "Habitat-scale bulk quantities only. It does not resolve local velocities, jets, recirculation or dead zones.",
+   "independence": null,
+   "kind": "verification",
+   "metrics": null,
+   "model_id": "bulk_airflow",
+   "output": "all",
+   "points": [],
+   "reference": null,
+   "reference_source": null,
+   "status": "verified",
+   "uncertainty": null,
+   "unit": null
+  },
+  {
+   "calibration_set": "none (no fitted parameters)",
+   "conclusion": "Classical laminar correlation, implementation verified by unit tests. FIREWISE holds no heat-transfer measurements for inert samples in cabin flow, so no validation metric is reported.",
+   "domain": "Re_L < 5×10⁵ and 0.6 ≤ Pr ≤ 50, non-burning surfaces. In microgravity buoyancy is negligible; at lunar, Mars or Earth gravity buoyancy is present but not modelled.",
+   "independence": null,
+   "kind": "verification",
+   "metrics": null,
+   "model_id": "forced_convection_flat_plate",
+   "output": "all",
+   "points": [],
+   "reference": null,
+   "reference_source": null,
+   "status": "verified",
+   "uncertainty": null,
+   "unit": null
+  },
+  {
+   "calibration_set": "none (no fitted parameters)",
+   "conclusion": "Fourier's law, verified by unit tests against hand calculations. No experimental comparison performed; no metric reported.",
+   "domain": "Thin homogeneous walls with known conductivity and surface temperatures.",
+   "independence": null,
+   "kind": "verification",
+   "metrics": null,
+   "model_id": "wall_conduction",
+   "output": "all",
+   "points": [],
+   "reference": null,
+   "reference_source": null,
+   "status": "verified",
+   "uncertainty": null,
+   "unit": null
+  },
+  {
+   "calibration_set": null,
+   "conclusion": "Not implemented in v1. Would require: fuel and gas transport properties, flame-sheet assumptions, radiative-loss treatment. Candidate validation data: FLEX (PSI-69) droplet initial diameter, burning-rate and extinction-diameter columns (units of the burning-rate column are unverified).",
+   "domain": null,
+   "independence": null,
+   "kind": "none",
+   "metrics": null,
+   "model_id": "droplet_combustion_d2",
+   "output": "all",
+   "points": [],
+   "reference": null,
+   "reference_source": null,
+   "status": "not_implemented",
+   "uncertainty": null,
+   "unit": null
+  },
+  {
+   "calibration_set": null,
+   "conclusion": "Not implemented in v1. Would require: detailed or reduced chemical kinetics and radiation models. Candidate validation data: ACME Flame Design / CFI-G extinction and end-mode observations (PSI-10, PSI-159).",
+   "domain": null,
+   "independence": null,
+   "kind": "none",
+   "metrics": null,
+   "model_id": "flame_extinction",
+   "output": "all",
+   "points": [],
+   "reference": null,
+   "reference_source": null,
+   "status": "not_implemented",
+   "uncertainty": null,
+   "unit": null
+  },
+  {
+   "calibration_set": null,
+   "conclusion": "Not implemented in v1. Would require: pyrolysis and gas-phase kinetics, sample thermal properties. Candidate validation data: Saffire (PSI-98/99/100) reported spread and burn lengths; BASS/BASS-II observations.",
+   "domain": null,
+   "independence": null,
+   "kind": "none",
+   "metrics": null,
+   "model_id": "flame_spread_solid",
+   "output": "all",
+   "points": [],
+   "reference": null,
+   "reference_source": null,
+   "status": "not_implemented",
+   "uncertainty": null,
+   "unit": null
+  },
+  {
+   "calibration_set": null,
+   "conclusion": "Not implemented in v1. Would require: a validated CFD solver with combustion and radiation submodels. Candidate validation data: Not available in PSI at the needed spatial resolution.",
+   "domain": null,
+   "independence": null,
+   "kind": "none",
+   "metrics": null,
+   "model_id": "coupled_flow_combustion",
+   "output": "all",
+   "points": [],
+   "reference": null,
+   "reference_source": null,
+   "status": "not_implemented",
+   "uncertainty": null,
+   "unit": null
+  }
+ ],
+ "reference_file": "derived/twin/reference_data.json"
+}

@@ -10,11 +10,13 @@ from fastapi.staticfiles import StaticFiles
 
 from . import copilot, models, services
 from .db import connect, db_available
+from .twin.routes import router as twin_router
 
 app = FastAPI(title="FIREWISE API", version="1.0.0",
-              description="Evidence-grounded access to NASA PSI combustion investigations. Read-only except /api/ask.")
+              description="Evidence-grounded access to NASA PSI combustion investigations, plus the FIREWISE Digital Twin (/api/twin). The scientific database is read-only; user scenarios live in a separate state store.")
 app.add_middleware(CORSMiddleware, allow_origins=os.environ.get("FIREWISE_CORS", "http://localhost:5173,http://127.0.0.1:5173").split(","),
-                   allow_methods=["GET", "POST"], allow_headers=["*"])
+                   allow_methods=["GET", "POST", "PUT", "DELETE"], allow_headers=["*"])
+app.include_router(twin_router)
 
 
 def err(status, code, message, details=None):
@@ -29,7 +31,9 @@ async def http_exc(_: Request, exc: HTTPException):
 
 @app.exception_handler(RequestValidationError)
 async def val_exc(_: Request, exc: RequestValidationError):
-    return err(422, "validation_error", "Request parameters failed validation", {"errors": exc.errors()[:5]})
+    # Only loc/msg/type: the raw error may carry exception objects (not JSON-serialisable) and echoes the whole input.
+    errors = [{"loc": [str(x) for x in e.get("loc", ())], "msg": str(e.get("msg", "")), "type": str(e.get("type", ""))} for e in exc.errors()[:5]]
+    return err(422, "validation_error", "Request parameters failed validation", {"errors": errors})
 
 
 @app.exception_handler(Exception)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the canonical FIREWISE database (FINAL_DATA_CONTRACT.md, schema_version 1).
+"""Build the canonical FIREWISE database (FINAL_DATA_CONTRACT.md, schema_version 2; v2 adds the Digital Twin reference tables).
 
 Usage: python3 -I scripts/load_db.py <NasaSA root> [--out build/firewise.sqlite] [--no-pdfs]
 Exit 0 = valid database written. Any validation failure aborts with a non-zero exit and a message naming the rule.
@@ -7,7 +7,7 @@ Inputs are read-only. The output file is rebuilt from scratch (atomic replace) o
 """
 import csv, datetime, glob, hashlib, importlib.util, json, os, re, sqlite3, subprocess, sys
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 ROOT = os.path.abspath(sys.argv[1])
 OUT = os.path.join(ROOT, sys.argv[sys.argv.index("--out") + 1]) if "--out" in sys.argv else os.path.join(ROOT, "build", "firewise.sqlite")
 WITH_PDFS = "--no-pdfs" not in sys.argv
@@ -104,6 +104,14 @@ CREATE TABLE document_page (evidence_id TEXT PRIMARY KEY, investigation_id TEXT 
   file_name TEXT NOT NULL, local_path TEXT NOT NULL, sha256 TEXT NOT NULL, page INTEGER NOT NULL, text TEXT NOT NULL);
 CREATE VIRTUAL TABLE passage USING fts5(evidence_id UNINDEXED, investigation_id UNINDEXED, kind UNINDEXED, title, text,
   tokenize = 'porter unicode61');
+-- Digital Twin reference tables (schema v2): habitat templates and model verification/validation records.
+-- User scenarios are NOT stored here (see api/twin/state.py): this database stays deterministic and read-only.
+CREATE TABLE twin_environment (id TEXT PRIMARY KEY, name TEXT NOT NULL, body_json TEXT NOT NULL);
+CREATE TABLE twin_zone (environment_id TEXT NOT NULL REFERENCES twin_environment(id), id TEXT NOT NULL, name TEXT NOT NULL,
+  x_start REAL NOT NULL CHECK (x_start >= 0 AND x_start < 1), x_end REAL NOT NULL CHECK (x_end > x_start AND x_end <= 1),
+  purpose TEXT, PRIMARY KEY (environment_id, id));
+CREATE TABLE twin_validation (id INTEGER PRIMARY KEY, model_id TEXT NOT NULL, output TEXT NOT NULL, kind TEXT NOT NULL,
+  status TEXT NOT NULL CHECK (status IN ('verified','validated','failed','not_implemented')), reference TEXT, record_json TEXT NOT NULL);
 """
 
 # --------------------------------------------------------------------------- observation extraction (P0 map)
@@ -451,8 +459,31 @@ def main():
             if got != claims[key]["n"]:
                 fail("R6-reproduce-claims", f"scenario {sid}: db {got} != independent check {claims[key]['n']}")
 
+        # ---------------------------------------------------------------- digital twin reference tables
+        envs = json.load(open(P("derived/twin/environments.json")))
+        for e in envs:
+            db.execute("INSERT INTO twin_environment VALUES (?,?,?)", (e["id"], e["name"], json.dumps(e, sort_keys=True)))
+            prev = 0.0
+            for z in e["zones"]:
+                if abs(z["x_start"] - prev) > 1e-9:
+                    fail("R8-twin-environment", f"{e['id']} zone {z['id']} does not start where the previous zone ends")
+                db.execute("INSERT INTO twin_zone VALUES (?,?,?,?,?,?)", (e["id"], z["id"], z["name"], z["x_start"], z["x_end"], z.get("purpose")))
+                prev = z["x_end"]
+            if abs(prev - 1.0) > 1e-9:
+                fail("R8-twin-environment", f"{e['id']} zones do not cover the full habitat length")
+        inputs["derived/twin/environments.json"] = sha256(P("derived/twin/environments.json"))
+        val = json.load(open(P("derived/twin/validation.json")))
+        for i, r in enumerate(val["records"]):
+            db.execute("INSERT INTO twin_validation VALUES (?,?,?,?,?,?,?)",
+                       (i + 1, r["model_id"], r["output"], r["kind"], r["status"], r["reference"], json.dumps(r, sort_keys=True, ensure_ascii=False)))
+        if any(r["status"] == "failed" for r in val["records"]):
+            fail("R9-twin-validation", "a model validation record has status 'failed'; rerun scripts/twin_validate.py and fix the model")
+        inputs["derived/twin/validation.json"] = sha256(P("derived/twin/validation.json"))
+        inputs["derived/twin/reference_data.json"] = sha256(P("derived/twin/reference_data.json"))
+
         counts = {t: q(f"SELECT COUNT(*) FROM {t}") for t in ("investigation", "source_table", "run", "observation", "quality_flag",
-                                                             "publication", "data_file", "relation", "claim", "aggregate", "coverage_cell", "passage")}
+                                                             "publication", "data_file", "relation", "claim", "aggregate", "coverage_cell", "passage",
+                                                             "twin_environment", "twin_zone", "twin_validation")}
         meta = {"schema_version": str(SCHEMA_VERSION), "build_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
                 "counts": json.dumps(counts, sort_keys=True), "report_pages_indexed": str(n_pages),
                 "claims_check_sha256": sha256(P("derived/claims_check.json")),

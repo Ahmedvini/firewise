@@ -1,0 +1,49 @@
+{
+  "_note": "Reference data for Digital Twin model verification/validation. Hand-transcribed from the cited sources; no value here is FIREWISE output. There is no calibration set: no model parameter is fitted.",
+  "datasets": [
+    {
+      "id": "REF-USSA1976-SL",
+      "kind": "reference_standard",
+      "source": "U.S. Standard Atmosphere, 1976 (NOAA, NASA, USAF), sea-level values",
+      "independence": "Not independent of Model A: the standard atmosphere density is itself defined through the ideal-gas law. Used for VERIFICATION only.",
+      "points": [{"temperature_K": 288.15, "pressure_Pa": 101325.0, "molar_mass_g_mol": 28.9644, "density_kg_m3": 1.2250}],
+      "uncertainty": "Tabulated to 5 significant figures (±0.00005 kg/m³ rounding)."
+    },
+    {
+      "id": "REF-USSA1976-COMPOSITION",
+      "kind": "reference_standard",
+      "source": "U.S. Standard Atmosphere, 1976, composition of dry air at sea level (mole fractions); mean molar mass 28.9644 g/mol",
+      "independence": "Verification of the mixture molar-mass sum with the four species FIREWISE represents (Ne, He, Kr, Xe and other trace gases omitted).",
+      "composition": {"N2": 0.78084, "O2": 0.209476, "Ar": 0.00934, "CO2": 0.000314},
+      "molar_mass_g_mol": 28.9644,
+      "uncertainty": "Omitted trace species total about 0.003 mole %."
+    },
+    {
+      "id": "REF-JANAF-CP298",
+      "kind": "evaluated_data",
+      "source": "NIST-JANAF Thermochemical Tables, 4th ed. (Chase 1998): ideal-gas Cp at 298.15 K",
+      "independence": "The NASA polynomials are fits to evaluated data of this kind; the comparison VERIFIES coefficient transcription and fit quality at 298.15 K.",
+      "points": [{"species": "N2", "cp_J_molK": 29.124}, {"species": "O2", "cp_J_molK": 29.376},
+                 {"species": "Ar", "cp_J_molK": 20.786}, {"species": "CO2", "cp_J_molK": 37.135}],
+      "uncertainty": "Tabulated to 0.001 J/(mol·K)."
+    },
+    {
+      "id": "REF-WHITE-AIR-VISCOSITY",
+      "kind": "independent_correlation",
+      "source": "White, F. M., Viscous Fluid Flow, 3rd ed. (2006), Table 1-2: Sutherland law for AIR, mu0 = 1.716e-5 Pa·s, T0 = 273 K, S = 111 K (±2% over its stated range)",
+      "independence": "Independent of the model under test: the model mixes N2, O2, Ar and CO2 pure-component data with the Wilke rule; the reference is a separate fit to measured air viscosity.",
+      "air": {"mu0": 1.716e-5, "T0": 273.0, "S": 111.0},
+      "temperatures_K": [250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400],
+      "uncertainty": "±2% (stated accuracy of the Sutherland fit)."
+    },
+    {
+      "id": "REF-WHITE-AIR-CONDUCTIVITY",
+      "kind": "independent_correlation",
+      "source": "White, F. M., Viscous Fluid Flow, 3rd ed. (2006), Table 1-3: Sutherland-type law for AIR, k0 = 0.0241 W/(m·K), T0 = 273 K, S = 194 K (±2% over its stated range)",
+      "independence": "Independent of the model under test (Mason–Saxena mixture of pure-component conductivities).",
+      "air": {"k0": 0.0241, "T0": 273.0, "S": 194.0},
+      "temperatures_K": [250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400],
+      "uncertainty": "±2% (stated accuracy of the fit)."
+    }
+  ]
+}

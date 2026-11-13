@@ -573,6 +573,15 @@ def evidence(con, eid):
         return p and {"evidence_id": eid, "kind": "nasa_report_page", "title": f"{p['investigation_id']} {p['file_name']} p.{p['page']}",
                       "text": p["text"], "url": f"https://psi.nasa.gov/physci/repo/data/investigations/{p['investigation_id']}",
                       "data": {"sha256": p["sha256"], "local_path": p["local_path"], "page": p["page"]}}
+    if eid.startswith("model:"):
+        from .twin import physics
+        c = physics.get_card(eid[6:])
+        return c and {"evidence_id": eid, "kind": "physics_model_card", "title": f"{c['name']} v{c['version']} ({c['validation_status']})",
+                      "text": model_card_text(c), "url": None, "data": c}
+    if eid.startswith("twinval:"):
+        recs = [json.loads(r[0]) for r in con.execute("SELECT record_json FROM twin_validation WHERE model_id=? ORDER BY id", (eid[8:],))]
+        return recs and {"evidence_id": eid, "kind": "model_validation_record", "title": f"Validation records — {eid[8:]}",
+                         "text": " ".join(validation_text(r) for r in recs), "url": None, "data": {"records": recs}}
     if eid.startswith("group:"):
         p = con.execute("SELECT * FROM passage WHERE evidence_id=?", (eid,)).fetchone()
         return p and {"evidence_id": eid, "kind": "run_group_summary", "title": p["title"], "text": p["text"], "url": None}
@@ -588,3 +597,17 @@ def fts_query(text, mode="or"):
 
 STOP = set("the a an of in on at to for and or is are was were be by with from what which how do does did can could "
            "there their this that these those about any all into as it its than then them they we you i me my our".split())
+
+
+def model_card_text(c):
+    return (f"{c['name']} version {c['version']}. Validation status: {c['validation_status']}. {c['validation_summary']} "
+            f"Applicability: {c['applicability']} Equations: {'; '.join(c['equations'])}. Assumptions: {' '.join(c['assumptions'])} "
+            f"Limitations: {' '.join(c['limitations'])}")
+
+
+def validation_text(r):
+    m = r.get("metrics")
+    met = (f" n={m['n']}, MAE={m['mae']:.4g} {r['unit']}, RMSE={m['rmse']:.4g} {r['unit']}, bias={m['bias']:.4g} {r['unit']}, "
+           f"max |relative error|={m['max_abs_rel_error_pct']:.3g}%.") if m else " No error metric (no meaningful reference comparison)."
+    return (f"[{r['model_id']} / {r['output']}] {r['kind']} — status {r['status']}; reference {r['reference'] or 'none'}; "
+            f"domain {r['domain'] or 'n/a'}.{met} {r['conclusion']}")

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "fwh-1",
+    "name": "FWH-1 generic modular habitat",
+    "description": "Generic cylindrical research module for scenario exploration. It is a FIREWISE design template, not a model of any specific NASA or international spacecraft. All dimensions are user-editable defaults.",
+    "status": "user_defined_template",
+    "geometry": {"type": "cylinder", "axis": "x", "default_diameter_m": 4.2, "default_length_m": 8.0,
+                 "ventilation_supply": "forward end cap (x = 0)", "ventilation_return": "aft end cap (x = L)"},
+    "zones": [
+      {"id": "Z1", "name": "Forward hatch & node", "x_start": 0.0, "x_end": 0.2, "purpose": "Transit and docking interface"},
+      {"id": "Z2", "name": "Crew workstation", "x_start": 0.2, "x_end": 0.45, "purpose": "Crew work area with a glovebox experiment slot"},
+      {"id": "Z3", "name": "Combustion research rack", "x_start": 0.45, "x_end": 0.7, "purpose": "Enclosed combustion experiment chamber"},
+      {"id": "Z4", "name": "Environmental control (ECLSS)", "x_start": 0.7, "x_end": 0.85, "purpose": "Air revitalisation and ventilation return"},
+      {"id": "Z5", "name": "Stowage & aft hatch", "x_start": 0.85, "x_end": 1.0, "purpose": "Stowage racks and aft interface"}
+    ],
+    "experiment_slots": [
+      {"id": "rack-chamber", "zone_id": "Z3", "name": "Rack combustion chamber", "x_frac": 0.575, "side": "port"},
+      {"id": "glovebox", "zone_id": "Z2", "name": "Workstation glovebox", "x_frac": 0.33, "side": "starboard"}
+    ],
+    "monitoring_points": [
+      {"id": "M1", "zone_id": "Z1", "x_frac": 0.1, "position": "overhead", "variables": ["o2_pct", "pressure_kPa", "temperature_K", "airflow_m_s"]},
+      {"id": "M2", "zone_id": "Z2", "x_frac": 0.325, "position": "overhead", "variables": ["o2_pct", "pressure_kPa", "temperature_K", "airflow_m_s"]},
+      {"id": "M3", "zone_id": "Z3", "x_frac": 0.575, "position": "overhead", "variables": ["o2_pct", "pressure_kPa", "temperature_K", "airflow_m_s"]},
+      {"id": "M4", "zone_id": "Z4", "x_frac": 0.775, "position": "overhead", "variables": ["o2_pct", "pressure_kPa", "temperature_K", "airflow_m_s"]},
+      {"id": "M5", "zone_id": "Z5", "x_frac": 0.925, "position": "overhead", "variables": ["o2_pct", "pressure_kPa", "temperature_K", "airflow_m_s"]}
+    ],
+    "equipment": [
+      {"id": "EQ1", "zone_id": "Z2", "kind": "workstation", "label": "Workstation", "x_frac": 0.27, "width_frac": 0.08, "side": "port"},
+      {"id": "EQ2", "zone_id": "Z2", "kind": "glovebox", "label": "Glovebox", "x_frac": 0.33, "width_frac": 0.07, "side": "starboard"},
+      {"id": "EQ3", "zone_id": "Z3", "kind": "rack", "label": "Combustion rack", "x_frac": 0.575, "width_frac": 0.11, "side": "port"},
+      {"id": "EQ4", "zone_id": "Z3", "kind": "rack", "label": "Diagnostics rack", "x_frac": 0.575, "width_frac": 0.11, "side": "starboard"},
+      {"id": "EQ5", "zone_id": "Z4", "kind": "eclss", "label": "Air revitalisation", "x_frac": 0.775, "width_frac": 0.1, "side": "port"},
+      {"id": "EQ6", "zone_id": "Z5", "kind": "stowage", "label": "Stowage", "x_frac": 0.92, "width_frac": 0.09, "side": "starboard"}
+    ],
+    "monitoring_note": "Monitoring points are virtual: they display the scenario's configured values. The twin is not connected to live telemetry."
+  }
+]

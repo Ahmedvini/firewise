@@ -1,0 +1,256 @@
+"""Digital Twin HTTP API (prefix /api/twin). Conventions follow api/main.py: Pydantic validation (422),
+error envelope {error:{code,message,details}}, read-only scientific DB, deterministic calculations."""
+from typing import Any, Optional
+
+from fastapi import APIRouter, Body, HTTPException, Query
+from fastapi.responses import Response
+
+from ..db import connect, db_available
+from . import physics, service, state
+from .schemas import CompareRequest, EvaluateRequest, Scenario, ScenarioIn, ScenarioSummary, ScenarioVersion, SimulationRun
+
+router = APIRouter(prefix="/api/twin", tags=["digital-twin"])
+
+
+def _db():
+    if not db_available():
+        raise HTTPException(503, "Database not built. Run scripts/load_db.py")
+    return connect()
+
+
+def _body(sc: ScenarioIn):
+    return sc.model_dump()
+
+
+def _checked(con, body):
+    try:
+        service.check_refs(service.environment(con, body["habitat"]["environment_id"]), body)
+    except service.TwinError as e:
+        raise HTTPException(400, str(e))
+
+
+def _scenario_or_404(scon, sid):
+    s = state.get(scon, sid)
+    if not s:
+        raise HTTPException(404, f"Unknown scenario {sid}")
+    return s
+
+
+def _eval(con, body, limit=20):
+    try:
+        return service.evaluate(con, body, limit)
+    except service.TwinError as e:
+        raise HTTPException(400, str(e))
+
+
+# ------------------------------------------------------------------------------------------- environments & models
+@router.get("/environments", response_model=list[dict[str, Any]])
+def list_environments():
+    with _db() as con:
+        return service.environments(con)
+
+
+@router.get("/environments/{env_id}", response_model=dict[str, Any])
+def get_environment(env_id: str):
+    with _db() as con:
+        e = service.environment(con, env_id)
+    if not e:
+        raise HTTPException(404, f"Unknown environment {env_id}")
+    return e
+
+
+@router.get("/environments/{env_id}/presets", response_model=list[dict[str, Any]])
+def get_presets(env_id: str):
+    with _db() as con:
+        e = service.environment(con, env_id)
+    if not e:
+        raise HTTPException(404, f"Unknown environment {env_id}")
+    return service.presets(e)
+
+
+@router.get("/models", response_model=list[dict[str, Any]])
+def list_models(include_planned: bool = True):
+    return physics.model_cards(include_planned)
+
+
+@router.get("/models/{model_id}", response_model=dict[str, Any])
+def get_model(model_id: str):
+    c = physics.get_card(model_id)
+    if not c:
+        raise HTTPException(404, f"Unknown model {model_id}")
+    return c
+
+
+@router.get("/validation", response_model=dict[str, Any])
+def get_validation(model_id: Optional[str] = None):
+    import json
+    with _db() as con:
+        q = "SELECT record_json FROM twin_validation" + (" WHERE model_id=?" if model_id else "") + " ORDER BY id"
+        recs = [json.loads(r[0]) for r in con.execute(q, (model_id,) if model_id else ())]
+    if model_id and not recs:
+        raise HTTPException(404, f"No validation records for {model_id}")
+    return {"engine_version": physics.ENGINE_VERSION, "records": recs,
+            "nasa_psi_validation": "No implemented model predicts a quantity measured in the NASA PSI tables; no combustion model is implemented."}
+
+
+# ------------------------------------------------------------------------------------------- scenarios (persistence)
+@router.get("/scenarios", response_model=list[ScenarioSummary])
+def list_scenarios():
+    with state.connect() as s:
+        return state.list_all(s)
+
+
+@router.post("/scenarios", response_model=Scenario, status_code=201)
+def create_scenario(sc: ScenarioIn):
+    body = _body(sc)
+    with _db() as con:
+        _checked(con, body)
+    with state.connect() as s:
+        return state.create(s, body)
+
+
+@router.get("/scenarios/{sid}", response_model=Scenario)
+def get_scenario(sid: str):
+    with state.connect() as s:
+        return _scenario_or_404(s, sid)
+
+
+@router.put("/scenarios/{sid}", response_model=Scenario)
+def update_scenario(sid: str, sc: ScenarioIn, note: Optional[str] = Query(None, max_length=120)):
+    body = _body(sc)
+    with _db() as con:
+        _checked(con, body)
+    with state.connect() as s:
+        out = state.update(s, sid, body, note or "updated")
+        if not out:
+            raise HTTPException(404, f"Unknown scenario {sid}")
+        return out
+
+
+@router.delete("/scenarios/{sid}", status_code=204)
+def delete_scenario(sid: str):
+    with state.connect() as s:
+        if not state.delete(s, sid):
+            raise HTTPException(404, f"Unknown scenario {sid}")
+    return Response(status_code=204)
+
+
+@router.post("/scenarios/{sid}/duplicate", response_model=Scenario, status_code=201)
+def duplicate_scenario(sid: str, name: Optional[str] = Body(None, embed=True, max_length=80)):
+    with state.connect() as s:
+        out = state.duplicate(s, sid, name)
+        if not out:
+            raise HTTPException(404, f"Unknown scenario {sid}")
+        return out
+
+
+@router.get("/scenarios/{sid}/history", response_model=list[ScenarioVersion])
+def scenario_history(sid: str):
+    with state.connect() as s:
+        _scenario_or_404(s, sid)
+        return state.history(s, sid)
+
+
+@router.post("/compare", response_model=dict[str, Any])
+def compare_scenarios(req: CompareRequest):
+    with state.connect() as s:
+        scs = [_scenario_or_404(s, i) for i in req.ids]
+    with _db() as con:
+        try:
+            return service.compare(con, scs)
+        except service.TwinError as e:
+            raise HTTPException(400, str(e))
+
+
+# ------------------------------------------------------------------------------------------- evaluation: evidence + physics
+@router.post("/evaluate", response_model=dict[str, Any])
+def evaluate(req: EvaluateRequest):
+    """Evaluate an unsaved scenario (the UI's live shared state): zone conditions, NASA evidence, physics."""
+    with _db() as con:
+        return _eval(con, _body(req.scenario), req.nearest_limit)
+
+
+@router.get("/scenarios/{sid}/evidence", response_model=dict[str, Any])
+def scenario_evidence(sid: str, nearest_limit: int = Query(20, ge=1, le=100)):
+    with state.connect() as s:
+        sc = _scenario_or_404(s, sid)
+    with _db() as con:
+        return _eval(con, sc, nearest_limit)["evidence"]
+
+
+@router.get("/scenarios/{sid}/coverage", response_model=dict[str, Any])
+def scenario_coverage(sid: str):
+    with state.connect() as s:
+        sc = _scenario_or_404(s, sid)
+    with _db() as con:
+        ev = _eval(con, sc, 20)["evidence"]
+    return {"targets": ev["targets"], "variables_enabled": ev["variables_enabled"], "coverage": ev["coverage"], "method": ev["method"]}
+
+
+@router.post("/physics/run", response_model=dict[str, Any])
+def physics_run(sc: ScenarioIn):
+    body = _body(sc)
+    with _db() as con:
+        _checked(con, body)
+        return physics.run_scenario(service.environment(con, body["habitat"]["environment_id"]), body)
+
+
+@router.post("/scenarios/{sid}/simulations", response_model=SimulationRun, status_code=201)
+def run_simulation(sid: str):
+    """Execute every implemented model for the saved scenario's current version and record the run."""
+    with state.connect() as s:
+        sc = _scenario_or_404(s, sid)
+    with _db() as con:
+        _checked(con, sc)
+        env = service.environment(con, sc["habitat"]["environment_id"])
+    try:
+        res = physics.run_scenario(env, sc)
+        summary = {"completed": sum(r["status"] == "completed" for r in res["results"]),
+                   "unavailable": sum(r["status"] == "unavailable" for r in res["results"]),
+                   "rejected": sum(r["status"] == "rejected" for r in res["results"]),
+                   "models": sorted({r["model_id"] for r in res["results"]})}
+        with state.connect() as s:
+            return state.record_run(s, sid, sc["version"], res["engine_version"], res["input_hash"], summary, res)
+    except Exception as e:  # recorded as a failed run, never as fabricated output
+        with state.connect() as s:
+            return state.record_run(s, sid, sc["version"], physics.ENGINE_VERSION, "-", {}, None, status="failed", error=type(e).__name__)
+
+
+@router.get("/scenarios/{sid}/simulations", response_model=list[SimulationRun])
+def list_simulations(sid: str):
+    with state.connect() as s:
+        _scenario_or_404(s, sid)
+        return state.list_runs(s, sid)
+
+
+@router.get("/simulations/{run_id}", response_model=SimulationRun)
+def get_simulation(run_id: str):
+    with state.connect() as s:
+        r = state.get_run(s, run_id)
+    if not r:
+        raise HTTPException(404, f"Unknown simulation run {run_id}")
+    return r
+
+
+# ------------------------------------------------------------------------------------------- reports
+@router.get("/scenarios/{sid}/report", response_model=dict[str, Any])
+def scenario_report(sid: str):
+    with state.connect() as s:
+        sc = _scenario_or_404(s, sid)
+    with _db() as con:
+        _checked(con, sc)
+        return service.report(con, sc)
+
+
+@router.post("/report", response_model=dict[str, Any])
+def unsaved_report(sc: ScenarioIn):
+    body = _body(sc)
+    with _db() as con:
+        _checked(con, body)
+        return service.report(con, body)
+
+
+@router.get("/state/migrations", response_model=list[dict[str, Any]])
+def migrations():
+    with state.connect() as s:
+        return state.applied_migrations(s)

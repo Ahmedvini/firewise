@@ -21,3 +21,6 @@ ui/dist/
 # Superseded copies kept locally only
 derived/_superseded/
 docs/_superseded/
+
+# Digital Twin user-scenario state (runtime data, never committed)
+state/
