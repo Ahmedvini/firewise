@@ -4,6 +4,7 @@ sources/psi_files/
 # Build artifacts
 build/
 *.sqlite
+!deploy/firewise.sqlite
 *.sqlite-journal
 # Secrets
 .env

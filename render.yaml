@@ -1,0 +1,16 @@
+# Render Blueprint: one Docker web service serving the FIREWISE API and UI.
+# Free plan: the instance sleeps when idle and its disk is ephemeral, so saved Digital Twin scenarios and
+# Copilot conversations reset on restart/redeploy (the NASA evidence database is in the image and never changes).
+# For persistent user state use a paid plan and add a disk mounted at /app/state.
+services:
+  - type: web
+    name: firewise
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: ANTHROPIC_API_KEY   # optional: enables language-model Copilot answers; leave empty for deterministic mode
+        sync: false

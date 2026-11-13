@@ -1,9 +1,13 @@
-# Only api/, requirements.txt, build/firewise.sqlite and ui/dist/ are needed in the image.
+# Build context: only what the two Dockerfile stages need.
 *
 !requirements.txt
 !api/
-!build/firewise.sqlite
-!ui/dist/
+!deploy/firewise.sqlite
+!ui/
+ui/node_modules
+ui/dist
+ui/test-results
+ui/playwright-report
 **/__pycache__
 .env
 .env.*

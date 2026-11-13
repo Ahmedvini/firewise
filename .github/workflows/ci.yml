@@ -1,0 +1,38 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    env:
+      FIREWISE_DB: deploy/firewise.sqlite   # prebuilt database (the NASA source files needed by load_db.py are not in git)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - name: API, Copilot, Digital Twin, conversations (DB build tests need the original NASA files and run locally)
+        run: python -m pytest tests -q --ignore tests/test_load_db.py
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20", cache: npm, cache-dependency-path: ui/package-lock.json }
+      - run: npm ci
+        working-directory: ui
+      - run: npm run build
+        working-directory: ui
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t firewise .
+      - name: Smoke test
+        run: |
+          docker run -d --name fw -p 8000:8000 firewise
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:8000/api/health && break; sleep 1; done
+          curl -sf http://127.0.0.1:8000/ | grep -q FIREWISE
+          curl -sf -X POST http://127.0.0.1:8000/api/ask -H 'content-type: application/json' -d '{"question":"Is there partial-gravity data in PSI?"}' | grep -q '"status"'

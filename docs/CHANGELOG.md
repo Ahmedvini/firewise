@@ -1,5 +1,30 @@
 # FIREWISE — Change Log
 
+## 2026-11-13 night: Digital Twin, Copilot conversations, UI simplification, deployment packaging
+- **Digital Twin:**
+  - backend: `api/twin/*`, a state store with migrations 1–3, and schema v2 with the `twin_*` tables
+  - UI: `ui/src/twin/*`
+  - tests: 42 pytest and 8 Playwright
+  - docs: `docs/DIGITAL_TWIN_*.md`
+- **Copilot:**
+  - saved conversations (`/api/conversations`) and an answer cache; twin entries are scoped to the whole context and the workspace
+  - new claim tiers: calculation, model_prediction, unknown
+  - citations now picked in a deterministic order
+- **Security fixes:**
+  - the 422 handler crashed on validator errors and echoed request bodies
+  - scenario and conversation routes are now workspace-scoped
+  - the cache key covers user-written twin text
+- **UI simplification** (`docs/UI_AUDIT.md`):
+  - 6 destinations; the Findings page merged into Research Gaps; Compare became a mode of Investigations
+  - a design system and progressive disclosure
+  - removed the per-page banner and the decorative layers
+  - fixed mobile overflow
+- **Deployment:**
+  - self-contained multi-stage `Dockerfile` with `deploy/firewise.sqlite` (the prebuilt database is committed so hosts can build from git)
+  - `render.yaml`, `scripts/package_deploy.sh`, GitHub Actions CI
+- **Tests:** `tests/conftest.py` makes pytest location-independent and isolates the state store per test.
+
+
 ## 2026-11-13 evening: hackathon execution (Phases 0–6)
 **Not modified:** `Data/` (checksums verified on every DB build), `sources/` (except `sources.csv`, which the telemetry download still running appends to). Background downloads were left running.
 

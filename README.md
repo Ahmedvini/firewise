@@ -55,17 +55,35 @@ python3 -I scripts/verify_claims.py . # independent re-derivation of every quant
 python3 -I scripts/checksum_data.py Data derived/data_sha256.txt --verify   # original NASA files unchanged
 ```
 
-## Deploy (single container)
+## Deploy
+The image is **self-contained**:
+- it builds the UI from source;
+- it ships the prebuilt scientific database `deploy/firewise.sqlite`, because the original NASA files needed to rebuild it are not in git.
+
+So any Docker host can build it straight from the repository.
+
 ```bash
-python3 -I scripts/load_db.py . && (cd ui && npm ci && npm run build)
 docker build -t firewise .
 docker run -p 8000:8000 -v firewise-state:/app/state firewise                          # deterministic Copilot
 docker run -p 8000:8000 -v firewise-state:/app/state -e ANTHROPIC_API_KEY=... firewise  # with the language model
 ```
 
-**User state.** Digital Twin scenarios, Copilot conversations and the answer cache live in `/app/state`, or `$FIREWISE_STATE_DB` outside Docker; the default there is `state/twin_state.sqlite`. Mount a volume to keep them. The scientific database stays read-only. Scenarios and conversations are scoped to a random per-browser workspace key (`X-Workspace`). That is isolation, not user authentication.
+**Render (recommended host).** `render.yaml` is a Render Blueprint: one Docker web service with health check `/api/health` and auto-deploy on push. In Render choose **New → Blueprint**, select this repository, then **Apply**. `ANTHROPIC_API_KEY` is optional.
 
-The image contains only the API code, the built UI and the 15 MB SQLite database. It contains no raw NASA data and no secrets. It honours `$PORT`, so it runs on Render, Fly.io or Cloud Run as is.
+On the free plan, the service sleeps when idle and its disk is ephemeral:
+- Saved twin scenarios and conversations reset on restart.
+- The NASA evidence database is part of the image and never changes.
+
+For persistent user state, add a disk mounted at `/app/state` on a paid plan.
+
+**Refreshing the database.** Run `scripts/package_deploy.sh` (it needs the original NASA files), then commit `deploy/firewise.sqlite`.
+
+**CI.** `.github/workflows/ci.yml` runs on every push:
+- backend tests against the deploy database
+- the UI build
+- a Docker build and smoke test
+
+**User state.** Digital Twin scenarios, Copilot conversations and the answer cache live in `/app/state`, or `$FIREWISE_STATE_DB` outside Docker; the default there is `state/twin_state.sqlite`. They are scoped to a random per-browser workspace key (`X-Workspace`). That is isolation, not user authentication.
 
 ## Data provenance
 - **Source.** All 24 PSI investigation records come from `psi.nasa.gov`, saved in `sources/psi_api/` (CC0). The 22 experimental tables are in `sources/psi_tables/`. A sha256 for each is recorded in `sources/sources.csv`.
