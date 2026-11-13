@@ -12,6 +12,7 @@ _Updated 2026-11-13, night. Concise and live; the newest state wins._
 | Model validation | - **Model B transport properties are validated** against independent air correlations: max deviation 0.51% (viscosity) and 1.03% (conductivity), within the ±2% reference accuracy over 250–400 K. - Models A, C and D are verified. - No combustion model is implemented. |
 | **UI simplification** | 6 destinations; a design system (`components/ui.jsx`, tokens); progressive disclosure on every page; mobile overflow fixed. See `docs/UI_AUDIT.md`. |
 | Deployment packaging | - Self-contained multi-stage `Dockerfile` (builds the UI, ships `deploy/firewise.sqlite`). - `render.yaml` Blueprint. - GitHub Actions CI (backend tests, UI build, Docker smoke test). |
+| GitHub | Private repo https://github.com/Ahmedvini/firewise (`main`). First CI run passed all three jobs: backend, frontend, docker. |
 
 ## Test results (latest run)
 - `pytest tests -q`: **73 passed**: 11 DB acceptance, 16 API/Copilot, 42 Digital Twin, 4 conversations and cache.
@@ -37,7 +38,7 @@ _Updated 2026-11-13, night. Concise and live; the newest state wins._
 - The Copilot runs in deterministic mode, because no API key is configured. The LLM path is covered by mocked tests only.
 
 ## Blockers and decisions for the team
-1. **Hosting account.** Deploying to Render needs the team's Render account connected to GitHub (New → Blueprint → this repo → Apply). Account creation and OAuth consent are the team's action.
+1. **Hosting account (the only open deployment step).** No hosting credentials exist on the build machine. In Render: sign in with GitHub → New → Blueprint → grant access to `Ahmedvini/firewise` → Apply. The service builds from `render.yaml` and serves at `https://firewise-<id>.onrender.com`. Account creation and OAuth consent are the team's action.
 2. **Free-plan limits.** The service sleeps when idle, and saved scenarios and conversations reset on restart. Add a paid disk at `/app/state` if persistence matters.
 3. **Optional `ANTHROPIC_API_KEY`** on the host only.
 4. **Telemetry download.** It stopped (DNS failures) and was intentionally not restarted. `sources/sources.csv` carries its partial manifest additions and is left uncommitted.
