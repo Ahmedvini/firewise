@@ -4,6 +4,12 @@ import { apiGet } from "../services/api.js";
 import { evidenceKind } from "../utils/format.js";
 
 const EvidenceContext = createContext({ open: () => {} });
+
+// Items computed for a single Copilot answer (ids twin:*) have no server endpoint; answers register them here.
+const inline = new Map();
+export function registerInlineEvidence(items = []) {
+  items.forEach((i) => inline.set(i.evidence_id, i));
+}
 export const useEvidence = () => useContext(EvidenceContext);
 
 /** Provides a single modal that resolves any evidence id (row:, inv:, fact:, agg:, pdf:, obs:, group:). */
@@ -14,6 +20,11 @@ export function EvidenceProvider({ children }) {
 
   useEffect(() => {
     if (!id) return;
+    if (id.startsWith("twin:") && inline.has(id)) {
+      const i = inline.get(id);
+      setState({ data: { evidence_id: id, kind: i.kind, title: i.title, text: i.snippet, url: i.url }, error: null });
+      return;
+    }
     setState({ data: null, error: null });
     apiGet(`/api/evidence/${encodeURIComponent(id)}`)
       .then((data) => setState({ data, error: null }))

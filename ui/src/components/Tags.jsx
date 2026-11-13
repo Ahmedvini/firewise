@@ -1,4 +1,4 @@
-import { STATUS_INFO, TIER_INFO } from "../data/constants.js";
+import { STATUS_INFO, TIER_INFO, TWIN_STATUS, VALIDATION_INFO } from "../data/constants.js";
 import { contextLabel, rangeText } from "../utils/format.js";
 
 /** Measurement status: glyph + text (never colour alone). */
@@ -45,4 +45,19 @@ export function StatusLegend() {
       {Object.entries(STATUS_INFO).map(([k]) => <StatusTag key={k} status={k} />)}
     </div>
   );
+}
+
+/** Digital Twin value status (user-defined vs NASA vs model output vs not documented). */
+export function TwinStatusTag({ status, source }) {
+  const t = TWIN_STATUS[status] ?? { label: status, glyph: "•", tone: "", desc: "" };
+  return (
+    <span className={`tag status ${t.tone}`} title={`${t.desc}${source ? ` Source: ${source}` : ""}`}>
+      <span aria-hidden className="glyph">{t.glyph}</span>{t.label}
+    </span>
+  );
+}
+
+export function ValidationTag({ status }) {
+  const v = VALIDATION_INFO[status] ?? { label: status, tone: "", desc: "" };
+  return <span className={`tag ${v.tone}`} title={v.desc}>{v.label}</span>;
 }

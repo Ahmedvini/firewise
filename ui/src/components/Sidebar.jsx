@@ -1,10 +1,11 @@
-import { LayoutDashboard, Sparkles, FlaskConical, GitCompare, ShieldAlert, Crosshair, Grid3x3 } from "lucide-react";
+import { LayoutDashboard, Sparkles, FlaskConical, GitCompare, ShieldAlert, Crosshair, Grid3x3, Box } from "lucide-react";
 import { useApi } from "../services/api.js";
 
 const NAV_ITEMS = [
   { id: "overview", label: "Mission Control", short: "Home", icon: LayoutDashboard },
   { id: "experiments", label: "Investigations", short: "Explore", icon: FlaskConical },
   { id: "scenarios", label: "Scenario Explorer", short: "Scenarios", icon: Crosshair },
+  { id: "twin", label: "Digital Twin", short: "Twin", icon: Box },
   { id: "compare", label: "Compare", short: "Compare", icon: GitCompare },
   { id: "gaps", label: "Research Gap Map", short: "Gaps", icon: Grid3x3 },
   { id: "insights", label: "Findings", short: "Findings", icon: ShieldAlert },

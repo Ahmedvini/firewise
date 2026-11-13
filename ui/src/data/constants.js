@@ -40,8 +40,38 @@ export const TIER_INFO = {
   measured: { label: "Measured evidence", glyph: "●", tone: "green", desc: "PSI tables, records or server-computed aggregates." },
   reported: { label: "Reported", glyph: "◐", tone: "amber", desc: "PSI record text or NASA reports." },
   literature: { label: "Literature", glyph: "▤", tone: "", desc: "Published sources outside PSI (URL-cited)." },
-  interpretation: { label: "Interpretation", glyph: "◇", tone: "red", desc: "Reasoning over the evidence — not an experimental result." },
+  interpretation: { label: "Interpretation / hypothesis", glyph: "◇", tone: "red", desc: "Reasoning over the evidence — not an experimental result." },
+  calculation: { label: "Calculation", glyph: "∑", tone: "blue", desc: "Exact physical-law arithmetic on the scenario's inputs (FIREWISE physics model)." },
+  model_prediction: { label: "Model estimate", glyph: "≈", tone: "blue", desc: "Correlation-based estimate from a FIREWISE physics model; see its validation status." },
+  unknown: { label: "Unknown / not documented", glyph: "?", tone: "", desc: "Information that is not documented or cannot be computed." },
 };
+
+// Digital Twin value statuses (scenario inputs vs NASA values vs model outputs)
+export const TWIN_STATUS = {
+  user_defined: { label: "User-defined", glyph: "✎", tone: "amber", desc: "Configured in this scenario — not a measurement." },
+  measured: { label: "Measured (NASA)", glyph: "●", tone: "green", desc: "Copied from a NASA PSI test with its source." },
+  derived: { label: "Derived", glyph: "◆", tone: "green", desc: "Derived from measured values." },
+  reported: { label: "Reported (approx.)", glyph: "◐", tone: "amber", desc: "Reported as approximate in NASA text or tables." },
+  specified: { label: "Set-point", glyph: "□", tone: "", desc: "NASA set-point." },
+  simulated: { label: "Computed (model)", glyph: "∑", tone: "blue", desc: "Output of a FIREWISE physics model (see model id and version)." },
+  not_documented: { label: "Not documented", glyph: "–", tone: "dashed", desc: "Not set / not documented — never treated as zero." },
+};
+export const VALIDATION_INFO = {
+  validated: { label: "Validated", tone: "green", desc: "Compared with independent reference data, error within the reference uncertainty, inside the stated domain." },
+  verified: { label: "Verified", tone: "amber", desc: "Implementation checked against reference values or hand calculations; not an independent experimental validation." },
+  not_implemented: { label: "Not implemented", tone: "red", desc: "No output is produced." },
+  failed: { label: "Failed validation", tone: "red", desc: "Outside the reference uncertainty." },
+};
+export const TWIN_QUESTIONS = [
+  "Which NASA experiments are closest to this environment?",
+  "What evidence exists at this oxygen concentration?",
+  "What changes when cabin pressure is modified?",
+  "Are there experiments with similar material and airflow?",
+  "Which variables are missing from the NASA records?",
+  "What physical models can be applied here?",
+  "What prevents us from predicting flame behavior?",
+  "How reliable is the selected model?",
+];
 
 export const CONTEXT_LABEL = {
   ambient: "chamber atmosphere",

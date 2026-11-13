@@ -24,3 +24,5 @@ docs/_superseded/
 
 # Digital Twin user-scenario state (runtime data, never committed)
 state/
+ui/test-results/
+ui/playwright-report/
