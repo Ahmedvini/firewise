@@ -1,4 +1,5 @@
-"""Digital Twin state store: user scenarios, their version history and simulation runs.
+"""FIREWISE user-state store: Digital Twin scenarios (with version history and simulation runs),
+Copilot conversations and the Copilot answer cache.
 
 Why a separate file: build/firewise.sqlite is the deterministic, read-only scientific database that
 scripts/load_db.py rebuilds from NASA sources (and replaces atomically). User scenarios are mutable
@@ -39,6 +40,18 @@ CREATE INDEX twin_run_by_scenario ON twin_simulation_run (scenario_id, created_a
     (2, "workspace isolation: owner hash on scenarios", """
 ALTER TABLE twin_scenario ADD COLUMN owner_hash TEXT NOT NULL DEFAULT '';
 CREATE INDEX twin_scenario_by_owner ON twin_scenario (owner_hash, updated_at);
+"""),
+    (3, "Copilot conversations, messages and answer cache", """
+CREATE TABLE chat_conversation (
+  id TEXT PRIMARY KEY, owner_hash TEXT NOT NULL, title TEXT NOT NULL, kind TEXT NOT NULL CHECK (kind IN ('general','twin')),
+  created_at TEXT NOT NULL, updated_at TEXT NOT NULL);
+CREATE INDEX chat_conversation_by_owner ON chat_conversation (owner_hash, updated_at);
+CREATE TABLE chat_message (
+  conversation_id TEXT NOT NULL REFERENCES chat_conversation(id) ON DELETE CASCADE, seq INTEGER NOT NULL,
+  role TEXT NOT NULL CHECK (role IN ('user','assistant')), content TEXT NOT NULL, response_json TEXT,
+  context_json TEXT, cached INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL, PRIMARY KEY (conversation_id, seq));
+CREATE TABLE copilot_answer_cache (
+  cache_key TEXT PRIMARY KEY, response_json TEXT NOT NULL, created_at TEXT NOT NULL, last_hit_at TEXT, hits INTEGER NOT NULL DEFAULT 0);
 """),
 ]
 

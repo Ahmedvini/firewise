@@ -391,6 +391,7 @@ class AskResponse(BaseModel):
     notice: Optional[str]
     model: Optional[dict[str, str]]
     latency_ms: int
+    cached: bool = False
 
 
 class Points(BaseModel):

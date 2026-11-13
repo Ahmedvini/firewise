@@ -11,12 +11,14 @@ from fastapi.staticfiles import StaticFiles
 from . import copilot, models, services
 from .db import connect, db_available
 from .twin.routes import router as twin_router
+from .conversations import ask_cached, router as conversations_router
 
 app = FastAPI(title="FIREWISE API", version="1.0.0",
               description="Evidence-grounded access to NASA PSI combustion investigations, plus the FIREWISE Digital Twin (/api/twin). The scientific database is read-only; user scenarios live in a separate state store.")
 app.add_middleware(CORSMiddleware, allow_origins=os.environ.get("FIREWISE_CORS", "http://localhost:5173,http://127.0.0.1:5173").split(","),
-                   allow_methods=["GET", "POST", "PUT", "DELETE"], allow_headers=["*"])
+                   allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE"], allow_headers=["*"])
 app.include_router(twin_router)
+app.include_router(conversations_router)
 
 
 def err(status, code, message, details=None):
@@ -190,7 +192,7 @@ def ask(req: models.AskRequest):
     with connect() as con:
         twin = req.twin.model_dump() if req.twin else None
         try:
-            return copilot.ask(con, req.question.strip(), req.scenario_id, twin=twin)
+            return ask_cached(con, req.question.strip(), req.scenario_id, twin=twin)
         except copilot.TwinContextError as e:
             raise HTTPException(400, str(e))
 

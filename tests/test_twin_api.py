@@ -9,8 +9,8 @@ from api import copilot
 from api.main import app
 
 c = TestClient(app)
-WS = {"X-Twin-Workspace": "test-workspace-" + "a" * 32}
-OTHER = {"X-Twin-Workspace": "other-workspace-" + "b" * 32}
+WS = {"X-Workspace": "test-workspace-" + "a" * 32}
+OTHER = {"X-Workspace": "other-workspace-" + "b" * 32}
 
 
 @pytest.fixture(autouse=True)
@@ -56,7 +56,7 @@ def test_crud_duplicate_history_and_isolation():
     assert c.put(f"/api/twin/scenarios/{sid}", json=sc, headers=OTHER).status_code == 404
     assert c.delete(f"/api/twin/scenarios/{sid}", headers=OTHER).status_code == 404
     assert c.get("/api/twin/scenarios").status_code == 422                                   # header required
-    assert c.get("/api/twin/scenarios", headers={"X-Twin-Workspace": "short"}).status_code == 400
+    assert c.get("/api/twin/scenarios", headers={"X-Workspace": "short"}).status_code == 400
     assert c.delete(f"/api/twin/scenarios/{d['id']}", headers=WS).status_code == 204
     assert c.get(f"/api/twin/scenarios/{d['id']}", headers=WS).status_code == 404
 
