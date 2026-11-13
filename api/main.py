@@ -188,7 +188,11 @@ def evidence(evidence_id: str):
 def ask(req: models.AskRequest):
     need_db()
     with connect() as con:
-        return copilot.ask(con, req.question.strip(), req.scenario_id)
+        twin = req.twin.model_dump() if req.twin else None
+        try:
+            return copilot.ask(con, req.question.strip(), req.scenario_id, twin=twin)
+        except copilot.TwinContextError as e:
+            raise HTTPException(400, str(e))
 
 
 # Static frontend (Vite build of ui/ -> ui/dist) served on the same origin; API routes above take precedence.

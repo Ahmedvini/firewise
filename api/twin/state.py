@@ -9,6 +9,7 @@ Location: $FIREWISE_STATE_DB (default state/twin_state.sqlite). Migrations are v
 idempotently on first use (table schema_migrations).
 """
 import datetime
+import hashlib
 import json
 import os
 import sqlite3
@@ -35,7 +36,16 @@ CREATE TABLE twin_simulation_run (
   summary_json TEXT NOT NULL DEFAULT '{}', result_json TEXT, error TEXT);
 CREATE INDEX twin_run_by_scenario ON twin_simulation_run (scenario_id, created_at);
 """),
+    (2, "workspace isolation: owner hash on scenarios", """
+ALTER TABLE twin_scenario ADD COLUMN owner_hash TEXT NOT NULL DEFAULT '';
+CREATE INDEX twin_scenario_by_owner ON twin_scenario (owner_hash, updated_at);
+"""),
 ]
+
+
+def owner_hash(workspace_key):
+    """Scenarios belong to a workspace. The server stores only the SHA-256 of the client's random workspace key."""
+    return hashlib.sha256(workspace_key.encode()).hexdigest()
 
 
 def state_path():
@@ -84,23 +94,24 @@ def _row(r):
     return {**body, "id": r["id"], "version": r["version"], "created_at": r["created_at"], "updated_at": r["updated_at"]}
 
 
-def create(con, body, note="created", duplicated_from=None):
+def create(con, owner, body, note="created", duplicated_from=None):
     sid = "sc_" + uuid.uuid4().hex[:12]
     now = _now()
     js = json.dumps(body, sort_keys=True)
-    con.execute("INSERT INTO twin_scenario VALUES (?,?,?,?,?,?,?,?,?)",
-                (sid, body["name"], body.get("description", ""), body["habitat"]["environment_id"], 1, js, now, now, duplicated_from))
+    con.execute("INSERT INTO twin_scenario (id, name, description, environment_id, version, body_json, created_at, updated_at, duplicated_from, owner_hash) "
+                "VALUES (?,?,?,?,?,?,?,?,?,?)",
+                (sid, body["name"], body.get("description", ""), body["habitat"]["environment_id"], 1, js, now, now, duplicated_from, owner))
     con.execute("INSERT INTO twin_scenario_version VALUES (?,?,?,?,?)", (sid, 1, js, now, note))
-    return get(con, sid)
+    return get(con, owner, sid)
 
 
-def get(con, sid):
-    r = con.execute("SELECT * FROM twin_scenario WHERE id=?", (sid,)).fetchone()
+def get(con, owner, sid):
+    r = con.execute("SELECT * FROM twin_scenario WHERE id=? AND owner_hash=?", (sid, owner)).fetchone()
     return r and _row(r)
 
 
-def update(con, sid, body, note="updated"):
-    cur = get(con, sid)
+def update(con, owner, sid, body, note="updated"):
+    cur = get(con, owner, sid)
     if not cur:
         return None
     ver = cur["version"] + 1
@@ -109,25 +120,25 @@ def update(con, sid, body, note="updated"):
     con.execute("UPDATE twin_scenario SET name=?, description=?, environment_id=?, version=?, body_json=?, updated_at=? WHERE id=?",
                 (body["name"], body.get("description", ""), body["habitat"]["environment_id"], ver, js, now, sid))
     con.execute("INSERT INTO twin_scenario_version VALUES (?,?,?,?,?)", (sid, ver, js, now, note))
-    return get(con, sid)
+    return get(con, owner, sid)
 
 
-def delete(con, sid):
-    return con.execute("DELETE FROM twin_scenario WHERE id=?", (sid,)).rowcount > 0
+def delete(con, owner, sid):
+    return con.execute("DELETE FROM twin_scenario WHERE id=? AND owner_hash=?", (sid, owner)).rowcount > 0
 
 
-def duplicate(con, sid, name=None):
-    cur = get(con, sid)
+def duplicate(con, owner, sid, name=None):
+    cur = get(con, owner, sid)
     if not cur:
         return None
     body = {k: v for k, v in cur.items() if k not in ("id", "version", "created_at", "updated_at")}
     body["name"] = (name or f"{cur['name']} (copy)")[:80]
-    return create(con, body, note=f"duplicated from {sid} v{cur['version']}", duplicated_from=sid)
+    return create(con, owner, body, note=f"duplicated from {sid} v{cur['version']}", duplicated_from=sid)
 
 
-def list_all(con):
+def list_all(con, owner):
     out = []
-    for r in con.execute("SELECT * FROM twin_scenario ORDER BY updated_at DESC, id"):
+    for r in con.execute("SELECT * FROM twin_scenario WHERE owner_hash=? ORDER BY updated_at DESC, id", (owner,)):
         b = json.loads(r["body_json"])
         out.append({"id": r["id"], "name": r["name"], "description": r["description"], "version": r["version"], "updated_at": r["updated_at"],
                     "environment_id": r["environment_id"], "o2_pct": b["composition"]["o2_pct"].get("value"),
@@ -155,8 +166,10 @@ def record_run(con, sid, version, engine_version, input_hash, summary, result, s
     return get_run(con, rid)
 
 
-def get_run(con, rid, with_result=True):
-    r = con.execute("SELECT * FROM twin_simulation_run WHERE run_id=?", (rid,)).fetchone()
+def get_run(con, rid, with_result=True, owner=None):
+    """owner given -> the run is returned only if its scenario belongs to that workspace."""
+    q = "SELECT r.* FROM twin_simulation_run r JOIN twin_scenario s ON s.id = r.scenario_id WHERE r.run_id=?"
+    r = con.execute(q + (" AND s.owner_hash=?" if owner is not None else ""), (rid, owner) if owner is not None else (rid,)).fetchone()
     if not r:
         return None
     return {"run_id": r["run_id"], "scenario_id": r["scenario_id"], "scenario_version": r["scenario_version"], "status": r["status"],

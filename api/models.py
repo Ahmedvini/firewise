@@ -353,6 +353,7 @@ class Evidence(BaseModel):
 class AskRequest(BaseModel):
     question: str = Field(min_length=3, max_length=1000)
     scenario_id: Optional[str] = None
+    twin: Optional["TwinAskContext"] = Field(default=None, description="Active Digital Twin scenario (shared state) for twin-aware answers")
 
 
 class NumberRef(BaseModel):
@@ -361,9 +362,12 @@ class NumberRef(BaseModel):
     evidence_id: str
 
 
+ClaimTier = Literal["measured", "reported", "literature", "interpretation", "calculation", "model_prediction", "unknown"]
+
+
 class Claim(BaseModel):
     text: str
-    tier: Literal["measured", "reported", "literature", "interpretation"]
+    tier: ClaimTier
     evidence_ids: list[str]
 
 
@@ -395,3 +399,8 @@ class Points(BaseModel):
     n_points: int
     n_records: int
     note: str
+
+
+from .twin.schemas import TwinAskContext  # noqa: E402  (forward reference used by AskRequest)
+
+AskRequest.model_rebuild()
