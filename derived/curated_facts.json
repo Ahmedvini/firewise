@@ -217,7 +217,7 @@
   "id": "F17",
   "investigations": [],
   "field": "partial_gravity_psi",
-  "value": "PSI contains no partial-gravity combustion runs (0 of 1,989 normalized runs).",
+  "value": "PSI contains no partial-gravity combustion runs (0 of 2,007 normalized combustion/aerosol rows).",
   "status": "measured",
   "tag": "PSI-tab",
   "source": "derived/coverage_summary.json#partial_gravity_runs",
