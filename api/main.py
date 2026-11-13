@@ -6,13 +6,14 @@ from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from . import copilot, models, services
 from .db import connect, db_available
 
 app = FastAPI(title="FIREWISE API", version="1.0.0",
               description="Evidence-grounded access to NASA PSI combustion investigations. Read-only except /api/ask.")
-app.add_middleware(CORSMiddleware, allow_origins=os.environ.get("FIREWISE_CORS", "http://localhost:3000,http://127.0.0.1:3000").split(","),
+app.add_middleware(CORSMiddleware, allow_origins=os.environ.get("FIREWISE_CORS", "http://localhost:5173,http://127.0.0.1:5173").split(","),
                    allow_methods=["GET", "POST"], allow_headers=["*"])
 
 
@@ -103,6 +104,13 @@ def runs(investigation_id: list[str] = Query(default=[]), fuel_class: list[str] 
                                     documented_only, include_duplicates, granularity or None, limit, offset)
 
 
+@app.get("/api/points", response_model=models.Points)
+def points():
+    need_db()
+    with connect() as con:
+        return services.points(con)
+
+
 @app.get("/api/distributions", response_model=models.Distribution)
 def distributions(variable: str = Query(..., pattern="^(o2_pct|p_atm|flow_cm_s)$"),
                   group_by: str = Query("fuel_class", pattern="^(fuel_class|investigation|status)$"),
@@ -177,3 +185,9 @@ def ask(req: models.AskRequest):
     need_db()
     with connect() as con:
         return copilot.ask(con, req.question.strip(), req.scenario_id)
+
+
+# Static frontend (Vite build of ui/ -> ui/dist) served on the same origin; API routes above take precedence.
+_WEB = os.environ.get("FIREWISE_UI_DIST", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "ui", "dist"))
+if os.path.isdir(_WEB):
+    app.mount("/", StaticFiles(directory=_WEB, html=True), name="web")

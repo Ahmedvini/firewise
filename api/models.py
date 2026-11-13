@@ -116,6 +116,7 @@ class Summary(BaseModel):
     by_data_class: dict[str, int]
     by_platform: dict[str, int]
     flags_by_severity: dict[str, int]
+    documentation_by_fuel_class: dict[str, dict[str, int]]
     scenario_counts: dict[str, int]
     key_findings: list[KeyFinding]
     limitations: list[str]
@@ -386,3 +387,11 @@ class AskResponse(BaseModel):
     notice: Optional[str]
     model: Optional[dict[str, str]]
     latency_ms: int
+
+
+class Points(BaseModel):
+    fields: list[str]
+    points: list[list[Any]]
+    n_points: int
+    n_records: int
+    note: str

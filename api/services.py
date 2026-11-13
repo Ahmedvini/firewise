@@ -117,6 +117,14 @@ def summary(con):
         "by_data_class": dict(con.execute("SELECT data_class, COUNT(*) FROM investigation_meta GROUP BY 1 ORDER BY 1").fetchall()),
         "by_platform": dict(con.execute(f"SELECT platform, COUNT(*) FROM run {base} GROUP BY 1 ORDER BY 2 DESC").fetchall()),
         "flags_by_severity": dict(con.execute("SELECT severity, COUNT(*) FROM quality_flag GROUP BY 1").fetchall()),
+        "documentation_by_fuel_class": {
+            r["fuel_class"]: {"both": r["both"], "o2_only": r["o2_only"], "p_only": r["p_only"], "neither": r["neither"]}
+            for r in con.execute(f"""SELECT fuel_class,
+                SUM(COALESCE(o2_context,'')='ambient' AND p_min_atm IS NOT NULL) both,
+                SUM(COALESCE(o2_context,'')='ambient' AND p_min_atm IS NULL) o2_only,
+                SUM(COALESCE(o2_context,'')!='ambient' AND p_min_atm IS NOT NULL) p_only,
+                SUM(COALESCE(o2_context,'')!='ambient' AND p_min_atm IS NULL) neither
+                FROM run {base} GROUP BY fuel_class ORDER BY COUNT(*) DESC""")},
         "scenario_counts": {sid: a(f"scenario:{sid}")["records"] for sid in SCENARIOS},
         "key_findings": key_findings(con),
         "limitations": [
@@ -265,6 +273,20 @@ def search_runs(con, investigation_id=None, fuel_class=None, o2_context="ambient
     total = con.execute(f"SELECT COUNT(*) FROM run r WHERE {w}", args).fetchone()[0]
     rows = con.execute(f"{RUN_SELECT} WHERE {w} ORDER BY r.investigation_id, r.row_key LIMIT ? OFFSET ?", args + [limit, offset]).fetchall()
     return {"items": attach_details(con, rows), "total": total, "limit": limit, "offset": offset}
+
+
+# ------------------------------------------------------------------------------------------- scatter points
+def points(con):
+    """Compact chamber-O2 x pressure points for every non-duplicate record documenting BOTH (ambient O2 only)."""
+    rows = con.execute(f"""SELECT row_key, investigation_id, fuel_class, test_label, (o2_min_pct+o2_max_pct)/2 o2, (p_min_atm+p_max_atm)/2 p,
+                               o2_status, p_status FROM run WHERE {COMBUSTION} AND duplicate_of IS NULL AND o2_context='ambient'
+                               AND p_min_atm IS NOT NULL ORDER BY row_key""").fetchall()
+    total = con.execute(f"SELECT COUNT(*) FROM run WHERE {COMBUSTION} AND duplicate_of IS NULL").fetchone()[0]
+    return {"fields": ["row_key", "investigation_id", "fuel_class", "test_label", "o2_pct", "p_psia", "o2_status", "p_status"],
+            "points": [[r["row_key"], r["investigation_id"], r["fuel_class"], r["test_label"], round(r["o2"], 3),
+                        round(r["p"] * PSIA_PER_ATM, 3), r["o2_status"], r["p_status"]] for r in rows],
+            "n_points": len(rows), "n_records": total,
+            "note": "Records lacking either documented chamber O2 or pressure are not plotted (counted in n_records)."}
 
 
 # ------------------------------------------------------------------------------------------- distributions
