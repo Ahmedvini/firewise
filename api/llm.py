@@ -28,12 +28,15 @@ KEY_RE = {"anthropic": re.compile(r"sk-ant-[A-Za-z0-9_\-]{20,200}")}
 GENERIC_KEY_RE = re.compile(r"[A-Za-z0-9_\-.:]{16,300}")
 MODEL_RE = re.compile(r"[A-Za-z0-9._:/\-]{1,120}")
 GEMINI_MODEL_RE = re.compile(r"[A-Za-z0-9._\-]{1,120}")       # becomes part of a URL path: no slashes
-NON_CHAT = re.compile(r"embed|tts|whisper|dall-e|moderation|transcri|audio|image|realtime|search|davinci|babbage|rerank|guard", re.I)
+NON_CHAT = re.compile(r"embed|tts|whisper|orpheus|dall-e|moderation|transcri|audio|image|realtime|search|davinci|babbage|rerank|guard", re.I)
 TIMEOUT = httpx.Timeout(45.0, connect=10.0)
 GEMINI_MODEL_PREFERENCE = (
     "gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash",
     "gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-2.5-flash",
     "gemini-2.5-flash-lite", "gemini-2.5-pro",
+)
+GROQ_MODEL_PREFERENCE = (
+    "openai/gpt-oss-120b", "openai/gpt-oss-20b", "qwen/qwen3.8-27b",
 )
 
 
@@ -98,6 +101,9 @@ def list_models(choice):
     elif choice["provider"] == "openrouter":
         # OpenRouter's free router is a virtual model and may not appear in /models.
         ids = ["openrouter/free"] + sorted(ids.difference({"openrouter/free"}))
+    elif choice["provider"] == "groq":
+        preferred = [i for i in GROQ_MODEL_PREFERENCE if i in ids]
+        ids = preferred + sorted(ids.difference(preferred))
     else:
         ids = sorted(ids)
     ids = ids[:300]
@@ -123,6 +129,20 @@ def _parse_json(text):
     return json.loads(t)
 
 
+def _generate_openai_compatible(c, choice, sys_text, user_message, model):
+    body = {"model": model, "messages": [{"role": "system", "content": sys_text}, {"role": "user", "content": user_message}],
+            "response_format": {"type": "json_object"}}
+    r = c.post(f"{PROVIDERS[choice['provider']]['base']}/chat/completions", json=body,
+               headers=_headers(choice["provider"], choice["key"]))
+    if r.status_code == 400:                       # some models/providers reject response_format: retry once without it
+        body.pop("response_format")
+        r = c.post(f"{PROVIDERS[choice['provider']]['base']}/chat/completions", json=body,
+                   headers=_headers(choice["provider"], choice["key"]))
+    r.raise_for_status()
+    msg = (r.json().get("choices") or [{}])[0].get("message", {})
+    return _parse_json(msg.get("content") or "")
+
+
 def generate(choice, system, user_message):
     """Call a non-Anthropic provider and return the parsed JSON answer (dict). Raises on any failure."""
     p = PROVIDERS[choice["provider"]]
@@ -138,12 +158,16 @@ def generate(choice, system, user_message):
             r.raise_for_status()
             parts = (r.json().get("candidates") or [{}])[0].get("content", {}).get("parts", [])
             return _parse_json("".join(x.get("text", "") for x in parts))
-        body = {"model": choice["model"], "messages": [{"role": "system", "content": sys_text}, {"role": "user", "content": user_message}],
-                "response_format": {"type": "json_object"}}
-        r = c.post(f"{p['base']}/chat/completions", json=body, headers=_headers(choice["provider"], choice["key"]))
-        if r.status_code == 400:                       # some models/providers reject response_format: retry once without it
-            body.pop("response_format")
-            r = c.post(f"{p['base']}/chat/completions", json=body, headers=_headers(choice["provider"], choice["key"]))
-        r.raise_for_status()
-        msg = (r.json().get("choices") or [{}])[0].get("message", {})
-        return _parse_json(msg.get("content") or "")
+        model = choice["model"]
+        try:
+            return _generate_openai_compatible(c, choice, sys_text, user_message, model)
+        except httpx.HTTPStatusError as error:
+            if choice["provider"] != "groq" or error.response.status_code not in (400, 404):
+                raise
+            valid, _, models = list_models(choice)
+            fallback = next((candidate for candidate in models if candidate != model), None) if valid else None
+            if not fallback:
+                raise
+            answer = _generate_openai_compatible(c, choice, sys_text, user_message, fallback)
+            choice["model"] = fallback
+            return answer
