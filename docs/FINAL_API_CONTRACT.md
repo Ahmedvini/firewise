@@ -127,7 +127,8 @@ by the documented sort key with `row_key` as the tiebreak.
 | Timeout (> 45 s) | `504 copilot_timeout` + the same fallback |
 | Malformed / schema-invalid output | one retry; then evidence-only response |
 | Claim fails validation | drop the claim; add a limitation "1 statement removed: unsupported citation"; if none remain → `insufficient_evidence` |
-| Retrieval returns < 2 evidence items | no model call; `insufficient_evidence` with what was searched |
+| Retrieval returns no evidence items | no model call; `insufficient_evidence` explains that no indexed NASA source matched |
+| Retrieval returns one or more evidence items | the configured model may answer from the retrieved evidence; without a working model, prepared intents use their deterministic answer and other questions return matching source excerpts with citations |
 | `stop_reason == "refusal"` (after fallback) | evidence-only response |
 
 The UI never crashes on any of these; the other 5 screens never call the LLM.

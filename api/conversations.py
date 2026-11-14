@@ -27,6 +27,7 @@ from .twin.schemas import TwinAskContext
 
 CACHE_MAX_ENTRIES = 5000
 CACHE_MAX_AGE_DAYS = 30
+CACHE_VERSION = 2  # invalidate answers cached before free-form evidence fallback was added
 MAX_MESSAGES = 400
 WS_RE = re.compile(r"[A-Za-z0-9_-]{32,128}")
 
@@ -51,12 +52,14 @@ def cache_key(con, question, scenario_id=None, twin=None, owner=None):
     ctx = None
     if twin:
         ctx = {"context": twin, "engine": physics.ENGINE_VERSION, "owner": owner}
-    payload = json.dumps({"q": q, "scenario_id": scenario_id, "twin": ctx, "db": _fingerprint(con), "mode": mode}, sort_keys=True, default=str)
+    payload = json.dumps({"v": CACHE_VERSION, "q": q, "scenario_id": scenario_id, "twin": ctx, "db": _fingerprint(con), "mode": mode}, sort_keys=True, default=str)
     return hashlib.sha256(payload.encode()).hexdigest()
 
 
 def cacheable(resp):
-    return resp["mode"] in ("llm_validated", "deterministic") and not (resp.get("notice") and "unavailable (" in resp["notice"])
+    notice = (resp.get("notice") or "").lower()
+    failed_llm = any(marker in notice for marker in ("unavailable (", "could not be used", "request failed"))
+    return resp["mode"] in ("llm_validated", "deterministic") and not failed_llm
 
 
 def ask_cached(con, question, scenario_id=None, twin=None, owner=None):

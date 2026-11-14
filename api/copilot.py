@@ -21,6 +21,11 @@ from .db import STATUS_LABEL, aggregate
 MODEL_ID = "claude-opus-5-5"  # verified against platform.claude.com models overview (2026-11-13)
 EFFORT = "medium"
 TIMEOUT_S = 45.0
+CHAT_STOP = services.STOP | {
+    "ask", "asking", "answer", "according", "copilot", "data", "describe", "evidence", "experiment",
+    "experiments", "explain", "firewise", "find", "give", "information", "nasa", "please", "provide",
+    "psi", "question", "research", "show", "source", "sources", "tell", "more",
+}
 
 NUM_RE = re.compile(r"(?<![\w.\-/])\d+(?:\.\d+)?(?![\w])")
 
@@ -131,9 +136,15 @@ class Pack:
         self.add(f"agg:query:{name}", "aggregate (computed by SQL for this question)", name, f"{description} = {json.dumps(value)}", value=value)
 
     def fts(self, q, k=8, kinds=None):
+        # Drop common prompt framing and product terms so they do not dominate OR retrieval
+        # (for example, "tell me about NASA experiments" should not match every page containing NASA).
+        toks = [t for t in re.findall(r"[A-Za-z0-9]{2,}", q.lower()) if t not in CHAT_STOP]
+        query = " OR ".join(f'"{t}"' for t in toks[:24])
+        if not query:
+            return
         try:
             rows = self.con.execute("SELECT evidence_id, kind, title, snippet(passage, 4, '', '', ' … ', 40) AS snip, bm25(passage) AS s "
-                                    "FROM passage WHERE passage MATCH ? ORDER BY s LIMIT 40", (services.fts_query(q),)).fetchall()
+                                    "FROM passage WHERE passage MATCH ? ORDER BY s LIMIT 40", (query,)).fetchall()
         except Exception:
             return
         n = 0
@@ -236,7 +247,28 @@ def build_pack(con, question, intent, scenario_id=None):
 
 
 # ------------------------------------------------------------------------------------------- deterministic answers
-def det_claims(con, intent, pack):
+def _excerpt_for_question(text, question):
+    """Pick a short source sentence that actually contains a searchable question term."""
+    terms = {t for t in re.findall(r"[A-Za-z0-9]{2,}", question.lower()) if t not in CHAT_STOP}
+    if not terms:
+        return None
+    sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+|\n+", re.sub(r"\s+", " ", text)) if s.strip()]
+    if not sentences:
+        return None
+
+    def score(sentence):
+        words = set(re.findall(r"[A-Za-z0-9]{2,}", sentence.lower()))
+        return sum(t in words or (len(t) >= 5 and any(w.startswith(t[:5]) or t.startswith(w[:5]) for w in words)) for t in terms)
+
+    best = max(sentences, key=score)
+    if score(best) == 0:
+        return None
+    if len(best) > 500:
+        best = best[:497].rsplit(" ", 1)[0] + "…"
+    return best
+
+
+def det_claims(con, intent, pack, question=None):
     a = lambda n: aggregate(con, n)
     C = lambda text, tier, ids: {"text": text, "tier": tier, "evidence_ids": [i for i in ids if i in pack.ids]}
     if intent == "partial_gravity":
@@ -305,6 +337,19 @@ def det_claims(con, intent, pack):
                 claims.append(C(line, "interpretation", [eid]))
         return ("Side-by-side comparison of documented conditions (similarity is not scientific equivalence).", claims,
                 ["Similarity values compare documented ranges only; undocumented values are excluded, never treated as zero."], [])
+    if intent == "general":
+        claims = []
+        for item in pack.items:
+            excerpt = _excerpt_for_question(item["text"], question) if question else None
+            if not excerpt:
+                continue
+            tier = "measured" if item["kind"].startswith(("psi_table_row", "aggregate", "observation", "run_group")) else "reported"
+            claims.append(C(f'The indexed NASA evidence states: “{excerpt}”', tier, [item["evidence_id"]]))
+            if len(claims) == 2:
+                break
+        if claims:
+            return ("I found relevant indexed NASA evidence. Here are the source passages that best match your question.", claims,
+                    ["These are direct source excerpts; read them in context before drawing broader conclusions."], [])
     return None, [], [], []
 
 
@@ -501,9 +546,9 @@ def ask(con, question, scenario_id=None, use_llm=True, twin=None):
     pack, invs = build_pack(con, question, intent, scenario_id)
     evidence = [{"evidence_id": i["evidence_id"], "kind": i["kind"], "title": i["title"], "snippet": i["text"][:400], "url": i["url"]}
                 for i in pack.items]
-    det = det_claims(con, intent, pack)
+    det = det_claims(con, intent, pack, question)
     notice = None
-    if use_llm and llm_available() and len(pack.items) >= 2:
+    if use_llm and llm_available() and pack.items:
         try:
             out = call_llm(question, pack)
             claims, removed, summary = validate([c.model_dump() for c in out.claims], pack, out.answer_summary)
@@ -515,7 +560,7 @@ def ask(con, question, scenario_id=None, use_llm=True, twin=None):
                              related, evidence, t0, model=model_info(), risk_q=risk_q)
             notice = "The language model could not support an answer from the evidence; showing the deterministic answer."
         except Exception as e:  # deterministic fallback on any API/validation failure
-            notice = ("Your API key could not be used; showing the deterministic, validated answer." if _REQUEST_LLM.get()
+            notice = ("Your API key could not be used; check that it was saved and that the selected model supports chat. Showing the deterministic, validated answer." if _REQUEST_LLM.get()
                       else f"Copilot language model unavailable ({type(e).__name__}); showing the deterministic, validated answer.")
     elif use_llm and not llm_available():
         notice = "Language model not configured on this server; answer built deterministically from the database."
@@ -523,7 +568,7 @@ def ask(con, question, scenario_id=None, use_llm=True, twin=None):
     if claims:
         claims, removed, summary = validate(claims, pack, summary)
         return _resp("answered", "deterministic", summary, claims, lim, gaps_, invs, evidence, t0, notice=notice, risk_q=risk_q)
-    if len(pack.items) < 2:
+    if not pack.items:
         return _resp("insufficient_evidence", "evidence_only", "The available evidence is insufficient to answer this question.",
                      [], ["Nothing relevant was found in PSI records, tables or indexed reports."], [], invs, evidence, t0, notice=notice, risk_q=risk_q)
     return _resp("partial", "evidence_only", "No validated answer could be composed; the most relevant NASA evidence is listed below.",
@@ -557,7 +602,7 @@ def ask_twin(con, question, twin, use_llm, t0):
                              model=model_info(), risk_q=risk_q)
             notice = "The language model could not support an answer from the evidence; showing the deterministic answer."
         except Exception as e:
-            notice = ("Your API key could not be used; showing the deterministic, validated answer." if _REQUEST_LLM.get()
+            notice = ("Your API key could not be used; check that it was saved and that the selected model supports chat. Showing the deterministic, validated answer." if _REQUEST_LLM.get()
                       else f"Copilot language model unavailable ({type(e).__name__}); showing the deterministic, validated answer.")
     elif use_llm:
         notice = "Language model not configured on this server; answer built deterministically from the scenario, the database and the physics models."
