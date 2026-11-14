@@ -95,6 +95,9 @@ def list_models(choice):
     if choice["provider"] == "gemini":
         preferred = [i for i in GEMINI_MODEL_PREFERENCE if i in ids]
         ids = preferred + sorted(ids.difference(preferred))
+    elif choice["provider"] == "openrouter":
+        # OpenRouter's free router is a virtual model and may not appear in /models.
+        ids = ["openrouter/free"] + sorted(ids.difference({"openrouter/free"}))
     else:
         ids = sorted(ids)
     ids = ids[:300]

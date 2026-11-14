@@ -47,7 +47,7 @@ export default function ApiKeySettings() {
 
   useEffect(() => {
     if (!open) return undefined;
-    setProvider(current?.provider ?? "anthropic"); setInput(""); setModels([]); setModel(current?.model ?? "");
+    setProvider(current?.provider ?? "openrouter"); setInput(""); setModels([]); setModel(current?.model ?? "");
     setRemember(userLLM.remembered()); setState({ busy: false, result: null, error: null, saved: false });
     const onKey = (e) => e.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKey);
