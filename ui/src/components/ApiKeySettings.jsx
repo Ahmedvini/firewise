@@ -125,7 +125,7 @@ export default function ApiKeySettings() {
               </form>
               {state.result && !state.saved && (
                 <p className={`key-result ${state.result.valid ? "ok" : "bad"}`} role="status">
-                  {state.result.valid ? <Check size={15} /> : <AlertTriangle size={15} />} {state.result.message}{state.result.valid ? " Choose a model, then save." : " Not saved."}
+                  {state.result.valid ? <Check size={15} /> : <AlertTriangle size={15} />} {state.result.message}{state.result.valid ? " Choose a model, then save. Model listing does not confirm generation or billing access." : " Not saved."}
                 </p>
               )}
               {state.saved && <p className="key-result ok" role="status"><Check size={15} /> Saved. The Copilot now uses {label}{model ? ` · ${model}` : ""}.</p>}

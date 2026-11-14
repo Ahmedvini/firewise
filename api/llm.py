@@ -30,6 +30,11 @@ MODEL_RE = re.compile(r"[A-Za-z0-9._:/\-]{1,120}")
 GEMINI_MODEL_RE = re.compile(r"[A-Za-z0-9._\-]{1,120}")       # becomes part of a URL path: no slashes
 NON_CHAT = re.compile(r"embed|tts|whisper|dall-e|moderation|transcri|audio|image|realtime|search|davinci|babbage|rerank|guard", re.I)
 TIMEOUT = httpx.Timeout(45.0, connect=10.0)
+GEMINI_MODEL_PREFERENCE = (
+    "gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash",
+    "gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-2.5-flash",
+    "gemini-2.5-flash-lite", "gemini-2.5-pro",
+)
 
 
 class ChoiceError(ValueError):
@@ -86,7 +91,13 @@ def list_models(choice):
         ids = [m["name"].removeprefix("models/") for m in d.get("models", []) if "generateContent" in (m.get("supportedGenerationMethods") or [])]
     else:
         ids = [m.get("id") for m in d.get("data", []) if m.get("id")]
-    ids = sorted({i for i in ids if not NON_CHAT.search(i)})[:300]
+    ids = {i for i in ids if not NON_CHAT.search(i)}
+    if choice["provider"] == "gemini":
+        preferred = [i for i in GEMINI_MODEL_PREFERENCE if i in ids]
+        ids = preferred + sorted(ids.difference(preferred))
+    else:
+        ids = sorted(ids)
+    ids = ids[:300]
     return True, "Key accepted.", ids
 
 

@@ -24,7 +24,8 @@ TIMEOUT_S = 45.0
 CHAT_STOP = services.STOP | {
     "ask", "asking", "answer", "according", "copilot", "data", "describe", "evidence", "experiment",
     "experiments", "explain", "firewise", "find", "give", "information", "nasa", "please", "provide",
-    "psi", "question", "research", "show", "source", "sources", "tell", "more",
+    "psi", "question", "research", "show", "source", "sources", "tell", "more", "report", "reports",
+    "account", "accounts", "during",
 }
 
 NUM_RE = re.compile(r"(?<![\w.\-/])\d+(?:\.\d+)?(?![\w])")
@@ -248,14 +249,14 @@ def build_pack(con, question, intent, scenario_id=None):
 
 
 # ------------------------------------------------------------------------------------------- deterministic answers
-def _excerpt_for_question(text, question):
-    """Pick a short source sentence that actually contains a searchable question term."""
-    terms = {t for t in re.findall(r"[A-Za-z0-9]{2,}", question.lower()) if t not in CHAT_STOP}
+def _excerpt_for_question(text, question, ignored_terms=()):
+    """Pick a short source sentence and score it by question-specific content terms."""
+    terms = {t for t in re.findall(r"[A-Za-z0-9]{2,}", question.lower()) if t not in CHAT_STOP} - set(ignored_terms)
     if not terms:
-        return None
+        return None, 0
     sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+|\n+", re.sub(r"\s+", " ", text)) if s.strip()]
     if not sentences:
-        return None
+        return None, 0
 
     def score(sentence):
         words = set(re.findall(r"[A-Za-z0-9]{2,}", sentence.lower()))
@@ -263,10 +264,10 @@ def _excerpt_for_question(text, question):
 
     best = max(sentences, key=score)
     if score(best) == 0:
-        return None
+        return None, 0
     if len(best) > 500:
         best = best[:497].rsplit(" ", 1)[0] + "…"
-    return best
+    return best, score(best)
 
 
 def det_claims(con, intent, pack, question=None):
@@ -339,11 +340,36 @@ def det_claims(con, intent, pack, question=None):
         return ("Side-by-side comparison of documented conditions (similarity is not scientific equivalence).", claims,
                 ["Similarity values compare documented ranges only; undocumented values are excluded, never treated as zero."], [])
     if intent == "general":
+        ignored_terms = set()
+        for acc in mentioned_investigations(con, question or ""):
+            ignored_terms.update(re.findall(r"[A-Za-z0-9]{2,}", acc.lower()))
+            row = con.execute("SELECT acronym FROM investigation WHERE id=?", (acc,)).fetchone()
+            if row and row["acronym"]:
+                ignored_terms.update(re.findall(r"[A-Za-z0-9]{2,}", row["acronym"].lower()))
+        fts_rank = {eid: rank for rank, eid in enumerate(pack.matches)}
+        ranked = []
+        for index, item in enumerate(pack.items):
+            excerpt, score = _excerpt_for_question(item["text"], question, ignored_terms) if question else (None, 0)
+            if score:
+                ranked.append((score, -fts_rank.get(item["evidence_id"], 10000), -index, item, excerpt))
+        ranked.sort(reverse=True, key=lambda x: x[:3])
+        if not ranked:
+            # If stemming or a named investigation prevented exact word matching, surface the FTS match itself.
+            by_id = {item["evidence_id"]: item for item in pack.items}
+            for rank, (eid, snippet) in enumerate(pack.matches.items()):
+                item = by_id.get(eid)
+                if item and snippet:
+                    ranked.append((0, -rank, 0, item, snippet))
+            if not ranked and pack.items:
+                item = pack.items[0]
+                excerpt = next(iter(re.split(r"(?<=[.!?])\s+|\n+", item["text"].strip())), "") or item["title"]
+                ranked.append((0, 0, 0, item, excerpt))
         claims = []
-        for item in pack.items:
-            excerpt = _excerpt_for_question(item["text"], question) if question else None
-            excerpt = excerpt or pack.matches.get(item["evidence_id"])
-            excerpt = excerpt or next(iter(re.split(r"(?<=[.!?])\s+|\n+", item["text"].strip())), "") or item["title"]
+        seen = set()
+        for _, _, _, item, excerpt in ranked:
+            if item["evidence_id"] in seen:
+                continue
+            seen.add(item["evidence_id"])
             excerpt = re.sub(r"\s+", " ", excerpt).strip()
             if len(excerpt) > 500:
                 excerpt = excerpt[:497].rsplit(" ", 1)[0] + "…"
@@ -538,10 +564,20 @@ def llm_failure_reason(exc):
     if isinstance(exc, RuntimeError) and str(exc).startswith("model stop_reason="):
         return "the model declined or returned no structured answer"
     status = getattr(exc, "status_code", None) or getattr(getattr(exc, "response", None), "status_code", None)
+    response = getattr(exc, "response", None)
+    provider_message = ""
+    if response is not None:
+        try:
+            provider_message = str((response.json().get("error") or {}).get("message", "")).lower()
+        except (ValueError, AttributeError, TypeError):
+            pass
+    if "free tier is not available for this project" in provider_message or (
+            "project unavailable" in provider_message and "billing" in provider_message):
+        return "Google says Gemini generation is unavailable for this project until billing is enabled or a Gemini-enabled project is used"
     if status == 401:
         return "the provider rejected the API key"
     if status == 403:
-        return "the key does not have access to the selected model"
+        return "the provider denied access to the selected model or project"
     if status == 404:
         return "the selected model was not found"
     if status == 429:
