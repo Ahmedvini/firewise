@@ -25,7 +25,8 @@ CHAT_STOP = services.STOP | {
     "ask", "asking", "answer", "according", "copilot", "data", "describe", "evidence", "experiment",
     "experiments", "explain", "firewise", "find", "give", "information", "nasa", "please", "provide",
     "psi", "question", "research", "show", "source", "sources", "tell", "more", "report", "reports",
-    "account", "accounts", "during",
+    "account", "accounts", "during", "current", "currently", "latest", "recent", "today", "yesterday", "now",
+    "price", "cost", "weather", "news", "update", "updates", "live",
 }
 
 NUM_RE = re.compile(r"(?<![\w.\-/])\d+(?:\.\d+)?(?![\w])")
@@ -566,6 +567,23 @@ def _retrieval_question(question, chat_context):
     return " ".join([q for q in previous[-2:] if q] + [question])[-1200:]
 
 
+def _filter_irrelevant_general_evidence(question, pack, invs):
+    """Discard broad OR-search hits when fewer than two question terms support the same passage."""
+    if invs or not pack.items:
+        return
+    terms = {t for t in re.findall(r"[A-Za-z0-9]{2,}", question.lower()) if t not in CHAT_STOP}
+    domain_terms = {"combustion", "flame", "flames", "fire", "fuel", "oxygen", "o2", "pressure", "microgravity", "gravity", "soot", "burner"}
+    minimum = 1 if len(terms) == 1 and next(iter(terms)) in domain_terms else 2
+    relevant = []
+    for item in pack.items:
+        _, score = _excerpt_for_question(item["text"], question)
+        if score >= minimum:
+            relevant.append(item)
+    pack.items = relevant
+    pack.ids = {item["evidence_id"] for item in relevant}
+    pack.matches = {eid: snippet for eid, snippet in pack.matches.items() if eid in pack.ids}
+
+
 def call_llm(question, pack, chat_context=None):
     choice = _REQUEST_LLM.get()
     ev = "\n\n".join(f"[{i['evidence_id']}] ({i['kind']}) {i['title']}\n{i['text']}" for i in pack.items)
@@ -685,6 +703,8 @@ def ask(con, question, scenario_id=None, use_llm=True, twin=None, chat_context=N
                      notice=RISK_NOTICE)
     risk_q = bool(RISK_Q.search(question) or RISK_Q.search(retrieval_question))
     pack, invs = build_pack(con, retrieval_question, intent, scenario_id)
+    if intent == "general":
+        _filter_irrelevant_general_evidence(retrieval_question, pack, invs)
     evidence = [{"evidence_id": i["evidence_id"], "kind": i["kind"], "title": i["title"], "snippet": i["text"][:400], "url": i["url"]}
                 for i in pack.items]
     det = det_claims(con, intent, pack, retrieval_question)
