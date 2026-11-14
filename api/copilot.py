@@ -108,7 +108,7 @@ def mentioned_investigations(con, q):
 # ------------------------------------------------------------------------------------------- evidence pack
 class Pack:
     def __init__(self, con):
-        self.con, self.items, self.ids = con, [], set()
+        self.con, self.items, self.ids, self.matches = con, [], set(), {}
 
     def add(self, eid, kind, title, text, url=None, value=None):
         if eid in self.ids or text is None:
@@ -151,6 +151,7 @@ class Pack:
         for r in rows:
             if kinds and r["kind"] not in kinds:
                 continue
+            self.matches.setdefault(r["evidence_id"], r["snip"])
             self.ev(r["evidence_id"]) if r["kind"] in ("record_text", "curated_fact", "aggregate") else \
                 self.add(r["evidence_id"], r["kind"], r["title"], self._full_text(r["evidence_id"], r["snip"]))
             n += 1
@@ -341,6 +342,11 @@ def det_claims(con, intent, pack, question=None):
         claims = []
         for item in pack.items:
             excerpt = _excerpt_for_question(item["text"], question) if question else None
+            excerpt = excerpt or pack.matches.get(item["evidence_id"])
+            excerpt = excerpt or next(iter(re.split(r"(?<=[.!?])\s+|\n+", item["text"].strip())), "") or item["title"]
+            excerpt = re.sub(r"\s+", " ", excerpt).strip()
+            if len(excerpt) > 500:
+                excerpt = excerpt[:497].rsplit(" ", 1)[0] + "…"
             if not excerpt:
                 continue
             tier = "measured" if item["kind"].startswith(("psi_table_row", "aggregate", "observation", "run_group")) else "reported"
@@ -527,6 +533,28 @@ def call_llm(question, pack):
     return resp.parsed_output
 
 
+def llm_failure_reason(exc):
+    """Give the user a safe, actionable reason without exposing the provider response or API key."""
+    if isinstance(exc, RuntimeError) and str(exc).startswith("model stop_reason="):
+        return "the model declined or returned no structured answer"
+    status = getattr(exc, "status_code", None) or getattr(getattr(exc, "response", None), "status_code", None)
+    if status == 401:
+        return "the provider rejected the API key"
+    if status == 403:
+        return "the key does not have access to the selected model"
+    if status == 404:
+        return "the selected model was not found"
+    if status == 429:
+        return "the provider rate limit or account quota was reached"
+    if status == 400:
+        return "the provider rejected the request; check the selected model"
+    if status and status >= 500:
+        return "the provider is temporarily unavailable"
+    if "timeout" in type(exc).__name__.lower():
+        return "the provider request timed out"
+    return f"provider request failed ({type(exc).__name__})"
+
+
 # ------------------------------------------------------------------------------------------- entry point
 class TwinContextError(ValueError):
     pass
@@ -560,8 +588,9 @@ def ask(con, question, scenario_id=None, use_llm=True, twin=None):
                              related, evidence, t0, model=model_info(), risk_q=risk_q)
             notice = "The language model could not support an answer from the evidence; showing the deterministic answer."
         except Exception as e:  # deterministic fallback on any API/validation failure
-            notice = ("Your API key could not be used; check that it was saved and that the selected model supports chat. Showing the deterministic, validated answer." if _REQUEST_LLM.get()
-                      else f"Copilot language model unavailable ({type(e).__name__}); showing the deterministic, validated answer.")
+            reason = llm_failure_reason(e)
+            notice = (f"Your API key could not be used: {reason}. Check the saved key and selected model; showing matching NASA evidence."
+                      if _REQUEST_LLM.get() else f"Copilot language model unavailable: {reason}; showing matching NASA evidence.")
     elif use_llm and not llm_available():
         notice = "Language model not configured on this server; answer built deterministically from the database."
     summary, claims, lim, gaps_ = det
@@ -602,8 +631,9 @@ def ask_twin(con, question, twin, use_llm, t0):
                              model=model_info(), risk_q=risk_q)
             notice = "The language model could not support an answer from the evidence; showing the deterministic answer."
         except Exception as e:
-            notice = ("Your API key could not be used; check that it was saved and that the selected model supports chat. Showing the deterministic, validated answer." if _REQUEST_LLM.get()
-                      else f"Copilot language model unavailable ({type(e).__name__}); showing the deterministic, validated answer.")
+            reason = llm_failure_reason(e)
+            notice = (f"Your API key could not be used: {reason}. Check the saved key and selected model; showing matching NASA evidence."
+                      if _REQUEST_LLM.get() else f"Copilot language model unavailable: {reason}; showing matching NASA evidence.")
     elif use_llm:
         notice = "Language model not configured on this server; answer built deterministically from the scenario, the database and the physics models."
     summary, claims, lim, gaps_ = copilot_twin.answer(con, intent, pack, twin, ev, question)
