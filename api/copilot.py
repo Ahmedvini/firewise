@@ -675,7 +675,7 @@ def llm_failure_reason(exc):
     if status == 404:
         return "the selected model was not found"
     if status == 429:
-        return "the provider rate limit or account quota was reached"
+        return "the provider rate limit or free-tier quota was reached; wait for reset or check its usage limits"
     if status == 400:
         return "the provider rejected the request; check the selected model"
     if status and status >= 500:
