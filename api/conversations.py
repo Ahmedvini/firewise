@@ -42,7 +42,7 @@ def _fingerprint(con):
     return f"{m.get('schema_version')}:{m.get('inputs_sha256')}:{m.get('runs_csv_sha256')}"
 
 
-def cache_key(con, question, scenario_id=None, twin=None, owner=None):
+def cache_key(con, question, scenario_id=None, twin=None, owner=None, chat_context=None):
     """Twin answers quote user-written scenario text (name, description), so the key covers the WHOLE twin
     context and, when a workspace is known, the workspace too: a cached twin answer is never served to a
     different context or another workspace. General questions carry no user data and share the cache."""
@@ -52,7 +52,9 @@ def cache_key(con, question, scenario_id=None, twin=None, owner=None):
     ctx = None
     if twin:
         ctx = {"context": twin, "engine": physics.ENGINE_VERSION, "owner": owner}
-    payload = json.dumps({"v": CACHE_VERSION, "q": q, "scenario_id": scenario_id, "twin": ctx, "db": _fingerprint(con), "mode": mode}, sort_keys=True, default=str)
+    history = [{"role": t.get("role"), "content": t.get("content")} for t in (chat_context or [])[-8:]]
+    payload = json.dumps({"v": CACHE_VERSION, "q": q, "scenario_id": scenario_id, "twin": ctx,
+                          "chat_context": history, "db": _fingerprint(con), "mode": mode}, sort_keys=True, default=str)
     return hashlib.sha256(payload.encode()).hexdigest()
 
 
@@ -62,10 +64,10 @@ def cacheable(resp):
     return resp["mode"] in ("llm_validated", "deterministic") and not failed_llm
 
 
-def ask_cached(con, question, scenario_id=None, twin=None, owner=None):
+def ask_cached(con, question, scenario_id=None, twin=None, owner=None, chat_context=None):
     """copilot.ask with the answer cache. Returns the response with `cached` set."""
     t0 = time.time()
-    key = cache_key(con, question, scenario_id, twin, owner)
+    key = cache_key(con, question, scenario_id, twin, owner, chat_context)
     cutoff = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=CACHE_MAX_AGE_DAYS)).isoformat(timespec="seconds")
     with state.connect() as s:
         r = s.execute("SELECT response_json FROM copilot_answer_cache WHERE cache_key=? AND created_at >= ?", (key, cutoff)).fetchone()
@@ -73,7 +75,7 @@ def ask_cached(con, question, scenario_id=None, twin=None, owner=None):
             s.execute("UPDATE copilot_answer_cache SET hits = hits + 1, last_hit_at = ? WHERE cache_key=?", (_now(), key))
             resp = json.loads(r[0])
             return {**resp, "cached": True, "latency_ms": int((time.time() - t0) * 1000)}
-    resp = copilot.ask(con, question, scenario_id, twin=twin)
+    resp = copilot.ask(con, question, scenario_id, twin=twin, chat_context=chat_context)
     resp = {**resp, "cached": False}
     if cacheable(resp):
         with state.connect() as s:
@@ -126,6 +128,28 @@ def append_exchange(s, owner, cid, question, resp, context):
     if n == 0 and title == "New chat":
         title = (question[:77] + "…") if len(question) > 78 else question
     s.execute("UPDATE chat_conversation SET updated_at=?, title=? WHERE id=?", (now, title, cid))
+
+
+def recent_chat_context(s, cid):
+    """Return up to four recent exchanges; past answers help resolve follow-ups, never act as evidence."""
+    rows = s.execute("SELECT role, content, response_json FROM chat_message WHERE conversation_id=? ORDER BY seq DESC LIMIT 8",
+                     (cid,)).fetchall()
+    context = []
+    for row in reversed(rows):
+        if row["role"] == "user":
+            content = row["content"] or ""
+        else:
+            try:
+                response = json.loads(row["response_json"] or "{}")
+            except (TypeError, ValueError):
+                response = {}
+            parts = [response.get("answer_summary") or row["content"] or ""]
+            parts.extend(c.get("text", "") for c in (response.get("claims") or [])[:2])
+            content = " ".join(p for p in parts if p)
+        content = re.sub(r"\s+", " ", str(content)).strip()[:700]
+        if content:
+            context.append({"role": row["role"], "content": content})
+    return context
 
 
 # ------------------------------------------------------------------------------------------- HTTP
@@ -207,6 +231,7 @@ def send_message(cid: str, body: MessageIn, request: Request, ws: str = WS_HEADE
     with state.connect() as s:
         c = s.execute("SELECT (SELECT COUNT(*) FROM chat_message WHERE conversation_id=c.id) FROM chat_conversation c WHERE id=? AND owner_hash=?",
                       (cid, owner)).fetchone()
+        chat_context = recent_chat_context(s, cid) if c is not None else []
     if c is None:
         raise HTTPException(404, f"Unknown conversation {cid}")
     if c[0] >= MAX_MESSAGES:
@@ -216,7 +241,7 @@ def send_message(cid: str, body: MessageIn, request: Request, ws: str = WS_HEADE
     twin = body.twin.model_dump() if body.twin else None
     with connect() as con, copilot.request_llm(choice):
         try:
-            resp = ask_cached(con, body.question.strip(), None, twin, owner)
+            resp = ask_cached(con, body.question.strip(), None, twin, owner, chat_context)
         except copilot.TwinContextError as e:
             raise HTTPException(400, str(e))
     context = None

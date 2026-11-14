@@ -5,7 +5,7 @@ import { evidenceKind } from "../utils/format.js";
 
 const EvidenceContext = createContext({ open: () => {} });
 
-// Items computed for a single Copilot answer (ids twin:*) have no server endpoint; answers register them here.
+// Per-answer evidence (twin calculations and external search sources) has no server endpoint; register it here.
 const inline = new Map();
 export function registerInlineEvidence(items = []) {
   items.forEach((i) => inline.set(i.evidence_id, i));
@@ -20,7 +20,7 @@ export function EvidenceProvider({ children }) {
 
   useEffect(() => {
     if (!id) return;
-    if (id.startsWith("twin:") && inline.has(id)) {
+    if (inline.has(id)) {
       const i = inline.get(id);
       setState({ data: { evidence_id: id, kind: i.kind, title: i.title, text: i.snippet, url: i.url }, error: null });
       return;

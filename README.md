@@ -22,7 +22,7 @@ Every value keeps its measurement status: measured, derived, reported, set-point
 | Comparison Studio | 2–4 investigations side by side; incompatibilities; documented ranges | no |
 | Research Gap Map | Records by fuel class × chamber O₂ × pressure for each gravity level; "not documented" shown explicitly | no |
 | Findings | Evidence-graded findings: established, possible implication, or more research needed | no |
-| AI Copilot | Cited answers; a validator checks every citation and number; deterministic fallback; saved conversations (switch, rename, delete) and an answer cache | optional |
+| AI Copilot | Cited, validated answers when NASA evidence matches; web-search fallback for Groq when it does not; saved conversations with recent-turn context | optional |
 | **Digital Twin** | 3D habitat (Three.js) + engineering dashboard + NASA evidence twin + physics twin (ideal gas, gas-mixture properties, bulk airflow, convection, conduction) + scenario save/compare/history + scientific report + twin-aware Copilot | no (Copilot optional) |
 
 Digital Twin documentation:

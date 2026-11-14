@@ -127,7 +127,7 @@ by the documented sort key with `row_key` as the tiebreak.
 | Timeout (> 45 s) | `504 copilot_timeout` + the same fallback |
 | Malformed / schema-invalid output | one retry; then evidence-only response |
 | Claim fails validation | drop the claim; add a limitation "1 statement removed: unsupported citation"; if none remain → `insufficient_evidence` |
-| Retrieval returns no evidence items | no model call; `insufficient_evidence` explains that no indexed NASA source matched |
+| Retrieval returns no evidence items | Groq uses browser search and returns a clearly labeled, non-NASA-validated response (`mode: "llm_web_search"`); other configured models may provide a clearly labeled general response (`mode: "llm_unverified"`); without a model, explain that no indexed NASA source matched |
 | Retrieval returns one or more evidence items | the configured model may answer from the retrieved evidence; without a working model, prepared intents use their deterministic answer and other questions return matching source excerpts with citations |
 | `stop_reason == "refusal"` (after fallback) | evidence-only response |
 
@@ -140,4 +140,4 @@ The UI never crashes on any of these; the other 5 screens never call the LLM.
 - **Twin routes.** All twin routes are under `/api/twin/*`; the full reference is in `docs/DIGITAL_TWIN_API.md`. Scenario, run, history, comparison and report routes require `X-Workspace`.
 - **`/api/ask`.** It also accepts `twin: {scenario, selected_zone?, scenario_id?}` and returns `cached`.
 - **New claim tiers:** `calculation`, `model_prediction`, `unknown`.
-- **Conversations:** `/api/conversations` (list, create, get, rename via PATCH, delete) and `/api/conversations/{id}/messages`.
+- **Conversations:** `/api/conversations` (list, create, get, rename via PATCH, delete) and `/api/conversations/{id}/messages`. Recent turns are provided to the model to resolve follow-ups; prior assistant answers are context only, never citation evidence.

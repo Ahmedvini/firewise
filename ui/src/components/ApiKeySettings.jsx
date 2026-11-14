@@ -93,7 +93,7 @@ export default function ApiKeySettings() {
               <button className="icon-btn" onClick={() => setOpen(false)} aria-label="Close"><X size={18} /></button>
             </header>
             <div className="modal-body key-settings">
-              <p className="muted">Use a language model from any supported provider to write Copilot answers. Whatever the model, every answer is checked by the FIREWISE validator (citations must resolve; numbers must appear in the cited evidence). Without a key, answers are built deterministically from the database.</p>
+              <p className="muted">Use a language model from any supported provider. Answers grounded in NASA PSI evidence are checked by the FIREWISE validator. If no NASA evidence matches, Groq can use web search; other providers may answer from general knowledge. Those fallback answers are labeled as unvalidated. Without a key, answers are built from the database.</p>
               <dl className="key-status">
                 <dt>In use</dt>
                 <dd>{current ? <><b>{providerLabel(providers, current.provider)}</b>{current.model ? <> · <span className="mono">{current.model}</span></> : null} · your key <span className="mono">{userLLM.masked(current.key)}</span> · {userLLM.remembered() ? "remembered on this device" : "this browser session only"}</>
@@ -136,7 +136,7 @@ export default function ApiKeySettings() {
                 <li>It is stored only in this browser: for this session, or on this device if you tick “remember”.</li>
                 <li>It is sent over HTTPS to this FIREWISE server with Copilot questions only, in a request header — never in a URL.</li>
                 <li>The server calls only {label}'s official API address, uses the key for that single request, and never stores, caches or logs it.</li>
-                <li>Checking a key only lists the provider's models (no answer is generated). Copilot answers are billed to your account with that provider.</li>
+                <li>Checking a key only lists the provider's models (no answer is generated). Model and search usage follow the provider's plan and rate limits.</li>
                 <li>Anyone with access to this browser profile could read a remembered key. Remove it when you are done on a shared computer.</li>
               </ul>
             </div>

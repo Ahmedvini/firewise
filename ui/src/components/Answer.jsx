@@ -5,6 +5,8 @@ import { evidenceKind } from "../utils/format.js";
 
 const MODE_LABEL = {
   llm_validated: "Language-model answer, validated against cited evidence",
+  llm_web_search: "Web-searched model answer; not validated against NASA evidence",
+  llm_unverified: "General model response, not validated against NASA evidence",
   deterministic: "Deterministic answer computed from the database",
   evidence_only: "Evidence list only (no validated prose)",
 };

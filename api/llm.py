@@ -38,6 +38,7 @@ GEMINI_MODEL_PREFERENCE = (
 GROQ_MODEL_PREFERENCE = (
     "openai/gpt-oss-120b", "openai/gpt-oss-20b", "qwen/qwen3.8-27b",
 )
+GROQ_BROWSER_SEARCH_MODELS = frozenset(("openai/gpt-oss-120b", "openai/gpt-oss-20b"))
 
 
 class ChoiceError(ValueError):
@@ -118,6 +119,14 @@ Respond with ONLY one JSON object (no prose, no code fences) with exactly these 
  "claims": [{"text": string, "tier": one of "measured" | "reported" | "literature" | "interpretation" | "calculation" | "model_prediction" | "unknown",
              "evidence_ids": [evidence_id strings copied exactly from the evidence pack]}],
  "limitations": [string], "gaps": [string], "related_investigations": [string, e.g. "PSI-159"], "sufficient_evidence": boolean}"""
+UNVERIFIED_JSON_INSTRUCTIONS = """
+
+No matching evidence was retrieved for this request. Respond with ONLY one JSON object (no prose, no code fences)
+with exactly these fields:
+{"answer_summary": string (answer directly in at most three sentences; be clear when uncertain),
+ "claims": [], "limitations": ["This general response was not validated against NASA PSI evidence."],
+ "gaps": [], "related_investigations": [], "sufficient_evidence": boolean}.
+Do not invent citations or put factual claims in the claims array. Do not imply you searched the web or NASA records."""
 
 
 def _parse_json(text):
@@ -143,12 +152,12 @@ def _generate_openai_compatible(c, choice, sys_text, user_message, model):
     return _parse_json(msg.get("content") or "")
 
 
-def generate(choice, system, user_message):
+def generate(choice, system, user_message, *, unverified=False):
     """Call a non-Anthropic provider and return the parsed JSON answer (dict). Raises on any failure."""
     p = PROVIDERS[choice["provider"]]
     if not choice.get("model"):
         raise ChoiceError("Choose a model for this provider in AI settings")
-    sys_text = system + JSON_INSTRUCTIONS
+    sys_text = system + (UNVERIFIED_JSON_INSTRUCTIONS if unverified else JSON_INSTRUCTIONS)
     with httpx.Client(timeout=TIMEOUT) as c:
         if p["kind"] == "gemini":
             body = {"systemInstruction": {"parts": [{"text": sys_text}]},
@@ -171,3 +180,43 @@ def generate(choice, system, user_message):
             answer = _generate_openai_compatible(c, choice, sys_text, user_message, fallback)
             choice["model"] = fallback
             return answer
+
+
+def browser_search(choice, system, user_message):
+    """Use Groq's built-in browser search for a no-PSI-evidence question; returns cited plain text."""
+    if choice["provider"] != "groq":
+        raise ChoiceError("Built-in browser search is only available for Groq")
+    selected = choice.get("model")
+    candidates = [selected] if selected in GROQ_BROWSER_SEARCH_MODELS else []
+    valid, _, models = list_models(choice)
+    if valid:
+        candidates.extend(model for model in GROQ_MODEL_PREFERENCE if model in models and model in GROQ_BROWSER_SEARCH_MODELS)
+    candidates = list(dict.fromkeys(candidates))
+    if not candidates:
+        raise ChoiceError("This Groq key has no model that supports browser search")
+    last_error = None
+    with httpx.Client(timeout=TIMEOUT) as c:
+        for model in candidates:
+            body = {
+                "model": model,
+                "messages": [{"role": "system", "content": system}, {"role": "user", "content": user_message}],
+                "tools": [{"type": "browser_search"}],
+                "tool_choice": "required",
+                "max_completion_tokens": 1800,
+                "reasoning_effort": "low",
+            }
+            r = c.post(f"{PROVIDERS['groq']['base']}/chat/completions", json=body,
+                       headers=_headers("groq", choice["key"]))
+            if r.status_code in (400, 404):
+                last_error = httpx.HTTPStatusError("Groq browser-search request failed", request=r.request, response=r)
+                continue
+            r.raise_for_status()
+            msg = (r.json().get("choices") or [{}])[0].get("message", {})
+            answer = (msg.get("content") or "").strip()
+            if not answer:
+                raise ValueError("Groq browser search returned an empty response")
+            choice["model"] = model
+            return answer
+    if last_error:
+        raise last_error
+    raise ValueError("Groq browser search did not return an answer")

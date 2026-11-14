@@ -390,7 +390,7 @@ class EvidenceItem(BaseModel):
 
 class AskResponse(BaseModel):
     status: Literal["answered", "insufficient_evidence", "partial"]
-    mode: Literal["llm_validated", "deterministic", "evidence_only"]
+    mode: Literal["llm_validated", "llm_web_search", "llm_unverified", "deterministic", "evidence_only"]
     answer_summary: Optional[str]
     claims: list[Claim]
     limitations: list[str]

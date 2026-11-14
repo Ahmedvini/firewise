@@ -33,6 +33,7 @@ export function evidenceKind(kind = "") {
       report_page: "NASA report page",
       run_group_summary: "Record group",
       run_group: "Record group",
+      web_search_source: "Web-search source",
       record_text: "PSI investigation record",
       curated_fact: "Curated fact",
       "comparison (computed)": "Computed comparison",
